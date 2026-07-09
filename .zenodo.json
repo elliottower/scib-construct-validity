@@ -1,0 +1,24 @@
+{
+  "title": "Preflight Bio",
+  "upload_type": "software",
+  "description": "Preflight checks for biomedical analysis pipelines.",
+  "creators": [
+    {
+      "name": "Tower, Elliot",
+      "orcid": "0000-0001-7004-8884"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "preflight",
+    "biomedical",
+    "quality control"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/elliottower/preflight-bio",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
