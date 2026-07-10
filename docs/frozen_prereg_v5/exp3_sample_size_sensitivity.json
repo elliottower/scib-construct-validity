@@ -1,0 +1,54 @@
+{
+  "sha256": "809ded9d0b97ab04d1882679c42293585b4f4417cfc383b9495629b8b9308aca",
+  "timestamp": "2026-07-10T22:06:15.960104+00:00",
+  "modules_used": [
+    "preflight.core.modules.module1_grassmannian.transportability",
+    "preflight.core.modules.module2_domain_shift.transportability",
+    "preflight.core.modules.module3_direction_stability.distances",
+    "preflight.core.modules.module6_curvature.weighted_orc",
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity",
+    "preflight.core.runner"
+  ],
+  "hyperparameters": {
+    "k": 5,
+    "orc_alpha": 0.5,
+    "weights": {
+      "m1_grassmannian": 2.0,
+      "m2_domain_shift": 2.0,
+      "m3_direction_stability": 1.0,
+      "m4_domain_validity": 1.0,
+      "m5_cross_design": 1.5,
+      "m6_curvature": 0.5
+    }
+  },
+  "dataset_spec": {
+    "name": "exp3_sample_size_sensitivity",
+    "source_description": "Lung 10x 3' v3 (geneformer), varying cell counts",
+    "target_description": "Lung 10x 5' v2 (geneformer), varying cell counts",
+    "n_source": null,
+    "n_target": null,
+    "d": null,
+    "extra": {
+      "census_version": "2023-12-15",
+      "embedding": "geneformer",
+      "cell_counts": [
+        200,
+        500,
+        1000,
+        2000,
+        5000,
+        10000
+      ],
+      "replicates_per_count": 3,
+      "tissue": "lung"
+    }
+  },
+  "module_code_lengths": {
+    "preflight.core.modules.module1_grassmannian.transportability": 14152,
+    "preflight.core.modules.module2_domain_shift.transportability": 8832,
+    "preflight.core.modules.module3_direction_stability.distances": 6253,
+    "preflight.core.modules.module6_curvature.weighted_orc": 18951,
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity": 2641,
+    "preflight.core.runner": 21342
+  }
+}
