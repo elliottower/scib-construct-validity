@@ -88,14 +88,50 @@ print(report.to_markdown())
 | Module | What it measures | Inputs |
 |--------|-----------------|--------|
 | **M1 Grassmannian** | Subspace alignment via geodesic distance on Gr(k, d) | embeddings |
-| **M3 Direction instability** | Stability of learned directions across conditions | embeddings |
-| **M4 Embedding collapse** | Domain classifier AUC detecting distribution shift | embeddings |
-| **M5 Domain validity** | Data completeness and missingness | embeddings |
-| **M2 Cross-design** | Effect estimate discordance across study designs | metadata |
-| **M6 Curvature** | Ollivier-Ricci curvature on co-expression networks | metadata |
+| **M2 Domain shift** | Domain classifier AUC detecting distribution shift | embeddings |
+| **M3 Direction stability** | Stability of learned directions across conditions | embeddings |
+| **M4 Domain validity** | Data completeness and missingness | embeddings |
+| **M5 Cross-design** | Effect estimate discordance across study designs | metadata |
+| **M6 Curvature** | Ollivier-Ricci curvature on embedding graphs | metadata |
 | **M7 Ecological bias** | Site-level vs individual-level effect distortion | metadata |
 
-Modules M1, M3, M4, M5 run by default on any pair of embedding matrices. Modules M2, M6, M7 run when their metadata inputs are provided.
+Modules M1--M4 run by default on any pair of embedding matrices. Modules M5--M7 run when their metadata inputs are provided:
+
+- **M5**: `metadata["estimates"]` — dict of scalar estimates per study design
+- **M6**: `metadata["graph"]` — a `networkx.Graph` (e.g., k-NN graph on embeddings)
+- **M7**: `metadata["records"]` — list of dicts with `site_key` and `outcome_key` fields
+
+## Probing suite
+
+Alongside geometric diagnostics, Preflight includes a multi-model probing suite for supervised evaluation of embedding quality:
+
+```python
+from preflight.probes import run_probes
+
+results = run_probes(
+    embeddings={"geneformer": X_gf, "scvi": X_scvi},
+    labels=cell_types,       # cell type annotations
+    batch_ids=donor_ids,     # donor IDs for stratified CV
+    k=5,                     # number of CV folds
+)
+print(results["summary"])
+```
+
+| Probe | What it measures | Metric | Level |
+|-------|-----------------|--------|-------|
+| **cell_type** | Cell type classification | macro F1 | cell embeddings |
+| **tf_target** | Per-TF target vs non-target | mean AUC | gene embeddings |
+| **hub_tf** | Hub TF vs non-hub TF | AUC | gene embeddings |
+| **rsa** | Embedding similarity vs regulatory adjacency | Spearman rho | gene embeddings |
+
+Gene-level probes activate when `gene_embeddings`, `gene_ids`, and `regulatory_edges` are provided. Regulatory edges can be pulled from the OmniPath REST API:
+
+```python
+from preflight.probes import load_regulatory_edges
+edges = load_regulatory_edges()  # DoRothEA + CollecTRI
+```
+
+Multi-model comparison uses paired Wilcoxon signed-rank tests with bootstrap 95% CIs on fold-level scores.
 
 ## Tiering
 

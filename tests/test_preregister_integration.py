@@ -27,8 +27,8 @@ from preflight.core.synthetic import (
     generate_transfer_positive,
 )
 from preflight.core.modules.module1_grassmannian import transportability as m1
-from preflight.core.modules.module3_direction_instability import distances as m3
-from preflight.core.modules.module4_embedding_collapse import transportability as m4
+from preflight.core.modules.module3_direction_stability import distances as m3
+from preflight.core.modules.module2_domain_shift import transportability as m4
 from preflight.core.modules.module6_curvature import weighted_orc as m6
 from preflight.core.modules.module7_ecological_bias import s7_evalue_sensitivity as m7
 

@@ -1,0 +1,126 @@
+{
+  "timestamp": "20260710_044201",
+  "census_version": "2023-12-15",
+  "embedding": "geneformer",
+  "source_cells": 200,
+  "target_cells": 200,
+  "embedding_dim": 512,
+  "overall_tier": 3,
+  "overall_score": 0.3462845806843784,
+  "prereg_sha": "c2bdd0d3ba98166c07686f111ddfd463f7b3ca48262009e25b3d61530703bfab",
+  "module_scores": {
+    "m1_grassmannian": {
+      "score": 0.2763048792605869,
+      "tier": 3
+    },
+    "m2_domain_shift": {
+      "score": 0.09624999999999995,
+      "tier": 1
+    },
+    "m3_direction_stability": {
+      "score": 0.4452298616419026,
+      "tier": 4
+    },
+    "m4_domain_validity": {
+      "score": 1.0,
+      "tier": 7
+    },
+    "m6_curvature": {
+      "score": 0.8135894699395233,
+      "tier": 6
+    },
+    "m7_ecological_bias": {
+      "score": 0.0,
+      "tier": 1
+    }
+  },
+  "probe": {
+    "macro_f1_mean": 0.7589705150879162,
+    "macro_f1_ci": [
+      0.688371217272686,
+      0.8376653398583223
+    ],
+    "scores": [
+      0.6915065441381231,
+      0.6724229420450352,
+      0.7139971139971141,
+      0.8269788853122186,
+      0.8899470899470899
+    ],
+    "n_items": 274,
+    "details": {
+      "metric": "macro_f1",
+      "n_classes": 10,
+      "classes": [
+        "CD4-positive, alpha-beta T cell",
+        "CD8-positive, alpha-beta T cell",
+        "alveolar macrophage",
+        "ciliated columnar cell of tracheobronchial tree",
+        "classical monocyte",
+        "fibroblast of lung",
+        "macrophage",
+        "native cell",
+        "plasma cell",
+        "type II pneumocyte"
+      ],
+      "cells_per_fold": [
+        57,
+        59,
+        52,
+        56,
+        50
+      ],
+      "dropped_classes": [
+        "B cell",
+        "B-1b B cell",
+        "CD14-positive, CD16-negative classical monocyte",
+        "CD16-negative, CD56-bright natural killer cell, human",
+        "CD16-positive, CD56-dim natural killer cell, human",
+        "CD1c-positive myeloid dendritic cell",
+        "CD4-positive helper T cell",
+        "T cell",
+        "alveolar type 1 fibroblast cell",
+        "alveolar type 2 fibroblast cell",
+        "animal cell",
+        "bronchus fibroblast of lung",
+        "capillary endothelial cell",
+        "club cell",
+        "dendritic cell",
+        "dendritic cell, human",
+        "effector memory CD4-positive, alpha-beta T cell",
+        "effector memory CD8-positive, alpha-beta T cell, terminally differentiated",
+        "elicited macrophage",
+        "endothelial cell",
+        "endothelial cell of lymphatic vessel",
+        "epithelial cell",
+        "epithelial cell of lung",
+        "fibroblast",
+        "ionocyte",
+        "lung ciliated cell",
+        "lung goblet cell",
+        "lung microvascular endothelial cell",
+        "malignant cell",
+        "mast cell",
+        "megakaryocyte",
+        "mesothelial cell",
+        "mucus secreting cell",
+        "myofibroblast cell",
+        "naive thymus-derived CD4-positive, alpha-beta T cell",
+        "nasal mucosa goblet cell",
+        "natural killer cell",
+        "non-classical monocyte",
+        "pericyte",
+        "plasmacytoid dendritic cell",
+        "pulmonary interstitial fibroblast",
+        "regulatory T cell",
+        "respiratory basal cell",
+        "respiratory epithelial cell",
+        "respiratory goblet cell",
+        "small pre-B-II cell",
+        "tracheobronchial smooth muscle cell",
+        "type I pneumocyte",
+        "vein endothelial cell"
+      ]
+    }
+  }
+}

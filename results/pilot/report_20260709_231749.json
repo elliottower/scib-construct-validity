@@ -1,0 +1,85 @@
+{
+  "overall_tier": 3,
+  "overall_tier_label": "Poor",
+  "overall_score": 0.3724947288904577,
+  "module_results": {
+    "m1_grassmannian": {
+      "module": "m1_grassmannian",
+      "score": 0.30925015989156246,
+      "tier": 3,
+      "details": {
+        "geodesic_distance": 2.4261948261288895,
+        "max_geodesic": 3.5124073655203634,
+        "k": 5
+      },
+      "interpretation": "Large subspace divergence (geodesic=2.426). Transferability is unlikely."
+    },
+    "m3_direction_instability": {
+      "module": "m3_direction_instability",
+      "score": 0.4917680535596219,
+      "tier": 4,
+      "details": {
+        "grassmannian_distance": 2.426194826128889,
+        "chordal_distance": 1.8047091949687484,
+        "subspace_overlap": 0.4917680535596219,
+        "all_distances": {
+          "grassmannian": 2.426194826128889,
+          "chordal": 1.8047091949687484,
+          "mean_principal_angle_deg": 58.00205624369771,
+          "max_principal_angle_deg": 89.90558150179793,
+          "subspace_overlap": 0.4917680535596219
+        }
+      },
+      "interpretation": "Moderate direction instability (overlap=0.492)."
+    },
+    "m4_embedding_collapse": {
+      "module": "m4_embedding_collapse",
+      "score": 0.062349999999999905,
+      "tier": 1,
+      "details": {
+        "centroid_distance": 6.147828540361414,
+        "domain_classifier_auc": 0.968825,
+        "spectral_matching_degradation": [
+          0.739,
+          0.014616935483870967,
+          0.724383064516129
+        ]
+      },
+      "interpretation": "Severe domain shift (domain AUC=0.969). Embeddings may have collapsed."
+    },
+    "m5_domain_validity": {
+      "module": "m5_domain_validity",
+      "score": 1.0,
+      "tier": 7,
+      "details": {
+        "completeness_source": 1.0,
+        "completeness_target": 1.0,
+        "nan_fraction_source": 0.0,
+        "nan_fraction_target": 0.0,
+        "dimension_match": true,
+        "d_source": 512,
+        "d_target": 512
+      },
+      "interpretation": "Data is 100% complete. Domain validity is high."
+    }
+  },
+  "recommendations": [
+    "[m1_grassmannian] Tier 3: Large subspace divergence (geodesic=2.426). Transferability is unlikely.",
+    "[m4_embedding_collapse] Tier 1: Severe domain shift (domain AUC=0.969). Embeddings may have collapsed."
+  ],
+  "preregistration_sha": "e025d07b53ca95aab7f35451ac12672125c4f555bfc0bf0882b54a9496dc3f7f",
+  "timestamp": "2026-07-09T23:48:40.779258+00:00",
+  "hyperparameters": {
+    "k": 5,
+    "orc_alpha": 0.5,
+    "weights": {
+      "m1_grassmannian": 2.0,
+      "m2_cross_design": 1.5,
+      "m3_direction_instability": 1.0,
+      "m4_embedding_collapse": 2.0,
+      "m5_domain_validity": 1.0,
+      "m6_curvature": 0.5,
+      "m7_ecological_bias": 1.0
+    }
+  }
+}

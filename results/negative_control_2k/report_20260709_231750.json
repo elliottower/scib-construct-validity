@@ -1,0 +1,84 @@
+{
+  "overall_tier": 7,
+  "overall_tier_label": "Excellent",
+  "overall_score": 0.9643997778511846,
+  "module_results": {
+    "m1_grassmannian": {
+      "module": "m1_grassmannian",
+      "score": 0.8994036379281656,
+      "tier": 7,
+      "details": {
+        "geodesic_distance": 0.35333540308566463,
+        "max_geodesic": 3.5124073655203634,
+        "k": 5
+      },
+      "interpretation": "Subspaces are well-aligned (geodesic=0.353). Transferability is likely."
+    },
+    "m3_direction_instability": {
+      "module": "m3_direction_instability",
+      "score": 0.9875913912507766,
+      "tier": 7,
+      "details": {
+        "grassmannian_distance": 0.3533354030856614,
+        "chordal_distance": 0.3490476905289749,
+        "subspace_overlap": 0.9875913912507766,
+        "all_distances": {
+          "grassmannian": 0.3533354030856614,
+          "chordal": 0.3490476905289749,
+          "mean_principal_angle_deg": 7.402898349712617,
+          "max_principal_angle_deg": 17.57811077831082,
+          "subspace_overlap": 0.9875913912507766
+        }
+      },
+      "interpretation": "Directions are stable across cohorts (overlap=0.988)."
+    },
+    "m4_embedding_collapse": {
+      "module": "m4_embedding_collapse",
+      "score": 1.0,
+      "tier": 7,
+      "details": {
+        "centroid_distance": 0.57155015471397,
+        "domain_classifier_auc": 0.47689562499999993,
+        "spectral_matching_degradation": [
+          0.7477324263038548,
+          0.093,
+          0.6547324263038549
+        ]
+      },
+      "interpretation": "Embeddings overlap well (domain AUC=0.477). No evidence of collapse."
+    },
+    "m5_domain_validity": {
+      "module": "m5_domain_validity",
+      "score": 1.0,
+      "tier": 7,
+      "details": {
+        "completeness_source": 1.0,
+        "completeness_target": 1.0,
+        "nan_fraction_source": 0.0,
+        "nan_fraction_target": 0.0,
+        "dimension_match": true,
+        "d_source": 512,
+        "d_target": 512
+      },
+      "interpretation": "Data is 100% complete. Domain validity is high."
+    }
+  },
+  "recommendations": [
+    "All modules pass at tier 4 or above. Proceed with caution for tiers 4-5."
+  ],
+  "preregistration_sha": "0fac12f1a2ba3ac896e8c5c1a29bde0b672f29b5a881ab6a45e1f2d2a952f897",
+  "timestamp": "2026-07-09T23:47:32.780444+00:00",
+  "hyperparameters": {
+    "k": 5,
+    "orc_alpha": 0.5,
+    "weights": {
+      "m1_grassmannian": 2.0,
+      "m2_cross_design": 1.5,
+      "m3_direction_instability": 1.0,
+      "m4_embedding_collapse": 2.0,
+      "m5_domain_validity": 1.0,
+      "m6_curvature": 0.5,
+      "m7_ecological_bias": 1.0
+    }
+  }
+}

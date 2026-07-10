@@ -1,0 +1,29 @@
+{
+  "timestamp": "20260709_231749",
+  "census_version": "2023-12-15",
+  "embedding": "geneformer",
+  "source_cells": 200,
+  "target_cells": 200,
+  "embedding_dim": 512,
+  "overall_tier": 3,
+  "overall_score": 0.3650566033605127,
+  "prereg_sha": "45100833e10c4dced8c0ce396945746adbef5b11e18ccec66d409d06a281a89c",
+  "module_scores": {
+    "m1_grassmannian": {
+      "score": 0.2763048792605869,
+      "tier": 3
+    },
+    "m3_direction_instability": {
+      "score": 0.4452298616419026,
+      "tier": 4
+    },
+    "m4_embedding_collapse": {
+      "score": 0.09624999999999995,
+      "tier": 1
+    },
+    "m5_domain_validity": {
+      "score": 1.0,
+      "tier": 7
+    }
+  }
+}

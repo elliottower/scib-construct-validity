@@ -1,0 +1,49 @@
+{
+  "sha256": "c2bdd0d3ba98166c07686f111ddfd463f7b3ca48262009e25b3d61530703bfab",
+  "timestamp": "2026-07-10T04:49:10.101873+00:00",
+  "modules_used": [
+    "preflight.core.modules.module1_grassmannian.transportability",
+    "preflight.core.modules.module2_domain_shift.transportability",
+    "preflight.core.modules.module3_direction_stability.distances",
+    "preflight.core.modules.module6_curvature.weighted_orc",
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity",
+    "preflight.core.runner"
+  ],
+  "hyperparameters": {
+    "k": 5,
+    "orc_alpha": 0.5,
+    "weights": {
+      "m1_grassmannian": 2.0,
+      "m2_domain_shift": 2.0,
+      "m3_direction_stability": 1.0,
+      "m4_domain_validity": 1.0,
+      "m5_cross_design": 1.5,
+      "m6_curvature": 0.5,
+      "m7_ecological_bias": 1.0
+    }
+  },
+  "dataset_spec": {
+    "name": "lung_geneformer_assay_shift",
+    "source_description": "Lung 10x 3' v3 (geneformer)",
+    "target_description": "Lung 10x 5' v2 (geneformer)",
+    "n_source": 200,
+    "n_target": 200,
+    "d": null,
+    "extra": {
+      "census_version": "2023-12-15",
+      "organism": "homo_sapiens",
+      "embedding": "geneformer",
+      "source_filter": "tissue_ontology_term_id == 'UBERON:0002048' and is_primary_data == True and assay_ontology_term_id == 'EFO:0009922'",
+      "target_filter": "tissue_ontology_term_id == 'UBERON:0002048' and is_primary_data == True and assay_ontology_term_id == 'EFO:0011025'",
+      "max_cells": 200
+    }
+  },
+  "module_code_lengths": {
+    "preflight.core.modules.module1_grassmannian.transportability": 14152,
+    "preflight.core.modules.module2_domain_shift.transportability": 8832,
+    "preflight.core.modules.module3_direction_stability.distances": 6253,
+    "preflight.core.modules.module6_curvature.weighted_orc": 18951,
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity": 2641,
+    "preflight.core.runner": 21462
+  }
+}
