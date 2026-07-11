@@ -1,0 +1,34 @@
+{
+  "git_commit": "473dad622cafb8f8b166743327b40946c53b0082",
+  "preregistration_version": "v6",
+  "preregistration_doc": "docs/preregistration_v5.md",
+  "scorer_modules": [
+    "preflight.core.modules.module1_grassmannian.transportability",
+    "preflight.core.modules.module2_domain_shift.transportability",
+    "preflight.core.modules.module3_direction_stability.distances",
+    "preflight.core.modules.module3_direction_stability.subspace",
+    "preflight.core.modules.module6_curvature.weighted_orc",
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity",
+    "preflight.core.runner"
+  ],
+  "hyperparameters": {
+    "k": 5,
+    "orc_alpha": 0.5,
+    "weights": {
+      "m1_grassmannian": 2.0,
+      "m2_domain_shift": 2.0,
+      "m3_direction_stability": 1.0,
+      "m4_domain_validity": 1.0,
+      "m5_cross_design": 1.5,
+      "m6_curvature": 0.5
+    }
+  },
+  "experiment_shas": {
+    "exp0_composite_validation": "2561c5d5cc4e1a144e059bf295b414fe4e5fda343842f2c83d9ea02f49d4d470",
+    "exp1_bag_of_genes_baseline": "8cdd8f5199c187b7eee90609154b77dfbdf83629e1d6aad5c922e1d9634bf0af",
+    "exp2_multi_model_sweep": "927768d38c5d453b6f4f7d5785decef4904c377048df99225593a3fe7d7d4d11",
+    "exp3_sample_size_sensitivity": "5fbee5a3e6ad574ae927448be2f68ca2dadec03376f421c14346d0e1bbd6d262",
+    "exp4_negative_control_full": "4618d881c0a7e4fc151612204305f4747936e8af0bf73899a5eb19a4f6b52d22",
+    "exp5_gene_level_probes": "4fce588ef9f3d908f4a09d393050c95629991c3bbc9453b3bf5f6b89a049b977"
+  }
+}

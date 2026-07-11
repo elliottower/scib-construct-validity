@@ -1,0 +1,51 @@
+{
+  "sha256": "4fce588ef9f3d908f4a09d393050c95629991c3bbc9453b3bf5f6b89a049b977",
+  "timestamp": "2026-07-11T02:51:37.048451+00:00",
+  "modules_used": [
+    "preflight.core.modules.module1_grassmannian.transportability",
+    "preflight.core.modules.module2_domain_shift.transportability",
+    "preflight.core.modules.module3_direction_stability.distances",
+    "preflight.core.modules.module3_direction_stability.subspace",
+    "preflight.core.modules.module6_curvature.weighted_orc",
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity",
+    "preflight.core.runner"
+  ],
+  "hyperparameters": {
+    "k": 5,
+    "orc_alpha": 0.5,
+    "weights": {
+      "m1_grassmannian": 2.0,
+      "m2_domain_shift": 2.0,
+      "m3_direction_stability": 1.0,
+      "m4_domain_validity": 1.0,
+      "m5_cross_design": 1.5,
+      "m6_curvature": 0.5
+    }
+  },
+  "dataset_spec": {
+    "name": "exp5_gene_level_probes",
+    "source_description": "Geneformer gene token embeddings (from model weights)",
+    "target_description": "N/A (gene-level, not cell-level)",
+    "n_source": null,
+    "n_target": null,
+    "d": null,
+    "extra": {
+      "model": "geneformer",
+      "regulatory_source": "OmniPath (DoRothEA + CollecTRI)",
+      "probes": [
+        "tf_target",
+        "hub_tf",
+        "rsa"
+      ]
+    }
+  },
+  "module_code_lengths": {
+    "preflight.core.modules.module1_grassmannian.transportability": 14152,
+    "preflight.core.modules.module2_domain_shift.transportability": 8832,
+    "preflight.core.modules.module3_direction_stability.distances": 6253,
+    "preflight.core.modules.module3_direction_stability.subspace": 5966,
+    "preflight.core.modules.module6_curvature.weighted_orc": 18951,
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity": 2641,
+    "preflight.core.runner": 22979
+  }
+}

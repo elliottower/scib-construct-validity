@@ -1,0 +1,51 @@
+{
+  "sha256": "8cdd8f5199c187b7eee90609154b77dfbdf83629e1d6aad5c922e1d9634bf0af",
+  "timestamp": "2026-07-11T02:51:37.040963+00:00",
+  "modules_used": [
+    "preflight.core.modules.module1_grassmannian.transportability",
+    "preflight.core.modules.module2_domain_shift.transportability",
+    "preflight.core.modules.module3_direction_stability.distances",
+    "preflight.core.modules.module3_direction_stability.subspace",
+    "preflight.core.modules.module6_curvature.weighted_orc",
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity",
+    "preflight.core.runner"
+  ],
+  "hyperparameters": {
+    "k": 5,
+    "orc_alpha": 0.5,
+    "weights": {
+      "m1_grassmannian": 2.0,
+      "m2_domain_shift": 2.0,
+      "m3_direction_stability": 1.0,
+      "m4_domain_validity": 1.0,
+      "m5_cross_design": 1.5,
+      "m6_curvature": 0.5
+    }
+  },
+  "dataset_spec": {
+    "name": "exp1_bag_of_genes_baseline",
+    "source_description": "Lung 10x 3' v3 (geneformer + scvi + bag-of-genes PCA 512d)",
+    "target_description": "Lung 10x 5' v2 (geneformer + scvi + bag-of-genes PCA 512d)",
+    "n_source": 2000,
+    "n_target": 2000,
+    "d": null,
+    "extra": {
+      "census_version": "2023-12-15",
+      "embeddings": [
+        "geneformer",
+        "scvi",
+        "bag_of_genes_pca512"
+      ],
+      "tissue": "lung"
+    }
+  },
+  "module_code_lengths": {
+    "preflight.core.modules.module1_grassmannian.transportability": 14152,
+    "preflight.core.modules.module2_domain_shift.transportability": 8832,
+    "preflight.core.modules.module3_direction_stability.distances": 6253,
+    "preflight.core.modules.module3_direction_stability.subspace": 5966,
+    "preflight.core.modules.module6_curvature.weighted_orc": 18951,
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity": 2641,
+    "preflight.core.runner": 22979
+  }
+}
