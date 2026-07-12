@@ -1,0 +1,79 @@
+{
+  "sha256": "edfd868d8a2f8c8ea53540672cfc2a82b26668c2c3a6997932c5e2cb3701472b",
+  "timestamp": "2026-07-12T00:20:45.468757+00:00",
+  "modules_used": [
+    "preflight.core.modules.module1_grassmannian.transportability",
+    "preflight.core.modules.module2_domain_shift.transportability",
+    "preflight.core.modules.module3_direction_stability.distances",
+    "preflight.core.modules.module3_direction_stability.subspace",
+    "preflight.core.modules.module6_curvature.weighted_orc",
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity",
+    "preflight.core.runner"
+  ],
+  "hyperparameters": {
+    "k": 5,
+    "orc_alpha": 0.5,
+    "weights": {
+      "m1_grassmannian": 2.0,
+      "m2_domain_shift": 2.0,
+      "m3_direction_stability": 1.0,
+      "m4_domain_validity": 1.0,
+      "m5_cross_design": 1.5,
+      "m6_curvature": 0.5
+    }
+  },
+  "dataset_spec": {
+    "name": "exp5_cross_tissue",
+    "source_description": "6 cross-tissue pairs (lung/blood/brain/kidney/liver), Geneformer, 10x 3'v3",
+    "target_description": "Different tissue, same assay (10x 3'v3)",
+    "n_source": 2000,
+    "n_target": 2000,
+    "d": null,
+    "extra": {
+      "census_version": "2023-12-15",
+      "embedding": "geneformer",
+      "assay": "EFO:0009922",
+      "pairs": [
+        [
+          "lung",
+          "brain"
+        ],
+        [
+          "lung",
+          "kidney"
+        ],
+        [
+          "blood",
+          "lung"
+        ],
+        [
+          "blood",
+          "brain"
+        ],
+        [
+          "liver",
+          "kidney"
+        ],
+        [
+          "blood",
+          "liver"
+        ]
+      ],
+      "negative_controls": [
+        "lung",
+        "blood",
+        "brain"
+      ],
+      "blood_ontology": "UBERON:0000178"
+    }
+  },
+  "module_code_lengths": {
+    "preflight.core.modules.module1_grassmannian.transportability": 14152,
+    "preflight.core.modules.module2_domain_shift.transportability": 8832,
+    "preflight.core.modules.module3_direction_stability.distances": 6253,
+    "preflight.core.modules.module3_direction_stability.subspace": 5966,
+    "preflight.core.modules.module6_curvature.weighted_orc": 18951,
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity": 2641,
+    "preflight.core.runner": 22979
+  }
+}

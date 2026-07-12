@@ -1,0 +1,67 @@
+{
+  "sha256": "619e6956eb0c370d4c0797253d804070d5245d968972a29560210f0d282ece09",
+  "timestamp": "2026-07-12T00:20:45.473485+00:00",
+  "modules_used": [
+    "preflight.core.modules.module1_grassmannian.transportability",
+    "preflight.core.modules.module2_domain_shift.transportability",
+    "preflight.core.modules.module3_direction_stability.distances",
+    "preflight.core.modules.module3_direction_stability.subspace",
+    "preflight.core.modules.module6_curvature.weighted_orc",
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity",
+    "preflight.core.runner"
+  ],
+  "hyperparameters": {
+    "k": 5,
+    "orc_alpha": 0.5,
+    "weights": {
+      "m1_grassmannian": 2.0,
+      "m2_domain_shift": 2.0,
+      "m3_direction_stability": 1.0,
+      "m4_domain_validity": 1.0,
+      "m5_cross_design": 1.5,
+      "m6_curvature": 0.5
+    }
+  },
+  "dataset_spec": {
+    "name": "exp6_cross_disease_exploratory",
+    "source_description": "4 tissue x disease pairs, Geneformer + 10x 3'v3, healthy source",
+    "target_description": "Same tissue, diseased target",
+    "n_source": 2000,
+    "n_target": 2000,
+    "d": null,
+    "extra": {
+      "census_version": "2023-12-15",
+      "embedding": "geneformer",
+      "status": "EXPLORATORY",
+      "pairs": [
+        {
+          "tissue": "lung",
+          "disease": "pulmonary fibrosis"
+        },
+        {
+          "tissue": "lung",
+          "disease": "lung adenocarcinoma"
+        },
+        {
+          "tissue": "brain",
+          "disease": "Alzheimer disease"
+        },
+        {
+          "tissue": "liver",
+          "disease": "hepatocellular carcinoma"
+        }
+      ],
+      "negative_controls": 2,
+      "min_cells_per_condition": 500
+    }
+  },
+  "module_code_lengths": {
+    "preflight.core.modules.module1_grassmannian.transportability": 14152,
+    "preflight.core.modules.module2_domain_shift.transportability": 8832,
+    "preflight.core.modules.module3_direction_stability.distances": 6253,
+    "preflight.core.modules.module3_direction_stability.subspace": 5966,
+    "preflight.core.modules.module6_curvature.weighted_orc": 18951,
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity": 2641,
+    "preflight.core.runner": 22979
+  }
+}
