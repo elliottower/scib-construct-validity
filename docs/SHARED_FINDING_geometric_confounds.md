@@ -72,6 +72,39 @@ Most geometric evaluation methods for embeddings (alignment scores, manifold cur
 - One methods contribution (the confound + what survives) as a short paper or workshop contribution
 - Full papers for each domain that cite the methods contribution for the confound diagnosis
 
+## Pre-commitments (written 2026-07-12, before results land)
+
+### M4 PR diagnostic: what falsifies the artifact hypothesis
+
+The "PR/d normalization floor" hypothesis predicts that UCE's raw
+PR_normalized will be < 0.01 on liver, kidney, and brain (the tissues where
+M4 = 0.0). Specifically: min(PR_source_normalized, PR_target_normalized)
+should be below the 0.01 threshold.
+
+**Falsification**: If UCE's min(PR_source, PR_target) normalized values are
+> 0.015 on ANY tissue where M4 = 0.0 in Exp 8, then the floor is NOT firing
+on PR/d normalization and something else causes the zero. In that case the
+"dimensional artifact" explanation is wrong, and M4's floor has an unknown
+cause that may be a deeper bug.
+
+### v6b validation: what claim it supports (and does not)
+
+The v6b validation tests **discriminative validity**: can v6b distinguish
+learned embeddings from random projections (H-v6b.1) and from a structured
+biological baseline (H-v6b.2, bag-of-genes)?
+
+It does NOT test **predictive validity**: does a higher v6b score predict
+better downstream task performance (cell-type classification, integration
+benchmarks)? That is a separate experiment requiring correlation between
+v6b scores and task-probe outcomes across many model×tissue cells.
+
+A PASS on v6b validation licenses: "v6b scores foundation model embeddings
+higher than both random and structured-biological baselines on held-out
+tissues." It does NOT license: "v6b predicts transportability" or "higher
+v6b means better transfer." The predictive claim requires Exp 8-style
+correlation analysis on the held-out tissues, which is in the exploratory
+section (4d) but is not confirmatory.
+
 ## Living references
 
 - preflight-bio: `docs/preregistration_v8_a_plus.md` (Exp 9), `results/exp9_confound_controls/summary_20260712_133650.json`
