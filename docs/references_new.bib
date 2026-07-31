@@ -1,0 +1,148 @@
+% === Core papers: dimensionality and metric critique ===
+
+@article{wang2026drifting,
+  title={Limitations of cell embedding metrics assessed using drifting islands},
+  author={Wang, Hanchen and Leskovec, Jure and Regev, Aviv},
+  journal={Nature Biotechnology},
+  volume={44},
+  pages={574--577},
+  year={2026},
+  doi={10.1038/s41587-025-02702-z},
+  note={Complementary critique: Islander games scIB; proposes scGraph.
+        We show quantitative dimensionality floor; they show qualitative
+        relational-structure failure.}
+}
+
+@article{wang2024metric,
+  title={Metric Mirages in Cell Embeddings},
+  author={Wang, Hanchen and Leskovec, Jure and Regev, Aviv},
+  journal={bioRxiv},
+  year={2024},
+  doi={10.1101/2024.04.02.587824},
+  note={Preprint of drifting islands. Cite the Nat Biotech version
+        for the published record; cite this for bioRxiv-only details.}
+}
+
+@article{murphy2024correcting,
+  title={Correcting Biased Centered Kernel Alignment Measures in
+         Biological and Artificial Neural Networks},
+  author={Murphy, Alex and Zylberberg, Joel and Fyshe, Alona},
+  journal={arXiv preprint arXiv:2405.01012},
+  year={2024},
+  note={ICLR 2024 Re-Align Workshop. Discovered CKA bias in
+        neuroscience (low-sample high-d regime). Our analytic null
+        floor extends their finding to centroid-based CKA in
+        single-cell genomics.}
+}
+
+@article{gilpin2025cell,
+  title={The cell as a token: high-dimensional geometry in language
+         models and cell embeddings},
+  author={Gilpin, William},
+  journal={Bioinformatics},
+  volume={41},
+  number={11},
+  pages={btaf595},
+  year={2025},
+  doi={10.1093/bioinformatics/btaf595},
+  note={Theoretical framing for high-d geometry shared between
+        language model tokens and cell embeddings. Supports our
+        dimensionality-aware perspective.}
+}
+
+@inproceedings{davari2023reliability,
+  title={Reliability of {CKA} as a Similarity Measure in Deep Learning},
+  author={Davari, MohammadReza and Horoi, Stefan and Natik, Amine and
+          Lajoie, Guillaume and Wolf, Guy and Bhatt, Tushar},
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2023},
+  note={Earlier CKA critique: shows CKA is sensitive to
+        transformations and can be manipulated without changing
+        model function. Complements Murphy et al.'s bias finding.}
+}
+
+% === Benchmarking and evaluation frameworks ===
+
+@article{luecken2022benchmarking,
+  title={Benchmarking atlas-level data integration in single-cell genomics},
+  author={Luecken, Malte D and B{\"u}ttner, Maren and Chaichoompu, Kridsadakorn
+          and Danese, Anna and Interlandi, Maren and M{\"u}ller, Michaela F
+          and Strobl, Daniel C and Zappia, Luke and Duber, Martin
+          and Colom{\'e}-Tatch{\'e}, Maria and Theis, Fabian J},
+  journal={Nature Methods},
+  volume={19},
+  number={1},
+  pages={41--50},
+  year={2022},
+  doi={10.1038/s41592-021-01336-8},
+  note={The scIB framework we evaluate. Defines ARI, NMI, graph
+        connectivity, and other bio-conservation metrics.}
+}
+
+@article{kedzierska2025zero,
+  title={Zero-shot evaluation reveals limitations of single-cell
+         foundation models},
+  author={Kedzierska, Kasia Z and Crawford, Lorin and Amini, Alexander P
+          and Lu, Alex X},
+  journal={Genome Biology},
+  volume={26},
+  pages={101},
+  year={2025},
+  doi={10.1186/s13059-025-03574-x},
+  note={Shows foundation models can lose to simpler methods in
+        zero-shot settings. We diagnose WHY: the evaluation
+        metrics themselves have a dimensionality confound.}
+}
+
+@article{slyper2025biology,
+  title={Biology-driven insights into the power of single-cell
+         foundation models},
+  author={Slyper, Michal and others},
+  journal={Genome Biology},
+  volume={26},
+  year={2025},
+  doi={10.1186/s13059-025-03781-6},
+  note={Uses scGraph-OntoRWR; evaluates with 12 metrics. Shows
+        scIB, scGraph-PCA, and scGraph-OntoRWR provide orthogonal
+        perspectives. Supports our multi-metric approach.}
+}
+
+% === CKA and similarity metrics ===
+
+@inproceedings{kornblith2019similarity,
+  title={Similarity of Neural Network Representations Revisited},
+  author={Kornblith, Simon and Norouzi, Mohammad and Lee, Honglak
+          and Hinton, Geoffrey},
+  booktitle={Proceedings of the 36th International Conference on
+             Machine Learning (ICML)},
+  pages={3519--3529},
+  year={2019},
+  publisher={PMLR},
+  note={Defines CKA. We use linear CKA on cell-type centroids.}
+}
+
+% === Dimensionality reduction ===
+
+@article{abdelnaby2025benchmarking,
+  title={A Benchmarking Study of Random Projections and Principal
+         Components for Dimensionality Reduction Strategies in
+         Single Cell Analysis},
+  author={Abdelnaby, Mohamed and Moussa, Marmar R},
+  journal={bioRxiv},
+  year={2025},
+  doi={10.1101/2025.02.04.636499},
+  note={Random projections can match or exceed PCA for scRNA-seq
+        dimensionality reduction. Motivates our Experiment B
+        (random-projection control).}
+}
+
+@article{abdelnaby2026random,
+  title={Random Projection Methods Outperform Principal Component
+         Analysis for Dimensionality Reduction in Single Cell
+         {RNA-Seq}},
+  author={Abdelnaby, Mohamed and Moussa, Marmar R},
+  journal={Cancer Informatics},
+  year={2026},
+  doi={10.1177/15578666261436821},
+  note={Published version of the benchmarking study above.}
+}
