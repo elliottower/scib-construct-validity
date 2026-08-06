@@ -1,0 +1,144 @@
+{"test": "leiden", "condition": "lung_geneformer", "resolution": 0.5, "scores": {"nmi_leiden": 0.6532973619761355, "ari_leiden": 0.38474737210606996}, "timestamp": "19:53:02"}
+{"test": "leiden", "condition": "lung_geneformer", "resolution": 1.0, "scores": {"nmi_leiden": 0.69176676454173, "ari_leiden": 0.4169545438856016}, "timestamp": "19:53:02"}
+{"test": "leiden", "condition": "lung_geneformer", "resolution": 2.0, "scores": {"nmi_leiden": 0.6938791767749428, "ari_leiden": 0.38056793641504777}, "timestamp": "19:53:02"}
+{"test": "knn", "condition": "lung_geneformer", "k": 15, "scores": {"clisi": 0.9981856794918285, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.7616549024108296}, "timestamp": "19:53:17"}
+{"test": "knn", "condition": "lung_geneformer", "k": 30, "scores": {"clisi": 0.99644235162174, "ilisi": 1.1920928955078125e-07, "kbet": null, "graph_connectivity": 0.8506167526899735}, "timestamp": "19:53:27"}
+{"test": "knn", "condition": "lung_geneformer", "k": 90, "scores": {"clisi": 0.9932684702031752, "ilisi": 0.004950404167175293, "kbet": null, "graph_connectivity": 0.9350488029882896}, "timestamp": "19:53:41"}
+{"test": "leiden", "condition": "lung_scvi", "resolution": 0.5, "scores": {"nmi_leiden": 0.6451809013937543, "ari_leiden": 0.38027191756958845}, "timestamp": "19:53:41"}
+{"test": "leiden", "condition": "lung_scvi", "resolution": 1.0, "scores": {"nmi_leiden": 0.6406591112439869, "ari_leiden": 0.3400722000482883}, "timestamp": "19:53:41"}
+{"test": "leiden", "condition": "lung_scvi", "resolution": 2.0, "scores": {"nmi_leiden": 0.6493317151155263, "ari_leiden": 0.35431089548003825}, "timestamp": "19:53:42"}
+{"test": "knn", "condition": "lung_scvi", "k": 15, "scores": {"clisi": 0.9956460756414077, "ilisi": 2.384185791015625e-07, "kbet": null, "graph_connectivity": 0.7449032009424503}, "timestamp": "19:53:48"}
+{"test": "knn", "condition": "lung_scvi", "k": 30, "scores": {"clisi": 0.9927985808428597, "ilisi": 0.02930748462677002, "kbet": null, "graph_connectivity": 0.8168938585977152}, "timestamp": "19:53:53"}
+{"test": "knn", "condition": "lung_scvi", "k": 90, "scores": {"clisi": 0.9878341646755443, "ilisi": 0.1263437271118164, "kbet": null, "graph_connectivity": 0.9228810411313411}, "timestamp": "19:54:00"}
+{"test": "leiden", "condition": "lung_scgpt", "resolution": 0.5, "scores": {"nmi_leiden": 0.6317774798330715, "ari_leiden": 0.34303623042404097}, "timestamp": "19:54:01"}
+{"test": "leiden", "condition": "lung_scgpt", "resolution": 1.0, "scores": {"nmi_leiden": 0.629511406118093, "ari_leiden": 0.30668153086281763}, "timestamp": "19:54:01"}
+{"test": "leiden", "condition": "lung_scgpt", "resolution": 2.0, "scores": {"nmi_leiden": 0.6269654048594259, "ari_leiden": 0.2575582320038156}, "timestamp": "19:54:01"}
+{"test": "knn", "condition": "lung_scgpt", "k": 15, "scores": {"clisi": 0.9974225324742935, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.7540111208679516}, "timestamp": "19:54:07"}
+{"test": "knn", "condition": "lung_scgpt", "k": 30, "scores": {"clisi": 0.9949967720929314, "ilisi": 1.1920928955078125e-07, "kbet": null, "graph_connectivity": 0.8279604137969409}, "timestamp": "19:54:11"}
+{"test": "knn", "condition": "lung_scgpt", "k": 90, "scores": {"clisi": 0.99024777692907, "ilisi": 4.76837158203125e-07, "kbet": null, "graph_connectivity": 0.9012818003342724}, "timestamp": "19:54:19"}
+{"test": "leiden", "condition": "lung_random_projection", "resolution": 0.5, "scores": {"nmi_leiden": 0.27760792809926166, "ari_leiden": 0.10875930783798471}, "timestamp": "19:54:19"}
+{"test": "leiden", "condition": "lung_random_projection", "resolution": 1.0, "scores": {"nmi_leiden": 0.3539202268152789, "ari_leiden": 0.14801360614549486}, "timestamp": "19:54:19"}
+{"test": "leiden", "condition": "lung_random_projection", "resolution": 2.0, "scores": {"nmi_leiden": 0.39720308920002495, "ari_leiden": 0.14445293362892908}, "timestamp": "19:54:19"}
+{"test": "knn", "condition": "lung_random_projection", "k": 15, "scores": {"clisi": 0.9902326471665326, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.306493408957274}, "timestamp": "19:54:24"}
+{"test": "knn", "condition": "lung_random_projection", "k": 30, "scores": {"clisi": 0.9860732555389404, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.341356604379609}, "timestamp": "19:54:31"}
+{"test": "knn", "condition": "lung_random_projection", "k": 90, "scores": {"clisi": 0.9771061392391429, "ilisi": 1.1920928955078125e-07, "kbet": null, "graph_connectivity": 0.3985640841814292}, "timestamp": "19:54:41"}
+{"test": "leiden", "condition": "lung_untrained_encoder", "resolution": 0.5, "scores": {"nmi_leiden": 0.17591962603751132, "ari_leiden": 0.057513887947724246}, "timestamp": "19:54:41"}
+{"test": "leiden", "condition": "lung_untrained_encoder", "resolution": 1.0, "scores": {"nmi_leiden": 0.28023622889584493, "ari_leiden": 0.1214007255481393}, "timestamp": "19:54:41"}
+{"test": "leiden", "condition": "lung_untrained_encoder", "resolution": 2.0, "scores": {"nmi_leiden": 0.3173059716218686, "ari_leiden": 0.1147925393717594}, "timestamp": "19:54:42"}
+{"test": "knn", "condition": "lung_untrained_encoder", "k": 15, "scores": {"clisi": 0.9867867778329288, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.3191253266227698}, "timestamp": "19:54:46"}
+{"test": "knn", "condition": "lung_untrained_encoder", "k": 30, "scores": {"clisi": 0.980038662517772, "ilisi": 1.1920928955078125e-07, "kbet": null, "graph_connectivity": 0.36017629691114855}, "timestamp": "19:54:52"}
+{"test": "knn", "condition": "lung_untrained_encoder", "k": 90, "scores": {"clisi": 0.9676581859588623, "ilisi": 3.5762786865234375e-07, "kbet": null, "graph_connectivity": 0.4377460288193927}, "timestamp": "19:55:01"}
+{"test": "leiden", "condition": "lung_bog_pca_512", "resolution": 0.5, "scores": {"nmi_leiden": 0.5590065902163082, "ari_leiden": 0.3158163784586009}, "timestamp": "19:55:02"}
+{"test": "leiden", "condition": "lung_bog_pca_512", "resolution": 1.0, "scores": {"nmi_leiden": 0.5724350939783309, "ari_leiden": 0.301940390018623}, "timestamp": "19:55:02"}
+{"test": "leiden", "condition": "lung_bog_pca_512", "resolution": 2.0, "scores": {"nmi_leiden": 0.6045418758616798, "ari_leiden": 0.29684550867580706}, "timestamp": "19:55:02"}
+{"test": "knn", "condition": "lung_bog_pca_512", "k": 15, "scores": {"clisi": 0.995083810301388, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.4515182064299481}, "timestamp": "19:55:08"}
+{"test": "knn", "condition": "lung_bog_pca_512", "k": 30, "scores": {"clisi": 0.9914696805617389, "ilisi": 1.1920928955078125e-07, "kbet": null, "graph_connectivity": 0.5143670071816543}, "timestamp": "19:55:14"}
+{"test": "knn", "condition": "lung_bog_pca_512", "k": 90, "scores": {"clisi": 0.9847723848679486, "ilisi": 5.960464477539062e-07, "kbet": null, "graph_connectivity": 0.613642674587595}, "timestamp": "19:55:21"}
+{"test": "leiden", "condition": "liver_geneformer", "resolution": 0.5, "scores": {"nmi_leiden": 0.8212447918010204, "ari_leiden": 0.7443610845771096}, "timestamp": "19:59:30"}
+{"test": "leiden", "condition": "liver_geneformer", "resolution": 1.0, "scores": {"nmi_leiden": 0.8328630996268941, "ari_leiden": 0.7621041924945886}, "timestamp": "19:59:30"}
+{"test": "leiden", "condition": "liver_geneformer", "resolution": 2.0, "scores": {"nmi_leiden": 0.7772927872264663, "ari_leiden": 0.5073092563832232}, "timestamp": "19:59:30"}
+{"test": "knn", "condition": "liver_geneformer", "k": 15, "scores": {"clisi": 0.9999999978325583, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.8068649270695757}, "timestamp": "19:59:36"}
+{"test": "knn", "condition": "liver_geneformer", "k": 30, "scores": {"clisi": 0.9999831416390159, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.8799837611870027}, "timestamp": "19:59:40"}
+{"test": "knn", "condition": "liver_geneformer", "k": 90, "scores": {"clisi": 0.9993734706531872, "ilisi": 1.1920928955078125e-07, "kbet": null, "graph_connectivity": 0.9293142189488351}, "timestamp": "19:59:48"}
+{"test": "leiden", "condition": "liver_scvi", "resolution": 0.5, "scores": {"nmi_leiden": 0.6747258154489892, "ari_leiden": 0.485199504429522}, "timestamp": "19:59:49"}
+{"test": "leiden", "condition": "liver_scvi", "resolution": 1.0, "scores": {"nmi_leiden": 0.6904017404054617, "ari_leiden": 0.4862315534612193}, "timestamp": "19:59:49"}
+{"test": "leiden", "condition": "liver_scvi", "resolution": 2.0, "scores": {"nmi_leiden": 0.6827615257101115, "ari_leiden": 0.39134662914331564}, "timestamp": "19:59:49"}
+{"test": "knn", "condition": "liver_scvi", "k": 15, "scores": {"clisi": 0.9997734351591631, "ilisi": 1.1920928955078125e-07, "kbet": null, "graph_connectivity": 0.7227289468553705}, "timestamp": "19:59:53"}
+{"test": "knn", "condition": "liver_scvi", "k": 30, "scores": {"clisi": 0.9988958337090232, "ilisi": 2.384185791015625e-07, "kbet": null, "graph_connectivity": 0.7833507447502507}, "timestamp": "19:59:55"}
+{"test": "knn", "condition": "liver_scvi", "k": 90, "scores": {"clisi": 0.9961673368107189, "ilisi": 0.014305591583251953, "kbet": null, "graph_connectivity": 0.87410583424023}, "timestamp": "20:00:00"}
+{"test": "leiden", "condition": "liver_scgpt", "resolution": 0.5, "scores": {"nmi_leiden": 0.7601093999415837, "ari_leiden": 0.6422615307114714}, "timestamp": "20:00:01"}
+{"test": "leiden", "condition": "liver_scgpt", "resolution": 1.0, "scores": {"nmi_leiden": 0.7584343713602429, "ari_leiden": 0.573546842993401}, "timestamp": "20:00:01"}
+{"test": "leiden", "condition": "liver_scgpt", "resolution": 2.0, "scores": {"nmi_leiden": 0.7366737119511519, "ari_leiden": 0.4326129798165525}, "timestamp": "20:00:01"}
+{"test": "knn", "condition": "liver_scgpt", "k": 15, "scores": {"clisi": 0.9999999978325583, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.7626535733799822}, "timestamp": "20:00:05"}
+{"test": "knn", "condition": "liver_scgpt", "k": 30, "scores": {"clisi": 0.9998764298178933, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.8383344444359364}, "timestamp": "20:00:09"}
+{"test": "knn", "condition": "liver_scgpt", "k": 90, "scores": {"clisi": 0.9990249807184393, "ilisi": 1.1920928955078125e-07, "kbet": null, "graph_connectivity": 0.8880188415807231}, "timestamp": "20:00:15"}
+{"test": "leiden", "condition": "liver_random_projection", "resolution": 0.5, "scores": {"nmi_leiden": 0.5779692776882781, "ari_leiden": 0.4307406161754074}, "timestamp": "20:00:15"}
+{"test": "leiden", "condition": "liver_random_projection", "resolution": 1.0, "scores": {"nmi_leiden": 0.6160811423123024, "ari_leiden": 0.4751661365846797}, "timestamp": "20:00:16"}
+{"test": "leiden", "condition": "liver_random_projection", "resolution": 2.0, "scores": {"nmi_leiden": 0.5901921199342346, "ari_leiden": 0.3946583417560528}, "timestamp": "20:00:16"}
+{"test": "knn", "condition": "liver_random_projection", "k": 15, "scores": {"clisi": 0.9946559949354692, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.2838360528680535}, "timestamp": "20:00:19"}
+{"test": "knn", "condition": "liver_random_projection", "k": 30, "scores": {"clisi": 0.9911707661368631, "ilisi": 1.1920928955078125e-07, "kbet": null, "graph_connectivity": 0.3352096318552854}, "timestamp": "20:00:24"}
+{"test": "knn", "condition": "liver_random_projection", "k": 90, "scores": {"clisi": 0.9838885090567849, "ilisi": 2.384185791015625e-07, "kbet": null, "graph_connectivity": 0.433490136877302}, "timestamp": "20:00:32"}
+{"test": "leiden", "condition": "liver_untrained_encoder", "resolution": 0.5, "scores": {"nmi_leiden": 0.49773060003112135, "ari_leiden": 0.2887153075899195}, "timestamp": "20:00:33"}
+{"test": "leiden", "condition": "liver_untrained_encoder", "resolution": 1.0, "scores": {"nmi_leiden": 0.5571962075767456, "ari_leiden": 0.40498705496712095}, "timestamp": "20:00:33"}
+{"test": "leiden", "condition": "liver_untrained_encoder", "resolution": 2.0, "scores": {"nmi_leiden": 0.546986517583364, "ari_leiden": 0.37251505132107327}, "timestamp": "20:00:33"}
+{"test": "knn", "condition": "liver_untrained_encoder", "k": 15, "scores": {"clisi": 0.9920266671614213, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.3455503406342894}, "timestamp": "20:00:36"}
+{"test": "knn", "condition": "liver_untrained_encoder", "k": 30, "scores": {"clisi": 0.9876017743890936, "ilisi": 1.1920928955078125e-07, "kbet": null, "graph_connectivity": 0.4087940796279033}, "timestamp": "20:00:39"}
+{"test": "knn", "condition": "liver_untrained_encoder", "k": 90, "scores": {"clisi": 0.981845946745439, "ilisi": 2.384185791015625e-07, "kbet": null, "graph_connectivity": 0.5306911191099377}, "timestamp": "20:00:46"}
+{"test": "leiden", "condition": "liver_bog_pca_512", "resolution": 0.5, "scores": {"nmi_leiden": 0.7216086683512194, "ari_leiden": 0.5580256648224781}, "timestamp": "20:00:47"}
+{"test": "leiden", "condition": "liver_bog_pca_512", "resolution": 1.0, "scores": {"nmi_leiden": 0.7028870462572845, "ari_leiden": 0.46386831534043904}, "timestamp": "20:00:47"}
+{"test": "leiden", "condition": "liver_bog_pca_512", "resolution": 2.0, "scores": {"nmi_leiden": 0.7008806290093449, "ari_leiden": 0.4105884479907487}, "timestamp": "20:00:47"}
+{"test": "knn", "condition": "liver_bog_pca_512", "k": 15, "scores": {"clisi": 0.9999024694616144, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.520638983401828}, "timestamp": "20:00:51"}
+{"test": "knn", "condition": "liver_bog_pca_512", "k": 30, "scores": {"clisi": 0.9991373929110441, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.6087052324210253}, "timestamp": "20:00:54"}
+{"test": "knn", "condition": "liver_bog_pca_512", "k": 90, "scores": {"clisi": 0.9968765648928556, "ilisi": 1.1920928955078125e-07, "kbet": null, "graph_connectivity": 0.6933510681799925}, "timestamp": "20:01:01"}
+{"test": "leiden", "condition": "kidney_geneformer", "resolution": 0.5, "scores": {"nmi_leiden": 0.7612585732735537, "ari_leiden": 0.6114555601296164}, "timestamp": "20:03:48"}
+{"test": "leiden", "condition": "kidney_geneformer", "resolution": 1.0, "scores": {"nmi_leiden": 0.7443815842480838, "ari_leiden": 0.566963368620328}, "timestamp": "20:03:48"}
+{"test": "leiden", "condition": "kidney_geneformer", "resolution": 2.0, "scores": {"nmi_leiden": 0.7448206365793726, "ari_leiden": 0.5381657154605247}, "timestamp": "20:03:48"}
+{"test": "knn", "condition": "kidney_geneformer", "k": 15, "scores": {"clisi": 0.9999999886467343, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.8227583206812201}, "timestamp": "20:03:54"}
+{"test": "knn", "condition": "kidney_geneformer", "k": 30, "scores": {"clisi": 0.9992160910651797, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.9257124242072563}, "timestamp": "20:03:57"}
+{"test": "knn", "condition": "kidney_geneformer", "k": 90, "scores": {"clisi": 0.9947884423392159, "ilisi": 1.1920928955078125e-07, "kbet": null, "graph_connectivity": 0.9694035236567763}, "timestamp": "20:04:03"}
+{"test": "leiden", "condition": "kidney_scvi", "resolution": 0.5, "scores": {"nmi_leiden": 0.6552104228497058, "ari_leiden": 0.45589114594246155}, "timestamp": "20:04:03"}
+{"test": "leiden", "condition": "kidney_scvi", "resolution": 1.0, "scores": {"nmi_leiden": 0.6591980419464432, "ari_leiden": 0.5195808633896658}, "timestamp": "20:04:03"}
+{"test": "leiden", "condition": "kidney_scvi", "resolution": 2.0, "scores": {"nmi_leiden": 0.647576678068866, "ari_leiden": 0.409390929290591}, "timestamp": "20:04:03"}
+{"test": "knn", "condition": "kidney_scvi", "k": 15, "scores": {"clisi": 0.9974884873344785, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.81099757656171}, "timestamp": "20:04:04"}
+{"test": "knn", "condition": "kidney_scvi", "k": 30, "scores": {"clisi": 0.9923578103383383, "ilisi": 1.1920928955078125e-07, "kbet": null, "graph_connectivity": 0.881289567561799}, "timestamp": "20:04:06"}
+{"test": "knn", "condition": "kidney_scvi", "k": 90, "scores": {"clisi": 0.9796562308356875, "ilisi": 3.5762786865234375e-07, "kbet": null, "graph_connectivity": 0.9426470193490019}, "timestamp": "20:04:08"}
+{"test": "leiden", "condition": "kidney_scgpt", "resolution": 0.5, "scores": {"nmi_leiden": 0.7138486169706493, "ari_leiden": 0.5168500403556153}, "timestamp": "20:04:09"}
+{"test": "leiden", "condition": "kidney_scgpt", "resolution": 1.0, "scores": {"nmi_leiden": 0.7068216409854304, "ari_leiden": 0.5023515009427719}, "timestamp": "20:04:09"}
+{"test": "leiden", "condition": "kidney_scgpt", "resolution": 2.0, "scores": {"nmi_leiden": 0.6861848673735994, "ari_leiden": 0.43719161485925556}, "timestamp": "20:04:09"}
+{"test": "knn", "condition": "kidney_scgpt", "k": 15, "scores": {"clisi": 0.9996245475042433, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.8001560137171434}, "timestamp": "20:04:10"}
+{"test": "knn", "condition": "kidney_scgpt", "k": 30, "scores": {"clisi": 0.9972618988582066, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.8721624372416105}, "timestamp": "20:04:11"}
+{"test": "knn", "condition": "kidney_scgpt", "k": 90, "scores": {"clisi": 0.9898037342798143, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.9580222187241609}, "timestamp": "20:04:14"}
+{"test": "leiden", "condition": "kidney_random_projection", "resolution": 0.5, "scores": {"nmi_leiden": 0.43868881488238787, "ari_leiden": 0.2671313397310496}, "timestamp": "20:04:14"}
+{"test": "leiden", "condition": "kidney_random_projection", "resolution": 1.0, "scores": {"nmi_leiden": 0.508841696813455, "ari_leiden": 0.39036624563130223}, "timestamp": "20:04:15"}
+{"test": "leiden", "condition": "kidney_random_projection", "resolution": 2.0, "scores": {"nmi_leiden": 0.5317003768825188, "ari_leiden": 0.36146542849407604}, "timestamp": "20:04:15"}
+{"test": "knn", "condition": "kidney_random_projection", "k": 15, "scores": {"clisi": 0.9772779260362897, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.17795430580323532}, "timestamp": "20:04:16"}
+{"test": "knn", "condition": "kidney_random_projection", "k": 30, "scores": {"clisi": 0.9613738287062872, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.24171946814272305}, "timestamp": "20:04:17"}
+{"test": "knn", "condition": "kidney_random_projection", "k": 90, "scores": {"clisi": 0.9320653847285679, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.36902889520921195}, "timestamp": "20:04:21"}
+{"test": "leiden", "condition": "kidney_untrained_encoder", "resolution": 0.5, "scores": {"nmi_leiden": 0.29116157566004297, "ari_leiden": 0.16207220732382407}, "timestamp": "20:04:22"}
+{"test": "leiden", "condition": "kidney_untrained_encoder", "resolution": 1.0, "scores": {"nmi_leiden": 0.3619433865347615, "ari_leiden": 0.24913527164006102}, "timestamp": "20:04:22"}
+{"test": "leiden", "condition": "kidney_untrained_encoder", "resolution": 2.0, "scores": {"nmi_leiden": 0.38521170982579805, "ari_leiden": 0.22947853559071982}, "timestamp": "20:04:22"}
+{"test": "knn", "condition": "kidney_untrained_encoder", "k": 15, "scores": {"clisi": 0.9574706100282215, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.21457649822263683}, "timestamp": "20:04:24"}
+{"test": "knn", "condition": "kidney_untrained_encoder", "k": 30, "scores": {"clisi": 0.9370431900024414, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.29462566278711494}, "timestamp": "20:04:25"}
+{"test": "knn", "condition": "kidney_untrained_encoder", "k": 90, "scores": {"clisi": 0.8957733653840565, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.4569690544052321}, "timestamp": "20:04:30"}
+{"test": "leiden", "condition": "kidney_bog_pca_512", "resolution": 0.5, "scores": {"nmi_leiden": 0.6143517309521587, "ari_leiden": 0.44895567983702483}, "timestamp": "20:04:30"}
+{"test": "leiden", "condition": "kidney_bog_pca_512", "resolution": 1.0, "scores": {"nmi_leiden": 0.6288214092723562, "ari_leiden": 0.4193683748016857}, "timestamp": "20:04:30"}
+{"test": "leiden", "condition": "kidney_bog_pca_512", "resolution": 2.0, "scores": {"nmi_leiden": 0.6219496279728483, "ari_leiden": 0.36427399285058026}, "timestamp": "20:04:30"}
+{"test": "knn", "condition": "kidney_bog_pca_512", "k": 15, "scores": {"clisi": 0.9986356894175211, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.5458990757078516}, "timestamp": "20:04:31"}
+{"test": "knn", "condition": "kidney_bog_pca_512", "k": 30, "scores": {"clisi": 0.9934628520693097, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.6425507704889906}, "timestamp": "20:04:33"}
+{"test": "knn", "condition": "kidney_bog_pca_512", "k": 90, "scores": {"clisi": 0.9773420322509039, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.6911168451758773}, "timestamp": "20:04:37"}
+{"test": "leiden", "condition": "brain_geneformer", "resolution": 0.5, "scores": {"nmi_leiden": 0.5293787271253743, "ari_leiden": 0.3064604735614203}, "timestamp": "20:07:30"}
+{"test": "leiden", "condition": "brain_geneformer", "resolution": 1.0, "scores": {"nmi_leiden": 0.5317726828782635, "ari_leiden": 0.2976879814310383}, "timestamp": "20:07:30"}
+{"test": "leiden", "condition": "brain_geneformer", "resolution": 2.0, "scores": {"nmi_leiden": 0.5021034564467772, "ari_leiden": 0.1874137876021277}, "timestamp": "20:07:30"}
+{"test": "knn", "condition": "brain_geneformer", "k": 15, "scores": {"clisi": 0.9950246052308516, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.8230572914313521}, "timestamp": "20:07:36"}
+{"test": "knn", "condition": "brain_geneformer", "k": 30, "scores": {"clisi": 0.9896646412936124, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.8479374092484026}, "timestamp": "20:07:42"}
+{"test": "knn", "condition": "brain_geneformer", "k": 90, "scores": {"clisi": 0.9807048602537676, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.8602295833746715}, "timestamp": "20:07:48"}
+{"test": "leiden", "condition": "brain_scvi", "resolution": 0.5, "scores": {"nmi_leiden": 0.5223875588990707, "ari_leiden": 0.32854012184139747}, "timestamp": "20:07:49"}
+{"test": "leiden", "condition": "brain_scvi", "resolution": 1.0, "scores": {"nmi_leiden": 0.4915571576234278, "ari_leiden": 0.2535800324561652}, "timestamp": "20:07:49"}
+{"test": "leiden", "condition": "brain_scvi", "resolution": 2.0, "scores": {"nmi_leiden": 0.4559401338071964, "ari_leiden": 0.15816644289494972}, "timestamp": "20:07:49"}
+{"test": "knn", "condition": "brain_scvi", "k": 15, "scores": {"clisi": 0.9927001703869213, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.692055822479607}, "timestamp": "20:07:50"}
+{"test": "knn", "condition": "brain_scvi", "k": 30, "scores": {"clisi": 0.986247333613309, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.7609281100548168}, "timestamp": "20:07:51"}
+{"test": "knn", "condition": "brain_scvi", "k": 90, "scores": {"clisi": 0.9771047830581665, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.8390372096495184}, "timestamp": "20:07:54"}
+{"test": "leiden", "condition": "brain_scgpt", "resolution": 0.5, "scores": {"nmi_leiden": 0.4874038902812493, "ari_leiden": 0.2437232119597144}, "timestamp": "20:07:54"}
+{"test": "leiden", "condition": "brain_scgpt", "resolution": 1.0, "scores": {"nmi_leiden": 0.4794289166044182, "ari_leiden": 0.19946088608974585}, "timestamp": "20:07:54"}
+{"test": "leiden", "condition": "brain_scgpt", "resolution": 2.0, "scores": {"nmi_leiden": 0.4816924298603668, "ari_leiden": 0.17700491631716092}, "timestamp": "20:07:54"}
+{"test": "knn", "condition": "brain_scgpt", "k": 15, "scores": {"clisi": 0.9954120679335161, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.7722905664945031}, "timestamp": "20:07:55"}
+{"test": "knn", "condition": "brain_scgpt", "k": 30, "scores": {"clisi": 0.9900832609696821, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.8168822724973196}, "timestamp": "20:07:56"}
+{"test": "knn", "condition": "brain_scgpt", "k": 90, "scores": {"clisi": 0.9810016263615001, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.8515285427626604}, "timestamp": "20:07:59"}
+{"test": "leiden", "condition": "brain_random_projection", "resolution": 0.5, "scores": {"nmi_leiden": 0.3146254045786873, "ari_leiden": 0.15485833007188982}, "timestamp": "20:07:59"}
+{"test": "leiden", "condition": "brain_random_projection", "resolution": 1.0, "scores": {"nmi_leiden": 0.37459135191156445, "ari_leiden": 0.19132574038491032}, "timestamp": "20:07:59"}
+{"test": "leiden", "condition": "brain_random_projection", "resolution": 2.0, "scores": {"nmi_leiden": 0.3724342446239905, "ari_leiden": 0.14221289413658864}, "timestamp": "20:07:59"}
+{"test": "knn", "condition": "brain_random_projection", "k": 15, "scores": {"clisi": 0.9858007214286111, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.269900107092116}, "timestamp": "20:08:02"}
+{"test": "knn", "condition": "brain_random_projection", "k": 30, "scores": {"clisi": 0.9805491187355735, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.32537715490409924}, "timestamp": "20:08:03"}
+{"test": "knn", "condition": "brain_random_projection", "k": 90, "scores": {"clisi": 0.971477291800759, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.4197089295340436}, "timestamp": "20:08:07"}
+{"test": "leiden", "condition": "brain_untrained_encoder", "resolution": 0.5, "scores": {"nmi_leiden": 0.2394769649318261, "ari_leiden": 0.158916715476224}, "timestamp": "20:08:08"}
+{"test": "leiden", "condition": "brain_untrained_encoder", "resolution": 1.0, "scores": {"nmi_leiden": 0.364514148289933, "ari_leiden": 0.218448659257585}, "timestamp": "20:08:08"}
+{"test": "leiden", "condition": "brain_untrained_encoder", "resolution": 2.0, "scores": {"nmi_leiden": 0.34420001425236735, "ari_leiden": 0.13718620214334692}, "timestamp": "20:08:08"}
+{"test": "knn", "condition": "brain_untrained_encoder", "k": 15, "scores": {"clisi": 0.9805311723188921, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.3409452179460208}, "timestamp": "20:08:10"}
+{"test": "knn", "condition": "brain_untrained_encoder", "k": 30, "scores": {"clisi": 0.9714005860415372, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.40336119785528385}, "timestamp": "20:08:12"}
+{"test": "knn", "condition": "brain_untrained_encoder", "k": 90, "scores": {"clisi": 0.9595823829824274, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.503074312029574}, "timestamp": "20:08:16"}
+{"test": "leiden", "condition": "brain_bog_pca_512", "resolution": 0.5, "scores": {"nmi_leiden": 0.4591381104820848, "ari_leiden": 0.2799283287465505}, "timestamp": "20:08:16"}
+{"test": "leiden", "condition": "brain_bog_pca_512", "resolution": 1.0, "scores": {"nmi_leiden": 0.44831821155359236, "ari_leiden": 0.19869037844365203}, "timestamp": "20:08:17"}
+{"test": "leiden", "condition": "brain_bog_pca_512", "resolution": 2.0, "scores": {"nmi_leiden": 0.4560278407329844, "ari_leiden": 0.1790204871659686}, "timestamp": "20:08:17"}
+{"test": "knn", "condition": "brain_bog_pca_512", "k": 15, "scores": {"clisi": 0.9939976930618286, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.40608419293063963}, "timestamp": "20:08:19"}
+{"test": "knn", "condition": "brain_bog_pca_512", "k": 30, "scores": {"clisi": 0.9883703751997515, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.49837860282383556}, "timestamp": "20:08:21"}
+{"test": "knn", "condition": "brain_bog_pca_512", "k": 90, "scores": {"clisi": 0.9780927733941511, "ilisi": 0.0, "kbet": null, "graph_connectivity": 0.5634139974180311}, "timestamp": "20:08:24"}

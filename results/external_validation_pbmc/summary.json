@@ -1,0 +1,194 @@
+{
+  "experiment": "external_validation",
+  "prereg": "PREREGISTRATION_EXTERNAL_VALIDATION.md",
+  "prereg_sha256": "46aff40fdd13bbe40f102505857866c2099f7167e977419bf9ffa2819d0d461a",
+  "timestamp": "2026-07-24T19:08:45.288932+00:00",
+  "seed": 20260724,
+  "n_conditions_total": 252,
+  "n_contenders_total": 168,
+  "datasets_run": [
+    "pbmc"
+  ],
+  "per_dataset": [
+    {
+      "dataset": "pbmc",
+      "n_conditions": 252,
+      "n_contenders": 168,
+      "n_pairs": 42,
+      "metrics": {
+        "cell_type_cka": {
+          "rho": 0.1625,
+          "perm_p": 0.8488,
+          "ci_95": [
+            -0.066,
+            0.368
+          ],
+          "n": 168,
+          "sign": "positive",
+          "significant": false,
+          "metric_type": "ours"
+        },
+        "procrustes_sim": {
+          "rho": 0.1708,
+          "perm_p": 0.4859,
+          "ci_95": [
+            -0.075,
+            0.394
+          ],
+          "n": 168,
+          "sign": "positive",
+          "significant": false,
+          "metric_type": "ours"
+        },
+        "silhouette_src": {
+          "rho": -0.4307,
+          "perm_p": 0.9784,
+          "ci_95": [
+            -0.566,
+            -0.236
+          ],
+          "n": 168,
+          "sign": "negative",
+          "significant": false,
+          "metric_type": "field_baseline"
+        },
+        "silhouette_tgt": {
+          "rho": 0.6733,
+          "perm_p": 0.0001,
+          "ci_95": [
+            0.53,
+            0.78
+          ],
+          "n": 168,
+          "sign": "positive",
+          "significant": true,
+          "metric_type": "field_baseline"
+        },
+        "mmd": {
+          "rho": -0.1606,
+          "perm_p": 0.9823,
+          "ci_95": [
+            -0.353,
+            0.073
+          ],
+          "n": 168,
+          "sign": "negative",
+          "significant": false,
+          "metric_type": "field_baseline"
+        },
+        "domain_auc": {
+          "rho": -0.1149,
+          "perm_p": 0.8111,
+          "ci_95": [
+            -0.321,
+            0.121
+          ],
+          "n": 168,
+          "sign": "negative",
+          "significant": false,
+          "metric_type": "field_baseline"
+        }
+      }
+    }
+  ],
+  "concordance": {
+    "summary": {
+      "cell_type_cka": {
+        "n_datasets": 1,
+        "n_positive": 1,
+        "n_significant": 0,
+        "all_positive": true,
+        "all_significant": false,
+        "per_dataset": [
+          {
+            "dataset": "pbmc",
+            "rho": 0.1625,
+            "significant": false,
+            "sign": "positive"
+          }
+        ]
+      },
+      "procrustes_sim": {
+        "n_datasets": 1,
+        "n_positive": 1,
+        "n_significant": 0,
+        "all_positive": true,
+        "all_significant": false,
+        "per_dataset": [
+          {
+            "dataset": "pbmc",
+            "rho": 0.1708,
+            "significant": false,
+            "sign": "positive"
+          }
+        ]
+      },
+      "silhouette_src": {
+        "n_datasets": 1,
+        "n_positive": 0,
+        "n_significant": 0,
+        "all_positive": false,
+        "all_significant": false,
+        "per_dataset": [
+          {
+            "dataset": "pbmc",
+            "rho": -0.4307,
+            "significant": false,
+            "sign": "negative"
+          }
+        ]
+      },
+      "silhouette_tgt": {
+        "n_datasets": 1,
+        "n_positive": 1,
+        "n_significant": 1,
+        "all_positive": true,
+        "all_significant": true,
+        "per_dataset": [
+          {
+            "dataset": "pbmc",
+            "rho": 0.6733,
+            "significant": true,
+            "sign": "positive"
+          }
+        ]
+      },
+      "mmd": {
+        "n_datasets": 1,
+        "n_positive": 0,
+        "n_significant": 0,
+        "all_positive": false,
+        "all_significant": false,
+        "per_dataset": [
+          {
+            "dataset": "pbmc",
+            "rho": -0.1606,
+            "significant": false,
+            "sign": "negative"
+          }
+        ]
+      },
+      "domain_auc": {
+        "n_datasets": 1,
+        "n_positive": 0,
+        "n_significant": 0,
+        "all_positive": false,
+        "all_significant": false,
+        "per_dataset": [
+          {
+            "dataset": "pbmc",
+            "rho": -0.1149,
+            "significant": false,
+            "sign": "negative"
+          }
+        ]
+      }
+    },
+    "hypotheses": {
+      "HE1_cka_generalizes": false,
+      "HE2_procrustes_generalizes": false,
+      "HE3_field_baselines_fail": false,
+      "HE4_concordance": false
+    }
+  }
+}

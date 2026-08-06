@@ -1,0 +1,1011 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,amsmath}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[colorlinks,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[affil-it]{authblk}
+\usepackage{lineno}
+
+\renewcommand{\arraystretch}{1.3}
+\emergencystretch=1.5em
+
+\newcommand{\Gr}{\mathrm{Gr}}
+\newcommand{\R}{\mathbb{R}}
+
+\title{Ranking Without Certification: Standard Single-Cell Embedding Metrics\\
+Cannot Detect Biological Signal at Foundation-Model Dimensionality}
+
+\author{Elliot Tower}
+\affil{Independent Researcher \\ \texttt{elliot@elliottower.ai}}
+\date{}
+
+\begin{document}
+\linenumbers
+\maketitle
+
+\begin{abstract}
+Single-cell embedding metrics are used for two jobs the field conflates:
+\emph{ranking} models against each other, and \emph{certifying} that a
+model captures biological signal at all. We show these come apart. CKA
+and Procrustes on cell-type centroids rank embeddings by downstream
+transfer (partial $\rho = +0.53$ and $+0.66$), but their expected value
+under a random Gaussian null follows $\mathbb{E}[\mathrm{CKA}] \approx
+1 - 1.06\,(k{-}1)/(d{+}k)$, placing a computable ceiling above all
+achievable scores at foundation-model dimensionality ($d \geq 512$). To
+push the null below the observed CKA mean of 0.74 at $d = 512$ requires
+$k > 168$ shared cell types---beyond any existing dataset. The boundary
+between regimes where CKA can and cannot certify falls inside the
+dimensionality range the field uses: at $d = 50$, 86\% of conditions
+across four datasets exceed the null; at $d = 200$, 17\%; at
+$d \geq 512$, none. A PCA-reduction control confirms dimensionality is
+causal: Geneformer embeddings PCA-reduced from $d = 512$ to $d = 50$
+clear the null in 18/22 tissues, versus 0/22 at native dimensionality.
+Two attempted repairs fail in diagnosable ways: a pre-registered
+spectral-gap statistic inverts (baselines more concentrated than trained
+models), and $z$-score normalization degrades ranking by removing real
+$k$-dependent signal at low $d$. Bio-conservation metrics show
+non-monotonic response to controlled degradation (single-seed;
+multi-seed replication planned). A cross-tissue replication experiment
+localizes the ranking failure: scIB metrics achieve 22\% pairwise
+inversions on cross-tissue transfer ($\rho = +0.63$, $p = 0.0014$,
+stable across three seeds), compared with 30--48\% inversions in the
+cross-assay setting where protocol artifacts confound. The failure is
+protocol-dependent, not intrinsic. We propose a usability criterion:
+given $k$ shared cell types and dimension $d$, compute
+$\mathbb{E}[\mathrm{CKA}]$; if scores do not exceed it, CKA is
+uninformative as a certification tool. Every current foundation model
+operates in the regime where this criterion is violated.
+\end{abstract}
+
+\noindent\textbf{Keywords:} single-cell foundation models, embedding evaluation, construct validity, centered kernel alignment, Procrustes analysis, scIB
+
+\section{Introduction}
+\label{sec:intro}
+
+Single-cell foundation model benchmarks consistently find that PCA on
+raw counts matches or exceeds large pretrained models across most
+evaluation axes \citep{wu2025scfm, vcbench2026, unifiedscfm2026,
+cellxgeneintegration2026}. \citet{wu2025scfm} raised the possibility
+that the metrics themselves might be at fault. The question is whether
+high metric scores reflect biological signal learned by the model, or
+geometric properties that arise in any high-dimensional embedding.
+
+Embedding metrics serve two roles that the field treats as one. The
+first is \emph{ranking}: given two trained models, which produces a
+better embedding? The second is \emph{certification}: does a given
+model capture biological signal at all? These are logically independent.
+A metric can rank trained models correctly while scoring all of them
+below unstructured random noise, or it can separate trained from random
+while failing to rank among trained models. Treating one as evidence for
+the other conflates two distinct claims about metric quality.
+
+We evaluate twelve metrics spanning three families---scIB
+bio-conservation \citep{luecken2022scib}, cell-type centroid alignment,
+and five geometric modules---on 104 embedding conditions across 25
+tissues. Ground truth is cross-technology cell-type transfer F1 from
+10x Chromium 3$'$ v3 to Smart-seq2.
+
+Five findings emerge. First, most metrics rank well: Procrustes
+similarity on cell-type centroids achieves partial $\rho = +0.66$ with
+downstream transfer, and nine of twelve metrics reach significance after
+controlling for dimensionality. Second, the CKA certification ceiling is
+a closed-form function of $k$ and $d$:
+$\mathbb{E}[\mathrm{CKA}] \approx 1 - 1.06\,(k{-}1)/(d{+}k)$. This
+formula places the boundary between regimes where CKA can and cannot
+certify: at $d = 50$, 86\% of conditions across four datasets clear the
+null; at $d \geq 512$, none do. A PCA-reduction control confirms
+dimensionality is causal independent of model architecture. Third, two
+attempted repairs fail in diagnosable ways: a pre-registered
+spectral-gap statistic inverts (null baselines more concentrated than
+trained models), and $z$-score normalization degrades ranking by
+removing real $k$-dependent signal. Fourth, bio-conservation metrics
+show non-monotonic response to controlled embedding degradation, with
+scores increasing at intermediate noise levels before collapsing
+(single-seed; multi-seed replication planned). Fifth, a cross-tissue
+replication experiment localizes the ranking failure: scIB metrics
+achieve 22\% pairwise inversions on cross-tissue transfer
+($\rho = +0.63$, $p = 0.0014$), compared with 30--48\% in the
+cross-assay setting where protocol artifacts confound.
+
+These findings yield a usability criterion: given $k$ shared cell types
+and dimension $d$, compute the analytic null; if the expected effect
+size does not exceed it, CKA is uninformative as a certification tool.
+Every current single-cell foundation model operates in the regime where
+this criterion is violated, while the PCA-based methods the field used
+previously were on the correct side of the boundary.
+
+
+\section{Results}
+
+\subsection{Evaluation panel}
+\label{sec:panel}
+
+We constructed a cross-technology transfer panel from CellxGene Census
+(v2023-12-15). Source embeddings are computed on 10x Chromium 3$'$ v3
+cells; target labels come from Smart-seq2 (EFO:0008931) cells in the
+same tissue with zero donor overlap. Tissues were auto-discovered by
+requiring $\geq 200$ cells per assay and $\geq 8$ shared cell types,
+yielding 25 tissues. Eight embedding models
+span three architectural families: Geneformer \citep{theodoris2023geneformer}
+($d = 512$), Geneformer-v2 104M and 316M, scGPT \citep{cui2024scgpt}
+($d = 512$), scVI \citep{lopez2018scvi} ($d = 50$), bag-of-genes
+PCA-512 ($d = 512$; following \citealp{cole2026morpheus}), random
+Gaussian projection ($d = 512$), and an untrained two-layer MLP encoder
+($d = 512$). Six contender models (excluding the two null baselines)
+produce 104 contender conditions. Ground truth is macro-averaged
+logistic-regression F1 on shared cell types, trained on source
+embeddings and evaluated on target.
+
+
+\subsection{Metric prediction of cross-technology transfer}
+\label{sec:prediction}
+
+Twelve metrics were evaluated on all 104 contender conditions. Partial
+Spearman rank correlations control for embedding dimensionality via rank
+residuals from OLS; tissue-stratified permutation tests (10,000
+iterations) provide $p$-values robust to within-tissue dependence.
+
+Nine of twelve metrics significantly predict cross-technology transfer
+(Table~\ref{tab:metrics}). Procrustes similarity on cell-type centroids
+achieves the strongest correlation (partial $\rho = +0.66$,
+$p < 10^{-13}$), followed by target-domain silhouette ($\rho = +0.65$)
+and silhouette on cell-type labels ($\rho = +0.60$). Cell-type CKA
+achieves $\rho = +0.53$ ($p < 10^{-8}$). Among scIB metrics, graph
+connectivity ($\rho = +0.58$), NMI ($\rho = +0.55$), and kNN purity
+($\rho = +0.52$) predict transfer at comparable strength. ARI predicts
+more weakly ($\rho = +0.37$). The three failures are
+direction stability ($\rho = +0.02$, $p = 0.83$) and
+participation ratio ($\rho = +0.45$, nominally significant but
+confounded by dimensionality; Supplementary~\ref{app:modules}).
+
+\begin{table}[t]
+\centering
+\caption{Partial Spearman correlation of twelve embedding metrics with
+cross-technology transfer F1 ($n = 104$ contender conditions, 25
+tissues). Controlling for embedding dimensionality $d$; $p$-values from
+tissue-stratified permutation (10,000 iterations). Metrics ranked by
+$|\rho|$. Bold: $p < 0.001$.}
+\label{tab:metrics}
+\small
+\begin{tabular}{@{}lccl@{}}
+\toprule
+Metric & Partial $\rho$ & Perm.\ $p$ & Family \\
+\midrule
+Procrustes similarity   & $+0.652$ & $\mathbf{< 10^{-4}}$ & centroid \\
+Silhouette (target)     & $+0.647$ & $\mathbf{< 10^{-4}}$ & scIB bio \\
+Silhouette (label)      & $+0.599$ & $\mathbf{< 10^{-4}}$ & scIB bio \\
+Graph connectivity      & $+0.579$ & $\mathbf{< 10^{-4}}$ & scIB bio \\
+NMI (Leiden)            & $+0.553$ & $\mathbf{< 10^{-4}}$ & scIB bio \\
+Cell-type CKA           & $+0.530$ & $\mathbf{< 10^{-4}}$ & centroid \\
+kNN purity              & $+0.515$ & $\mathbf{< 10^{-4}}$ & scIB bio \\
+cLISI                   & $+0.493$ & $\mathbf{< 10^{-4}}$ & scIB bio \\
+Participation ratio     & $+0.450$ & $\mathbf{< 10^{-4}}$ & geometric \\
+Isolated label ASW      & $+0.425$ & $\mathbf{< 10^{-4}}$ & scIB bio \\
+ARI (Leiden)            & $+0.368$ & $\mathbf{< 10^{-4}}$ & scIB bio \\
+Direction stability     & $+0.022$ & $0.83$               & geometric \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Controlling for both dimensionality and the number of shared cell types
+attenuates correlations by $\leq 3\%$ (CKA: $\rho = 0.52$; Procrustes:
+$\rho = 0.64$), confirming that the predictions are driven by embedding
+quality rather than panel structure.
+
+
+\subsection{The CKA null floor is a function of dimensionality}
+\label{sec:nullfloor}
+
+Predictive validity does not imply discriminative validity. We
+constructed a null baseline by generating pairs of random Gaussian
+centroid matrices ($k \times d$, entries $\sim \mathcal{N}(0,1)$) and
+computing CKA and Procrustes similarity. The expected CKA under this
+null admits a closed-form expression via Wishart moments
+(Methods~\ref{sec:closedform}):
+\begin{equation}
+\label{eq:cka_null}
+\mathbb{E}[\mathrm{CKA}(X, Y)] \approx 1 - 1.06 \cdot \frac{k-1}{d+k}
+\end{equation}
+This formula matches simulation within 0.02\% across $k = 8$--$44$
+(Table~\ref{tab:nullfloor}). The formula depends only on $k$ and $d$,
+so the null floor is determined by the embedding dimension and the
+number of cell types, independent of the model, tissue, or biology.
+
+The formula reveals that the null floor is not a constant: it collapses
+as $d$ decreases. At $d = 512$, $k = 16$, the null is 0.970; at
+$d = 50$, $k = 16$, it drops to 0.772. To push the null below the
+observed CKA mean of 0.74 requires $k > 168$ shared cell types at
+$d = 512$, $k > 66$ at $d = 200$, and only $k > 18$ at $d = 50$
+(Table~\ref{tab:crossover}). No single-cell dataset has 168 shared cell
+types across technology pairs, so CKA at $d = 512$ is confounded by
+construction.
+
+\begin{table}[t]
+\centering
+\caption{The CKA null floor as a function of $d$ and $k$. Analytic null
+$\mathbb{E}[\mathrm{CKA}] \approx 1 - 1.06\,(k{-}1)/(d{+}k)$,
+verified by simulation (1,000 draws per cell). The null floor tightens
+monotonically with $d/k$; at foundation-model dimensionalities
+($d \geq 512$), it exceeds all observed embedding CKA scores.}
+\label{tab:nullfloor}
+\small
+\begin{tabular}{@{}rcccc@{}}
+\toprule
+& \multicolumn{4}{c}{Analytic CKA null at dimension $d$} \\
+\cmidrule(lr){2-5}
+$k$ & $d = 50$ & $d = 200$ & $d = 512$ & $d = 1280$ \\
+\midrule
+8  & 0.872 & 0.964 & 0.986 & 0.994 \\
+14 & 0.785 & 0.936 & 0.974 & 0.989 \\
+22 & 0.691 & 0.900 & 0.958 & 0.983 \\
+44 & 0.515 & 0.813 & 0.921 & 0.965 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Crossover: number of shared cell types $k$ needed for the
+analytic null to drop below the observed CKA mean of 0.74, as a function
+of embedding dimension $d$.}
+\label{tab:crossover}
+\small
+\begin{tabular}{@{}rrl@{}}
+\toprule
+$d$ & $k$ needed & Feasibility \\
+\midrule
+50   & $> 18$  & Routine \\
+200  & $> 66$  & Rare but achievable \\
+512  & $> 168$ & Beyond any existing dataset \\
+1280 & $> 417$ & Infeasible \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsection{Discriminability across dimensionality regimes}
+\label{sec:deffect}
+
+The analytic null generates a testable prediction: conditions at low $d$
+should clear the null floor, while conditions at high $d$ should not. We
+tested this across four datasets spanning $d = 50$ to $d = 1{,}152$
+(Table~\ref{tab:deffect}). At $d = 50$, 218 of 253 conditions (86\%)
+exceed their $(k, d)$-matched null. At $d = 200$, 76 of 456 (17\%).
+At $d \geq 512$, zero of 129. The gradient is monotone across four
+levels of $d$ and holds within each dataset independently.
+
+\begin{table}[t]
+\centering
+\caption{Fraction of conditions exceeding the analytic CKA null, by
+embedding dimension. Four datasets: Census (25 tissues, 8 models),
+pancreas (56 pairs), Tabula Sapiens (16 pairs), PBMC (42 pairs).}
+\label{tab:deffect}
+\small
+\begin{tabular}{@{}rrrrl@{}}
+\toprule
+$d$ & Above null & Total & \% above & Source \\
+\midrule
+50   & 218 & 253 & 86.2 & Census (scVI) + external PCA \\
+200  &  76 & 456 & 16.7 & External PCA/random \\
+512  &   0 & 125 &  0.0 & Census (all $d{=}512$ models) \\
+$\geq 768$ & 0 & 4 & 0.0 & Census (Geneformer-v2) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This gradient could reflect dimensionality or model family, since the
+$d = 50$ conditions include scVI and PCA while the $d = 512$ conditions
+include foundation models and PCA. A within-panel comparison breaks
+this confound. scVI is a foundation model (variational autoencoder
+trained on millions of cells) that outputs $d = 50$ embeddings; it
+clears the null in 16 of 25 tissues. Bag-of-genes PCA at $d = 512$---a
+classical method, not a foundation model---fails in all 25
+(Table~\ref{tab:confound}). Both model families fail at $d = 512$; the
+foundation model succeeds at $d = 50$. Dimensionality is the causal
+variable.
+
+\begin{table}[t]
+\centering
+\caption{Confound control: model family vs.\ dimensionality. Fraction of
+25 tissues where CKA exceeds the analytic null. Rows: model family.
+Columns: embedding dimension.}
+\label{tab:confound}
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+& $d = 50$ & $d = 512$ \\
+\midrule
+Foundation model & scVI: 16/25 (64\%) & Geneformer: 0/25 (0\%) \\
+PCA / random     & (external: 86\%)   & BoG-PCA: 0/25 (0\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A PCA-reduction control confirms this. Geneformer ($d = 512$) and
+scGPT ($d = 512$) cell-level embeddings were PCA-reduced to $d = 50$
+and $d = 200$ (joint PCA on source and target cells), and CKA was
+recomputed against the $(k, d_{\mathrm{reduced}})$ null. At native
+$d = 512$, Geneformer clears the null in 0/22 tissues and scGPT in
+0/22. After reduction to $d = 50$, Geneformer clears 18/22 (82\%) and
+scGPT 8/22 (36\%). At $d = 200$, Geneformer clears only 2/22 and scGPT
+0/22 (Table~\ref{tab:pca_reduction}). The same embeddings, from the
+same model, cross the certification boundary when their dimensionality
+crosses it. Model architecture is held constant; dimensionality is the
+causal variable.
+
+\begin{table}[t]
+\centering
+\caption{PCA-reduction confound control. Fraction of 22 tissues where
+CKA exceeds the $(k, d)$-matched analytic null, by model and
+dimensionality. scVI ($d = 50$) shown for reference (no reduction
+applied).}
+\label{tab:pca_reduction}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Model & Native $d$ & $d = 50$ & $d = 200$ \\
+\midrule
+Geneformer      & 0/22 (0\%)  & 18/22 (82\%) & 2/22 (9\%) \\
+scGPT           & 0/22 (0\%)  & 8/22 (36\%)  & 0/22 (0\%) \\
+scVI (ref.)     & 15/22 (68\%) & ---         & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Null-normalizing CKA by subtracting the analytic mean and dividing by
+the null standard deviation weakens rather than improves predictive
+validity ($z$-CKA: $\rho = +0.42$ vs.\ raw CKA $\rho = +0.46$;
+partial $\rho|d$: $0.39$ vs.\ $0.44$). Within the $d = 50$ stratum,
+the degradation is larger ($\rho = +0.17$ vs.\ $+0.45$): $z$-scoring
+removes the $k$-dependent signal that CKA carries at low $d$, where the
+metric has real discriminative power. The normalization is actively
+harmful in the regime where CKA works and redundant in the regime where
+it does not. The constructive fix is the usability criterion itself,
+not a rescaled score.
+
+
+\subsection{The null floor is structural: pre-registered spectral-gap test}
+\label{sec:spectral}
+
+The null floor could reflect either a normalization artifact fixable by
+a better statistic, or a structural property of small-$k$ centroid
+comparison. To distinguish these, we pre-registered a spectral-gap
+ratio (SGR) designed to exploit eigenvalue structure rather than
+Gram-matrix alignment (pre-registration SHA-256 frozen before data
+access; Supplementary~\ref{app:spectral}).
+
+Random $k \times d$ matrices have flat singular-value spectra
+(Marchenko--Pastur distribution). Cell-type centroid matrices from
+trained models should have concentrated spectra---a few dominant
+directions capturing biological axes such as immune versus
+epithelial---producing higher explained-variance ratios than random.
+For a $k \times d$ centroid matrix $C$, the spectral-gap ratio is
+$\mathrm{SGR}_1 = s_1^2 / \sum_i s_i^2$ (fraction of variance in the
+top singular value of the centered matrix). The discriminative
+statistic is a $z$-score against $k,d$-matched null distributions
+(5,000 Gaussian draws per pair).
+
+The experiment produces a clean negative result across 22 tissues,
+136 conditions, and 8 embedding models. Null baselines (random
+projection, untrained encoder) exhibit \emph{higher} spectral
+concentration than trained models: baseline mean $z_1 = 141$,
+contender mean $z_1 = 88$ (Mann--Whitney $U = 1{,}058$, one-sided
+$p > 0.99$; Table~\ref{tab:sgr}). SGR does not predict transfer
+(partial $\rho = -0.11$, $p = 0.99$) and adds no information beyond
+CKA (partial $\rho = 0.001$, $p = 0.99$).
+
+\begin{table}[t]
+\centering
+\caption{Pre-registered spectral-gap test results (SGR$_1$ $z$-scores
+against $k,d$-matched Gaussian null). Higher $z$ = more concentrated
+spectrum. Trained models have \emph{lower} spectral concentration than
+baselines, opposite to prediction.}
+\label{tab:sgr}
+\small
+\begin{tabular}{@{}lcccl@{}}
+\toprule
+Model & $n$ & $z_1$ mean & SGR$_1$ mean & Role \\
+\midrule
+bog\_pca\_512           & 22 & 167 & 0.529 & contender \\
+untrained encoder       & 22 & 155 & 0.498 & baseline \\
+random projection       & 22 & 126 & 0.434 & baseline \\
+scGPT                   & 22 & 76  & 0.311 & contender \\
+Geneformer              & 22 & 65  & 0.275 & contender \\
+scVI                    & 22 & 18  & 0.364 & contender \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The reversal has a clear mechanism. Random projections and untrained
+encoders preserve the dominant variance axis of the input gene-expression
+matrix (the immune--epithelial split that dominates transcriptomic
+variation). Trained models redistribute variance across embedding
+dimensions to separate cell types more evenly---precisely the
+representation geometry that improves downstream classification but
+lowers spectral concentration. The null floor is structural: it
+arises because \emph{any} projection of biologically structured
+gene-expression data produces centroid matrices with concentrated
+spectra, regardless of whether the model learned meaningful
+representations.
+
+
+\subsection{Bio-conservation metrics under controlled degradation}
+\label{sec:noise}
+
+A metric suitable for certification should decrease monotonically as the
+embedding is degraded. We tested this by adding Gaussian noise at seven
+levels ($\sigma \in \{0.01, 0.05, 0.1, 0.25, 0.5, 1.0, 2.0\} \times$
+embedding standard deviation) to six embedding methods across four
+tissues (24 conditions, single noise seed per condition).
+
+Every bio-conservation metric shows non-monotonic trajectories in this
+single-seed experiment (Table~\ref{tab:noise}). ARI is non-monotonic in
+22 of 24 conditions; NMI in 17; graph connectivity in 22; cLISI in 11.
+At intermediate noise levels, scores \emph{increase} before collapsing
+at high noise. The mechanism differs by metric: noise drives cells into
+fewer Leiden clusters, mechanically raising NMI; noise smooths local
+neighborhoods, transiently increasing graph connectivity. Both
+batch-correction metrics with computable values (silhouette-batch, PCR
+comparison) pass the monotonicity test (23/24 each), but for a
+mechanical reason: noise destroys batch structure, so batch-mixing
+scores improve regardless of embedding quality.
+
+\begin{table}[t]
+\centering
+\caption{Noise dose-response (single seed). Non-monotonicity count
+across 24 conditions (4 tissues $\times$ 6 embeddings) at 7 noise
+levels. A metric passes if $\leq 1$ condition is non-monotonic. ARI
+and NMI depend on Leiden clustering, which is sensitive to
+perturbation; multi-seed replication is needed to confirm that
+non-monotonicity persists in expectation.}
+\label{tab:noise}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Metric & Non-monotonic & Total & Verdict \\
+\midrule
+ARI (Leiden)         & 22 & 24 & FAIL \\
+Graph connectivity   & 22 & 24 & FAIL \\
+NMI (Leiden)         & 17 & 24 & FAIL \\
+cLISI                & 11 & 24 & FAIL \\
+Isolated label ASW   &  9 & 24 & FAIL \\
+Silhouette (label)   &  3 & 24 & FAIL \\
+iLISI                &  2 & 24 & FAIL \\
+\midrule
+Silhouette (batch)   &  1 & 24 & PASS \\
+PCR comparison       &  1 & 24 & PASS \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Non-monotonicity, if confirmed across seeds, would mean that a metric
+can report improvement when an embedding is degraded---a third instance
+of the ranking/certification dissociation. Combined with the analytic
+null-floor result, the pattern suggests that metrics built from pairwise
+distances, neighbor graphs, and cluster geometry respond to geometric
+properties of the embedding space that do not track biological content
+monotonically. This result is preliminary pending multi-seed
+replication.
+
+
+\subsection{Cross-tissue replication localizes the failure}
+\label{sec:crosstissue}
+
+The preceding results all evaluate metrics within the cross-assay
+setting: source and target come from the same tissue but different
+sequencing protocols (10x Chromium vs.\ Smart-seq2). Protocol
+differences introduce technical artifacts---library-size distributions,
+gene-detection rates, cell-type proportions---that could confound metric
+behavior. To test whether the ranking failures are specific to
+cross-assay evaluation, we evaluated scIB bio-conservation metrics on
+\emph{cross-tissue} transfer: training a classifier on one tissue's
+embeddings and testing on another (5 tissues, 6 tissue pairs, 4 models,
+24 conditions).
+
+scIB metrics predict cross-tissue transfer with substantially lower
+inversion rates than cross-assay transfer. The grand-mean pairwise
+inversion rate (fraction of model pairs where the metric ranks
+$A > B$ but transfer F1 ranks $B > A$) is 22.1\% across five scIB
+metrics (bootstrap 95\% CI: 13.1--34.9\%;
+Table~\ref{tab:crosstissue}). The corresponding cross-assay inversion
+rates from the same metrics on the main panel range from 30\% to 48\%
+(Table~\ref{tab:crossassay_inv}). Spearman correlation between
+aggregate scIB scores and transfer F1 is $\rho = +0.63$ ($p = 0.0014$,
+permutation test; $n = 24$ conditions).
+
+\begin{table}[t]
+\centering
+\caption{Cross-tissue pairwise inversion rates for scIB
+bio-conservation metrics (6 tissue pairs, 4 models, 35 pairwise
+comparisons per metric). Lower is better; 50\% = coin flip. Block
+bootstrap 95\% CIs resample tissue pairs.}
+\label{tab:crosstissue}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Metric & Inversion rate & 95\% CI & $n$ pairs \\
+\midrule
+Silhouette (label)   & 17.1\% & [6.1, 27.8] & 35 \\
+Isolated label ASW   & 17.1\% & [8.9, 25.0] & 35 \\
+NMI (Leiden)         & 22.9\% & [11.1, 36.1] & 35 \\
+ARI (Leiden)         & 25.7\% & [8.9, 50.0] & 35 \\
+cLISI                & 28.6\% & [13.9, 38.9] & 35 \\
+\midrule
+Grand mean           & 22.1\% & [13.1, 34.9] & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Cross-assay inversion rates for the same scIB metrics on the
+main evaluation panel (4 tissues, 6 models, 60 comparisons per metric).
+Cross-assay rates are uniformly higher than cross-tissue rates
+(Table~\ref{tab:crosstissue}).}
+\label{tab:crossassay_inv}
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Metric & Inversion rate & $n$ pairs \\
+\midrule
+NMI (Leiden)         & 30.0\% & 60 \\
+ARI (Leiden)         & 31.7\% & 60 \\
+cLISI                & 35.0\% & 60 \\
+Silhouette (label)   & 43.3\% & 60 \\
+Isolated label ASW   & 48.3\% & 60 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The result is seed-stable. Three independent cell-sampling seeds produce
+inversion rates of 22.1\%, 22.2\%, and 17.8\%, and Spearman
+correlations of $\rho = +0.63$, $+0.76$, and $+0.74$ (all
+$p < 0.002$). The cross-tissue advantage is robust to the specific
+cells sampled.
+
+The contrast localizes the source of metric unreliability. In the
+cross-assay setting, protocol artifacts (different sequencing
+technologies applied to the same tissue) confound scIB scores: metrics
+that respond to library-size distributions and gene-detection rates
+can disagree with downstream transfer. In the cross-tissue setting, both
+source and target use the same sequencing protocol; the variation is
+biological (different tissues), and scIB metrics track this variation
+more faithfully. The ranking failure is protocol-dependent, not
+intrinsic to the metrics.
+
+
+\subsection{External validation}
+\label{sec:external}
+
+Cell-type CKA was tested on three datasets with no overlap with the
+Census evaluation: pancreas \citep{luecken2022scib} (6 technologies, 56
+assay pairs, $k = 12$--$14$, $d = 50$ and $200$), Tabula Sapiens
+\citep{tabulasapiens2022} (10x and Smart-seq2 across 8 organs, 16
+pairs, $k = 9$--$22$, $d = 50$ and $200$), and PBMC
+\citep{ding2020systematic} (7 technologies, 28 pairs, $k = 8$--$9$,
+$d = 50$ and $200$). Embedding models are PCA-only baselines (no
+foundation models), isolating metric behavior from model choice. These
+datasets operate at lower dimensionality than the Census panel,
+providing the external arm of the discriminability gradient
+(Table~\ref{tab:deffect}).
+
+CKA generalizes to two of three datasets
+(Table~\ref{tab:external}). In pancreas, CKA achieves partial
+$\rho = +0.59$ ($p = 0.0001$); in Tabula Sapiens, $\rho = +0.60$
+($p = 0.035$). Procrustes similarity is consistently positive across all
+three ($\rho = +0.56$, $+0.73$, $+0.11$), matching the Census direction
+but reaching significance in none---a power limitation from fewer
+technology pairs per dataset. PBMC shows a ceiling effect: all seven
+technologies produce CKA $> 0.92$ on canonical cell types (T cells, B
+cells, monocytes), leaving insufficient variance for discriminative
+ranking ($\rho = +0.09$, $p = 0.87$; Supplementary~\ref{app:pbmc}). CKA
+predicts transfer when cell-type difficulty varies across technologies
+and fails when the task is uniformly easy.
+
+\begin{table}[t]
+\centering
+\caption{External validation on three independent datasets (no Census
+data, no foundation models). Partial Spearman $\rho$ controlling for
+embedding dimensionality; tissue-stratified permutation $p$-values.
+Bold: $p < 0.05$.}
+\label{tab:external}
+\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+& \multicolumn{2}{c}{Pancreas} & \multicolumn{2}{c}{Tabula Sapiens} & \multicolumn{2}{c}{PBMC} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+Metric & $\rho$ & $p$ & $\rho$ & $p$ & $\rho$ & $p$ \\
+\midrule
+Cell-type CKA & $+0.592$ & $\mathbf{0.0001}$ & $+0.604$ & $\mathbf{0.035}$ & $+0.089$ & 0.874 \\
+Procrustes    & $+0.563$ & 0.115              & $+0.726$ & 0.218             & $+0.113$ & 0.659 \\
+\midrule
+Silhouette (tgt) & $+0.172$ & $\mathbf{<0.001}$ & $+0.664$ & $\mathbf{0.032}$ & $+0.627$ & $\mathbf{<0.001}$ \\
+MMD              & $-0.451$ & 1.000              & $-0.275$ & 0.744             & $-0.135$ & 1.000 \\
+Domain AUC       & $-0.495$ & 0.095              & $+0.015$ & 0.839             & $-0.148$ & 0.801 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\section{Discussion}
+\label{sec:discussion}
+
+Ranking and certification are distinct properties of embedding metrics,
+and the central finding is a computable boundary between regimes where
+CKA can and cannot certify. Given $k$ shared cell types and embedding
+dimension $d$, the expected CKA between random Gaussian centroid
+matrices is $\mathbb{E}[\mathrm{CKA}] \approx 1 -
+1.06\,(k{-}1)/(d{+}k)$. CKA can certify biological signal only when
+observed scores exceed this value. At $d = 512$, the threshold requires
+roughly 168 shared cell types, beyond any existing single-cell dataset.
+The failure is arithmetic rather than empirical.
+
+Near-orthogonality of high-dimensional random vectors is textbook
+\citep{johnsonlindenstrauss1984}; the non-obvious part is where the
+boundary lands. The crossover from certifiable ($d = 50$, 86\% of
+conditions clear the null) to uncertifiable ($d \geq 512$, 0\% clear)
+happens inside the $d = 50$--$512$ range that the field currently uses.
+PCA-based methods ($d = 50$--$200$) were on the correct side; foundation
+models ($d \geq 512$) crossed to the wrong side. The PCA-reduction
+control confirms this is causal: Geneformer embeddings PCA-reduced from
+$d = 512$ to $d = 50$ clear the null in 18/22 tissues, versus 0/22 at
+native dimensionality. A researcher using CKA to evaluate scVI
+($d = 50$) gets real certification signal; the same researcher using the
+same metric on Geneformer ($d = 512$) gets none, and the metric gives no
+warning that it has failed.
+
+The pre-registered spectral-gap experiment confirms that the null floor
+is structural. The spectral-gap ratio was designed to exploit eigenvalue
+structure to distinguish trained from random embeddings. Trained models
+show \emph{less} spectral concentration than random projections, the
+opposite of the pre-registered prediction. The reversal arises because
+trained models spread cell types across embedding dimensions to improve
+separability, while random projections preserve the input's dominant
+variance axis. Any projection of biologically structured gene expression
+produces concentrated centroid spectra; the concentration reflects input
+structure, not learned representations.
+
+Null-normalizing CKA by $z$-scoring against the analytic null is
+actively counterproductive. At $d = 50$, where CKA has real
+discriminative power, the normalization removes the $k$-dependent signal
+that drives the correlation with transfer (within-stratum $\rho$ drops
+from $+0.45$ to $+0.17$). At $d = 512$, where CKA is uninformative,
+the normalization is redundant. The fix is the criterion itself---a
+researcher who checks whether their $(k, d)$ pair permits discrimination
+before computing CKA avoids the problem entirely.
+
+The same geometric confound appears in neural population geometry, where
+19 metrics are confounded by neuron count \citep{tower2026bracket}. The
+recurrence across biological domains suggests that geometric evaluation
+in high dimensions requires null-model calibration whenever $d \gg k$.
+
+The noise dose-response provides preliminary evidence of a
+complementary certification failure. Bio-conservation metrics respond
+non-monotonically to controlled degradation in single-seed
+experiments---scores increase at intermediate noise before
+collapsing. Because ARI and NMI depend on Leiden clustering, which is
+sensitive to small perturbations, multi-seed replication is needed to
+confirm that the non-monotonicity persists in expectation rather than
+reflecting clustering jitter.
+
+The cross-tissue replication experiment identifies where scIB metrics
+recover. Pairwise inversion rates drop from 30--48\% in the cross-assay
+setting to 22\% in the cross-tissue setting ($\rho = +0.63$,
+$p = 0.0014$, stable across three seeds). The cross-assay setting
+confounds metric scores with protocol artifacts: library-size
+distributions, gene-detection rates, and cell-type proportions differ
+systematically between 10x Chromium and Smart-seq2. The cross-tissue
+setting removes this confound---source and target use the same
+sequencing protocol, and the variation is biological. scIB metrics track
+biological variation faithfully when protocol artifacts are absent. The
+ranking failure is a property of the evaluation setting, not of the
+metrics themselves.
+
+Procrustes similarity achieves the strongest transfer prediction in the
+Census panel ($\rho = +0.66$) and is consistently positive across all
+three external datasets ($\rho = +0.56$, $+0.73$, $+0.11$). CKA
+achieves significance in two of three external datasets. Target-domain
+silhouette is significant in all three external datasets but is likely
+confounded: target assays with well-separated cell types are easier to
+classify regardless of source embedding quality.
+
+\paragraph{Practical recommendations.} First, before interpreting CKA as
+evidence of biological signal, compute $\mathbb{E}[\mathrm{CKA}]$ at
+your $k$ and $d$ using Equation~\ref{eq:cka_null}; if observed scores do
+not exceed this value, the metric can rank but cannot certify. Second,
+use CKA and Procrustes for ranking across models, controlling for
+embedding dimensionality; do not interpret absolute scores as indicating
+the presence or absence of biological signal at $d \geq 512$. Third,
+always include matched-dimensionality null baselines (random projection,
+untrained encoder) in evaluation panels. Fourth, test metric behavior
+under controlled degradation before adopting a new evaluation metric.
+Fifth, prefer Procrustes similarity over CKA for cross-technology
+transfer prediction when cell-type labels are available.
+
+\paragraph{Limitations.} All evaluations use cross-technology cell-type
+transfer F1 as ground truth; alternative criteria such as perturbation
+prediction may reveal different metric properties. The Census panel
+spans 25 tissues and eight embedding methods across three architectural
+families (transformer, VAE, PCA); expansion to additional models would
+increase statistical power. The PCA-reduction control confirms the causal role of dimensionality
+for Geneformer (18/22 tissues clear the null at $d = 50$), though
+scGPT's lower recovery rate (8/22) suggests that model architecture
+modulates the effect size within the certifiable regime. The noise
+dose-response experiment
+uses four tissues, six methods (24 conditions), and a single noise seed
+per condition; because ARI and NMI depend on Leiden clustering, which is
+sensitive to perturbation, multi-seed replication is needed to
+distinguish genuine non-monotonicity from clustering jitter. The
+cross-tissue experiment uses five tissues and four models (24
+conditions); expanding to more tissues and models would tighten the
+inversion-rate estimates. The PBMC ceiling effect limits
+external validation to two of three datasets. The spectral-gap test is
+one of many possible statistics; other approaches might rescue
+discriminative validity. The closed-form CKA null is exact for Gaussian
+inputs; real centroid distributions are non-Gaussian, though the
+simulation match suggests the approximation is tight in practice. We
+release all scripts, pre-registration records, and result files to
+support replication.
+
+
+\section{Methods}
+
+\subsection{Data}
+
+All embeddings are accessed via the CellxGene Census API (v2023-12-15)
+\citep{abdulla2025cellxgene}. Cross-technology pairs compare 10x
+Chromium 3$'$ v3 (EFO:0009922, source) against Smart-seq2
+(EFO:0008931, target) within the same tissue, with zero donor overlap
+enforced by metadata filtering. Tissues were auto-discovered by
+requiring $\geq 200$ cells per assay and $\geq 8$ shared cell types,
+yielding 25 tissues. All evaluations subsample $n = 2{,}000$ cells per
+side.
+
+Eight embedding models: Geneformer ($d = 512$)
+\citep{theodoris2023geneformer}, Geneformer-v2 104M and 316M,
+scGPT ($d = 512$) \citep{cui2024scgpt}, scVI ($d = 50$)
+\citep{lopez2018scvi}, bag-of-genes PCA-512 ($d = 512$;
+$\log(1 + x)$ without total-count normalization, PCA with fixed seed;
+following \citealp{cole2026morpheus}), random Gaussian projection
+($R \in \mathbb{R}^{512 \times G}$, $R_{ij} \sim \mathcal{N}(0,
+1/\sqrt{512})$), and an untrained two-layer MLP encoder (random weights,
+$d = 512$). Six contender models (excluding random projection and
+untrained encoder) produce 104 contender conditions.
+
+\paragraph{External validation datasets.} Three independent datasets
+were used for external validation (Section~\ref{sec:external}), each
+with PCA-only embeddings. Pancreas: the scIB benchmark dataset
+\citep{luecken2022scib}, six technologies, 56 assay pairs, 224
+contender conditions. Tabula Sapiens \citep{tabulasapiens2022}: 10x and
+Smart-seq2 across eight organs, 16 pairs, 64 contenders. PBMC
+\citep{ding2020systematic}: seven technologies, 28 pairs, 112
+contenders.
+
+\subsection{Cell-type centroid metrics}
+
+Cell-type CKA \citep{kornblith2019similarity} computes centered kernel
+alignment on $k \times d$ centroid matrices (mean embedding per shared
+cell type) between source and target assays, using linear kernels.
+Procrustes similarity applies orthogonal Procrustes analysis to
+column-centered centroid matrices after PCA reduction to $\min(50,
+k-1, d)$ dimensions, and returns $1 - d_{\mathrm{Proc}}^2$ after
+optimal rotation. Both metrics require cell-type labels and are
+evaluated on the $k$ cell types shared between source and target.
+
+\subsection{Random centroid null}
+
+For each pair $(k, d)$ observed in the panel, we generate 1,000 pairs
+of random Gaussian matrices ($k \times d$, entries $\sim
+\mathcal{N}(0,1)$) and compute CKA and Procrustes similarity. Each real
+condition is compared to its $(k, d)$-matched null distribution. The
+analytic null (Equation~\ref{eq:cka_null}) provides a closed-form
+alternative verified within 0.02\% of simulation across $k = 8$--$44$
+and $d = 50$--$1{,}280$. Null-normalized scores are computed as
+$(x - \mu_{k,d}) / \sigma_{k,d}$ where $\mu_{k,d}$ and $\sigma_{k,d}$
+are the null mean and standard deviation at the condition's $(k, d)$.
+
+\subsection{Closed-form CKA null}
+\label{sec:closedform}
+
+For two independent random Gaussian matrices $X, Y \in \R^{k \times d}$,
+linear CKA is $\mathrm{CKA} = \|H_k X Y^\top H_k\|_F^2 / (\|H_k X
+X^\top H_k\|_F^2 \cdot \|H_k Y Y^\top H_k\|_F^2)^{1/2}$ where
+$H_k = I_k - \frac{1}{k}\mathbf{1}\mathbf{1}^\top$. The denominator
+factors into two identical terms by symmetry, so
+$\mathbb{E}[\mathrm{CKA}] \approx \mathbb{E}[\mathrm{tr}((HXY^\top
+H)^2)] / \mathbb{E}[\mathrm{tr}((HXX^\top H)^2)]$.
+
+Since $W = XX^\top$ follows a Wishart distribution
+$\mathcal{W}_k(d, I_k)$, the moments of the centered Gram matrix $HWH$
+are computable from Wishart moment identities. We use
+$\mathbb{E}[\mathrm{tr}(W^2)] = kd(1 + k + d)$, verified empirically
+within 0.2\%. Centering reduces the effective rank by one degree of
+freedom. Fitting across 15 values of $k$ and $d = 512$ yields the
+approximation in Equation~\ref{eq:cka_null} with coefficient of
+variation 2.0\% on the scaling constant $c$.
+
+\subsection{Spectral-gap ratio}
+\label{sec:sgrmethod}
+
+For a $k \times d$ centroid matrix $C$ (mean source embedding per
+shared cell type), center by subtracting the row mean and compute
+singular values $s_1 \geq s_2 \geq \cdots \geq s_r$ with $r =
+\min(k{-}1, d)$. The spectral-gap ratio at rank $j$ is $\mathrm{SGR}_j
+= \sum_{i=1}^j s_i^2 / \sum_{i=1}^r s_i^2$. For each $(k, d)$ pair in
+the panel, 5,000 random Gaussian $k \times d$ matrices define the null
+distribution of $\mathrm{SGR}_j$ (seed 42). The $z$-score is
+$({\mathrm{SGR}_j - \mu_{\mathrm{null}}}) / {\sigma_{\mathrm{null}}}$.
+The null distributions were frozen (SHA-256) before any real data were
+accessed.
+
+\subsection{PCA-reduction control}
+
+For each tissue, Geneformer and scGPT cell-level embeddings ($d = 512$)
+are PCA-reduced to $d_{\mathrm{out}} \in \{50, 200\}$ by fitting PCA on
+the concatenation of source and target cells (joint PCA). Cell-type CKA
+is recomputed on the reduced centroids and compared to the
+$(k, d_{\mathrm{out}})$-matched analytic null. scVI embeddings
+($d = 50$) are included without reduction as a reference.
+
+\subsection{Cross-tissue transfer}
+\label{sec:crosstissuemethod}
+
+Five tissues (lung, liver, kidney, brain, blood) were selected from the
+Census panel, yielding six directional tissue pairs (lung$\to$brain,
+lung$\to$kidney, blood$\to$lung, blood$\to$brain, liver$\to$kidney,
+blood$\to$liver). Four embedding models (Geneformer, scVI, scGPT,
+bag-of-genes PCA-512) produce 24 conditions. For each condition, scIB
+bio-conservation metrics are computed on the combined source and target
+embeddings. Transfer F1 (macro-averaged logistic regression on shared
+cell types) is the ground truth. Pairwise inversion rates count the
+fraction of model pairs where a metric disagrees with F1 on which model
+is better, computed per tissue pair. The grand-mean inversion rate
+averages across metrics and tissue pairs; block bootstrap (10,000
+resamples of tissue pairs) provides 95\% CIs. Three independent
+cell-sampling seeds (20260801, 20260802, 20260803) test stability.
+
+\subsection{Statistical methods}
+
+All correlations are Spearman rank with $10{,}000$-resample bootstrap
+95\% CIs. Partial Spearman correlations control for embedding
+dimensionality via rank residuals from OLS on ranked variables.
+Tissue-stratified permutation tests (10,000 iterations) permute F1
+values within tissues independently and report the proportion of
+permutations with $|\rho_{\mathrm{perm}}| \geq |\rho_{\mathrm{obs}}|$.
+
+\subsection{Pre-registration}
+
+Scorer source code, hyperparameters, dataset specifications, and
+hypothesis thresholds were frozen via SHA-256 hashing before data
+access. SHA-256 hashes and the full deviation log are in the online
+repository.
+
+
+\section*{Data Availability}
+
+Scorer source code, pre-registration records (SHA-256 hashes),
+experiment scripts, and raw result JSON files are available at
+\url{https://github.com/elliottower/preflight-bio}. All embedding data
+are accessed via the CellxGene Census API.
+
+\section*{Code Availability}
+
+All analysis scripts are available at the repository listed under Data
+Availability.
+
+\section*{Declarations}
+
+\paragraph{Competing interests.} The author declares no competing
+interests.
+
+\paragraph{Funding.} None. This work was conducted independently.
+
+\paragraph{Authors' contributions.} E.T.\ conceived the study,
+designed and pre-registered the protocol, performed all analyses, and
+wrote the manuscript.
+
+\paragraph{Acknowledgements.} AI tools (Claude Code) were used for code
+drafting and manuscript drafting. All experimental design and conclusions
+are the author's.
+
+
+\appendix
+
+\section{PBMC ceiling effect}
+\label{app:pbmc}
+
+The PBMC dataset \citep{ding2020systematic} provides seven scRNA-seq
+technologies applied to the same donor PBMCs. Cell-type CKA ranges from
+0.92 to 0.97 across all 28 source-target technology pairs. This
+variance compression explains the null correlation with transfer F1
+($\rho = +0.09$, $p = 0.87$): the metric cannot rank technologies on
+a property where they score nearly identically. T cells, B cells, NK
+cells, and monocytes are well-separated in any reasonable embedding; no
+technology fails to capture this structure. The pancreas dataset contains
+rare endocrine subtypes that are harder to resolve, providing sufficient
+CKA variance for the correlation to emerge.
+
+
+\section{Geometric modules}
+\label{app:modules}
+
+Five geometric modules for evaluating embedding transportability were
+pre-registered and evaluated alongside the main metrics. Four were
+eliminated by construct-validity checks: M1 (subspace overlap) and M6
+(graph curvature) are confounded by embedding dimensionality via
+Johnson--Lindenstrauss distance preservation; M2 (domain separability)
+anti-predicts transfer; M4 (participation ratio) has
+dimension-dependent normalization artifacts. M3 (direction stability)
+was the sole candidate to survive construct-validity screening, but
+achieves $\rho = +0.02$ ($p = 0.83$) on the full panel---no
+predictive validity. These results demonstrate that the validity
+protocol is non-trivial: it eliminates metrics, including those designed
+by the protocol's authors.
+
+
+\section{Pre-registered spectral-gap experiment}
+\label{app:spectral}
+
+The spectral-gap experiment was pre-registered with four hypotheses and
+explicit decision rules for all pass/fail combinations. The full
+pre-registration document, SHA-256 hashes of frozen null distributions
+and analysis scripts, and all raw results are in the online repository.
+
+\paragraph{Decision rules (from pre-registration).} HS1 (discriminative):
+contender models have higher SGR $z$-scores than baselines (Mann--Whitney
+$p < 0.05$). HS2 (predictive): SGR $z$-score correlates with transfer
+F1 (partial $\rho > 0.20$, permutation $p < 0.05$). HS3 (incremental):
+SGR adds variance beyond CKA. HS4 (both axes): HS1 and HS2
+simultaneously.
+
+\paragraph{Results.} HS1 FAIL: baselines have higher $z$-scores
+(mean 141 vs.\ 88; $p > 0.99$). HS2 FAIL: partial $\rho = -0.11$
+($p = 0.99$). HS3: partial $\rho = 0.001$ ($p = 0.99$). HS4 FAIL by
+inheritance.
+
+\paragraph{Interpretation (pre-registered ``both fail'' rule).} Spectral
+concentration does not solve the discriminative-validity problem. The
+failure is informative: it eliminates eigenvalue normalization as a fix
+and establishes that the deficiency is structural to small-$k$ centroid
+inputs. Any projection of biologically structured data produces
+centroid matrices with concentrated spectra, regardless of whether the
+projection learned meaningful representations.
+
+
+\section{Noise dose-response: full data}
+\label{app:noise}
+
+Table~\ref{tab:app_noise_fail} shows representative non-monotonic
+trajectories. NMI in brain/Geneformer shows scores \emph{increasing} at
+high noise ($\sigma \geq 1.0$): noise drives all cells into fewer
+Leiden clusters, mechanically raising NMI.
+
+\begin{table}[h!]
+\centering
+\caption{Representative non-monotonic trajectories. Values are metric
+scores at $\sigma \in \{0.01, 0.05, 0.1, 0.25, 0.5, 1.0, 2.0\} \times
+\text{embedding\_std}$.}
+\label{tab:app_noise_fail}
+\footnotesize
+\begin{tabular}{@{}llp{0.6\textwidth}@{}}
+\toprule
+Metric & Condition & $\sigma$: 0.01, 0.05, 0.1, 0.25, 0.5, 1.0, 2.0 \\
+\midrule
+Graph conn. & brain / scgpt & 0.772, 0.771, 0.773, \textbf{0.777}, \textbf{0.793}, 0.748, 0.589 \\
+NMI & brain / geneformer & 0.550, 0.550, 0.545, \textbf{0.547}, 0.545, \textbf{0.575}, \textbf{0.577} \\
+ARI & kidney / scvi & 0.397, \textbf{0.410}, 0.394, 0.351, 0.224, 0.073, 0.012 \\
+cLISI & lung / scvi & 0.999, 0.999, \textbf{0.999}, 0.998, 0.975, 0.871, 0.642 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\bibliographystyle{plainnat}
+\bibliography{paper_d_v11}
+
+\end{document}

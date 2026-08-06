@@ -1,0 +1,40 @@
+{
+  "title": "A Construct-Validity Protocol for Geometric Evaluation of Single-Cell Foundation Model Embeddings",
+  "description": "This paper introduces a construct-validity protocol that tests whether scIB metrics measure what they claim. Four tests expose systematic failures: null-model discrimination (random projections score highly), cross-dimensionality robustness (rankings permute under projection), sign-correctness (46-67% pairwise inversion rates against ground-truth F1), and noise dose-response (bio metrics behave non-monotonically under controlled degradation). The archive contains the manuscript, experiment scripts, raw JSON results from all experiments on CELLxGENE Census, figure generation code, and SHA-256 frozen preregistration documents.",
+  "upload_type": "publication",
+  "publication_type": "workingpaper",
+  "creators": [
+    {
+      "name": "Tower, Elliot",
+      "affiliation": "Independent Researcher",
+      "orcid": "0000-0001-7004-8884"
+    }
+  ],
+  "keywords": [
+    "single-cell foundation models",
+    "construct validity",
+    "scIB",
+    "benchmarking",
+    "geometric metrics",
+    "noise dose-response",
+    "Johnson-Lindenstrauss",
+    "scRNA-seq",
+    "preregistration",
+    "CELLxGENE"
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/elliottower/preflight-bio",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "10.5281/zenodo.21093518",
+      "relation": "references",
+      "scheme": "doi"
+    }
+  ],
+  "version": "1.0.0"
+}

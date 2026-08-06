@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-07-28T13:11:47.235857+00:00",
+  "prereg": "PREREGISTRATION_SPECTRAL_GAP.md",
+  "n_contenders": 92,
+  "n_baselines": 44,
+  "hs1_discriminative": {
+    "contender_z1_mean": 88.32307508479654,
+    "baseline_z1_mean": 140.67230660467337,
+    "mann_whitney_p": 0.9999965353936999,
+    "pass": false
+  },
+  "hs2_predictive": {
+    "partial_rho_d": -0.11323459149546106,
+    "perm_p": 0.9934,
+    "pass": false
+  },
+  "hs3_incremental": {
+    "partial_rho_d_cka": 0.0013716998289228302,
+    "p": 0.9896461452732312
+  }
+}

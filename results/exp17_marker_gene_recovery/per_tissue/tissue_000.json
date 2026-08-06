@@ -1,0 +1,136 @@
+{
+  "tissue": "endocrine pancreas",
+  "tissue_index": 0,
+  "k": 11,
+  "n_src": 961,
+  "n_tgt": 559,
+  "ceiling": {
+    "ceiling_score": 0.2583198780480379,
+    "n_types": 7,
+    "per_type_jaccard": {
+      "B cell": 0.13636363636363635,
+      "T cell": 0.02040816326530612,
+      "endothelial cell": 0.3888888888888889,
+      "myeloid cell": 0.20481927710843373,
+      "pancreatic A cell": 0.13636363636363635,
+      "pancreatic acinar cell": 0.639344262295082,
+      "pancreatic ductal cell": 0.28205128205128205
+    }
+  },
+  "metrics_geneformer": {
+    "rcs_baseline": 0.5890331890331892,
+    "rcs_pca10": 0.6088023088023089,
+    "rcs_trimmed": 0.5991341991341993,
+    "rcs_normalized": 0.6901390644753479,
+    "rcs_combined": 0.6112124445520751,
+    "pad": -2.0,
+    "scc_logreg": 0.7612312846765533,
+    "scc_knn": 0.744901610017889,
+    "scc_rf": 0.439391771019678,
+    "scc_svm": 0.5214774062912013,
+    "mmd": -0.17172814387781576,
+    "ccal": -0.517704744371581,
+    "f1": 0.5465397733184891
+  },
+  "mgr_geneformer": {
+    "mgr_score": 0.22423491630117148,
+    "n_matched_types": 7,
+    "n_clusters": 9,
+    "per_type_jaccard": {
+      "B cell": 0.12359550561797752,
+      "T cell": 0.0,
+      "endothelial cell": 0.4084507042253521,
+      "myeloid cell": 0.13636363636363635,
+      "pancreatic A cell": 0.0,
+      "pancreatic acinar cell": 0.6666666666666666,
+      "pancreatic ductal cell": 0.2345679012345679
+    }
+  },
+  "metrics_scvi": {
+    "rcs_baseline": 0.5937229437229439,
+    "rcs_pca10": 0.6763347763347766,
+    "rcs_trimmed": 0.5864357864357865,
+    "rcs_normalized": 0.6235851620534355,
+    "rcs_combined": 0.5870386518031329,
+    "pad": -1.513157894736842,
+    "scc_logreg": 0.7838657453204435,
+    "scc_knn": 0.8290995825879547,
+    "scc_rf": 0.4854203935599285,
+    "scc_svm": 0.604078551053535,
+    "mmd": -0.09137632055543055,
+    "ccal": -1.2683928587496576,
+    "f1": 0.4408184692289799
+  },
+  "mgr_scvi": {
+    "mgr_score": 0.20293183842231236,
+    "n_matched_types": 7,
+    "n_clusters": 9,
+    "per_type_jaccard": {
+      "B cell": 0.14942528735632185,
+      "T cell": 0.0,
+      "endothelial cell": 0.3698630136986301,
+      "myeloid cell": 0.0,
+      "pancreatic A cell": 0.0,
+      "pancreatic acinar cell": 0.6666666666666666,
+      "pancreatic ductal cell": 0.2345679012345679
+    }
+  },
+  "metrics_scgpt": {
+    "rcs_baseline": 0.2580808080808081,
+    "rcs_pca10": 0.5865079365079368,
+    "rcs_trimmed": 0.25288600288600294,
+    "rcs_normalized": 0.1678218495197974,
+    "rcs_combined": 0.43787349887494126,
+    "pad": -1.986842105263158,
+    "scc_logreg": 0.4044311750782293,
+    "scc_knn": 0.7565891472868216,
+    "scc_rf": 0.33806797853309484,
+    "scc_svm": 0.4615902725324783,
+    "mmd": -0.2822238721415329,
+    "ccal": -1.4425305112633522,
+    "f1": 0.20601320398492157
+  },
+  "mgr_scgpt": {
+    "mgr_score": 0.21834060776756498,
+    "n_matched_types": 7,
+    "n_clusters": 12,
+    "per_type_jaccard": {
+      "B cell": 0.0989010989010989,
+      "T cell": 0.0,
+      "endothelial cell": 0.3888888888888889,
+      "myeloid cell": 0.1111111111111111,
+      "pancreatic A cell": 0.0,
+      "pancreatic acinar cell": 0.6949152542372882,
+      "pancreatic ductal cell": 0.2345679012345679
+    }
+  },
+  "metrics_uce": {
+    "rcs_baseline": 0.7953102453102454,
+    "rcs_pca10": 0.8284992784992786,
+    "rcs_trimmed": 0.7954545454545456,
+    "rcs_normalized": 0.7486142731897124,
+    "rcs_combined": 0.7622178074769733,
+    "pad": -1.960526315789474,
+    "scc_logreg": 0.4951444150869086,
+    "scc_knn": 0.7235539654144306,
+    "scc_rf": 0.42423971377459746,
+    "scc_svm": 0.5476716571104494,
+    "mmd": -0.21514985549636245,
+    "ccal": -1.1732624636388738,
+    "f1": 0.2850095882892201
+  },
+  "mgr_uce": {
+    "mgr_score": 0.2244022513563905,
+    "n_matched_types": 7,
+    "n_clusters": 9,
+    "per_type_jaccard": {
+      "B cell": 0.12359550561797752,
+      "T cell": 0.0,
+      "endothelial cell": 0.4084507042253521,
+      "myeloid cell": 0.14942528735632185,
+      "pancreatic A cell": 0.0,
+      "pancreatic acinar cell": 0.639344262295082,
+      "pancreatic ductal cell": 0.25
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "title": "Construct-validity testing reveals that scIB bio-conservation metrics predict cross-tissue transfer but invert cross-assay rankings at chance",
+  "description": "A three-check construct-validity protocol (null-model discrimination, cross-dimensionality robustness, sign-correctness) applied to five preregistered geometric modules and the field-standard scIB bio-conservation suite for evaluating single-cell foundation model embeddings. The scIB audit finds 46-58% pairwise inversion rates against cross-assay transfer F1 (at or worse than chance), while a preregistered cross-tissue replication finds positive prediction (rho = +0.63, p = 0.0014), localizing the failure to the cross-assay setting. Two confirmatory tests show metric rankings are stable across hyperparameters but metric values are non-monotonic under controlled noise. This archive contains the manuscript (v15), source code, experiment scripts, raw results from experiments 0-11, preregistration documents with SHA-256 frozen scorer code, and seed-stability replication data.",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "creators": [
+    {
+      "name": "Tower, Elliot",
+      "affiliation": "Independent Researcher",
+      "orcid": "0000-0001-7004-8884"
+    }
+  ],
+  "keywords": [
+    "construct validity",
+    "scIB",
+    "single-cell foundation models",
+    "embedding evaluation",
+    "bio-conservation metrics",
+    "Johnson-Lindenstrauss",
+    "transportability",
+    "preregistration",
+    "cross-assay transfer",
+    "cross-tissue replication",
+    "CELLxGENE"
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/elliottower/preflight-bio",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "version": "2.0.0"
+}

@@ -1,0 +1,92 @@
+{
+  "condition": "brain_scvi",
+  "tissue": "brain",
+  "embedding": "scvi",
+  "emb_std_mean": 0.21973852813243866,
+  "scores_by_sigma": {
+    "0.01": {
+      "nmi_leiden": 0.5951524624304657,
+      "ari_leiden": 0.4115320804107063,
+      "silhouette_label": 0.4784910958260298,
+      "silhouette_batch": 0.4953709840774536,
+      "isolated_label_asw": 0.5370866060256958,
+      "graph_connectivity": 0.6918785678957426,
+      "pcr_comparison": 0.7196267914741394,
+      "clisi": 0.9771575981920416,
+      "ilisi": 0.0,
+      "kbet": null
+    },
+    "0.05": {
+      "nmi_leiden": 0.6007023400125173,
+      "ari_leiden": 0.41494568153446015,
+      "silhouette_label": 0.47737247683107853,
+      "silhouette_batch": 0.49483856558799744,
+      "isolated_label_asw": 0.5370321869850159,
+      "graph_connectivity": 0.6932148168877614,
+      "pcr_comparison": 0.7188987041966548,
+      "clisi": 0.9768241102045233,
+      "ilisi": 0.0,
+      "kbet": null
+    },
+    "0.1": {
+      "nmi_leiden": 0.5984177744947137,
+      "ari_leiden": 0.4135999569654827,
+      "silhouette_label": 0.4767482280731201,
+      "silhouette_batch": 0.5018812417984009,
+      "isolated_label_asw": 0.5371279716491699,
+      "graph_connectivity": 0.7021763959560201,
+      "pcr_comparison": 0.7269957477885973,
+      "clisi": 0.9761560342528603,
+      "ilisi": 0.0,
+      "kbet": null
+    },
+    "0.25": {
+      "nmi_leiden": 0.581215960722457,
+      "ari_leiden": 0.4037255039430253,
+      "silhouette_label": 0.46931696869432926,
+      "silhouette_batch": 0.5186922550201416,
+      "isolated_label_asw": 0.5259791612625122,
+      "graph_connectivity": 0.69034774468603,
+      "pcr_comparison": 0.7279984114042971,
+      "clisi": 0.9732391400770708,
+      "ilisi": 0.0,
+      "kbet": null
+    },
+    "0.5": {
+      "nmi_leiden": 0.4401611957377946,
+      "ari_leiden": 0.268953106833227,
+      "silhouette_label": 0.46741174533963203,
+      "silhouette_batch": 0.56028813123703,
+      "isolated_label_asw": 0.5193365812301636,
+      "graph_connectivity": 0.6872213990342935,
+      "pcr_comparison": 0.7803789916921666,
+      "clisi": 0.960209765217521,
+      "ilisi": 0.0,
+      "kbet": null
+    },
+    "1.0": {
+      "nmi_leiden": 0.20974483278476716,
+      "ari_leiden": 0.19510669433909256,
+      "silhouette_label": 0.45841341838240623,
+      "silhouette_batch": 0.6855465769767761,
+      "isolated_label_asw": 0.4949212670326233,
+      "graph_connectivity": 0.5749699348247329,
+      "pcr_comparison": 0.8677202914929586,
+      "clisi": 0.930560827255249,
+      "ilisi": 1.1920928955078125e-07,
+      "kbet": null
+    },
+    "2.0": {
+      "nmi_leiden": 0.08375667513827384,
+      "ari_leiden": 0.010829403818271242,
+      "silhouette_label": 0.450314536690712,
+      "silhouette_batch": 0.8328119516372681,
+      "isolated_label_asw": 0.453482985496521,
+      "graph_connectivity": 0.3652362576863112,
+      "pcr_comparison": 0.9379945322930098,
+      "clisi": 0.9006439447402954,
+      "ilisi": 3.5762786865234375e-07,
+      "kbet": null
+    }
+  }
+}

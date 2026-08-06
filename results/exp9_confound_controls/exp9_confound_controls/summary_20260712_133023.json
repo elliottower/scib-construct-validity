@@ -1,0 +1,251 @@
+{
+  "experiment": "exp9_confound_controls",
+  "prereg": "v8",
+  "hypothesis": "H9.1 [CONFIRMATORY]",
+  "timestamp": "20260712_133023",
+  "census_version": "2023-12-15",
+  "seed": 20260712,
+  "n_bootstrap": 10000,
+  "verdict": "CONFOUNDED",
+  "h91": {
+    "supported": false,
+    "mean_gap_difference": -0.5,
+    "ci_95_lo": -1.0,
+    "ci_95_hi": 0.0,
+    "real_tier_gaps": [
+      -1,
+      -1
+    ],
+    "null_tier_gaps": [
+      -1,
+      0
+    ],
+    "threshold": "mean_diff >= 1.0 AND ci_lo > 0"
+  },
+  "results": {
+    "geneformer": {
+      "is_null": false,
+      "shifted": {
+        "overall_tier": 3,
+        "overall_score": 0.31094060426531994,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.31551414379809284,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.06914500000000023,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.3104613852228111,
+            "tier": 3
+          },
+          "m4_domain_validity": {
+            "score": 0.8451584558188241,
+            "tier": 6
+          },
+          "m6_curvature": {
+            "score": 0.192351598173516,
+            "tier": 2
+          }
+        }
+      },
+      "control": {
+        "overall_tier": 2,
+        "overall_score": 0.22807820710223,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.23004549807470231,
+            "tier": 2
+          },
+          "m2_domain_shift": {
+            "score": 0.003192906178489663,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.262396886357094,
+            "tier": 3
+          },
+          "m4_domain_validity": {
+            "score": 0.6534926058464717,
+            "tier": 5
+          },
+          "m6_curvature": {
+            "score": 0.2002840909090909,
+            "tier": 2
+          }
+        }
+      },
+      "tier_gap": -1
+    },
+    "scvi": {
+      "is_null": false,
+      "shifted": {
+        "overall_tier": 4,
+        "overall_score": 0.5012226315806653,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.4516057342613994,
+            "tier": 4
+          },
+          "m2_domain_shift": {
+            "score": 0.36046500000000004,
+            "tier": 3
+          },
+          "m3_direction_stability": {
+            "score": 0.5891720719924628,
+            "tier": 5
+          },
+          "m4_domain_validity": {
+            "score": 0.8745304719755574,
+            "tier": 7
+          },
+          "m6_curvature": {
+            "score": 0.3402061855670103,
+            "tier": 3
+          }
+        }
+      },
+      "control": {
+        "overall_tier": 3,
+        "overall_score": 0.34711667972479887,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.38517018082391064,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.09579351639969502,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.5267158236718685,
+            "tier": 4
+          },
+          "m4_domain_validity": {
+            "score": 0.5988707655418011,
+            "tier": 5
+          },
+          "m6_curvature": {
+            "score": 0.3374888691006233,
+            "tier": 3
+          }
+        }
+      },
+      "tier_gap": -1
+    },
+    "random_projection_512d": {
+      "is_null": true,
+      "shifted": {
+        "overall_tier": 3,
+        "overall_score": 0.28644925146926964,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.4216984819219096,
+            "tier": 4
+          },
+          "m2_domain_shift": {
+            "score": 0.06696250000000004,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.16825117723431757,
+            "tier": 2
+          },
+          "m4_domain_validity": {
+            "score": 0.5808646295384554,
+            "tier": 5
+          },
+          "m6_curvature": {
+            "score": 0.27096472786732073,
+            "tier": 3
+          }
+        }
+      },
+      "control": {
+        "overall_tier": 2,
+        "overall_score": 0.17182861946867767,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.29505570635262346,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.0121773455377574,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.09217045969307627,
+            "tier": 1
+          },
+          "m4_domain_validity": {
+            "score": 0.27529371086017745,
+            "tier": 3
+          },
+          "m6_curvature": {
+            "score": 0.26991150442477874,
+            "tier": 3
+          }
+        }
+      },
+      "tier_gap": -1
+    },
+    "untrained_encoder_512d": {
+      "is_null": true,
+      "shifted": {
+        "overall_tier": 3,
+        "overall_score": 0.3704743384444126,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.45850751412340895,
+            "tier": 4
+          },
+          "m2_domain_shift": {
+            "score": 0.15959499999999993,
+            "tier": 2
+          },
+          "m3_direction_stability": {
+            "score": 0.2826379872782494,
+            "tier": 3
+          },
+          "m4_domain_validity": {
+            "score": 0.6799024825147962,
+            "tier": 5
+          },
+          "m6_curvature": {
+            "score": 0.41867540369763634,
+            "tier": 4
+          }
+        }
+      },
+      "control": {
+        "overall_tier": 3,
+        "overall_score": 0.25019902573428193,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.3104497760642255,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.08958825324180042,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.2509785312905913,
+            "tier": 3
+          },
+          "m4_domain_validity": {
+            "score": 0.35138097396188894,
+            "tier": 3
+          },
+          "m6_curvature": {
+            "score": 0.44771620681660096,
+            "tier": 4
+          }
+        }
+      },
+      "tier_gap": 0
+    }
+  }
+}

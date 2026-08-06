@@ -1,0 +1,332 @@
+\documentclass[9pt,lineno]{elife}
+
+\usepackage{amsfonts,amsmath}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\setcounter{secnumdepth}{3}
+\titleformat{\section}
+  {\color{eLifeMediumGrey}\Large\bfseries}
+  {\thesection}{0.5em}{#1}[]
+\titleformat{\subsection}
+  {\large\bfseries}
+  {\thesubsection}{0.5em}{#1}[]
+\renewcommand{\arraystretch}{1.3}
+
+\newcommand{\Gr}{\mathrm{Gr}}
+\newcommand{\R}{\mathbb{R}}
+
+\title{A Construct-Validity Protocol for Geometric Evaluation of Single-Cell Foundation Model Embeddings}
+
+\author[1]{Elliot Tower}
+\affil[1]{Independent Researcher}
+\corr{elliot@elliottower.ai}{ET}
+\contrib{Elliot Tower (\href{https://orcid.org/0000-0001-7004-8884}{0000-0001-7004-8884}): Conceptualization, Methodology, Software, Formal Analysis, Investigation, Data Curation, Writing -- Original Draft, Writing -- Review \& Editing, Visualization.}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We propose a three-check construct-validity protocol for geometric metrics used to evaluate foundation model embeddings: (1)~null-model discrimination---can the metric distinguish trained embeddings from random projections? (2)~cross-dimensionality robustness---does it rank consistently across embedding dimensions? (3)~sign-correctness---does it correlate with downstream transfer in the right direction? Recent benchmarks independently report that simple baselines match or exceed single-cell foundation models across most evaluation dimensions \citep{vcbench2026, unifiedscfm2026, cellxgeneintegration2026}. We take this convergent finding as motivation for a prior question: are the geometric metrics used to reach such conclusions trustworthy in the first place? We demonstrate the protocol on five geometric modules we built for evaluating embedding transportability---subspace alignment, domain separability, direction stability, participation ratio, and graph curvature---preregistered with SHA-256--frozen source code. Each module fails at least one check: subspace alignment is confounded by Johnson--Lindenstrauss preservation and anti-predicts transfer at fixed dimension ($\rho = -0.76$, permutation $p = 0.005$, $n = 12$); graph curvature is similarly JL-confounded; participation ratio floors at high embedding dimension (PR$/d < 0.01$ at $d = 1280$); domain separability anti-predicts kNN transfer ($\rho = -0.58$, permutation $p = 0.008$, $n = 20$); and direction stability survives all checks but has insufficient power to confirm a positive association ($\rho = +0.30$, 95\% CI $[-0.34, +0.80]$ at $n = 12$). At matched dimensionality ($d = 512$), a bag-of-genes PCA baseline matches or exceeds trained-model composite scores on both held-out tissues (kidney: point estimate negative; liver: 95\% CI includes zero). All transfer correlations rest on $n = 12$--$20$ conditions; the anti-predictive signs are confirmed by permutation test, while the sole positive sign remains underpowered. The same confound pattern appears independently in RNA embeddings and neural population geometry, suggesting the protocol addresses a general problem in geometric evaluation of high-dimensional biological data.
+\end{abstract}
+
+\noindent\textbf{Impact statement:} A three-check construct-validity protocol for geometric evaluation metrics, demonstrated on five single-cell modules and preregistered for the field-standard scIB suite, provides the validation layer that embedding benchmarks assume but have not tested.
+
+
+\section{Introduction}
+
+A growing field of single-cell foundation model benchmarking compares model embeddings to simple baselines on downstream tasks \citep{luecken2022scib, wu2025scfm, vcbench2026, unifiedscfm2026, cellxgeneintegration2026}. These benchmarks report a consistent and surprising finding: PCA on raw counts, or other zero/few-parameter baselines, match or exceed the performance of large pretrained models across most evaluation axes. VCBench \citep{vcbench2026} finds this across multiple capability dimensions; the unified 13-model framework \citep{unifiedscfm2026} finds it across 50+ datasets and training regimes; the CellxGene integration benchmark \citep{cellxgeneintegration2026} finds it for real-world integration tasks.
+
+These convergent results establish that the pattern is real, not an artifact of any one benchmark's design. The question we address is prior: \emph{are the geometric metrics used to evaluate these embeddings construct-valid}? The field's standard evaluation suite, scIB \citep{luecken2022scib}, provides $\sim$14 metrics spanning bio-conservation (ARI, NMI, silhouette, cLISI) and batch-correction (kBET, iLISI, graph connectivity); most benchmarks adopt these metrics directly or via the accelerated \texttt{scib-metrics} implementation \citep{scibmetrics2023}. If such metrics measure properties that trivial baselines reproduce---not because baselines are good, but because the metrics are insensitive---then the rankings they produce require validation before interpretation. We propose a protocol for performing that validation, applicable to any geometric metric used in embedding evaluation, including the scIB suite itself.
+
+The protocol consists of three checks. \emph{Null-model discrimination}: the metric must score trained models higher than random linear projections, with a bootstrap 95\% CI excluding zero. A metric that cannot distinguish learned from random structure measures something the data's raw geometry provides for free. \emph{Cross-dimensionality robustness}: the metric must rank embeddings consistently across dimensions $d \in \{50, 512, 1280\}$. A metric whose rankings depend on $d$ confounds architecture choice with embedding quality. \emph{Sign-correctness}: the metric's Spearman correlation with downstream transfer performance must be non-negative. A metric that anti-predicts the quantity it claims to measure penalizes good embeddings.
+
+We demonstrate the protocol by applying it to our own work. We built five geometric modules for evaluating embedding transportability---subspace alignment on the Grassmannian, domain separability, direction stability, participation ratio, and graph curvature---and preregistered a composite score with SHA-256--frozen scorer code before data access. We tested these modules on CellxGene Census embeddings spanning four tissues (lung, liver, kidney, brain; heart was excluded because Census returned zero Smart-seq2 target cells), five embedding methods, and three shift types. Each module fails at least one construct-validity check. Three implementation bugs (PCA data leakage, kNN distance-metric mismatch, silent exception handling) were identified and fixed during development; the corrected scorer was refrozen \emph{before} any confirmatory hypothesis was evaluated.
+
+By auditing our own tools first, we establish what the protocol catches and what passes. The underlying mechanism---the Johnson--Lindenstrauss lemma guarantees that random projections preserve the distances, covariance structure, and neighbor graphs on which most geometric metrics depend---explains why baselines keep winning across the field's benchmarks. The same confound appears independently in RNA foundation model evaluation (Grassmannian distance reproduced by 3-mer frequencies) and neural population geometry (19 metrics confounded by neuron count; \citealp{tower2026bracket}), suggesting the protocol addresses a general problem rather than a single-cell-specific one.
+
+
+\section{Results}
+
+We first show that the composite passes the easy test (separating obvious shift from obvious non-shift), then apply the three construct-validity checks to each module and show that every module fails at least one.
+
+\subsection{The composite detects distributional shift but not embedding quality}
+
+We computed the five-module composite on cross-assay pairs spanning four tissues and five embeddings (Geneformer, scVI, scGPT, UCE, bag-of-genes PCA-512), plus within-tissue negative controls (Table~\ref{tab:separation}). For trained foundation models (Geneformer, scVI, scGPT), all 12 cross-assay conditions (3 models $\times$ 4 tissues) score Tier~2--4 (mean composite $= 0.30$); all 4 within-tissue controls score Tier~6 (mean composite $= 0.76$). The tier gap is $\geq 2$ with zero overlap. The raw Spearman correlation between composite score and downstream probe degradation across the 10 conditions with available degradation data is $\rho = -0.76$ ($p = 0.011$).
+
+\begin{table}[t]
+\centering
+\caption{Representative cross-assay conditions. Trained models (Geneformer shown) score Tier~2--3; within-assay controls score Tier~6. Bag-of-genes PCA scores Tier~5--6 on the same shifted conditions, matching controls. Degradation is relative drop in cell-type probe F1 from source to target; ``--'' indicates unavailable.}
+\label{tab:separation}
+\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Pair & Embedding & $d$ & Tier & Composite & Degradation \\
+\midrule
+Lung (cross-assay) & Geneformer & 512 & 3 & 0.268 & 0.171 \\
+Liver (cross-assay) & Geneformer & 512 & 2 & 0.229 & 0.321 \\
+Kidney (cross-assay) & Geneformer & 512 & 2 & 0.198 & -- \\
+Brain (cross-assay) & Geneformer & 512 & 2 & 0.234 & 0.164 \\
+\midrule
+Lung (cross-assay) & BoG-PCA & 512 & 5 & 0.562 & -- \\
+Liver (cross-assay) & BoG-PCA & 512 & 5 & 0.687 & -- \\
+Kidney (cross-assay) & BoG-PCA & 512 & 5 & 0.691 & -- \\
+Brain (cross-assay) & BoG-PCA & 512 & 6 & 0.718 & -- \\
+\midrule
+Lung (ctrl) & Geneformer & 512 & 6 & 0.816 & $\approx 0$ \\
+Liver (ctrl) & Geneformer & 512 & 6 & 0.808 & $\approx 0$ \\
+Kidney (ctrl) & Geneformer & 512 & 6 & 0.691 & $\approx 0$ \\
+Brain (ctrl) & Geneformer & 512 & 6 & 0.718 & $\approx 0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This separation is necessary but insufficient---any metric that detects distributional shift (MMD, C2ST, a two-sample $t$-test) provides the same capability. The telling observation is already in Table~\ref{tab:separation}: bag-of-genes PCA, a zero-parameter baseline, scores Tier~5--6 on the same cross-assay conditions where Geneformer scores Tier~2--3. The composite detects that trained models have reorganized their embedding spaces under assay shift. It does not detect that this reorganization is a concomitant of encoding richer biology, not a deficiency. This is the gap the construct-validity protocol is designed to catch.
+
+\subsection{Check 1: Null-model discrimination}
+
+The first construct-validity check asks whether the metric can distinguish trained embeddings from random projections (Table~\ref{tab:v6b}). At $n = 2{,}000$ cells and $d = 512$, the Johnson--Lindenstrauss condition ($d \geq O(\log n / \varepsilon^2)$; here $\log(2000) / 0.1^2 \approx 760$, within the regime) guarantees that random linear maps preserve pairwise distances to $(1 \pm \varepsilon)$, and with them, any metric that depends on distances, covariance structure, or $k$-nearest-neighbor graphs.
+
+M1 (subspace alignment) and M6 (graph curvature) fail this check. Random projections achieve \emph{higher} M1 scores than trained models ($+1.5$ tier gap, wrong direction) because JL preservation guarantees that covariance eigenspaces are approximately invariant under random linear maps. M6 (Ollivier--Ricci curvature on $k$-NN graphs) similarly cannot distinguish random from trained: JL distance preservation implies neighbor preservation implies curvature preservation. M3 (direction stability) passes: trained models score $+1.5$ tiers above random because random directions are unstable (the Marchenko--Pastur spectrum makes eigenvectors arbitrary). M2 (domain separability) and M4 (participation ratio) pass this check.
+
+Against the structured null (bag-of-genes PCA at matched $d = 512$), the composite fails on both held-out tissues. On liver, the mean composite score of trained 512d models (Geneformer 0.323, scGPT 0.279) exceeds BoG (0.303) by a margin whose bootstrap 95\% CI includes zero ($[-0.024, 0.186]$). On kidney, the point estimate is \emph{negative}: BoG (0.322) exceeds both Geneformer (0.230) and scGPT (0.267). At matched dimensionality, the composite cannot distinguish trained foundation models from $\log(1+x)$ followed by PCA.
+
+\begin{table}[t]
+\centering
+\caption{Null-model discrimination on held-out tissues. The composite beats random projections (floor: CI excludes zero) but cannot distinguish trained 512d models from bag-of-genes PCA (primary: CI includes zero on liver; point estimate negative on kidney). scVI ($d = 50$) is excluded from the matched-dimensionality comparison.}
+\label{tab:v6b}
+\small
+\begin{tabular}{@{}llccc@{}}
+\toprule
+Model & Type & $d$ & Liver score & Kidney score \\
+\midrule
+Random projection & null & 512 & 0.050 & 0.076 \\
+Untrained encoder & null & 512 & 0.061 & 0.060 \\
+\midrule
+Bag-of-genes PCA & structured null & 512 & 0.303 & 0.322 \\
+\midrule
+Geneformer & trained & 512 & 0.323 & 0.230 \\
+scGPT & trained & 512 & 0.279 & 0.267 \\
+scVI & trained & 50 & 0.489 & 0.427 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+scVI ($d = 50$) is the only model that clearly exceeds BoG on both tissues (0.489 vs.\ 0.303 on liver; 0.427 vs.\ 0.322 on kidney). This apparent success cannot be cited as evidence that the composite works, because the same normalization artifacts diagnosed by Check~2 (\S\ref{sec:check2}) create favorable bias at low dimension. Comparing a 50-dimensional embedding against a 512-dimensional baseline reintroduces the dimensionality confound rather than controlling it.
+
+\subsection{Check 2: Cross-dimensionality robustness}
+\label{sec:check2}
+
+The second check asks whether the metric ranks embeddings consistently across dimensions. M4 (participation ratio) fails. M4 computes PR $= (\sum \lambda_i)^2 / \sum \lambda_i^2$ on the singular values of the embedding matrix, then normalizes by dividing by $d$. At high embedding dimension, even embeddings with substantial spectral structure produce raw PR values ($\sim 7$--$20$) that, divided by $d = 1280$, land below the 0.01 scoring threshold. UCE ($d = 1280$) floors on three of four tissues: liver (PR$/d = 0.0055$), kidney ($0.0062$), brain ($0.0085$). The same raw spectral structure scores normally at $d = 512$ (all PR$/d > 0.016$) and trivially at $d = 50$ (PR$/d > 0.14$). The module penalizes high-dimensional embeddings regardless of their actual spectral properties---a normalization artifact. The fix (normalizing by effective rank rather than $d$) is straightforward but requires fresh preregistration. The principle generalizes: any metric whose score depends on a hyperparameter of the embedding method (dimension, vocabulary size, number of layers) rather than a property of the embedding itself will produce confounded cross-architecture comparisons.
+
+\subsection{Check 3: Sign-correctness of transfer correlation}
+
+The third check asks whether the metric correlates with downstream performance in the correct direction. M1 and M2 fail (Table~\ref{tab:probes}).
+
+\paragraph{M1 (subspace alignment): anti-predicts transfer.} Within the 512-dimensional panel ($n = 12$ conditions: 3 models $\times$ 4 tissues), M1 anti-predicts transfer: $\rho = -0.76$ (permutation $p = 0.005$) against average probe F1. Models with better-aligned subspaces have \emph{worse} downstream performance at fixed dimension. M1 tracks the wrong thing: alignment is high when both embeddings are dominated by the same low-rank structure (as in BoG-PCA), regardless of whether that structure encodes biology.
+
+\paragraph{M2 (domain separability): anti-predicts transfer.} After fixing a silent-exception bug, the corrected M2 still anti-predicts kNN transfer F1: $\rho = -0.58$ (permutation $p = 0.008$, $n = 20$ conditions). Foundation models that encode rich biology necessarily encode batch effects; richer embeddings are simultaneously more separable and more useful. A metric that penalizes domain separability penalizes representation quality---a structural parallel to the accuracy-fairness tension in fair ML \citep{chouldechova2017impossibility}, where penalizing awareness of a correlated attribute degrades performance on the target task.
+
+\paragraph{M3 (direction stability): passes but power is insufficient.} M3's transfer correlation is $\rho = +0.30$ (95\% CI $[-0.34, +0.80]$, $n = 12$)---the correct sign but statistically indistinguishable from zero. At the same $n$, M1's anti-prediction ($\rho = -0.76$) reaches significance because its effect size is larger, not because the evidence is inherently stronger; both estimates carry wide confidence intervals. M3 is the sole module that passes all three checks, and it passes only by failing to fail: no identified confound kills it, but its predictive power remains undemonstrated. M3 has not been tested standalone against BoG; we flag this as a limitation rather than running the test post hoc, because the matched-dimensionality comparison requires fresh preregistration.
+
+\subsection{The construct-validity scorecard}
+
+Table~\ref{tab:scorecard} summarizes the protocol's results across all five modules.
+
+\begin{table}[t]
+\centering
+\caption{Construct-validity scorecard. Each module fails a different check. M3 passes all three but its predictive value is undetermined at current sample size ($n = 12$).}
+\label{tab:scorecard}
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Module & Check 1 (null discrim.) & Check 2 (cross-$d$) & Check 3 (sign) & Status \\
+\midrule
+M1 (alignment) & \textbf{fail} (JL confound) & pass & \textbf{fail} ($\rho = -0.76$) & Dead \\
+M6 (curvature) & \textbf{fail} (JL confound) & pass & -- & Dead \\
+M4 (participation ratio) & pass & \textbf{fail} (PR/$d$ artifact) & -- & Dead \\
+M2 (domain shift) & pass & pass & \textbf{fail} ($\rho = -0.58$) & Dead \\
+M3 (direction stability) & pass & pass & pass (underpowered) & Sole survivor \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The dissociation between transportability and quality}
+
+The sharpest empirical finding is a consistent dissociation between geometric transportability and downstream utility (Table~\ref{tab:dissociation}). Geneformer achieves the highest cell-type probe F1 in 3 of 4 tissues (0.63--0.65) but the worst transportability tiers (2--3). Bag-of-genes PCA achieves the best tiers (5--6) but the worst F1 (0.21--0.31). The dissociation holds across all tissues and all embeddings tested---it is a structural relationship between representation richness and geometric portability, not a property of one model.
+
+\begin{table}[t]
+\centering
+\caption{Transportability and representation quality are inversely related. Geneformer has the best F1 and worst tiers; BoG has the best tiers and worst F1. Transfer F1 is macro-averaged cell-type F1 trained on source, evaluated on target.}
+\label{tab:dissociation}
+\small
+\begin{tabular}{@{}lcccccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{Geneformer} & \multicolumn{2}{c}{scVI} & \multicolumn{2}{c}{scGPT} & \multicolumn{2}{c}{BoG-512} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+Tissue & Tier & F1 & Tier & F1 & Tier & F1 & Tier & F1 \\
+\midrule
+Lung   & 3 & \textbf{0.638} & 4 & 0.550 & 3 & 0.300 & 5 & 0.304 \\
+Liver  & 2 & \textbf{0.649} & 3 & 0.398 & 2 & 0.368 & 5 & 0.228 \\
+Kidney & 2 & \textbf{0.654} & 3 & 0.454 & 3 & 0.683 & 5 & 0.306 \\
+Brain  & 2 & 0.633 & 3 & \textbf{0.684} & 3 & 0.447 & 6 & 0.208 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This dissociation illustrates why the protocol matters. The composite measures geometric reorganization of the embedding space under assay shift---something real. Models that encode more biology also encode more assay-specific variance, producing larger subspace rotations, higher domain separability, and lower composite scores. Without the sign-correctness check, this inverse relationship is invisible: the metric appears to work (it separates shifted from control) while actually penalizing the embeddings that encode the most biology. The protocol catches this because Check~3 directly tests whether the metric rewards what users want to optimize.
+
+\subsection{Existing scalar metrics also lack predictive validity}
+
+Existing shift-detection metrics face the same gap (Table~\ref{tab:scalar}). C2ST achieves near-perfect separation between shifted and control pairs (shifted AUC $> 0.97$; control $\approx 0.50$) but provides no gradient among shifted conditions: all five Geneformer shifted pairs score within a 2.6 percentage-point range. RankMe effective rank difference varies 12-fold across shifted pairs ($3.4$--$42.6$) without monotonic correspondence to downstream degradation---brain cross-assay (RankMe~$= 36.2$) has the smallest degradation (0.164), while lung (RankMe~$= 3.4$) has comparable degradation (0.171). These metrics detect distributional difference---the easy test---without predicting downstream impact. The protocol's Check~3 would flag all of them.
+
+\begin{table}[t]
+\centering
+\caption{Scalar shift metrics on 9 Geneformer embedding pairs (5 shifted, 4 control). All detect shift but none monotonically tracks degradation. Check~3 (sign-correctness) would flag all of them.}
+\label{tab:scalar}
+\small
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+Pair & Type & Degrad. & Tier & RankMe $\Delta$ & MMD & C2ST \\
+\midrule
+Lung (assay)  & shifted & 0.171 & 3 & 3.4  & 0.175 & 0.979 \\
+Liver (assay) & shifted & 0.321 & 2 & 3.7  & 0.334 & 0.999 \\
+Brain (assay) & shifted & 0.164 & 2 & 36.2 & 0.526 & 0.982 \\
+Brain$\to$Lung  & shifted & 0.175 & 2 & 24.9 & 0.285 & 0.985 \\
+Liver$\to$Lung  & shifted & 0.196 & 2 & 42.6 & 0.277 & 0.973 \\
+\midrule
+Lung (ctrl)   & control & -- & 6 & 0.8 & 0.018 & 0.491 \\
+Liver (ctrl)  & control & -- & 6 & 1.5 & 0.026 & 0.497 \\
+Kidney (ctrl) & control & -- & 6 & 1.0 & 0.012 & 0.493 \\
+Brain (ctrl)  & control & -- & 6 & 0.3 & 0.019 & 0.502 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The field-standard scIB suite passes the easy test and fails the hard one}
+\label{sec:scib}
+
+We applied the construct-validity protocol to the full scIB metric suite \citep{luecken2022scib} under a separate preregistration (SHA-256--frozen scorer and hypothesis routing before data access). Ten metrics were testable: five bio-conservation (NMI, ARI, silhouette-label, cLISI, isolated-label ASW) and five batch-correction (silhouette-batch, iLISI, kBET, graph connectivity, PCR comparison). Six embeddings (Geneformer, scVI, scGPT, bag-of-genes PCA-512, random projection, untrained encoder) were evaluated across four tissues ($n = 2{,}000$ per side, seed distinct from the main study). Ground-truth transfer performance is macro-averaged cell-type kNN F1 from source to target.
+
+\paragraph{Check 1 (null-model discrimination).} Eight of nine testable metrics pass: trained embeddings score significantly higher than null models, with bootstrap 95\% CIs excluding zero. The largest effects are graph connectivity ($\Delta = 0.49$, CI $[0.45, 0.54]$) and NMI ($\Delta = 0.23$, CI $[0.14, 0.31]$). PCR comparison fails (CI $[-0.03, 0.46]$ includes zero; 16 of 24 conditions returned exactly 0.0). kBET returned null for all 24 conditions and was scored N/A---an applicability limit under cross-assay batch structure, not a metric flaw. This confirms that scIB metrics reliably distinguish trained from random. The question is whether that capability extends to ranking the trained models a practitioner chooses among.
+
+\paragraph{Pairwise ranking accuracy on contenders.} To test the harder question---\emph{which} trained model to deploy---we defined a ``contenders'' set: Geneformer, scVI, scGPT, and bag-of-genes PCA-512, the models a practitioner would compare (nulls excluded because ``is it trained?'' is not the deployment question). Within each tissue, we counted pairwise rank inversions against ground-truth F1 (6 pairs per tissue, 24 total). An inversion occurs when the metric ranks embedding A above B but F1 ranks B above A.
+
+Every bio metric inverts 46--58\% of contender comparisons, with tissue-clustered bootstrap 95\% CIs whose lower bounds reach or exceed 50\% (Table~\ref{tab:scib_inversions}). Cross-tissue stability is simultaneously high: Kendall's $W > 0.80$ for all bio metrics, meaning the inversions are consistent across tissues. The metrics produce a confident, reproducible ordering that does not track downstream performance.
+
+\begin{table}[t]
+\centering
+\caption{Pairwise inversion rate against ground-truth F1 on the contenders-4 condition set (6 pairs $\times$ 4 tissues $= 24$ comparisons), split by F1 gap. Clear winners ($|\Delta\text{F1}| > 0.10$): the metric's ranking call matters. Near-ties ($|\Delta\text{F1}| \leq 0.10$): the correct ranking is ambiguous. Tissue-clustered bootstrap 95\% CI on the overall rate. All results are exploratory.}
+\label{tab:scib_inversions}
+\small
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{Clear winners} & \multicolumn{2}{c}{Near-ties} & Overall \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Metric & inv / $n$ & rate & inv / $n$ & rate & rate [95\% CI] \\
+\midrule
+NMI       & 2/10 & 0.20 & 9/14  & 0.64 & 0.46 [0.33, 0.58] \\
+ARI       & 0/10 & 0.00 & 11/14 & 0.79 & 0.46 [0.33, 0.58] \\
+Sil-label & 2/10 & 0.20 & 11/14 & 0.79 & 0.54 [0.50, 0.63] \\
+cLISI     & 2/10 & 0.20 & 12/14 & 0.86 & 0.58 [0.42, 0.75] \\
+Iso-label & 2/10 & 0.20 & 12/14 & 0.86 & 0.58 [0.50, 0.67] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Three tiers of predictive accuracy.} The F1-gap split reveals a graded pattern (Table~\ref{tab:scib_inversions}). \emph{Pick-the-winner}: scIB metrics correctly identify the best-performing model (Geneformer) at 80--100\% accuracy on clear-gap comparisons ($|\Delta\text{F1}| > 0.10$). \emph{Rank-the-field}: among the remaining models (scVI, scGPT, BoG-PCA), all 14 near-tie comparisons hit 64--86\% inversion rates---worse than chance. \emph{Beat-the-baseline}: the two clear-gap inversions that exist are both kidney, where scVI and scGPT score higher than BoG-PCA on every bio metric while BoG-PCA achieves 0.15--0.20 higher transfer F1. The metrics confidently prefer trained models over a zero-parameter baseline that actually transfers better---an existence proof that the suite can be wrong on a clear gap, not merely unable to resolve ties.
+
+The mechanism is the same one identified for our own modules (\S\ref{sec:check2}): scIB bio metrics reward cluster compactness of known cell types, a property that trained-versus-random separates easily. Ranking two competent embeddings by transfer quality requires sensitivity to cross-assay alignment---a property the suite's integration-oriented design never optimized for. The suite answers the question it was designed for (``did batch correction work?'') and fails on the question practitioners ask (``which embedding transfers best?'').
+
+\paragraph{Suite redundancy.} Pairwise Spearman correlation across 24 conditions reveals that the 10-metric suite has approximately 3--4 independent signals. NMI and ARI are near-identical ($\rho = 0.91$); cLISI is rank-redundant with NMI ($\rho = 0.86$) despite having almost no dynamic range (all scores $> 0.90$, wrong-sign Check~3 correlation). The effective bio-conservation signal is carried by NMI-or-ARI plus silhouette-label; the effective batch signal is graph connectivity alone (iLISI near-zero everywhere, PCR comparison undefined on most conditions). Reporting a single ``scIB overall score'' as a weighted average of 10 metrics double-counts the NMI--ARI axis, dilutes signal with inoperative batch metrics, and collapses a genuine bio--batch tradeoff into a single scalar.
+
+\paragraph{Epistemic status.} Check~1 and the per-metric routing were preregistered. The inversion analysis, F1-gap split, redundancy analysis, and three-tier characterization are exploratory---computed after viewing Check~1 results. We tested a summary-statistic version of the dissociation hypothesis (Spearman correlation between Check~1 $\Delta$ and Check~3 $\rho$ across 5 bio metrics) and it did not hold ($\rho = +0.70$, $p = 0.19$, $n = 5$); the direct pairwise-inversion measurement reported above replaced it. Confirmatory noise-dose-response and hyperparameter-sensitivity tests are preregistered but not yet executed.
+
+
+\subsection{What the protocol catches and what it misses}
+
+The preceding analyses document which checks each metric fails. Three concrete cases illustrate how these failures would affect a practitioner's decision. All three use criteria defined before the data were examined: the composite tier thresholds (preregistered), Check~3 sign-correctness (preregistered), and the scIB inversion analysis (exploratory, but computed using the preregistered Check~3 criterion). No threshold or gate was adjusted to make any vignette land.
+
+\paragraph{Catch 1: scIB nominates the wrong embedding in kidney.} In kidney, every scIB bio metric (NMI, ARI, silhouette-label, cLISI, isolated-label ASW) ranks scVI and scGPT above bag-of-genes PCA-512. A practitioner consulting the scIB scorecard would select a trained model over the baseline. Ground-truth transfer F1 reverses this ranking: BoG-PCA achieves 0.15--0.20 higher cross-assay F1 than scVI or scGPT in kidney (Table~\ref{tab:dissociation}). These are clear-gap inversions ($|\Delta\text{F1}| > 0.10$), not near-ties. Check~3 catches this directly: a metric whose ranking contradicts transfer performance on a clear gap fails sign-correctness. The practitioner would have deployed the worse embedding.
+
+\paragraph{Catch 2: the composite flags Geneformer for cross-assay deployment.} Standard benchmarks nominate Geneformer: it achieves the highest cell-type probe F1 in 3 of 4 tissues (0.63--0.65) and the best scIB bio scores. A practitioner choosing an embedding for cross-assay transfer would select it. The composite assigns Tier~2--3 across all four tissues (Table~\ref{tab:dissociation}), flagging Geneformer's embedding space as geometrically reorganized under assay shift. The tier cutoff (Tier~$\leq 3$ = unacceptable for direct transfer) was defined before data access. The composite catches something the benchmarks miss: Geneformer encodes assay-specific variance alongside biology, producing subspace rotations and domain separability that degrade transfer despite strong within-distribution performance. Without the protocol, the deployment risk is invisible.
+
+\paragraph{Miss: the protocol does not catch the BoG-PCA degeneracy.} Bag-of-genes PCA-512 achieves Tier~5--6 on all four cross-assay conditions (Table~\ref{tab:separation}) despite the worst transfer F1 of any embedding tested (0.21--0.31; Table~\ref{tab:dissociation}). The composite scores it as safe because PCA distributes variance across components by construction: M4 (participation ratio) reports healthy spectral spread, M1 (subspace alignment) reports high similarity between source and target eigenspaces, and M2 (domain separability) is low because PCA does not encode assay identity. Every module that contributes to the tier reports favorable values. The degeneracy is structural---the directions that carry variance do not encode biologically meaningful distinctions---and no geometric module in the composite detects this. A practitioner trusting the tier alone would deploy an embedding that scores well on every geometric diagnostic while providing the worst downstream performance. This is the protocol's most dangerous blind spot, and it is not resolved by the current module set: detecting structural degeneracy requires probing whether geometric properties correspond to biological categories, which is the role of downstream evaluation, not geometric diagnostics alone.
+
+\subsection{Downstream probes are the only reliable predictor}
+
+Across all 20 model $\times$ tissue conditions (5 models $\times$ 4 tissues, including UCE at $d = 1280$), the only quantity that reliably predicts transfer performance is the downstream probe itself (Table~\ref{tab:probes}). No geometric composite---including variants with M4 removed, M6 removed, or different weight schemes---achieves a significant positive correlation with either probe metric.
+
+\begin{table}[t]
+\centering
+\caption{No geometric metric positively predicts transfer. Spearman correlations with $10{,}000$-resample bootstrap 95\% CIs ($n = 20$: 5 models $\times$ 4 tissues). The only significant correlations are \emph{anti}-predictive (M1, M2). ``ns'' = CI includes zero; ``sig'' = CI excludes zero, confirmed by permutation test.}
+\label{tab:probes}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Metric & vs logreg F1 & vs kNN F1 & vs avg F1 \\
+\midrule
+Composite (v6) & $-0.01$ ns & $-0.28$ ns & $-0.07$ ns \\
+M2+M3 (v6b) & $+0.12$ ns & $-0.15$ ns & $+0.08$ ns \\
+M3 alone & $+0.09$ ns & $-0.05$ ns & $+0.09$ ns \\
+M2 alone & $-0.24$ ns & $\mathbf{-0.58}$ sig & $-0.36$ ns \\
+M1 alone & $-0.45$ ns & $\mathbf{-0.48}$ sig & $\mathbf{-0.54}$ sig \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The result is robust to dimension control. Within the 512-dimensional panel ($n = 12$: 3 models $\times$ 4 tissues), M1 remains anti-predictive ($\rho = -0.76$, permutation $p = 0.005$). No module achieves a positive significant correlation at any dimensionality. All transfer correlations rest on $n = 12$--$20$ conditions; we state confidence intervals throughout and apply the power caveat symmetrically to both anti-predictive results (M1, M2) and the positive-but-non-significant result (M3).
+
+
+\section{Methods}
+
+\subsection{Data}
+
+All embeddings are accessed via the CellxGene Census API (v2023-12-15) \citep{abdulla2025cellxgene}. Cross-assay pairs compare 10x Chromium 3' v3 (source) against Smart-seq2 (target) within the same tissue, with zero donor overlap enforced by metadata filtering. Five tissues were initially planned; heart was excluded because Census returned zero Smart-seq2 target cells after metadata filtering, leaving four: lung (191K source, 42K target available), liver (191K source, 42K target), kidney (121K source, 4.3K target), and brain (available counts vary by model). All evaluations subsample $n = 2{,}000$ cells per side. Five embedding methods: Geneformer ($d = 512$) \citep{theodoris2023geneformer}, scGPT ($d = 512$) \citep{cui2024scgpt}, scVI ($d = 50$) \citep{lopez2018scvi}, UCE ($d = 1280$) \citep{rosen2026uce}, and bag-of-genes PCA-512 ($d = 512$; $\log(1 + x)$ without total-count normalization, PCA with fixed seed). Two null baselines: random Gaussian projection ($R \in \mathbb{R}^{512 \times G}$, $R_{ij} \sim \mathcal{N}(0, 1/\sqrt{512})$) and an untrained two-layer MLP encoder (random weights, $d = 512$).
+
+\subsection{Module definitions}
+
+\paragraph{M1 (subspace alignment).} Compute the top-$k$ eigenspaces of source and target embedding matrices ($k = 50$). The module score is one minus the normalized geodesic distance on $\Gr(k, d)$: $\text{M1} = 1 - d_{\Gr}(V_s, V_t) / d_{\max}$, where $d_{\Gr}$ is the sum of squared principal angles and $d_{\max} = k \cdot (\pi/2)^2$. Higher scores indicate more aligned subspaces.
+
+\paragraph{M2 (domain separability).} Train a logistic-regression classifier to distinguish source from target embedding vectors. The module score is $\text{M2} = 1 - \text{AUC}$, where AUC is the area under the ROC curve. Higher scores indicate less separable domains (more transportable).
+
+\paragraph{M3 (direction stability).} Draw two independent subsamples from source and two from target. Compute top-$k$ PCA directions on each ($k = 5$). The module score is the mean cosine similarity between matched directions across resamples. Higher scores indicate more stable geometry.
+
+\paragraph{M4 (participation ratio).} Compute PR $= (\sum_i \lambda_i)^2 / \sum_i \lambda_i^2$ on singular values, then normalize: $\text{M4} = \min(\text{PR}_s, \text{PR}_t) / d$.
+
+\paragraph{M6 (graph curvature).} Construct the $k$-NN graph ($k = 15$) on target embeddings. Compute mean Ollivier--Ricci curvature across edges via optimal transport. Sigmoid-transformed to $[0, 1]$.
+
+\paragraph{Composite.} Weighted mean with preregistered weights $w = (2, 2, 1, 1, 0, 0.5)$ for (M1, M2, M3, M4, M5, M6). M5 (ecological bias) is not evaluated. Mapped to discrete tier (1--7) via fixed thresholds.
+
+\subsection{Preregistration}
+
+Scorer source code, hyperparameters, dataset specifications, and hypothesis thresholds are frozen via SHA-256 hashing before data access. Three implementation bugs were identified during development: (1)~M4 participation-ratio edge case, (2)~M6 polarity inversion, (3)~M3 LDA label handling. All were fixed and the scorer refrozen (v7) \emph{before} any confirmatory experiment. No hypothesis was evaluated with the buggy code; no hypothesis was formulated after seeing results from the corrected code. The v6b test (M2+M3 on held-out tissues) was preregistered separately with explicit pass/kill criteria: both tissues must show real $>$ BoG with CI excluding zero. Both failed.
+
+\subsection{Statistical methods}
+
+All correlations are Spearman rank with both $10{,}000$-resample bootstrap 95\% CIs and $10{,}000$-permutation exact $p$-values. Both are valid at small $n$ without distributional assumptions. Partial Spearman correlations control for embedding dimension via rank residuals. The v6b tests use bootstrap resampling of score differences ($\delta = \text{mean}(\text{real}) - \text{mean}(\text{null})$). All transfer correlations rest on $n = 12$--$20$ conditions; we apply the power caveat symmetrically to anti-predictive (M1, M2) and positive-but-non-significant (M3) results.
+
+
+\section{Discussion}
+
+The construct-validity protocol catches real problems. Each of the five modules we built and preregistered fails at least one of the three checks, and each fails for a different reason: JL confounding (M1, M6), normalization artifact (M4), anti-prediction (M2), or insufficient power to confirm a positive association (M3). The protocol is not specific to our modules---it applies to any geometric metric used in embedding evaluation. The same protocol applied to the field-standard scIB suite (\S\ref{sec:scib}) reveals a graded failure: the suite reliably identifies the best model (80--100\% accuracy on clear-gap comparisons) but ranks the remaining field at or worse than chance (64--86\% inversion rate on near-ties), and produces at least two clear-gap inversions where trained models outscore a better-transferring baseline. A metric can be discriminative (trained $>$ null), stable (Kendall's $W > 0.80$ across tissues), and still wrong about which embedding to deploy---discriminative validity and predictive validity are orthogonal properties that the protocol tests separately. Any metric that depends on pairwise distances, covariance eigenspaces, or $k$-NN graphs is vulnerable to Check~1 when $d$ satisfies the JL condition; any metric that normalizes by embedding dimension is vulnerable to Check~2; and any metric must face Check~3 to establish that higher scores correspond to better embeddings rather than worse ones.
+
+The JL confound provides a principled explanation for why baselines keep winning across the field's benchmarks. At $d \geq O(\log n / \varepsilon^2)$, random linear maps preserve the data's distance structure, covariance eigenspaces, and neighborhood graphs to $(1 \pm \varepsilon)$ \citep{johnsonlindenstrauss1984}. Any metric that is a function of these quantities will score random projections comparably to trained models---not because the models have failed to learn, but because the metric is insensitive to what they learned. This is the mechanism that benchmark after benchmark discovers empirically (baselines match models) without identifying theoretically. The convergence across three independent domains---single-cell embeddings (this work), RNA embeddings (Grassmannian distance reproduced by 3-mer frequencies), and neural population recordings (19 geometric metrics confounded by neuron count; \citealp{tower2026bracket})---suggests that the JL confound is endemic to geometric evaluation in high-dimensional biology, not an artifact of any one domain or dataset.
+
+The protocol catches properties that distributional-shift detection misses. C2ST, MMD, and RankMe all detect that source and target distributions differ, and all fail to predict \emph{how much} that difference matters downstream. The composite provides module-level decomposition (subspace rotation vs.\ domain separability vs.\ dimensional collapse), which is a structural advantage over scalar metrics, but this decomposition is only useful if the modules themselves are construct-valid. Check~3 reveals that two of the five modules (M1, M2) are actively misleading---they penalize the embeddings a practitioner should prefer.
+
+The dissociation between transportability and representation quality (Table~\ref{tab:dissociation}) is the most practically consequential finding. Geneformer encodes the richest biology (highest probe F1) and scores worst on geometric transportability. This is expected: richer representations capture assay-specific variance alongside biological signal, producing larger subspace rotations and higher domain separability. A metric that penalizes geometric reorganization penalizes representation richness. The protocol's Check~3 catches this directly, while Checks~1 and~2 would not---underscoring that all three checks are needed. The three vignettes make the stakes concrete: in kidney, the scIB suite would direct a practitioner toward a worse-transferring model; on cross-assay deployment, Geneformer's benchmark dominance masks a geometric risk the composite detects; and on the BoG-PCA degeneracy, the protocol's own geometric modules give a clean bill of health to an embedding that transfers worst. The first two cases demonstrate what validation catches. The third demonstrates what it cannot: geometric diagnostics alone are insufficient to detect structural degeneracy, and downstream probes remain indispensable.
+
+We interpret M3's survival cautiously. Direction stability is the only property we tested that random projections do not reproduce: random directions are unstable because the Marchenko--Pastur distribution spreads variance diffusely. Whether M3's stability predicts downstream transfer remains undetermined ($\rho = +0.30$, CI $[-0.34, +0.80]$, $n = 12$). M3 has not been tested standalone against BoG; running this test under fresh preregistration would either identify a second surviving metric to pair with probes or cleanly close the loop. A larger model panel ($n \gg 12$ at fixed $d$) would resolve the power question.
+
+The principal limitations are scope and power. All experiments use CellxGene Census (v2023-12-15) and four tissues. Five embedding methods span three architectural families (transformer, VAE, PCA), but expanding to additional models (scFoundation, Nicheformer) would increase architectural diversity and directly power the M3 question. The scIB audit's inversion analysis is exploratory (computed after viewing Check~1 results) and rests on 24 contender comparisons across 4 tissues; the clear-winner cell ($n = 10$ pairs) is dominated by Geneformer-versus-field contrasts. Brain tissue has no clear F1 winners among contenders (all pairwise $|\Delta\text{F1}| < 0.10$), making its near-tie inversions expected rather than damning. Confirmatory noise-dose-response and hyperparameter-sensitivity tests are preregistered but not yet executed; these would test whether the metrics' ranking instability survives perturbation. The protocol itself is a starting point---additional checks (monotonicity under known degradation, invariance under augmentation, calibration against expert ratings) could strengthen it. We release the protocol alongside our failing modules: the checklist is the contribution; the module failures are the evidence that it has teeth.
+
+\paragraph{Data availability.} Scorer source code, preregistration records (SHA-256 hashes), experiment scripts, and raw result JSON files are available at \url{https://github.com/elliottower/preflight-bio}. All embedding data are accessed via the CellxGene Census API.
+
+\paragraph{Competing interests.} The author declares no competing interests.
+
+\paragraph{Funding.} No external funding was received for this work.
+
+\bibliography{paper_d}
+
+\end{document}

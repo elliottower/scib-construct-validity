@@ -1,0 +1,136 @@
+{
+  "tissue": "aorta",
+  "tissue_index": 5,
+  "k": 8,
+  "n_src": 2000,
+  "n_tgt": 583,
+  "ceiling": {
+    "ceiling_score": 0.18765894980964704,
+    "n_types": 7,
+    "per_type_jaccard": {
+      "T cell": 0.19047619047619047,
+      "endothelial cell": 0.2345679012345679,
+      "fibroblast": 0.0,
+      "macrophage": 0.3157894736842105,
+      "mast cell": 0.19047619047619047,
+      "mature NK T cell": 0.16279069767441862,
+      "plasma cell": 0.21951219512195122
+    }
+  },
+  "metrics_geneformer": {
+    "rcs_baseline": 0.7848932676518883,
+    "rcs_pca10": 0.7093596059113301,
+    "rcs_trimmed": 0.7876299945265463,
+    "rcs_normalized": 0.7224371373307543,
+    "rcs_combined": 0.6630109180376353,
+    "pad": -2.0,
+    "scc_logreg": 0.9521205927622312,
+    "scc_knn": 0.9355060034305317,
+    "scc_rf": 0.5706689536878216,
+    "scc_svm": 0.8261075286505606,
+    "mmd": -0.19677241952528757,
+    "ccal": -0.2877105047036504,
+    "f1": 0.8434009990635931
+  },
+  "mgr_geneformer": {
+    "mgr_score": 0.13934023571505963,
+    "n_matched_types": 7,
+    "n_clusters": 9,
+    "per_type_jaccard": {
+      "T cell": 0.0,
+      "endothelial cell": 0.21951219512195122,
+      "fibroblast": 0.0,
+      "macrophage": 0.28205128205128205,
+      "mast cell": 0.19047619047619047,
+      "mature NK T cell": 0.06382978723404255,
+      "plasma cell": 0.21951219512195122
+    }
+  },
+  "metrics_scvi": {
+    "rcs_baseline": 0.6579091406677614,
+    "rcs_pca10": 0.8155446086480569,
+    "rcs_trimmed": 0.6579091406677614,
+    "rcs_normalized": 0.7172795670800762,
+    "rcs_combined": 0.7482865158497547,
+    "pad": -1.6827852998065764,
+    "scc_logreg": 0.9677797431058354,
+    "scc_knn": 0.7934819897084049,
+    "scc_rf": 0.6478044596912521,
+    "scc_svm": 0.9548766508670947,
+    "mmd": -0.19341078865909866,
+    "ccal": -0.4806548492852924,
+    "f1": 0.7622327543426006
+  },
+  "mgr_scvi": {
+    "mgr_score": 0.14917016475791461,
+    "n_matched_types": 7,
+    "n_clusters": 11,
+    "per_type_jaccard": {
+      "T cell": 0.0,
+      "endothelial cell": 0.21951219512195122,
+      "fibroblast": 0.0,
+      "macrophage": 0.3157894736842105,
+      "mast cell": 0.19047619047619047,
+      "mature NK T cell": 0.0989010989010989,
+      "plasma cell": 0.21951219512195122
+    }
+  },
+  "metrics_scgpt": {
+    "rcs_baseline": 0.4126984126984127,
+    "rcs_pca10": 0.7580733442802408,
+    "rcs_trimmed": 0.37931034482758613,
+    "rcs_normalized": 0.364760400052288,
+    "rcs_combined": 0.7653208653162333,
+    "pad": -1.9922630560928432,
+    "scc_logreg": 0.5970902047637923,
+    "scc_knn": 0.7292166952544311,
+    "scc_rf": 0.5032246998284734,
+    "scc_svm": 0.7529730464592754,
+    "mmd": -0.3685603088437419,
+    "ccal": -1.9705011281093705,
+    "f1": 0.3294619785898856
+  },
+  "mgr_scgpt": {
+    "mgr_score": 0.11174135129593395,
+    "n_matched_types": 7,
+    "n_clusters": 11,
+    "per_type_jaccard": {
+      "T cell": 0.0,
+      "endothelial cell": 0.26582278481012656,
+      "fibroblast": 0.0,
+      "macrophage": 0.3157894736842105,
+      "mast cell": 0.19047619047619047,
+      "mature NK T cell": 0.010101010101010102,
+      "plasma cell": 0.0
+    }
+  },
+  "metrics_uce": {
+    "rcs_baseline": 0.756431308155446,
+    "rcs_pca10": 0.8368910782703886,
+    "rcs_trimmed": 0.7575259989053093,
+    "rcs_normalized": 0.7767339043934789,
+    "rcs_combined": 0.772688041581187,
+    "pad": -2.0,
+    "scc_logreg": 0.8886222649178394,
+    "scc_knn": 0.9815894797026872,
+    "scc_rf": 0.6259176672384219,
+    "scc_svm": 0.9497777740263176,
+    "mmd": -0.2407653065651515,
+    "ccal": -0.7591319529905457,
+    "f1": 0.8716216216216216
+  },
+  "mgr_uce": {
+    "mgr_score": 0.13702187896632315,
+    "n_matched_types": 7,
+    "n_clusters": 10,
+    "per_type_jaccard": {
+      "T cell": 0.0,
+      "endothelial cell": 0.21951219512195122,
+      "fibroblast": 0.0,
+      "macrophage": 0.26582278481012656,
+      "mast cell": 0.19047619047619047,
+      "mature NK T cell": 0.06382978723404255,
+      "plasma cell": 0.21951219512195122
+    }
+  }
+}

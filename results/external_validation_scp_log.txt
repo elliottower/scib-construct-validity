@@ -1,0 +1,366 @@
+=== STDOUT ===
+20:03:04 External validation experiment
+  Prereg SHA: 46aff40fdd13bbe40f102505857866c2099f7167e977419bf9ffa2819d0d461a
+  Datasets: ['pbmc']
+  Models: ['pca_full_50', 'pca_hvg_50', 'pca_full_200', 'pca_hvg_200', 'random_projection', 'untrained_encoder']
+  Metrics: ['cell_type_cka', 'procrustes_sim', 'silhouette_src', 'silhouette_tgt', 'mmd', 'domain_auc']
+20:03:04 Downloading PBMC Ding et al. from GEO GSE132044...
+20:03:05 Downloading from GEO GSE132044...
+20:03:05 Downloading PBMC counts from https://ftp.ncbi.nlm.nih.gov/geo/series/GSE132nnn/GSE132044/suppl/GSE132044_pbmc_hg38_count_matrix.mtx.gz...
+20:04:03 Downloaded PBMC counts: 127.5 MB
+20:04:03 Building AnnData from GEO files...
+  Count matrix: (44615, 33694)
+  Barcodes: 44615
+  Genes: 33694
+  Gene name examples (after symbol extraction): ['TSPAN6', 'TNMD', 'DPM1', 'SCYL3', 'C1orf112']
+  Methods: ['10x-Chromium-v2', '10x-Chromium-v3', 'CEL-Seq2', 'Drop-seq', 'Seq-Well', 'Smart-seq2', 'inDrops']
+    10x-Chromium-v2: 11591 cells
+    10x-Chromium-v3: 4033 cells
+    CEL-Seq2: 564 cells
+    Drop-seq: 11095 cells
+    Seq-Well: 6038 cells
+    Smart-seq2: 584 cells
+    inDrops: 10710 cells
+20:04:06 Annotating cell types from SCP424 author metadata...
+  Mapped 25963/44615 cells to SCP424 annotations
+  After filtering: 25963 cells
+  Cell type distribution:
+    B cell: 4127 cells
+    CD14+ monocyte: 4278 cells
+    CD16+ monocyte: 650 cells
+    CD4+ T cell: 6219 cells
+    Cytotoxic T cell: 8143 cells
+    Dendritic cell: 285 cells
+    Megakaryocyte: 761 cells
+    Natural killer cell: 1367 cells
+    Plasmacytoid dendritic cell: 133 cells
+20:04:09 Saved PBMC AnnData: 25963 cells x 33694 genes
+
+20:04:09 PBMC: 25963 cells, 33694 genes
+  Tech col: method, CT col: cell_type
+  Techs: ['10x-Chromium-v2', '10x-Chromium-v3', 'CEL-Seq2', 'Drop-seq', 'Seq-Well', 'inDrops']
+  Cell types: ['B cell', 'CD14+ monocyte', 'CD16+ monocyte', 'CD4+ T cell', 'Cytotoxic T cell', 'Dendritic cell', 'Megakaryocyte', 'Natural killer cell', 'Plasmacytoid dendritic cell']
+
+20:04:09 === pbmc ===
+  Technologies: ['10x-Chromium-v2', '10x-Chromium-v3', 'CEL-Seq2', 'Drop-seq', 'Seq-Well', 'inDrops']
+  Cell types: ['B cell', 'CD14+ monocyte', 'CD16+ monocyte', 'CD4+ T cell', 'Cytotoxic T cell', 'Dendritic cell', 'Megakaryocyte', 'Natural killer cell', 'Plasmacytoid dendritic cell']
+  Qualifying tech pairs (both dirs): 28
+
+20:04:09 10x-Chromium-v2->10x-Chromium-v3
+  src=2000 cells, tgt=2000 cells, shared types=8
+  pca_full_50 (d=50): F1=0.905, CKA=0.9874204231890606, Proc=0.9856477319124992
+  pca_hvg_50 (d=50): F1=0.838, CKA=0.9843063056536923, Proc=0.9845774599067528
+  pca_full_200 (d=200): F1=0.835, CKA=0.9875472822059319, Proc=0.9859673029769485
+  pca_hvg_200 (d=200): F1=0.789, CKA=0.9850910998951556, Proc=0.9855250041936219
+  random_projection (d=200): F1=0.843, CKA=0.9818744153595044, Proc=0.9829007658399681
+  untrained_encoder (d=200): F1=0.828, CKA=0.9708594236414009, Proc=0.9732228177686946
+
+20:04:52 10x-Chromium-v3->10x-Chromium-v2
+  src=2000 cells, tgt=2000 cells, shared types=8
+  pca_full_50 (d=50): F1=0.704, CKA=0.992096380310569, Proc=0.9911792534901404
+  pca_hvg_50 (d=50): F1=0.737, CKA=0.9898156434418076, Proc=0.9900727946154045
+  pca_full_200 (d=200): F1=0.544, CKA=0.9922277290416972, Proc=0.9914086111150405
+  pca_hvg_200 (d=200): F1=0.643, CKA=0.9905006117059094, Proc=0.9907724033890631
+  random_projection (d=200): F1=0.710, CKA=0.9855825011189305, Proc=0.9877499814259538
+  untrained_encoder (d=200): F1=0.673, CKA=0.9810622095857738, Proc=0.9835309674167011
+
+20:05:36 10x-Chromium-v2->CEL-Seq2
+  src=2000 cells, tgt=524 cells, shared types=7
+  pca_full_50 (d=50): F1=0.738, CKA=0.9455866173346866, Proc=0.9543754641277209
+  pca_hvg_50 (d=50): F1=0.764, CKA=0.9614527261503204, Proc=0.9639083265071914
+  pca_full_200 (d=200): F1=0.664, CKA=0.9525521464591739, Proc=0.9604835042423849
+  pca_hvg_200 (d=200): F1=0.716, CKA=0.9688915822633246, Proc=0.9719413444491106
+  random_projection (d=200): F1=0.623, CKA=0.935962454370003, Proc=0.9533145380875564
+  untrained_encoder (d=200): F1=0.557, CKA=0.9225369417116933, Proc=0.9428771631346343
+
+20:06:04 CEL-Seq2->10x-Chromium-v2
+  src=524 cells, tgt=2000 cells, shared types=7
+  pca_full_50 (d=50): F1=0.480, CKA=0.9465594369229157, Proc=0.9550237204690973
+  pca_hvg_50 (d=50): F1=0.637, CKA=0.9614530080597654, Proc=0.9639083265071913
+  pca_full_200 (d=200): F1=0.292, CKA=0.9522260238636974, Proc=0.9601789422308895
+  pca_hvg_200 (d=200): F1=0.441, CKA=0.9688922544923426, Proc=0.9719413444491106
+  random_projection (d=200): F1=0.631, CKA=0.935962454370003, Proc=0.9533145380875565
+  untrained_encoder (d=200): F1=0.615, CKA=0.9225369417116933, Proc=0.9428771631346344
+
+20:06:32 10x-Chromium-v2->Drop-seq
+  src=2000 cells, tgt=2000 cells, shared types=9
+  pca_full_50 (d=50): F1=0.643, CKA=0.966369514274688, Proc=0.9567998747780485
+  pca_hvg_50 (d=50): F1=0.631, CKA=0.907922033680834, Proc=0.9175823892135311
+  pca_full_200 (d=200): F1=0.507, CKA=0.9705267355331443, Proc=0.9626434367430596
+  pca_hvg_200 (d=200): F1=0.526, CKA=0.9045439352689731, Proc=0.9203238621238616
+  random_projection (d=200): F1=0.598, CKA=0.9587399213045048, Proc=0.9518530066471939
+  untrained_encoder (d=200): F1=0.406, CKA=0.9626946649737657, Proc=0.9504825790104432
+
+20:07:14 Drop-seq->10x-Chromium-v2
+  src=2000 cells, tgt=2000 cells, shared types=9
+  pca_full_50 (d=50): F1=0.704, CKA=0.9718530885652165, Proc=0.9595453670831606
+  pca_hvg_50 (d=50): F1=0.668, CKA=0.9101735110323133, Proc=0.9229942276103229
+  pca_full_200 (d=200): F1=0.651, CKA=0.974937945370575, Proc=0.9629348867011079
+  pca_hvg_200 (d=200): F1=0.658, CKA=0.8989374562102503, Proc=0.9174939741258613
+  random_projection (d=200): F1=0.522, CKA=0.9707480356665978, Proc=0.9624685927465071
+  untrained_encoder (d=200): F1=0.445, CKA=0.9535243770657396, Proc=0.9506933476156392
+
+20:07:56 10x-Chromium-v2->Seq-Well
+  src=2000 cells, tgt=2000 cells, shared types=7
+  pca_full_50 (d=50): F1=0.572, CKA=0.9636332171181967, Proc=0.9560701482527437
+  pca_hvg_50 (d=50): F1=0.564, CKA=0.9760551453068451, Proc=0.9643437292576424
+  pca_full_200 (d=200): F1=0.460, CKA=0.9688173661540024, Proc=0.9615038793777535
+  pca_hvg_200 (d=200): F1=0.516, CKA=0.9736171083495415, Proc=0.958610640637008
+  random_projection (d=200): F1=0.542, CKA=0.9713888377639216, Proc=0.9660847997603188
+  untrained_encoder (d=200): F1=0.463, CKA=0.9703865093675359, Proc=0.9582859024891524
+
+20:08:38 Seq-Well->10x-Chromium-v2
+  src=2000 cells, tgt=2000 cells, shared types=7
+  pca_full_50 (d=50): F1=0.867, CKA=0.9467008585505763, Proc=0.9348844648421915
+  pca_hvg_50 (d=50): F1=0.620, CKA=0.9812580835136004, Proc=0.9589431743896198
+  pca_full_200 (d=200): F1=0.820, CKA=0.9491956134893548, Proc=0.9379171729788718
+  pca_hvg_200 (d=200): F1=0.613, CKA=0.9755753506253492, Proc=0.9511568379821775
+  random_projection (d=200): F1=0.663, CKA=0.9617104351422514, Proc=0.9537787416022327
+  untrained_encoder (d=200): F1=0.648, CKA=0.9424677153787816, Proc=0.9271474463461272
+
+20:09:20 10x-Chromium-v2->inDrops
+  src=2000 cells, tgt=2000 cells, shared types=7
+  pca_full_50 (d=50): F1=0.525, CKA=0.983742652172118, Proc=0.9816804655764619
+  pca_hvg_50 (d=50): F1=0.558, CKA=0.985875839363655, Proc=0.9812778855756593
+  pca_full_200 (d=200): F1=0.415, CKA=0.9792948019708022, Proc=0.9732461983478203
+  pca_hvg_200 (d=200): F1=0.417, CKA=0.9850215000666189, Proc=0.9751078093467948
+  random_projection (d=200): F1=0.519, CKA=0.9315883244664117, Proc=0.9411668816985225
+  untrained_encoder (d=200): F1=0.454, CKA=0.9758821102010671, Proc=0.9741085885127565
+
+20:10:02 inDrops->10x-Chromium-v2
+  src=2000 cells, tgt=2000 cells, shared types=7
+  pca_full_50 (d=50): F1=0.667, CKA=0.9830785498784423, Proc=0.9778411041323172
+  pca_hvg_50 (d=50): F1=0.673, CKA=0.9856369509545523, Proc=0.9822486708874966
+  pca_full_200 (d=200): F1=0.681, CKA=0.9723101061977432, Proc=0.9612834559818896
+  pca_hvg_200 (d=200): F1=0.627, CKA=0.984487443107009, Proc=0.9772055148232981
+  random_projection (d=200): F1=0.623, CKA=0.9190543410261813, Proc=0.9328900270451622
+  untrained_encoder (d=200): F1=0.574, CKA=0.945389103486875, Proc=0.9477334149722951
+
+20:10:44 10x-Chromium-v3->CEL-Seq2
+  src=2000 cells, tgt=524 cells, shared types=7
+  pca_full_50 (d=50): F1=0.437, CKA=0.9646312573048832, Proc=0.9652296372284294
+  pca_hvg_50 (d=50): F1=0.189, CKA=0.973366502988863, Proc=0.9726904469761075
+  pca_full_200 (d=200): F1=0.311, CKA=0.9666403252762769, Proc=0.9673908071059362
+  pca_hvg_200 (d=200): F1=0.171, CKA=0.9755692224687315, Proc=0.9752413938641761
+  random_projection (d=200): F1=0.617, CKA=0.9585511619363813, Proc=0.9618022255499269
+  untrained_encoder (d=200): F1=0.514, CKA=0.9611202449331993, Proc=0.9622690229330034
+
+20:11:12 CEL-Seq2->10x-Chromium-v3
+  src=524 cells, tgt=2000 cells, shared types=7
+  pca_full_50 (d=50): F1=0.714, CKA=0.9646487527370095, Proc=0.965654887056327
+  pca_hvg_50 (d=50): F1=0.674, CKA=0.9733666655724751, Proc=0.9726904469761075
+  pca_full_200 (d=200): F1=0.668, CKA=0.9670601722359433, Proc=0.9678224543151557
+  pca_hvg_200 (d=200): F1=0.454, CKA=0.9755689078727989, Proc=0.9752413938641761
+  random_projection (d=200): F1=0.635, CKA=0.9585509973185061, Proc=0.9618022255499268
+  untrained_encoder (d=200): F1=0.683, CKA=0.9611202449331993, Proc=0.9622690229330034
+
+20:11:40 10x-Chromium-v3->Drop-seq
+  src=2000 cells, tgt=2000 cells, shared types=8
+  pca_full_50 (d=50): F1=0.479, CKA=0.970382179184498, Proc=0.9659715022074359
+  pca_hvg_50 (d=50): F1=0.592, CKA=0.9280127819478234, Proc=0.9195980744242643
+  pca_full_200 (d=200): F1=0.290, CKA=0.9742129212947839, Proc=0.9687823153029523
+  pca_hvg_200 (d=200): F1=0.402, CKA=0.9237124636648254, Proc=0.9184298602581461
+  random_projection (d=200): F1=0.477, CKA=0.9708138229521714, Proc=0.9678321685190652
+  untrained_encoder (d=200): F1=0.372, CKA=0.960600502781166, Proc=0.9547662126915161
+
+20:12:21 Drop-seq->10x-Chromium-v3
+  src=2000 cells, tgt=2000 cells, shared types=8
+  pca_full_50 (d=50): F1=0.846, CKA=0.9718170240903974, Proc=0.9677549614045368
+  pca_hvg_50 (d=50): F1=0.699, CKA=0.9433319281223783, Proc=0.9296890095458067
+  pca_full_200 (d=200): F1=0.713, CKA=0.9763517400619087, Proc=0.971023359626455
+  pca_hvg_200 (d=200): F1=0.636, CKA=0.9390833887703277, Proc=0.927483411959232
+  random_projection (d=200): F1=0.598, CKA=0.9748764730161468, Proc=0.9748014672635599
+  untrained_encoder (d=200): F1=0.538, CKA=0.9579742325847536, Proc=0.9552911667643745
+
+20:13:03 10x-Chromium-v3->Seq-Well
+  src=2000 cells, tgt=2000 cells, shared types=6
+  pca_full_50 (d=50): F1=0.384, CKA=0.953046305058821, Proc=0.944510520994658
+  pca_hvg_50 (d=50): F1=0.430, CKA=0.9817709052959793, Proc=0.9662945276569976
+  pca_full_200 (d=200): F1=0.217, CKA=0.9577858198777892, Proc=0.9489520425280231
+  pca_hvg_200 (d=200): F1=0.332, CKA=0.9811673660087945, Proc=0.9661838833628076
+  random_projection (d=200): F1=0.431, CKA=0.9569613994164372, Proc=0.9533875419972381
+  untrained_encoder (d=200): F1=0.395, CKA=0.9545320747946087, Proc=0.945018697745814
+
+20:13:45 Seq-Well->10x-Chromium-v3
+  src=2000 cells, tgt=2000 cells, shared types=6
+  pca_full_50 (d=50): F1=0.762, CKA=0.9443596265996358, Proc=0.9345280347344741
+  pca_hvg_50 (d=50): F1=0.789, CKA=0.9767783869163256, Proc=0.955123834319286
+  pca_full_200 (d=200): F1=0.622, CKA=0.9516554727681131, Proc=0.9421252017697423
+  pca_hvg_200 (d=200): F1=0.686, CKA=0.9764629540117317, Proc=0.955851548591479
+  random_projection (d=200): F1=0.749, CKA=0.9659567848112676, Proc=0.9591879376990667
+  untrained_encoder (d=200): F1=0.737, CKA=0.9632040925653909, Proc=0.9608103408630176
+
+20:14:27 10x-Chromium-v3->inDrops
+  src=2000 cells, tgt=2000 cells, shared types=6
+  pca_full_50 (d=50): F1=0.466, CKA=0.9756276051182489, Proc=0.9850944872206332
+  pca_hvg_50 (d=50): F1=0.509, CKA=0.9985346840458537, Proc=0.9966666232382287
+  pca_full_200 (d=200): F1=0.242, CKA=0.9761610764888126, Proc=0.9855571443335444
+  pca_hvg_200 (d=200): F1=0.401, CKA=0.9984666489066584, Proc=0.9967560388540362
+  random_projection (d=200): F1=0.535, CKA=0.9662395699688038, Proc=0.9801582635041117
+  untrained_encoder (d=200): F1=0.426, CKA=0.9694028196752283, Proc=0.9808269774172306
+
+20:15:09 inDrops->10x-Chromium-v3
+  src=2000 cells, tgt=2000 cells, shared types=6
+  pca_full_50 (d=50): F1=0.949, CKA=0.9741162678210726, Proc=0.9835614588150757
+  pca_hvg_50 (d=50): F1=0.813, CKA=0.9984094656499953, Proc=0.9972269377399127
+  pca_full_200 (d=200): F1=0.886, CKA=0.9746174493364524, Proc=0.9840194300600026
+  pca_hvg_200 (d=200): F1=0.798, CKA=0.9983769531143116, Proc=0.9974092583317344
+  random_projection (d=200): F1=0.895, CKA=0.9674790102575004, Proc=0.9810608658127301
+  untrained_encoder (d=200): F1=0.819, CKA=0.9672935291550486, Proc=0.9795394620391235
+
+20:15:52 CEL-Seq2->Drop-seq
+  src=524 cells, tgt=2000 cells, shared types=7
+  pca_full_50 (d=50): F1=0.513, CKA=0.9454253830106271, Proc=0.9571867742789896
+  pca_hvg_50 (d=50): F1=0.533, CKA=0.8871694298418971, Proc=0.9311851917662307
+  pca_full_200 (d=200): F1=0.315, CKA=0.9407366917262017, Proc=0.9546497469056399
+  pca_hvg_200 (d=200): F1=0.299, CKA=0.8938889851901248, Proc=0.9332984711139736
+  random_projection (d=200): F1=0.619, CKA=0.9171361261639157, Proc=0.9395545153924136
+  untrained_encoder (d=200): F1=0.484, CKA=0.9042183908773785, Proc=0.9270261661462681
+
+20:16:20 Drop-seq->CEL-Seq2
+  src=2000 cells, tgt=524 cells, shared types=7
+  pca_full_50 (d=50): F1=0.575, CKA=0.9465499371505024, Proc=0.9576960039573165
+  pca_hvg_50 (d=50): F1=0.568, CKA=0.8871692555357177, Proc=0.9311851917662308
+  pca_full_200 (d=200): F1=0.516, CKA=0.9412500948494887, Proc=0.954980399634564
+  pca_hvg_200 (d=200): F1=0.580, CKA=0.8938893185327134, Proc=0.9332984711139735
+  random_projection (d=200): F1=0.475, CKA=0.9171361261639157, Proc=0.9395545153924135
+  untrained_encoder (d=200): F1=0.516, CKA=0.9042183908773785, Proc=0.9270261661462683
+
+20:16:48 CEL-Seq2->inDrops
+  src=524 cells, tgt=2000 cells, shared types=6
+  pca_full_50 (d=50): F1=0.513, CKA=0.9588714247037844, Proc=0.9652877372115584
+  pca_hvg_50 (d=50): F1=0.519, CKA=0.9490060806503133, Proc=0.9435386913932489
+  pca_full_200 (d=200): F1=0.300, CKA=0.9616977737233846, Proc=0.9684733419320005
+  pca_hvg_200 (d=200): F1=0.359, CKA=0.9498265174365991, Proc=0.9452939766954571
+  random_projection (d=200): F1=0.528, CKA=0.9601424498489333, Proc=0.9638668322002605
+  untrained_encoder (d=200): F1=0.367, CKA=0.9141826411851113, Proc=0.938073587127098
+
+20:17:18 inDrops->CEL-Seq2
+  src=2000 cells, tgt=524 cells, shared types=6
+  pca_full_50 (d=50): F1=0.829, CKA=0.9588284768830334, Proc=0.9654194998922373
+  pca_hvg_50 (d=50): F1=0.732, CKA=0.9490061969930758, Proc=0.9435386913932488
+  pca_full_200 (d=200): F1=0.684, CKA=0.9618134323554266, Proc=0.968532370993291
+  pca_hvg_200 (d=200): F1=0.757, CKA=0.9498273218952783, Proc=0.9452939766954571
+  random_projection (d=200): F1=0.503, CKA=0.9601426165310055, Proc=0.9638668322002605
+  untrained_encoder (d=200): F1=0.620, CKA=0.9141826411851113, Proc=0.938073587127098
+
+20:17:50 Drop-seq->Seq-Well
+  src=2000 cells, tgt=2000 cells, shared types=7
+  pca_full_50 (d=50): F1=0.665, CKA=0.9726048952244234, Proc=0.970506842822587
+  pca_hvg_50 (d=50): F1=0.488, CKA=0.9810346397292294, Proc=0.9623897224335609
+  pca_full_200 (d=200): F1=0.590, CKA=0.9727447316679778, Proc=0.9738614978552459
+  pca_hvg_200 (d=200): F1=0.452, CKA=0.9776186187380183, Proc=0.9607293298419832
+  random_projection (d=200): F1=0.407, CKA=0.9659875006923693, Proc=0.9697629015898084
+  untrained_encoder (d=200): F1=0.500, CKA=0.9647481048513686, Proc=0.9684222767457769
+
+20:18:33 Seq-Well->Drop-seq
+  src=2000 cells, tgt=2000 cells, shared types=7
+  pca_full_50 (d=50): F1=0.587, CKA=0.958960881014556, Proc=0.9614249968326939
+  pca_hvg_50 (d=50): F1=0.643, CKA=0.9504294454829164, Proc=0.9409369806990204
+  pca_full_200 (d=200): F1=0.686, CKA=0.9598318470456896, Proc=0.9653804425923308
+  pca_hvg_200 (d=200): F1=0.619, CKA=0.9474639635630505, Proc=0.9413463642151711
+  random_projection (d=200): F1=0.581, CKA=0.9579124915131245, Proc=0.9660802449228765
+  untrained_encoder (d=200): F1=0.552, CKA=0.9544179325191833, Proc=0.9606149780596664
+
+20:19:15 Drop-seq->inDrops
+  src=2000 cells, tgt=2000 cells, shared types=7
+  pca_full_50 (d=50): F1=0.508, CKA=0.9728611907902283, Proc=0.967145563985875
+  pca_hvg_50 (d=50): F1=0.563, CKA=0.9784445056262946, Proc=0.9642027569065075
+  pca_full_200 (d=200): F1=0.400, CKA=0.9742332352926518, Proc=0.9698789952554018
+  pca_hvg_200 (d=200): F1=0.469, CKA=0.9733164935675339, Proc=0.9566065507128111
+  random_projection (d=200): F1=0.436, CKA=0.9462456329455986, Proc=0.9528135406948164
+  untrained_encoder (d=200): F1=0.402, CKA=0.9449848190603115, Proc=0.957334100833142
+
+20:19:58 inDrops->Drop-seq
+  src=2000 cells, tgt=2000 cells, shared types=7
+  pca_full_50 (d=50): F1=0.665, CKA=0.9612658203250821, Proc=0.9543834789195216
+  pca_hvg_50 (d=50): F1=0.630, CKA=0.9723012281508987, Proc=0.9500329009524695
+  pca_full_200 (d=200): F1=0.608, CKA=0.9603073772694882, Proc=0.9570251463496324
+  pca_hvg_200 (d=200): F1=0.643, CKA=0.9684568558561157, Proc=0.9463467153818075
+  random_projection (d=200): F1=0.577, CKA=0.9025097781217977, Proc=0.9206247431113788
+  untrained_encoder (d=200): F1=0.486, CKA=0.9438187810444495, Proc=0.9575268212564665
+
+20:20:41 Seq-Well->inDrops
+  src=2000 cells, tgt=2000 cells, shared types=6
+  pca_full_50 (d=50): F1=0.775, CKA=0.9595367191022385, Proc=0.9735203117480472
+  pca_hvg_50 (d=50): F1=0.673, CKA=0.9944133883801016, Proc=0.9941813929879224
+  pca_full_200 (d=200): F1=0.620, CKA=0.9647676184872394, Proc=0.9768421599146973
+  pca_hvg_200 (d=200): F1=0.670, CKA=0.9959010764158533, Proc=0.9954285869424416
+  random_projection (d=200): F1=0.541, CKA=0.9591275615895034, Proc=0.9719749953358441
+  untrained_encoder (d=200): F1=0.486, CKA=0.9745997984346186, Proc=0.9818925079770878
+
+20:21:23 inDrops->Seq-Well
+  src=2000 cells, tgt=2000 cells, shared types=6
+  pca_full_50 (d=50): F1=0.666, CKA=0.9682429198418869, Proc=0.9764420900466141
+  pca_hvg_50 (d=50): F1=0.666, CKA=0.9973439205268647, Proc=0.9948886098647681
+  pca_full_200 (d=200): F1=0.610, CKA=0.9705027022688222, Proc=0.9770588795558456
+  pca_hvg_200 (d=200): F1=0.626, CKA=0.9970943824529926, Proc=0.9947882713421246
+  random_projection (d=200): F1=0.531, CKA=0.9474606495644459, Proc=0.9609136363344595
+  untrained_encoder (d=200): F1=0.494, CKA=0.9506973911869413, Proc=0.9689954941590208
+
+============================================================
+ANALYSIS: pbmc
+============================================================
+
+Total conditions: 168, contenders: 112
+  cell_type_cka [OURS]: rho=0.089, p=0.8738, CI=[-0.207, 0.344], n=112
+  procrustes_sim [OURS]: rho=0.113, p=0.6593, CI=[-0.208, 0.388], n=112
+  silhouette_src [FIELD]: rho=-0.414, p=1.0000, CI=[-0.587, -0.134], n=112
+  silhouette_tgt [FIELD]: rho=0.627, p=0.0000*, CI=[0.396, 0.789], n=112
+  mmd [FIELD]: rho=-0.135, p=1.0000, CI=[-0.373, 0.162], n=112
+  domain_auc [FIELD]: rho=-0.148, p=0.8008, CI=[-0.375, 0.116], n=112
+
+============================================================
+CROSS-DATASET CONCORDANCE
+============================================================
+  cell_type_cka [OURS]: 1/1 positive, 0/1 significant → FAIL
+  procrustes_sim [OURS]: 1/1 positive, 0/1 significant → FAIL
+  silhouette_src [FIELD]: 0/1 positive, 0/1 significant → FAIL
+  silhouette_tgt [FIELD]: 1/1 positive, 1/1 significant → PASS
+  mmd [FIELD]: 0/1 positive, 0/1 significant → FAIL
+  domain_auc [FIELD]: 0/1 positive, 0/1 significant → FAIL
+
+  HE1 (CKA generalizes): FAIL
+  HE2 (Procrustes generalizes): FAIL
+  HE3 (field baselines fail): FAIL — {'silhouette_src': 1, 'silhouette_tgt': 0, 'mmd': 1, 'domain_auc': 1}
+  HE4 (concordance): FAIL
+
+20:24:18 Saved results to results/external_validation/
+  summary.json, all_conditions.json, per-dataset condition files
+
+
+=== STDERR ===
+
+pbmc pairs:   0%|          | 0/28 [00:00<?, ?it/s]
+pbmc pairs:   4%|▎         | 1/28 [00:43<19:31, 43.40s/it]
+pbmc pairs:   7%|▋         | 2/28 [01:26<18:46, 43.33s/it]
+pbmc pairs:  11%|█         | 3/28 [01:55<15:17, 36.70s/it]
+pbmc pairs:  14%|█▍        | 4/28 [02:23<13:19, 33.32s/it]
+pbmc pairs:  18%|█▊        | 5/28 [03:05<13:55, 36.33s/it]
+pbmc pairs:  21%|██▏       | 6/28 [03:47<14:01, 38.23s/it]
+pbmc pairs:  25%|██▌       | 7/28 [04:29<13:48, 39.44s/it]
+pbmc pairs:  29%|██▊       | 8/28 [05:11<13:27, 40.36s/it]
+pbmc pairs:  32%|███▏      | 9/28 [05:53<12:57, 40.91s/it]
+pbmc pairs:  36%|███▌      | 10/28 [06:35<12:22, 41.24s/it]
+pbmc pairs:  39%|███▉      | 11/28 [07:03<10:30, 37.11s/it]
+pbmc pairs:  43%|████▎     | 12/28 [07:30<09:06, 34.17s/it]
+pbmc pairs:  46%|████▋     | 13/28 [08:12<09:06, 36.44s/it]
+pbmc pairs:  50%|█████     | 14/28 [08:53<08:51, 37.97s/it]
+pbmc pairs:  54%|█████▎    | 15/28 [09:35<08:29, 39.18s/it]
+pbmc pairs:  57%|█████▋    | 16/28 [10:18<08:01, 40.09s/it]
+pbmc pairs:  61%|██████    | 17/28 [10:59<07:26, 40.59s/it]
+pbmc pairs:  64%|██████▍   | 18/28 [11:42<06:52, 41.27s/it]
+pbmc pairs:  68%|██████▊   | 19/28 [12:10<05:35, 37.32s/it]
+pbmc pairs:  71%|███████▏  | 20/28 [12:39<04:37, 34.64s/it]
+pbmc pairs:  75%|███████▌  | 21/28 [13:09<03:53, 33.34s/it]
+pbmc pairs:  79%|███████▊  | 22/28 [13:41<03:16, 32.79s/it]
+pbmc pairs:  82%|████████▏ | 23/28 [14:23<02:58, 35.75s/it]
+pbmc pairs:  86%|████████▌ | 24/28 [15:06<02:31, 37.79s/it]
+pbmc pairs:  89%|████████▉ | 25/28 [15:48<01:57, 39.26s/it]
+pbmc pairs:  93%|█████████▎| 26/28 [16:31<01:20, 40.30s/it]
+pbmc pairs:  96%|█████████▋| 27/28 [17:14<00:40, 40.98s/it]
+pbmc pairs: 100%|██████████| 28/28 [17:58<00:00, 41.99s/it]
+pbmc pairs: 100%|██████████| 28/28 [17:58<00:00, 38.52s/it]
+
+
+=== RETURN CODE: 0 ===

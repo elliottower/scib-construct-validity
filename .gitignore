@@ -13,3 +13,13 @@ uv.lock
 *.pt
 *.pkl
 .env
+.pytest_cache/
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex*
+*.pdf

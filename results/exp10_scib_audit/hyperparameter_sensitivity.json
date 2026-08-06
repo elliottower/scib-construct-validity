@@ -1,0 +1,1239 @@
+{
+  "test": "test5_hyperparameter_sensitivity",
+  "status": "CONFIRMATORY",
+  "prereg": "PREREGISTRATION_CONFIRMATORY_ROBUSTNESS.md",
+  "freeze": "docs/frozen_prereg_scib_confirmatory/FROZEN_SUMMARY.json",
+  "timestamp": "2026-07-13T20:08:24.961689+00:00",
+  "census_version": "2023-12-15",
+  "seed": 20260713,
+  "leiden_resolutions": [
+    0.5,
+    1.0,
+    2.0
+  ],
+  "k_values": [
+    15,
+    30,
+    90
+  ],
+  "n_conditions": 24,
+  "stability_results": {
+    "nmi_leiden": {
+      "per_tissue": {
+        "lung": {
+          "0.5_vs_1.0": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "0.5_vs_2.0": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "1.0_vs_2.0": {
+            "tau": 1.0,
+            "p": 0.0028
+          }
+        },
+        "liver": {
+          "0.5_vs_1.0": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "0.5_vs_2.0": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "1.0_vs_2.0": {
+            "tau": 1.0,
+            "p": 0.0028
+          }
+        },
+        "kidney": {
+          "0.5_vs_1.0": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "0.5_vs_2.0": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "1.0_vs_2.0": {
+            "tau": 1.0,
+            "p": 0.0028
+          }
+        },
+        "brain": {
+          "0.5_vs_1.0": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "0.5_vs_2.0": {
+            "tau": 0.733,
+            "p": 0.0556
+          },
+          "1.0_vs_2.0": {
+            "tau": 0.733,
+            "p": 0.0556
+          }
+        }
+      },
+      "mean_extreme_tau": 0.933,
+      "extreme_taus": [
+        1.0,
+        1.0,
+        1.0,
+        0.733
+      ],
+      "winner_changes": "0/4 tissues",
+      "predicted_range": [
+        0.5,
+        0.7
+      ],
+      "in_predicted_range": false
+    },
+    "ari_leiden": {
+      "per_tissue": {
+        "lung": {
+          "0.5_vs_1.0": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "0.5_vs_2.0": {
+            "tau": 0.867,
+            "p": 0.0167
+          },
+          "1.0_vs_2.0": {
+            "tau": 0.867,
+            "p": 0.0167
+          }
+        },
+        "liver": {
+          "0.5_vs_1.0": {
+            "tau": 0.733,
+            "p": 0.0556
+          },
+          "0.5_vs_2.0": {
+            "tau": 0.867,
+            "p": 0.0167
+          },
+          "1.0_vs_2.0": {
+            "tau": 0.6,
+            "p": 0.1361
+          }
+        },
+        "kidney": {
+          "0.5_vs_1.0": {
+            "tau": 0.867,
+            "p": 0.0167
+          },
+          "0.5_vs_2.0": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "1.0_vs_2.0": {
+            "tau": 0.867,
+            "p": 0.0167
+          }
+        },
+        "brain": {
+          "0.5_vs_1.0": {
+            "tau": 0.467,
+            "p": 0.2722
+          },
+          "0.5_vs_2.0": {
+            "tau": 0.467,
+            "p": 0.2722
+          },
+          "1.0_vs_2.0": {
+            "tau": 0.2,
+            "p": 0.7194
+          }
+        }
+      },
+      "mean_extreme_tau": 0.8,
+      "extreme_taus": [
+        0.867,
+        0.867,
+        1.0,
+        0.467
+      ],
+      "winner_changes": "1/4 tissues",
+      "predicted_range": [
+        0.4,
+        0.6
+      ],
+      "in_predicted_range": false
+    },
+    "clisi": {
+      "per_tissue": {
+        "lung": {
+          "15_vs_30": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "15_vs_90": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "30_vs_90": {
+            "tau": 1.0,
+            "p": 0.0028
+          }
+        },
+        "liver": {
+          "15_vs_30": {
+            "tau": 0.966,
+            "p": 0.0074
+          },
+          "15_vs_90": {
+            "tau": 0.966,
+            "p": 0.0074
+          },
+          "30_vs_90": {
+            "tau": 1.0,
+            "p": 0.0028
+          }
+        },
+        "kidney": {
+          "15_vs_30": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "15_vs_90": {
+            "tau": 0.867,
+            "p": 0.0167
+          },
+          "30_vs_90": {
+            "tau": 0.867,
+            "p": 0.0167
+          }
+        },
+        "brain": {
+          "15_vs_30": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "15_vs_90": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "30_vs_90": {
+            "tau": 1.0,
+            "p": 0.0028
+          }
+        }
+      },
+      "mean_extreme_tau": 0.958,
+      "extreme_taus": [
+        1.0,
+        0.966,
+        0.867,
+        1.0
+      ],
+      "winner_changes": "0/4 tissues",
+      "predicted_range": [
+        0.3,
+        0.6
+      ],
+      "in_predicted_range": false
+    },
+    "ilisi": {
+      "per_tissue": {
+        "lung": {
+          "15_vs_30": {
+            "tau": 0.745,
+            "p": 0.0833
+          },
+          "15_vs_90": {
+            "tau": 0.577,
+            "p": 0.1432
+          },
+          "30_vs_90": {
+            "tau": 0.775,
+            "p": 0.0424
+          }
+        },
+        "liver": {
+          "15_vs_30": {
+            "tau": 0.674,
+            "p": 0.1138
+          },
+          "15_vs_90": {
+            "tau": 0.674,
+            "p": 0.1138
+          },
+          "30_vs_90": {
+            "tau": 1.0,
+            "p": 0.0141
+          }
+        },
+        "kidney": {
+          "15_vs_30": {
+            "tau": NaN,
+            "p": NaN
+          },
+          "15_vs_90": {
+            "tau": NaN,
+            "p": NaN
+          },
+          "30_vs_90": {
+            "tau": 0.745,
+            "p": 0.0833
+          }
+        },
+        "brain": {
+          "15_vs_30": {
+            "tau": NaN,
+            "p": NaN
+          },
+          "15_vs_90": {
+            "tau": NaN,
+            "p": NaN
+          },
+          "30_vs_90": {
+            "tau": NaN,
+            "p": NaN
+          }
+        }
+      },
+      "mean_extreme_tau": NaN,
+      "extreme_taus": [
+        0.577,
+        0.674,
+        NaN,
+        NaN
+      ],
+      "winner_changes": "1/4 tissues",
+      "predicted_range": [
+        0.2,
+        0.5
+      ],
+      "in_predicted_range": false
+    },
+    "kbet": {
+      "per_tissue": {
+        "lung": {
+          "15_vs_30": null,
+          "15_vs_90": null,
+          "30_vs_90": null
+        },
+        "liver": {
+          "15_vs_30": null,
+          "15_vs_90": null,
+          "30_vs_90": null
+        },
+        "kidney": {
+          "15_vs_30": null,
+          "15_vs_90": null,
+          "30_vs_90": null
+        },
+        "brain": {
+          "15_vs_30": null,
+          "15_vs_90": null,
+          "30_vs_90": null
+        }
+      },
+      "mean_extreme_tau": null,
+      "extreme_taus": [],
+      "winner_changes": "0/4 tissues",
+      "predicted_range": [
+        0.1,
+        0.4
+      ],
+      "in_predicted_range": false
+    },
+    "graph_connectivity": {
+      "per_tissue": {
+        "lung": {
+          "15_vs_30": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "15_vs_90": {
+            "tau": 0.867,
+            "p": 0.0167
+          },
+          "30_vs_90": {
+            "tau": 0.867,
+            "p": 0.0167
+          }
+        },
+        "liver": {
+          "15_vs_30": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "15_vs_90": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "30_vs_90": {
+            "tau": 1.0,
+            "p": 0.0028
+          }
+        },
+        "kidney": {
+          "15_vs_30": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "15_vs_90": {
+            "tau": 0.867,
+            "p": 0.0167
+          },
+          "30_vs_90": {
+            "tau": 0.867,
+            "p": 0.0167
+          }
+        },
+        "brain": {
+          "15_vs_30": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "15_vs_90": {
+            "tau": 1.0,
+            "p": 0.0028
+          },
+          "30_vs_90": {
+            "tau": 1.0,
+            "p": 0.0028
+          }
+        }
+      },
+      "mean_extreme_tau": 0.933,
+      "extreme_taus": [
+        0.867,
+        1.0,
+        0.867,
+        1.0
+      ],
+      "winner_changes": "0/4 tissues",
+      "predicted_range": [
+        0.3,
+        0.6
+      ],
+      "in_predicted_range": false
+    }
+  },
+  "raw_leiden_scores": {
+    "lung_geneformer": {
+      "0.5": {
+        "nmi_leiden": 0.6532973619761355,
+        "ari_leiden": 0.38474737210606996
+      },
+      "1.0": {
+        "nmi_leiden": 0.69176676454173,
+        "ari_leiden": 0.4169545438856016
+      },
+      "2.0": {
+        "nmi_leiden": 0.6938791767749428,
+        "ari_leiden": 0.38056793641504777
+      }
+    },
+    "lung_scvi": {
+      "0.5": {
+        "nmi_leiden": 0.6451809013937543,
+        "ari_leiden": 0.38027191756958845
+      },
+      "1.0": {
+        "nmi_leiden": 0.6406591112439869,
+        "ari_leiden": 0.3400722000482883
+      },
+      "2.0": {
+        "nmi_leiden": 0.6493317151155263,
+        "ari_leiden": 0.35431089548003825
+      }
+    },
+    "lung_scgpt": {
+      "0.5": {
+        "nmi_leiden": 0.6317774798330715,
+        "ari_leiden": 0.34303623042404097
+      },
+      "1.0": {
+        "nmi_leiden": 0.629511406118093,
+        "ari_leiden": 0.30668153086281763
+      },
+      "2.0": {
+        "nmi_leiden": 0.6269654048594259,
+        "ari_leiden": 0.2575582320038156
+      }
+    },
+    "lung_random_projection": {
+      "0.5": {
+        "nmi_leiden": 0.27760792809926166,
+        "ari_leiden": 0.10875930783798471
+      },
+      "1.0": {
+        "nmi_leiden": 0.3539202268152789,
+        "ari_leiden": 0.14801360614549486
+      },
+      "2.0": {
+        "nmi_leiden": 0.39720308920002495,
+        "ari_leiden": 0.14445293362892908
+      }
+    },
+    "lung_untrained_encoder": {
+      "0.5": {
+        "nmi_leiden": 0.17591962603751132,
+        "ari_leiden": 0.057513887947724246
+      },
+      "1.0": {
+        "nmi_leiden": 0.28023622889584493,
+        "ari_leiden": 0.1214007255481393
+      },
+      "2.0": {
+        "nmi_leiden": 0.3173059716218686,
+        "ari_leiden": 0.1147925393717594
+      }
+    },
+    "lung_bog_pca_512": {
+      "0.5": {
+        "nmi_leiden": 0.5590065902163082,
+        "ari_leiden": 0.3158163784586009
+      },
+      "1.0": {
+        "nmi_leiden": 0.5724350939783309,
+        "ari_leiden": 0.301940390018623
+      },
+      "2.0": {
+        "nmi_leiden": 0.6045418758616798,
+        "ari_leiden": 0.29684550867580706
+      }
+    },
+    "liver_geneformer": {
+      "0.5": {
+        "nmi_leiden": 0.8212447918010204,
+        "ari_leiden": 0.7443610845771096
+      },
+      "1.0": {
+        "nmi_leiden": 0.8328630996268941,
+        "ari_leiden": 0.7621041924945886
+      },
+      "2.0": {
+        "nmi_leiden": 0.7772927872264663,
+        "ari_leiden": 0.5073092563832232
+      }
+    },
+    "liver_scvi": {
+      "0.5": {
+        "nmi_leiden": 0.6747258154489892,
+        "ari_leiden": 0.485199504429522
+      },
+      "1.0": {
+        "nmi_leiden": 0.6904017404054617,
+        "ari_leiden": 0.4862315534612193
+      },
+      "2.0": {
+        "nmi_leiden": 0.6827615257101115,
+        "ari_leiden": 0.39134662914331564
+      }
+    },
+    "liver_scgpt": {
+      "0.5": {
+        "nmi_leiden": 0.7601093999415837,
+        "ari_leiden": 0.6422615307114714
+      },
+      "1.0": {
+        "nmi_leiden": 0.7584343713602429,
+        "ari_leiden": 0.573546842993401
+      },
+      "2.0": {
+        "nmi_leiden": 0.7366737119511519,
+        "ari_leiden": 0.4326129798165525
+      }
+    },
+    "liver_random_projection": {
+      "0.5": {
+        "nmi_leiden": 0.5779692776882781,
+        "ari_leiden": 0.4307406161754074
+      },
+      "1.0": {
+        "nmi_leiden": 0.6160811423123024,
+        "ari_leiden": 0.4751661365846797
+      },
+      "2.0": {
+        "nmi_leiden": 0.5901921199342346,
+        "ari_leiden": 0.3946583417560528
+      }
+    },
+    "liver_untrained_encoder": {
+      "0.5": {
+        "nmi_leiden": 0.49773060003112135,
+        "ari_leiden": 0.2887153075899195
+      },
+      "1.0": {
+        "nmi_leiden": 0.5571962075767456,
+        "ari_leiden": 0.40498705496712095
+      },
+      "2.0": {
+        "nmi_leiden": 0.546986517583364,
+        "ari_leiden": 0.37251505132107327
+      }
+    },
+    "liver_bog_pca_512": {
+      "0.5": {
+        "nmi_leiden": 0.7216086683512194,
+        "ari_leiden": 0.5580256648224781
+      },
+      "1.0": {
+        "nmi_leiden": 0.7028870462572845,
+        "ari_leiden": 0.46386831534043904
+      },
+      "2.0": {
+        "nmi_leiden": 0.7008806290093449,
+        "ari_leiden": 0.4105884479907487
+      }
+    },
+    "kidney_geneformer": {
+      "0.5": {
+        "nmi_leiden": 0.7612585732735537,
+        "ari_leiden": 0.6114555601296164
+      },
+      "1.0": {
+        "nmi_leiden": 0.7443815842480838,
+        "ari_leiden": 0.566963368620328
+      },
+      "2.0": {
+        "nmi_leiden": 0.7448206365793726,
+        "ari_leiden": 0.5381657154605247
+      }
+    },
+    "kidney_scvi": {
+      "0.5": {
+        "nmi_leiden": 0.6552104228497058,
+        "ari_leiden": 0.45589114594246155
+      },
+      "1.0": {
+        "nmi_leiden": 0.6591980419464432,
+        "ari_leiden": 0.5195808633896658
+      },
+      "2.0": {
+        "nmi_leiden": 0.647576678068866,
+        "ari_leiden": 0.409390929290591
+      }
+    },
+    "kidney_scgpt": {
+      "0.5": {
+        "nmi_leiden": 0.7138486169706493,
+        "ari_leiden": 0.5168500403556153
+      },
+      "1.0": {
+        "nmi_leiden": 0.7068216409854304,
+        "ari_leiden": 0.5023515009427719
+      },
+      "2.0": {
+        "nmi_leiden": 0.6861848673735994,
+        "ari_leiden": 0.43719161485925556
+      }
+    },
+    "kidney_random_projection": {
+      "0.5": {
+        "nmi_leiden": 0.43868881488238787,
+        "ari_leiden": 0.2671313397310496
+      },
+      "1.0": {
+        "nmi_leiden": 0.508841696813455,
+        "ari_leiden": 0.39036624563130223
+      },
+      "2.0": {
+        "nmi_leiden": 0.5317003768825188,
+        "ari_leiden": 0.36146542849407604
+      }
+    },
+    "kidney_untrained_encoder": {
+      "0.5": {
+        "nmi_leiden": 0.29116157566004297,
+        "ari_leiden": 0.16207220732382407
+      },
+      "1.0": {
+        "nmi_leiden": 0.3619433865347615,
+        "ari_leiden": 0.24913527164006102
+      },
+      "2.0": {
+        "nmi_leiden": 0.38521170982579805,
+        "ari_leiden": 0.22947853559071982
+      }
+    },
+    "kidney_bog_pca_512": {
+      "0.5": {
+        "nmi_leiden": 0.6143517309521587,
+        "ari_leiden": 0.44895567983702483
+      },
+      "1.0": {
+        "nmi_leiden": 0.6288214092723562,
+        "ari_leiden": 0.4193683748016857
+      },
+      "2.0": {
+        "nmi_leiden": 0.6219496279728483,
+        "ari_leiden": 0.36427399285058026
+      }
+    },
+    "brain_geneformer": {
+      "0.5": {
+        "nmi_leiden": 0.5293787271253743,
+        "ari_leiden": 0.3064604735614203
+      },
+      "1.0": {
+        "nmi_leiden": 0.5317726828782635,
+        "ari_leiden": 0.2976879814310383
+      },
+      "2.0": {
+        "nmi_leiden": 0.5021034564467772,
+        "ari_leiden": 0.1874137876021277
+      }
+    },
+    "brain_scvi": {
+      "0.5": {
+        "nmi_leiden": 0.5223875588990707,
+        "ari_leiden": 0.32854012184139747
+      },
+      "1.0": {
+        "nmi_leiden": 0.4915571576234278,
+        "ari_leiden": 0.2535800324561652
+      },
+      "2.0": {
+        "nmi_leiden": 0.4559401338071964,
+        "ari_leiden": 0.15816644289494972
+      }
+    },
+    "brain_scgpt": {
+      "0.5": {
+        "nmi_leiden": 0.4874038902812493,
+        "ari_leiden": 0.2437232119597144
+      },
+      "1.0": {
+        "nmi_leiden": 0.4794289166044182,
+        "ari_leiden": 0.19946088608974585
+      },
+      "2.0": {
+        "nmi_leiden": 0.4816924298603668,
+        "ari_leiden": 0.17700491631716092
+      }
+    },
+    "brain_random_projection": {
+      "0.5": {
+        "nmi_leiden": 0.3146254045786873,
+        "ari_leiden": 0.15485833007188982
+      },
+      "1.0": {
+        "nmi_leiden": 0.37459135191156445,
+        "ari_leiden": 0.19132574038491032
+      },
+      "2.0": {
+        "nmi_leiden": 0.3724342446239905,
+        "ari_leiden": 0.14221289413658864
+      }
+    },
+    "brain_untrained_encoder": {
+      "0.5": {
+        "nmi_leiden": 0.2394769649318261,
+        "ari_leiden": 0.158916715476224
+      },
+      "1.0": {
+        "nmi_leiden": 0.364514148289933,
+        "ari_leiden": 0.218448659257585
+      },
+      "2.0": {
+        "nmi_leiden": 0.34420001425236735,
+        "ari_leiden": 0.13718620214334692
+      }
+    },
+    "brain_bog_pca_512": {
+      "0.5": {
+        "nmi_leiden": 0.4591381104820848,
+        "ari_leiden": 0.2799283287465505
+      },
+      "1.0": {
+        "nmi_leiden": 0.44831821155359236,
+        "ari_leiden": 0.19869037844365203
+      },
+      "2.0": {
+        "nmi_leiden": 0.4560278407329844,
+        "ari_leiden": 0.1790204871659686
+      }
+    }
+  },
+  "raw_knn_scores": {
+    "lung_geneformer": {
+      "15": {
+        "clisi": 0.9981856794918285,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.7616549024108296
+      },
+      "30": {
+        "clisi": 0.99644235162174,
+        "ilisi": 1.1920928955078125e-07,
+        "kbet": null,
+        "graph_connectivity": 0.8506167526899735
+      },
+      "90": {
+        "clisi": 0.9932684702031752,
+        "ilisi": 0.004950404167175293,
+        "kbet": null,
+        "graph_connectivity": 0.9350488029882896
+      }
+    },
+    "lung_scvi": {
+      "15": {
+        "clisi": 0.9956460756414077,
+        "ilisi": 2.384185791015625e-07,
+        "kbet": null,
+        "graph_connectivity": 0.7449032009424503
+      },
+      "30": {
+        "clisi": 0.9927985808428597,
+        "ilisi": 0.02930748462677002,
+        "kbet": null,
+        "graph_connectivity": 0.8168938585977152
+      },
+      "90": {
+        "clisi": 0.9878341646755443,
+        "ilisi": 0.1263437271118164,
+        "kbet": null,
+        "graph_connectivity": 0.9228810411313411
+      }
+    },
+    "lung_scgpt": {
+      "15": {
+        "clisi": 0.9974225324742935,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.7540111208679516
+      },
+      "30": {
+        "clisi": 0.9949967720929314,
+        "ilisi": 1.1920928955078125e-07,
+        "kbet": null,
+        "graph_connectivity": 0.8279604137969409
+      },
+      "90": {
+        "clisi": 0.99024777692907,
+        "ilisi": 4.76837158203125e-07,
+        "kbet": null,
+        "graph_connectivity": 0.9012818003342724
+      }
+    },
+    "lung_random_projection": {
+      "15": {
+        "clisi": 0.9902326471665326,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.306493408957274
+      },
+      "30": {
+        "clisi": 0.9860732555389404,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.341356604379609
+      },
+      "90": {
+        "clisi": 0.9771061392391429,
+        "ilisi": 1.1920928955078125e-07,
+        "kbet": null,
+        "graph_connectivity": 0.3985640841814292
+      }
+    },
+    "lung_untrained_encoder": {
+      "15": {
+        "clisi": 0.9867867778329288,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.3191253266227698
+      },
+      "30": {
+        "clisi": 0.980038662517772,
+        "ilisi": 1.1920928955078125e-07,
+        "kbet": null,
+        "graph_connectivity": 0.36017629691114855
+      },
+      "90": {
+        "clisi": 0.9676581859588623,
+        "ilisi": 3.5762786865234375e-07,
+        "kbet": null,
+        "graph_connectivity": 0.4377460288193927
+      }
+    },
+    "lung_bog_pca_512": {
+      "15": {
+        "clisi": 0.995083810301388,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.4515182064299481
+      },
+      "30": {
+        "clisi": 0.9914696805617389,
+        "ilisi": 1.1920928955078125e-07,
+        "kbet": null,
+        "graph_connectivity": 0.5143670071816543
+      },
+      "90": {
+        "clisi": 0.9847723848679486,
+        "ilisi": 5.960464477539062e-07,
+        "kbet": null,
+        "graph_connectivity": 0.613642674587595
+      }
+    },
+    "liver_geneformer": {
+      "15": {
+        "clisi": 0.9999999978325583,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.8068649270695757
+      },
+      "30": {
+        "clisi": 0.9999831416390159,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.8799837611870027
+      },
+      "90": {
+        "clisi": 0.9993734706531872,
+        "ilisi": 1.1920928955078125e-07,
+        "kbet": null,
+        "graph_connectivity": 0.9293142189488351
+      }
+    },
+    "liver_scvi": {
+      "15": {
+        "clisi": 0.9997734351591631,
+        "ilisi": 1.1920928955078125e-07,
+        "kbet": null,
+        "graph_connectivity": 0.7227289468553705
+      },
+      "30": {
+        "clisi": 0.9988958337090232,
+        "ilisi": 2.384185791015625e-07,
+        "kbet": null,
+        "graph_connectivity": 0.7833507447502507
+      },
+      "90": {
+        "clisi": 0.9961673368107189,
+        "ilisi": 0.014305591583251953,
+        "kbet": null,
+        "graph_connectivity": 0.87410583424023
+      }
+    },
+    "liver_scgpt": {
+      "15": {
+        "clisi": 0.9999999978325583,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.7626535733799822
+      },
+      "30": {
+        "clisi": 0.9998764298178933,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.8383344444359364
+      },
+      "90": {
+        "clisi": 0.9990249807184393,
+        "ilisi": 1.1920928955078125e-07,
+        "kbet": null,
+        "graph_connectivity": 0.8880188415807231
+      }
+    },
+    "liver_random_projection": {
+      "15": {
+        "clisi": 0.9946559949354692,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.2838360528680535
+      },
+      "30": {
+        "clisi": 0.9911707661368631,
+        "ilisi": 1.1920928955078125e-07,
+        "kbet": null,
+        "graph_connectivity": 0.3352096318552854
+      },
+      "90": {
+        "clisi": 0.9838885090567849,
+        "ilisi": 2.384185791015625e-07,
+        "kbet": null,
+        "graph_connectivity": 0.433490136877302
+      }
+    },
+    "liver_untrained_encoder": {
+      "15": {
+        "clisi": 0.9920266671614213,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.3455503406342894
+      },
+      "30": {
+        "clisi": 0.9876017743890936,
+        "ilisi": 1.1920928955078125e-07,
+        "kbet": null,
+        "graph_connectivity": 0.4087940796279033
+      },
+      "90": {
+        "clisi": 0.981845946745439,
+        "ilisi": 2.384185791015625e-07,
+        "kbet": null,
+        "graph_connectivity": 0.5306911191099377
+      }
+    },
+    "liver_bog_pca_512": {
+      "15": {
+        "clisi": 0.9999024694616144,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.520638983401828
+      },
+      "30": {
+        "clisi": 0.9991373929110441,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.6087052324210253
+      },
+      "90": {
+        "clisi": 0.9968765648928556,
+        "ilisi": 1.1920928955078125e-07,
+        "kbet": null,
+        "graph_connectivity": 0.6933510681799925
+      }
+    },
+    "kidney_geneformer": {
+      "15": {
+        "clisi": 0.9999999886467343,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.8227583206812201
+      },
+      "30": {
+        "clisi": 0.9992160910651797,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.9257124242072563
+      },
+      "90": {
+        "clisi": 0.9947884423392159,
+        "ilisi": 1.1920928955078125e-07,
+        "kbet": null,
+        "graph_connectivity": 0.9694035236567763
+      }
+    },
+    "kidney_scvi": {
+      "15": {
+        "clisi": 0.9974884873344785,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.81099757656171
+      },
+      "30": {
+        "clisi": 0.9923578103383383,
+        "ilisi": 1.1920928955078125e-07,
+        "kbet": null,
+        "graph_connectivity": 0.881289567561799
+      },
+      "90": {
+        "clisi": 0.9796562308356875,
+        "ilisi": 3.5762786865234375e-07,
+        "kbet": null,
+        "graph_connectivity": 0.9426470193490019
+      }
+    },
+    "kidney_scgpt": {
+      "15": {
+        "clisi": 0.9996245475042433,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.8001560137171434
+      },
+      "30": {
+        "clisi": 0.9972618988582066,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.8721624372416105
+      },
+      "90": {
+        "clisi": 0.9898037342798143,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.9580222187241609
+      }
+    },
+    "kidney_random_projection": {
+      "15": {
+        "clisi": 0.9772779260362897,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.17795430580323532
+      },
+      "30": {
+        "clisi": 0.9613738287062872,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.24171946814272305
+      },
+      "90": {
+        "clisi": 0.9320653847285679,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.36902889520921195
+      }
+    },
+    "kidney_untrained_encoder": {
+      "15": {
+        "clisi": 0.9574706100282215,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.21457649822263683
+      },
+      "30": {
+        "clisi": 0.9370431900024414,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.29462566278711494
+      },
+      "90": {
+        "clisi": 0.8957733653840565,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.4569690544052321
+      }
+    },
+    "kidney_bog_pca_512": {
+      "15": {
+        "clisi": 0.9986356894175211,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.5458990757078516
+      },
+      "30": {
+        "clisi": 0.9934628520693097,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.6425507704889906
+      },
+      "90": {
+        "clisi": 0.9773420322509039,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.6911168451758773
+      }
+    },
+    "brain_geneformer": {
+      "15": {
+        "clisi": 0.9950246052308516,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.8230572914313521
+      },
+      "30": {
+        "clisi": 0.9896646412936124,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.8479374092484026
+      },
+      "90": {
+        "clisi": 0.9807048602537676,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.8602295833746715
+      }
+    },
+    "brain_scvi": {
+      "15": {
+        "clisi": 0.9927001703869213,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.692055822479607
+      },
+      "30": {
+        "clisi": 0.986247333613309,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.7609281100548168
+      },
+      "90": {
+        "clisi": 0.9771047830581665,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.8390372096495184
+      }
+    },
+    "brain_scgpt": {
+      "15": {
+        "clisi": 0.9954120679335161,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.7722905664945031
+      },
+      "30": {
+        "clisi": 0.9900832609696821,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.8168822724973196
+      },
+      "90": {
+        "clisi": 0.9810016263615001,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.8515285427626604
+      }
+    },
+    "brain_random_projection": {
+      "15": {
+        "clisi": 0.9858007214286111,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.269900107092116
+      },
+      "30": {
+        "clisi": 0.9805491187355735,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.32537715490409924
+      },
+      "90": {
+        "clisi": 0.971477291800759,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.4197089295340436
+      }
+    },
+    "brain_untrained_encoder": {
+      "15": {
+        "clisi": 0.9805311723188921,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.3409452179460208
+      },
+      "30": {
+        "clisi": 0.9714005860415372,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.40336119785528385
+      },
+      "90": {
+        "clisi": 0.9595823829824274,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.503074312029574
+      }
+    },
+    "brain_bog_pca_512": {
+      "15": {
+        "clisi": 0.9939976930618286,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.40608419293063963
+      },
+      "30": {
+        "clisi": 0.9883703751997515,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.49837860282383556
+      },
+      "90": {
+        "clisi": 0.9780927733941511,
+        "ilisi": 0.0,
+        "kbet": null,
+        "graph_connectivity": 0.5634139974180311
+      }
+    }
+  }
+}

@@ -1,0 +1,604 @@
+{
+  "timestamp": "20260711_221653",
+  "frozen_prereg_sha": "927768d38c5d453b6f4f7d5785decef4904c377048df99225593a3fe7d7d4d11",
+  "census_version": "2023-12-15",
+  "tissues": [
+    "lung",
+    "liver",
+    "kidney",
+    "brain"
+  ],
+  "embeddings": [
+    "geneformer",
+    "scvi",
+    "bag_of_genes_pca512"
+  ],
+  "shift_types": {
+    "lung": "cross_assay",
+    "heart": "cross_dataset",
+    "liver": "cross_assay",
+    "kidney": "cross_assay",
+    "brain": "cross_assay"
+  },
+  "probe_f1_matrix": [
+    [
+      0.6376317127360662,
+      0.5497496713205255,
+      0.30381120878248435
+    ],
+    [
+      0.6493675198701304,
+      0.39755133320500124,
+      0.2280858197522642
+    ],
+    [
+      0.6541856911604987,
+      0.4543115516954284,
+      0.3063082348564476
+    ],
+    [
+      0.632627547366585,
+      0.6840270500491704,
+      0.2083650729912981
+    ]
+  ],
+  "m2_auc_matrix": [
+    [
+      0.968825,
+      0.803015,
+      0.0975175
+    ],
+    [
+      0.9714750000000001,
+      0.8299025,
+      0.12228999999999998
+    ],
+    [
+      0.9997662500000001,
+      0.972415,
+      0.08707749999999999
+    ],
+    [
+      0.9780900000000001,
+      0.9183449999999999,
+      0.07927749999999997
+    ]
+  ],
+  "m1_distance_matrix": [
+    [
+      2.426194826128889,
+      1.946816088823885,
+      6.322027276634106e-08
+    ],
+    [
+      2.492929721682697,
+      2.4733407447921705,
+      5.372690074837192e-08
+    ],
+    [
+      2.776463423597658,
+      2.142173597232874,
+      7.598131170262077e-08
+    ],
+    [
+      2.7518135628999096,
+      1.9135758438079182,
+      6.322027276634104e-08
+    ]
+  ],
+  "tier_matrix": [
+    [
+      3.0,
+      4.0,
+      5.0
+    ],
+    [
+      2.0,
+      3.0,
+      5.0
+    ],
+    [
+      2.0,
+      3.0,
+      5.0
+    ],
+    [
+      2.0,
+      3.0,
+      6.0
+    ]
+  ],
+  "hypotheses": {
+    "H2.1_ranking_consistency": {
+      "pass": true,
+      "n_consistent": 3,
+      "threshold": 3
+    },
+    "H2.2_tissue_variation": {
+      "pass": true,
+      "threshold_spread": 0.1
+    },
+    "H2.3_m1_m2_correlation": {
+      "pass": "True",
+      "spearman_rho": 0.8671328671328673,
+      "p_value": 0.00025981184986148103,
+      "n_conditions": 12,
+      "threshold_rho": 0.3
+    },
+    "H2.4_geneformer_tier5": {
+      "pass": false,
+      "geneformer_tiers": {
+        "lung": 3,
+        "liver": 2,
+        "kidney": 2,
+        "brain": 2
+      }
+    }
+  },
+  "per_condition": {
+    "lung": {
+      "geneformer": {
+        "overall_tier": 3,
+        "overall_score": 0.2684193200515621,
+        "shift_type": "cross_assay",
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.30925015989156257,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.062349999999999905,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.3098002964507708,
+            "tier": 3
+          },
+          "m4_domain_validity": {
+            "score": 0.8518369408015302,
+            "tier": 7
+          },
+          "m6_curvature": {
+            "score": 0.2166146867025801,
+            "tier": 2
+          },
+          "m7_ecological_bias": {
+            "score": 0.0,
+            "tier": 1
+          }
+        },
+        "probe_f1": {
+          "mean": 0.6376317127360662,
+          "ci": [
+            0.6135342334235514,
+            0.6562117136898288
+          ],
+          "n_items": 3813
+        }
+      },
+      "scvi": {
+        "overall_tier": 4,
+        "overall_score": 0.43838605752118176,
+        "shift_type": "cross_assay",
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.44573169162129234,
+            "tier": 4
+          },
+          "m2_domain_shift": {
+            "score": 0.39396999999999993,
+            "tier": 3
+          },
+          "m3_direction_stability": {
+            "score": 0.566406959168943,
+            "tier": 5
+          },
+          "m4_domain_validity": {
+            "score": 0.8617848438992963,
+            "tier": 7
+          },
+          "m6_curvature": {
+            "score": 0.3606004901960784,
+            "tier": 3
+          },
+          "m7_ecological_bias": {
+            "score": 0.0,
+            "tier": 1
+          }
+        },
+        "probe_f1": {
+          "mean": 0.5497496713205255,
+          "ci": [
+            0.5201120691016574,
+            0.5793872735393937
+          ],
+          "n_items": 3813
+        }
+      },
+      "bag_of_genes_pca512": {
+        "overall_tier": 5,
+        "overall_score": 0.5616525929020394,
+        "shift_type": "cross_assay",
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.9999999820008711,
+            "tier": 7
+          },
+          "m2_domain_shift": {
+            "score": 1.0,
+            "tier": 7
+          },
+          "m3_direction_stability": {
+            "score": 0.0974363753214638,
+            "tier": 1
+          },
+          "m4_domain_validity": {
+            "score": 0.0,
+            "tier": 1
+          },
+          "m6_curvature": {
+            "score": 0.2299162148841794,
+            "tier": 2
+          },
+          "m7_ecological_bias": {
+            "score": 0.0,
+            "tier": 1
+          }
+        },
+        "probe_f1": {
+          "mean": 0.30381120878248435,
+          "ci": [
+            0.28613418138275903,
+            0.3236898161257474
+          ],
+          "n_items": 3813
+        }
+      }
+    },
+    "liver": {
+      "geneformer": {
+        "overall_tier": 2,
+        "overall_score": 0.22924168353414948,
+        "shift_type": "cross_assay",
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.29025040029393934,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.05704999999999982,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.29039051423106765,
+            "tier": 3
+          },
+          "m4_domain_validity": {
+            "score": 0.6779752672933222,
+            "tier": 5
+          },
+          "m6_curvature": {
+            "score": 0.11269208878770631,
+            "tier": 2
+          },
+          "m7_ecological_bias": {
+            "score": 0.0,
+            "tier": 1
+          }
+        },
+        "probe_f1": {
+          "mean": 0.6493675198701304,
+          "ci": [
+            0.6201979911688065,
+            0.6785370485714544
+          ],
+          "n_items": 3859
+        }
+      },
+      "scvi": {
+        "overall_tier": 3,
+        "overall_score": 0.3565983067885451,
+        "shift_type": "cross_assay",
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.2958274802997559,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.340195,
+            "tier": 3
+          },
+          "m3_direction_stability": {
+            "score": 0.5753749938332752,
+            "tier": 5
+          },
+          "m4_domain_validity": {
+            "score": 0.7128964622895778,
+            "tier": 6
+          },
+          "m6_curvature": {
+            "score": 0.22834176838344744,
+            "tier": 2
+          },
+          "m7_ecological_bias": {
+            "score": 0.0,
+            "tier": 1
+          }
+        },
+        "probe_f1": {
+          "mean": 0.39755133320500124,
+          "ci": [
+            0.3665564059731164,
+            0.42386668947570194
+          ],
+          "n_items": 3859
+        }
+      },
+      "bag_of_genes_pca512": {
+        "overall_tier": 5,
+        "overall_score": 0.687468438999331,
+        "shift_type": "cross_assay",
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.9999999847036818,
+            "tier": 7
+          },
+          "m2_domain_shift": {
+            "score": 1.0,
+            "tier": 7
+          },
+          "m3_direction_stability": {
+            "score": 0.19027142133936256,
+            "tier": 2
+          },
+          "m4_domain_validity": {
+            "score": 0.8811446214135283,
+            "tier": 7
+          },
+          "m6_curvature": {
+            "score": 0.16919456066945607,
+            "tier": 2
+          },
+          "m7_ecological_bias": {
+            "score": 0.0,
+            "tier": 1
+          }
+        },
+        "probe_f1": {
+          "mean": 0.2280858197522642,
+          "ci": [
+            0.2059074813592835,
+            0.25007786641519525
+          ],
+          "n_items": 3859
+        }
+      }
+    },
+    "kidney": {
+      "geneformer": {
+        "overall_tier": 2,
+        "overall_score": 0.19839338090243958,
+        "shift_type": "cross_assay",
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.2095269327661472,
+            "tier": 2
+          },
+          "m2_domain_shift": {
+            "score": 0.00046749999999984304,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.26984259305043357,
+            "tier": 3
+          },
+          "m4_domain_validity": {
+            "score": 0.7390001028704547,
+            "tier": 6
+          },
+          "m6_curvature": {
+            "score": 0.11823759063022866,
+            "tier": 2
+          },
+          "m7_ecological_bias": {
+            "score": 0.0,
+            "tier": 1
+          }
+        },
+        "probe_f1": {
+          "mean": 0.6541856911604987,
+          "ci": [
+            0.48737549809130276,
+            0.8171972607457331
+          ],
+          "n_items": 3932
+        }
+      },
+      "scvi": {
+        "overall_tier": 3,
+        "overall_score": 0.32869164135645246,
+        "shift_type": "cross_assay",
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.3901124287969625,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.05516999999999994,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.5002742277300851,
+            "tier": 4
+          },
+          "m4_domain_validity": {
+            "score": 0.9582344807735543,
+            "tier": 7
+          },
+          "m6_curvature": {
+            "score": 0.23222748815165878,
+            "tier": 2
+          },
+          "m7_ecological_bias": {
+            "score": 0.0,
+            "tier": 1
+          }
+        },
+        "probe_f1": {
+          "mean": 0.4543115516954284,
+          "ci": [
+            0.3755581363545228,
+            0.5919691064037645
+          ],
+          "n_items": 3932
+        }
+      },
+      "bag_of_genes_pca512": {
+        "overall_tier": 5,
+        "overall_score": 0.6911615977009464,
+        "shift_type": "cross_assay",
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.9999999783677394,
+            "tier": 7
+          },
+          "m2_domain_shift": {
+            "score": 1.0,
+            "tier": 7
+          },
+          "m3_direction_stability": {
+            "score": 0.16427932649157678,
+            "tier": 2
+          },
+          "m4_domain_validity": {
+            "score": 0.8936620460158631,
+            "tier": 7
+          },
+          "m6_curvature": {
+            "score": 0.25154130702836003,
+            "tier": 3
+          },
+          "m7_ecological_bias": {
+            "score": 0.0,
+            "tier": 1
+          }
+        },
+        "probe_f1": {
+          "mean": 0.3063082348564476,
+          "ci": [
+            0.26521378332999357,
+            0.3322256440152735
+          ],
+          "n_items": 3932
+        }
+      }
+    },
+    "brain": {
+      "geneformer": {
+        "overall_tier": 2,
+        "overall_score": 0.23388450393393587,
+        "shift_type": "cross_assay",
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.21654487178419057,
+            "tier": 2
+          },
+          "m2_domain_shift": {
+            "score": 0.04381999999999975,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.30963140166125613,
+            "tier": 3
+          },
+          "m4_domain_validity": {
+            "score": 0.5815111669901609,
+            "tier": 5
+          },
+          "m6_curvature": {
+            "score": 0.21675392670157068,
+            "tier": 2
+          }
+        },
+        "probe_f1": {
+          "mean": 0.632627547366585,
+          "ci": [
+            0.5783566668606847,
+            0.6897108922719094
+          ],
+          "n_items": 3982
+        }
+      },
+      "scvi": {
+        "overall_tier": 3,
+        "overall_score": 0.3987252733437994,
+        "shift_type": "cross_assay",
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.45519535615584217,
+            "tier": 4
+          },
+          "m2_domain_shift": {
+            "score": 0.1633100000000003,
+            "tier": 2
+          },
+          "m3_direction_stability": {
+            "score": 0.4996619527426124,
+            "tier": 4
+          },
+          "m4_domain_validity": {
+            "score": 0.6930085969106333,
+            "tier": 5
+          },
+          "m6_curvature": {
+            "score": 0.32406602953953084,
+            "tier": 3
+          }
+        },
+        "probe_f1": {
+          "mean": 0.6840270500491704,
+          "ci": [
+            0.623819840460054,
+            0.7327757651331444
+          ],
+          "n_items": 3982
+        }
+      },
+      "bag_of_genes_pca512": {
+        "overall_tier": 6,
+        "overall_score": 0.7178668327673294,
+        "shift_type": "cross_assay",
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.9999999820008711,
+            "tier": 7
+          },
+          "m2_domain_shift": {
+            "score": 1.0,
+            "tier": 7
+          },
+          "m3_direction_stability": {
+            "score": 0.08850288677142695,
+            "tier": 1
+          },
+          "m4_domain_validity": {
+            "score": 0.4644686834265928,
+            "tier": 4
+          },
+          "m6_curvature": {
+            "score": 0.22632575757575757,
+            "tier": 2
+          }
+        },
+        "probe_f1": {
+          "mean": 0.2083650729912981,
+          "ci": [
+            0.15396285930971929,
+            0.25847243245642115
+          ],
+          "n_items": 3982
+        }
+      }
+    }
+  }
+}

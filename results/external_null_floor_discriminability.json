@@ -1,0 +1,44 @@
+{
+  "formula": "E[CKA] \u2248 1 - 1.06*(k-1)/(d+k)",
+  "discriminability_by_d": {
+    "50": {
+      "n_above": 218,
+      "n_total": 253,
+      "pct_above": 86.2
+    },
+    "200": {
+      "n_above": 76,
+      "n_total": 456,
+      "pct_above": 16.7
+    },
+    "512": {
+      "n_above": 0,
+      "n_total": 125,
+      "pct_above": 0.0
+    },
+    "768": {
+      "n_above": 0,
+      "n_total": 2,
+      "pct_above": 0.0
+    },
+    "1152": {
+      "n_above": 0,
+      "n_total": 2,
+      "pct_above": 0.0
+    }
+  },
+  "null_normalized_validity": {
+    "rho_raw_cka_f1": 0.4616,
+    "rho_z_cka_f1": 0.4232,
+    "partial_rho_raw_given_d": 0.4361,
+    "partial_rho_z_given_d": 0.3897
+  },
+  "crossover_k": {
+    "50": 18,
+    "100": 34,
+    "200": 66,
+    "512": 168,
+    "768": 251,
+    "1280": 417
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "experiment": "external_validation",
+  "prereg": "PREREGISTRATION_EXTERNAL_VALIDATION.md",
+  "prereg_sha256": "46aff40fdd13bbe40f102505857866c2099f7167e977419bf9ffa2819d0d461a",
+  "timestamp": "2026-07-24T17:36:58.419005+00:00",
+  "seed": 20260724,
+  "n_conditions_total": 0,
+  "n_contenders_total": 0,
+  "datasets_run": [
+    "pancreas",
+    "tabula_sapiens"
+  ],
+  "per_dataset": [
+    {
+      "dataset": "pancreas",
+      "n_conditions": 0,
+      "n_contenders": 0,
+      "error": "too_few_contenders"
+    },
+    {
+      "dataset": "tabula_sapiens",
+      "n_conditions": 0,
+      "n_contenders": 0,
+      "error": "too_few_contenders"
+    }
+  ],
+  "concordance": {
+    "summary": {
+      "cell_type_cka": {
+        "n_datasets": 0,
+        "n_positive": 0,
+        "n_significant": 0,
+        "all_positive": false,
+        "all_significant": false,
+        "per_dataset": []
+      },
+      "procrustes_sim": {
+        "n_datasets": 0,
+        "n_positive": 0,
+        "n_significant": 0,
+        "all_positive": false,
+        "all_significant": false,
+        "per_dataset": []
+      },
+      "silhouette_src": {
+        "n_datasets": 0,
+        "n_positive": 0,
+        "n_significant": 0,
+        "all_positive": false,
+        "all_significant": false,
+        "per_dataset": []
+      },
+      "silhouette_tgt": {
+        "n_datasets": 0,
+        "n_positive": 0,
+        "n_significant": 0,
+        "all_positive": false,
+        "all_significant": false,
+        "per_dataset": []
+      },
+      "mmd": {
+        "n_datasets": 0,
+        "n_positive": 0,
+        "n_significant": 0,
+        "all_positive": false,
+        "all_significant": false,
+        "per_dataset": []
+      },
+      "domain_auc": {
+        "n_datasets": 0,
+        "n_positive": 0,
+        "n_significant": 0,
+        "all_positive": false,
+        "all_significant": false,
+        "per_dataset": []
+      }
+    },
+    "hypotheses": {
+      "HE1_cka_generalizes": false,
+      "HE2_procrustes_generalizes": false,
+      "HE3_field_baselines_fail": false,
+      "HE4_concordance": false
+    }
+  }
+}

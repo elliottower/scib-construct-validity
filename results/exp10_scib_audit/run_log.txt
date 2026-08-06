@@ -1,0 +1,1823 @@
+=== STDOUT ===
+15:59:34 Experiment 10: scIB Metric Construct-Validity Audit
+15:59:34 Prereg: PREREGISTRATION_SCIB_AUDIT.md
+15:59:34 Census: 2023-12-15
+15:59:34 Tissues: ['lung', 'liver', 'kidney', 'brain']
+15:59:34 Seed: 20260713
+15:59:34 Metrics: ['nmi_leiden', 'ari_leiden', 'silhouette_label', 'clisi', 'isolated_label_asw', 'silhouette_batch', 'ilisi', 'kbet', 'graph_connectivity', 'pcr_comparison']
+15:59:34 Real embeddings: ['geneformer', 'scvi', 'scgpt']
+
+============================================================
+15:59:43 Processing tissue: lung
+15:59:43 Pulling source cells...
+  Source: 2000 cells
+16:07:30 Pulling target cells...
+  Target: 2000 cells
+  geneformer: d=512
+  scvi: d=50
+  scgpt: d=512
+
+16:10:27 Computing scIB metrics: lung / geneformer (d=512)
+  16:10:56 Computing kNN (k=15,50,90)...
+[34mINFO    [0m CD16-negative, CD56-bright natural killer cell, human consists of a    
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m CD16-positive, CD56-dim natural killer cell, human consists of a single
+         batch or is too small. Skip.                                           
+[34mINFO    [0m CD4-positive helper T cell consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m CD8-positive, alpha-beta memory T cell, CD45RO-positive consists of a  
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m T cell consists of a single batch or is too small. Skip.               
+[34mINFO    [0m alpha-beta T cell consists of a single batch or is too small. Skip.    
+[34mINFO    [0m alveolar type [1;36m1[0m fibroblast cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m alveolar type [1;36m2[0m fibroblast cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m animal cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m basophil consists of a single batch or is too small. Skip.             
+[34mINFO    [0m blood vessel endothelial cell consists of a single batch or is too     
+         small. Skip.                                                           
+[34mINFO    [0m chondrocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m ciliated cell consists of a single batch or is too small. Skip.        
+[34mINFO    [0m ciliated columnar cell of tracheobronchial tree consists of a single   
+         batch or is too small. Skip.                                           
+[34mINFO    [0m conventional dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell, human consists of a single batch or is too small. Skip.
+[34mINFO    [0m effector CD4-positive, alpha-beta T cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m effector memory CD8-positive, alpha-beta T cell, terminally            
+         differentiated consists of a single batch or is too small. Skip.       
+[34mINFO    [0m elicited macrophage consists of a single batch or is too small. Skip.  
+[34mINFO    [0m epithelial cell of lower respiratory tract consists of a single batch  
+         or is too small. Skip.                                                 
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m goblet cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m intermediate monocyte consists of a single batch or is too small. Skip.
+[34mINFO    [0m lung macrophage consists of a single batch or is too small. Skip.      
+[34mINFO    [0m lung microvascular endothelial cell consists of a single batch or is   
+         too small. Skip.                                                       
+[34mINFO    [0m lung neuroendocrine cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m lung pericyte consists of a single batch or is too small. Skip.        
+[34mINFO    [0m lymphocyte consists of a single batch or is too small. Skip.           
+[34mINFO    [0m mature NK T cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m mature alpha-beta T cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m mesothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m mesothelial fibroblast consists of a single batch or is too small.     
+         Skip.                                                                  
+[34mINFO    [0m monocyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m mucus secreting cell consists of a single batch or is too small. Skip. 
+[34mINFO    [0m myeloid cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m myeloid leukocyte consists of a single batch or is too small. Skip.    
+[34mINFO    [0m myofibroblast cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m naive B cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m naive thymus-derived CD4-positive, alpha-beta T cell consists of a     
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m naive thymus-derived CD8-positive, alpha-beta T cell consists of a     
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m native cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m plasmacytoid dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m pulmonary artery endothelial cell consists of a single batch or is too 
+         small. Skip.                                                           
+[34mINFO    [0m pulmonary interstitial fibroblast consists of a single batch or is too 
+         small. Skip.                                                           
+[34mINFO    [0m squamous epithelial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m stromal cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m tracheobronchial smooth muscle cell consists of a single batch or is   
+         too small. Skip.                                                       
+[34mINFO    [0m vascular associated smooth muscle cell consists of a single batch or is
+         too small. Skip.                                                       
+  16:13:31 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.466
+    nmi_leiden: 0.6939 [OK]
+    ari_leiden: 0.3806 [OK]
+    silhouette_label: 0.4868 [OK]
+    silhouette_batch: 0.7807 [OK]
+    isolated_label_asw: 0.5331 [OK]
+    graph_connectivity: 0.7617 [OK]
+    pcr_comparison: 0.0000 [OK]
+    clisi: 0.9933 [OK]
+    ilisi: 0.0050 [OK]
+    kbet: N/A [N/A]
+
+16:13:42 Computing scIB metrics: lung / scvi (d=50)
+  16:13:44 Computing kNN (k=15,50,90)...
+[34mINFO    [0m CD16-negative, CD56-bright natural killer cell, human consists of a    
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m CD16-positive, CD56-dim natural killer cell, human consists of a single
+         batch or is too small. Skip.                                           
+[34mINFO    [0m CD4-positive helper T cell consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m CD8-positive, alpha-beta memory T cell, CD45RO-positive consists of a  
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m T cell consists of a single batch or is too small. Skip.               
+[34mINFO    [0m alpha-beta T cell consists of a single batch or is too small. Skip.    
+[34mINFO    [0m alveolar type [1;36m1[0m fibroblast cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m alveolar type [1;36m2[0m fibroblast cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m animal cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m basophil consists of a single batch or is too small. Skip.             
+[34mINFO    [0m blood vessel endothelial cell consists of a single batch or is too     
+         small. Skip.                                                           
+[34mINFO    [0m chondrocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m ciliated cell consists of a single batch or is too small. Skip.        
+[34mINFO    [0m ciliated columnar cell of tracheobronchial tree consists of a single   
+         batch or is too small. Skip.                                           
+[34mINFO    [0m conventional dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell, human consists of a single batch or is too small. Skip.
+[34mINFO    [0m effector CD4-positive, alpha-beta T cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m effector memory CD8-positive, alpha-beta T cell, terminally            
+         differentiated consists of a single batch or is too small. Skip.       
+[34mINFO    [0m elicited macrophage consists of a single batch or is too small. Skip.  
+[34mINFO    [0m epithelial cell of lower respiratory tract consists of a single batch  
+         or is too small. Skip.                                                 
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m goblet cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m intermediate monocyte consists of a single batch or is too small. Skip.
+[34mINFO    [0m lung macrophage consists of a single batch or is too small. Skip.      
+[34mINFO    [0m lung microvascular endothelial cell consists of a single batch or is   
+         too small. Skip.                                                       
+[34mINFO    [0m lung neuroendocrine cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m lung pericyte consists of a single batch or is too small. Skip.        
+[34mINFO    [0m lymphocyte consists of a single batch or is too small. Skip.           
+[34mINFO    [0m mature NK T cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m mature alpha-beta T cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m mesothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m mesothelial fibroblast consists of a single batch or is too small.     
+         Skip.                                                                  
+[34mINFO    [0m monocyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m mucus secreting cell consists of a single batch or is too small. Skip. 
+[34mINFO    [0m myeloid cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m myeloid leukocyte consists of a single batch or is too small. Skip.    
+[34mINFO    [0m myofibroblast cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m naive B cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m naive thymus-derived CD4-positive, alpha-beta T cell consists of a     
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m naive thymus-derived CD8-positive, alpha-beta T cell consists of a     
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m native cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m plasmacytoid dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m pulmonary artery endothelial cell consists of a single batch or is too 
+         small. Skip.                                                           
+[34mINFO    [0m pulmonary interstitial fibroblast consists of a single batch or is too 
+         small. Skip.                                                           
+[34mINFO    [0m squamous epithelial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m stromal cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m tracheobronchial smooth muscle cell consists of a single batch or is   
+         too small. Skip.                                                       
+[34mINFO    [0m vascular associated smooth muscle cell consists of a single batch or is
+         too small. Skip.                                                       
+  16:15:25 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.337
+    nmi_leiden: 0.6529 [OK]
+    ari_leiden: 0.3686 [OK]
+    silhouette_label: 0.4338 [OK]
+    silhouette_batch: 0.7704 [OK]
+    isolated_label_asw: 0.5052 [OK]
+    graph_connectivity: 0.7449 [OK]
+    pcr_comparison: 0.0000 [OK]
+    clisi: 0.9878 [OK]
+    ilisi: 0.1263 [OK]
+    kbet: N/A [N/A]
+
+16:15:27 Computing scIB metrics: lung / scgpt (d=512)
+  16:15:28 Computing kNN (k=15,50,90)...
+[34mINFO    [0m CD16-negative, CD56-bright natural killer cell, human consists of a    
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m CD16-positive, CD56-dim natural killer cell, human consists of a single
+         batch or is too small. Skip.                                           
+[34mINFO    [0m CD4-positive helper T cell consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m CD8-positive, alpha-beta memory T cell, CD45RO-positive consists of a  
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m T cell consists of a single batch or is too small. Skip.               
+[34mINFO    [0m alpha-beta T cell consists of a single batch or is too small. Skip.    
+[34mINFO    [0m alveolar type [1;36m1[0m fibroblast cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m alveolar type [1;36m2[0m fibroblast cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m animal cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m basophil consists of a single batch or is too small. Skip.             
+[34mINFO    [0m blood vessel endothelial cell consists of a single batch or is too     
+         small. Skip.                                                           
+[34mINFO    [0m chondrocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m ciliated cell consists of a single batch or is too small. Skip.        
+[34mINFO    [0m ciliated columnar cell of tracheobronchial tree consists of a single   
+         batch or is too small. Skip.                                           
+[34mINFO    [0m conventional dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell, human consists of a single batch or is too small. Skip.
+[34mINFO    [0m effector CD4-positive, alpha-beta T cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m effector memory CD8-positive, alpha-beta T cell, terminally            
+         differentiated consists of a single batch or is too small. Skip.       
+[34mINFO    [0m elicited macrophage consists of a single batch or is too small. Skip.  
+[34mINFO    [0m epithelial cell of lower respiratory tract consists of a single batch  
+         or is too small. Skip.                                                 
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m goblet cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m intermediate monocyte consists of a single batch or is too small. Skip.
+[34mINFO    [0m lung macrophage consists of a single batch or is too small. Skip.      
+[34mINFO    [0m lung microvascular endothelial cell consists of a single batch or is   
+         too small. Skip.                                                       
+[34mINFO    [0m lung neuroendocrine cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m lung pericyte consists of a single batch or is too small. Skip.        
+[34mINFO    [0m lymphocyte consists of a single batch or is too small. Skip.           
+[34mINFO    [0m mature NK T cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m mature alpha-beta T cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m mesothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m mesothelial fibroblast consists of a single batch or is too small.     
+         Skip.                                                                  
+[34mINFO    [0m monocyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m mucus secreting cell consists of a single batch or is too small. Skip. 
+[34mINFO    [0m myeloid cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m myeloid leukocyte consists of a single batch or is too small. Skip.    
+[34mINFO    [0m myofibroblast cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m naive B cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m naive thymus-derived CD4-positive, alpha-beta T cell consists of a     
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m naive thymus-derived CD8-positive, alpha-beta T cell consists of a     
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m native cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m plasmacytoid dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m pulmonary artery endothelial cell consists of a single batch or is too 
+         small. Skip.                                                           
+[34mINFO    [0m pulmonary interstitial fibroblast consists of a single batch or is too 
+         small. Skip.                                                           
+[34mINFO    [0m squamous epithelial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m stromal cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m tracheobronchial smooth muscle cell consists of a single batch or is   
+         too small. Skip.                                                       
+[34mINFO    [0m vascular associated smooth muscle cell consists of a single batch or is
+         too small. Skip.                                                       
+  16:17:12 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.265
+    nmi_leiden: 0.6392 [OK]
+    ari_leiden: 0.3414 [OK]
+    silhouette_label: 0.4400 [OK]
+    silhouette_batch: 0.6929 [OK]
+    isolated_label_asw: 0.5305 [OK]
+    graph_connectivity: 0.7540 [OK]
+    pcr_comparison: 0.0000 [OK]
+    clisi: 0.9902 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:17:16 Computing scIB metrics: lung / random_projection (d=512)
+  16:17:17 Computing kNN (k=15,50,90)...
+[34mINFO    [0m CD16-negative, CD56-bright natural killer cell, human consists of a    
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m CD16-positive, CD56-dim natural killer cell, human consists of a single
+         batch or is too small. Skip.                                           
+[34mINFO    [0m CD4-positive helper T cell consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m CD8-positive, alpha-beta memory T cell, CD45RO-positive consists of a  
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m T cell consists of a single batch or is too small. Skip.               
+[34mINFO    [0m alpha-beta T cell consists of a single batch or is too small. Skip.    
+[34mINFO    [0m alveolar type [1;36m1[0m fibroblast cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m alveolar type [1;36m2[0m fibroblast cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m animal cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m basophil consists of a single batch or is too small. Skip.             
+[34mINFO    [0m blood vessel endothelial cell consists of a single batch or is too     
+         small. Skip.                                                           
+[34mINFO    [0m chondrocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m ciliated cell consists of a single batch or is too small. Skip.        
+[34mINFO    [0m ciliated columnar cell of tracheobronchial tree consists of a single   
+         batch or is too small. Skip.                                           
+[34mINFO    [0m conventional dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell, human consists of a single batch or is too small. Skip.
+[34mINFO    [0m effector CD4-positive, alpha-beta T cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m effector memory CD8-positive, alpha-beta T cell, terminally            
+         differentiated consists of a single batch or is too small. Skip.       
+[34mINFO    [0m elicited macrophage consists of a single batch or is too small. Skip.  
+[34mINFO    [0m epithelial cell of lower respiratory tract consists of a single batch  
+         or is too small. Skip.                                                 
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m goblet cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m intermediate monocyte consists of a single batch or is too small. Skip.
+[34mINFO    [0m lung macrophage consists of a single batch or is too small. Skip.      
+[34mINFO    [0m lung microvascular endothelial cell consists of a single batch or is   
+         too small. Skip.                                                       
+[34mINFO    [0m lung neuroendocrine cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m lung pericyte consists of a single batch or is too small. Skip.        
+[34mINFO    [0m lymphocyte consists of a single batch or is too small. Skip.           
+[34mINFO    [0m mature NK T cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m mature alpha-beta T cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m mesothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m mesothelial fibroblast consists of a single batch or is too small.     
+         Skip.                                                                  
+[34mINFO    [0m monocyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m mucus secreting cell consists of a single batch or is too small. Skip. 
+[34mINFO    [0m myeloid cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m myeloid leukocyte consists of a single batch or is too small. Skip.    
+[34mINFO    [0m myofibroblast cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m naive B cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m naive thymus-derived CD4-positive, alpha-beta T cell consists of a     
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m naive thymus-derived CD8-positive, alpha-beta T cell consists of a     
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m native cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m plasmacytoid dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m pulmonary artery endothelial cell consists of a single batch or is too 
+         small. Skip.                                                           
+[34mINFO    [0m pulmonary interstitial fibroblast consists of a single batch or is too 
+         small. Skip.                                                           
+[34mINFO    [0m squamous epithelial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m stromal cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m tracheobronchial smooth muscle cell consists of a single batch or is   
+         too small. Skip.                                                       
+[34mINFO    [0m vascular associated smooth muscle cell consists of a single batch or is
+         too small. Skip.                                                       
+  16:19:03 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.300
+    nmi_leiden: 0.3972 [OK]
+    ari_leiden: 0.1445 [OK]
+    silhouette_label: 0.3436 [OK]
+    silhouette_batch: 0.6003 [OK]
+    isolated_label_asw: 0.4599 [OK]
+    graph_connectivity: 0.3065 [OK]
+    pcr_comparison: 0.0000 [OK]
+    clisi: 0.9771 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:19:13 Computing scIB metrics: lung / untrained_encoder (d=512)
+  16:19:15 Computing kNN (k=15,50,90)...
+[34mINFO    [0m CD16-negative, CD56-bright natural killer cell, human consists of a    
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m CD16-positive, CD56-dim natural killer cell, human consists of a single
+         batch or is too small. Skip.                                           
+[34mINFO    [0m CD4-positive helper T cell consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m CD8-positive, alpha-beta memory T cell, CD45RO-positive consists of a  
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m T cell consists of a single batch or is too small. Skip.               
+[34mINFO    [0m alpha-beta T cell consists of a single batch or is too small. Skip.    
+[34mINFO    [0m alveolar type [1;36m1[0m fibroblast cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m alveolar type [1;36m2[0m fibroblast cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m animal cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m basophil consists of a single batch or is too small. Skip.             
+[34mINFO    [0m blood vessel endothelial cell consists of a single batch or is too     
+         small. Skip.                                                           
+[34mINFO    [0m chondrocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m ciliated cell consists of a single batch or is too small. Skip.        
+[34mINFO    [0m ciliated columnar cell of tracheobronchial tree consists of a single   
+         batch or is too small. Skip.                                           
+[34mINFO    [0m conventional dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell, human consists of a single batch or is too small. Skip.
+[34mINFO    [0m effector CD4-positive, alpha-beta T cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m effector memory CD8-positive, alpha-beta T cell, terminally            
+         differentiated consists of a single batch or is too small. Skip.       
+[34mINFO    [0m elicited macrophage consists of a single batch or is too small. Skip.  
+[34mINFO    [0m epithelial cell of lower respiratory tract consists of a single batch  
+         or is too small. Skip.                                                 
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m goblet cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m intermediate monocyte consists of a single batch or is too small. Skip.
+[34mINFO    [0m lung macrophage consists of a single batch or is too small. Skip.      
+[34mINFO    [0m lung microvascular endothelial cell consists of a single batch or is   
+         too small. Skip.                                                       
+[34mINFO    [0m lung neuroendocrine cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m lung pericyte consists of a single batch or is too small. Skip.        
+[34mINFO    [0m lymphocyte consists of a single batch or is too small. Skip.           
+[34mINFO    [0m mature NK T cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m mature alpha-beta T cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m mesothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m mesothelial fibroblast consists of a single batch or is too small.     
+         Skip.                                                                  
+[34mINFO    [0m monocyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m mucus secreting cell consists of a single batch or is too small. Skip. 
+[34mINFO    [0m myeloid cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m myeloid leukocyte consists of a single batch or is too small. Skip.    
+[34mINFO    [0m myofibroblast cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m naive B cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m naive thymus-derived CD4-positive, alpha-beta T cell consists of a     
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m naive thymus-derived CD8-positive, alpha-beta T cell consists of a     
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m native cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m plasmacytoid dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m pulmonary artery endothelial cell consists of a single batch or is too 
+         small. Skip.                                                           
+[34mINFO    [0m pulmonary interstitial fibroblast consists of a single batch or is too 
+         small. Skip.                                                           
+[34mINFO    [0m squamous epithelial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m stromal cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m tracheobronchial smooth muscle cell consists of a single batch or is   
+         too small. Skip.                                                       
+[34mINFO    [0m vascular associated smooth muscle cell consists of a single batch or is
+         too small. Skip.                                                       
+  16:20:59 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.223
+    nmi_leiden: 0.3283 [OK]
+    ari_leiden: 0.1310 [OK]
+    silhouette_label: 0.3384 [OK]
+    silhouette_batch: 0.6043 [OK]
+    isolated_label_asw: 0.4608 [OK]
+    graph_connectivity: 0.3191 [OK]
+    pcr_comparison: 0.0000 [OK]
+    clisi: 0.9677 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:21:15 Computing scIB metrics: lung / bog_pca_512 (d=512)
+  16:21:16 Computing kNN (k=15,50,90)...
+[34mINFO    [0m CD16-negative, CD56-bright natural killer cell, human consists of a    
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m CD16-positive, CD56-dim natural killer cell, human consists of a single
+         batch or is too small. Skip.                                           
+[34mINFO    [0m CD4-positive helper T cell consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m CD8-positive, alpha-beta memory T cell, CD45RO-positive consists of a  
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m T cell consists of a single batch or is too small. Skip.               
+[34mINFO    [0m alpha-beta T cell consists of a single batch or is too small. Skip.    
+[34mINFO    [0m alveolar type [1;36m1[0m fibroblast cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m alveolar type [1;36m2[0m fibroblast cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m animal cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m basophil consists of a single batch or is too small. Skip.             
+[34mINFO    [0m blood vessel endothelial cell consists of a single batch or is too     
+         small. Skip.                                                           
+[34mINFO    [0m chondrocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m ciliated cell consists of a single batch or is too small. Skip.        
+[34mINFO    [0m ciliated columnar cell of tracheobronchial tree consists of a single   
+         batch or is too small. Skip.                                           
+[34mINFO    [0m conventional dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell, human consists of a single batch or is too small. Skip.
+[34mINFO    [0m effector CD4-positive, alpha-beta T cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m effector memory CD8-positive, alpha-beta T cell, terminally            
+         differentiated consists of a single batch or is too small. Skip.       
+[34mINFO    [0m elicited macrophage consists of a single batch or is too small. Skip.  
+[34mINFO    [0m epithelial cell of lower respiratory tract consists of a single batch  
+         or is too small. Skip.                                                 
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m goblet cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m intermediate monocyte consists of a single batch or is too small. Skip.
+[34mINFO    [0m lung macrophage consists of a single batch or is too small. Skip.      
+[34mINFO    [0m lung microvascular endothelial cell consists of a single batch or is   
+         too small. Skip.                                                       
+[34mINFO    [0m lung neuroendocrine cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m lung pericyte consists of a single batch or is too small. Skip.        
+[34mINFO    [0m lymphocyte consists of a single batch or is too small. Skip.           
+[34mINFO    [0m mature NK T cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m mature alpha-beta T cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m mesothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m mesothelial fibroblast consists of a single batch or is too small.     
+         Skip.                                                                  
+[34mINFO    [0m monocyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m mucus secreting cell consists of a single batch or is too small. Skip. 
+[34mINFO    [0m myeloid cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m myeloid leukocyte consists of a single batch or is too small. Skip.    
+[34mINFO    [0m myofibroblast cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m naive B cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m naive thymus-derived CD4-positive, alpha-beta T cell consists of a     
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m naive thymus-derived CD8-positive, alpha-beta T cell consists of a     
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m native cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m plasmacytoid dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m pulmonary artery endothelial cell consists of a single batch or is too 
+         small. Skip.                                                           
+[34mINFO    [0m pulmonary interstitial fibroblast consists of a single batch or is too 
+         small. Skip.                                                           
+[34mINFO    [0m squamous epithelial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m stromal cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m tracheobronchial smooth muscle cell consists of a single batch or is   
+         too small. Skip.                                                       
+[34mINFO    [0m vascular associated smooth muscle cell consists of a single batch or is
+         too small. Skip.                                                       
+  16:23:02 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.348
+    nmi_leiden: 0.5994 [OK]
+    ari_leiden: 0.3024 [OK]
+    silhouette_label: 0.3187 [OK]
+    silhouette_batch: 0.5658 [OK]
+    isolated_label_asw: 0.4587 [OK]
+    graph_connectivity: 0.4515 [OK]
+    pcr_comparison: 0.0000 [OK]
+    clisi: 0.9848 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+============================================================
+16:24:06 Processing tissue: liver
+16:24:06 Pulling source cells...
+  Source: 2000 cells
+16:27:12 Pulling target cells...
+  Target: 2000 cells
+  geneformer: d=512
+  scvi: d=50
+  scgpt: d=512
+
+16:29:56 Computing scIB metrics: liver / geneformer (d=512)
+  16:29:58 Computing kNN (k=15,50,90)...
+[34mINFO    [0m CD1c-positive myeloid dendritic cell consists of a single batch or is  
+         too small. Skip.                                                       
+[34mINFO    [0m CD4-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m CD8-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m Kupffer cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m basophil consists of a single batch or is too small. Skip.             
+[34mINFO    [0m bronchus fibroblast of lung consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m capillary endothelial cell consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m cholangiocyte consists of a single batch or is too small. Skip.        
+[34mINFO    [0m classical monocyte consists of a single batch or is too small. Skip.   
+[34mINFO    [0m common dendritic progenitor consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m common lymphoid progenitor consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m conventional dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m endothelial cell of lymphatic vessel consists of a single batch or is  
+         too small. Skip.                                                       
+[34mINFO    [0m epithelial cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m epithelial cell of lung consists of a single batch or is too small.    
+         Skip.                                                                  
+[34mINFO    [0m erythroblast consists of a single batch or is too small. Skip.         
+[34mINFO    [0m erythrocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m erythroid progenitor cell consists of a single batch or is too small.  
+         Skip.                                                                  
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m granulocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m hematopoietic multipotent progenitor cell consists of a single batch or
+         is too small. Skip.                                                    
+[34mINFO    [0m hepatic stellate cell consists of a single batch or is too small. Skip.
+[34mINFO    [0m intrahepatic cholangiocyte consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m liver dendritic cell consists of a single batch or is too small. Skip. 
+[34mINFO    [0m lymphocyte consists of a single batch or is too small. Skip.           
+[34mINFO    [0m lymphoid lineage restricted progenitor cell consists of a single batch 
+         or is too small. Skip.                                                 
+[34mINFO    [0m malignant cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m mast cell consists of a single batch or is too small. Skip.            
+[34mINFO    [0m megakaryocyte-erythroid progenitor cell consists of a single batch or  
+         is too small. Skip.                                                    
+[34mINFO    [0m myeloid cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m myeloid lineage restricted progenitor cell consists of a single batch  
+         or is too small. Skip.                                                 
+[34mINFO    [0m neoplastic cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m non-classical monocyte consists of a single batch or is too small.     
+         Skip.                                                                  
+[34mINFO    [0m pericyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m precursor B cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m pro-B cell consists of a single batch or is too small. Skip.           
+[34mINFO    [0m proerythroblast consists of a single batch or is too small. Skip.      
+[34mINFO    [0m regulatory T cell consists of a single batch or is too small. Skip.    
+[34mINFO    [0m smooth muscle cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m type I pneumocyte consists of a single batch or is too small. Skip.    
+[34mINFO    [0m vein endothelial cell consists of a single batch or is too small. Skip.
+  16:31:48 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.485
+    nmi_leiden: 0.8346 [OK]
+    ari_leiden: 0.7546 [OK]
+    silhouette_label: 0.5731 [OK]
+    silhouette_batch: 0.7588 [OK]
+    isolated_label_asw: 0.5415 [OK]
+    graph_connectivity: 0.8069 [OK]
+    pcr_comparison: 0.0000 [OK]
+    clisi: 0.9994 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:31:53 Computing scIB metrics: liver / scvi (d=50)
+  16:31:55 Computing kNN (k=15,50,90)...
+[34mINFO    [0m CD1c-positive myeloid dendritic cell consists of a single batch or is  
+         too small. Skip.                                                       
+[34mINFO    [0m CD4-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m CD8-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m Kupffer cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m basophil consists of a single batch or is too small. Skip.             
+[34mINFO    [0m bronchus fibroblast of lung consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m capillary endothelial cell consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m cholangiocyte consists of a single batch or is too small. Skip.        
+[34mINFO    [0m classical monocyte consists of a single batch or is too small. Skip.   
+[34mINFO    [0m common dendritic progenitor consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m common lymphoid progenitor consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m conventional dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m endothelial cell of lymphatic vessel consists of a single batch or is  
+         too small. Skip.                                                       
+[34mINFO    [0m epithelial cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m epithelial cell of lung consists of a single batch or is too small.    
+         Skip.                                                                  
+[34mINFO    [0m erythroblast consists of a single batch or is too small. Skip.         
+[34mINFO    [0m erythrocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m erythroid progenitor cell consists of a single batch or is too small.  
+         Skip.                                                                  
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m granulocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m hematopoietic multipotent progenitor cell consists of a single batch or
+         is too small. Skip.                                                    
+[34mINFO    [0m hepatic stellate cell consists of a single batch or is too small. Skip.
+[34mINFO    [0m intrahepatic cholangiocyte consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m liver dendritic cell consists of a single batch or is too small. Skip. 
+[34mINFO    [0m lymphocyte consists of a single batch or is too small. Skip.           
+[34mINFO    [0m lymphoid lineage restricted progenitor cell consists of a single batch 
+         or is too small. Skip.                                                 
+[34mINFO    [0m malignant cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m mast cell consists of a single batch or is too small. Skip.            
+[34mINFO    [0m megakaryocyte-erythroid progenitor cell consists of a single batch or  
+         is too small. Skip.                                                    
+[34mINFO    [0m myeloid cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m myeloid lineage restricted progenitor cell consists of a single batch  
+         or is too small. Skip.                                                 
+[34mINFO    [0m neoplastic cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m non-classical monocyte consists of a single batch or is too small.     
+         Skip.                                                                  
+[34mINFO    [0m pericyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m precursor B cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m pro-B cell consists of a single batch or is too small. Skip.           
+[34mINFO    [0m proerythroblast consists of a single batch or is too small. Skip.      
+[34mINFO    [0m regulatory T cell consists of a single batch or is too small. Skip.    
+[34mINFO    [0m smooth muscle cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m type I pneumocyte consists of a single batch or is too small. Skip.    
+[34mINFO    [0m vein endothelial cell consists of a single batch or is too small. Skip.
+  16:33:35 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.337
+    nmi_leiden: 0.7109 [OK]
+    ari_leiden: 0.5425 [OK]
+    silhouette_label: 0.5021 [OK]
+    silhouette_batch: 0.6152 [OK]
+    isolated_label_asw: 0.5110 [OK]
+    graph_connectivity: 0.7227 [OK]
+    pcr_comparison: 0.0000 [OK]
+    clisi: 0.9962 [OK]
+    ilisi: 0.0143 [OK]
+    kbet: N/A [N/A]
+
+16:33:36 Computing scIB metrics: liver / scgpt (d=512)
+  16:33:38 Computing kNN (k=15,50,90)...
+[34mINFO    [0m CD1c-positive myeloid dendritic cell consists of a single batch or is  
+         too small. Skip.                                                       
+[34mINFO    [0m CD4-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m CD8-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m Kupffer cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m basophil consists of a single batch or is too small. Skip.             
+[34mINFO    [0m bronchus fibroblast of lung consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m capillary endothelial cell consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m cholangiocyte consists of a single batch or is too small. Skip.        
+[34mINFO    [0m classical monocyte consists of a single batch or is too small. Skip.   
+[34mINFO    [0m common dendritic progenitor consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m common lymphoid progenitor consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m conventional dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m endothelial cell of lymphatic vessel consists of a single batch or is  
+         too small. Skip.                                                       
+[34mINFO    [0m epithelial cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m epithelial cell of lung consists of a single batch or is too small.    
+         Skip.                                                                  
+[34mINFO    [0m erythroblast consists of a single batch or is too small. Skip.         
+[34mINFO    [0m erythrocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m erythroid progenitor cell consists of a single batch or is too small.  
+         Skip.                                                                  
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m granulocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m hematopoietic multipotent progenitor cell consists of a single batch or
+         is too small. Skip.                                                    
+[34mINFO    [0m hepatic stellate cell consists of a single batch or is too small. Skip.
+[34mINFO    [0m intrahepatic cholangiocyte consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m liver dendritic cell consists of a single batch or is too small. Skip. 
+[34mINFO    [0m lymphocyte consists of a single batch or is too small. Skip.           
+[34mINFO    [0m lymphoid lineage restricted progenitor cell consists of a single batch 
+         or is too small. Skip.                                                 
+[34mINFO    [0m malignant cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m mast cell consists of a single batch or is too small. Skip.            
+[34mINFO    [0m megakaryocyte-erythroid progenitor cell consists of a single batch or  
+         is too small. Skip.                                                    
+[34mINFO    [0m myeloid cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m myeloid lineage restricted progenitor cell consists of a single batch  
+         or is too small. Skip.                                                 
+[34mINFO    [0m neoplastic cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m non-classical monocyte consists of a single batch or is too small.     
+         Skip.                                                                  
+[34mINFO    [0m pericyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m precursor B cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m pro-B cell consists of a single batch or is too small. Skip.           
+[34mINFO    [0m proerythroblast consists of a single batch or is too small. Skip.      
+[34mINFO    [0m regulatory T cell consists of a single batch or is too small. Skip.    
+[34mINFO    [0m smooth muscle cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m type I pneumocyte consists of a single batch or is too small. Skip.    
+[34mINFO    [0m vein endothelial cell consists of a single batch or is too small. Skip.
+  16:35:23 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.271
+    nmi_leiden: 0.7718 [OK]
+    ari_leiden: 0.6432 [OK]
+    silhouette_label: 0.5513 [OK]
+    silhouette_batch: 0.6625 [OK]
+    isolated_label_asw: 0.5314 [OK]
+    graph_connectivity: 0.7627 [OK]
+    pcr_comparison: 0.0000 [OK]
+    clisi: 0.9990 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:35:26 Computing scIB metrics: liver / random_projection (d=512)
+  16:35:28 Computing kNN (k=15,50,90)...
+[34mINFO    [0m CD1c-positive myeloid dendritic cell consists of a single batch or is  
+         too small. Skip.                                                       
+[34mINFO    [0m CD4-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m CD8-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m Kupffer cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m basophil consists of a single batch or is too small. Skip.             
+[34mINFO    [0m bronchus fibroblast of lung consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m capillary endothelial cell consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m cholangiocyte consists of a single batch or is too small. Skip.        
+[34mINFO    [0m classical monocyte consists of a single batch or is too small. Skip.   
+[34mINFO    [0m common dendritic progenitor consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m common lymphoid progenitor consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m conventional dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m endothelial cell of lymphatic vessel consists of a single batch or is  
+         too small. Skip.                                                       
+[34mINFO    [0m epithelial cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m epithelial cell of lung consists of a single batch or is too small.    
+         Skip.                                                                  
+[34mINFO    [0m erythroblast consists of a single batch or is too small. Skip.         
+[34mINFO    [0m erythrocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m erythroid progenitor cell consists of a single batch or is too small.  
+         Skip.                                                                  
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m granulocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m hematopoietic multipotent progenitor cell consists of a single batch or
+         is too small. Skip.                                                    
+[34mINFO    [0m hepatic stellate cell consists of a single batch or is too small. Skip.
+[34mINFO    [0m intrahepatic cholangiocyte consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m liver dendritic cell consists of a single batch or is too small. Skip. 
+[34mINFO    [0m lymphocyte consists of a single batch or is too small. Skip.           
+[34mINFO    [0m lymphoid lineage restricted progenitor cell consists of a single batch 
+         or is too small. Skip.                                                 
+[34mINFO    [0m malignant cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m mast cell consists of a single batch or is too small. Skip.            
+[34mINFO    [0m megakaryocyte-erythroid progenitor cell consists of a single batch or  
+         is too small. Skip.                                                    
+[34mINFO    [0m myeloid cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m myeloid lineage restricted progenitor cell consists of a single batch  
+         or is too small. Skip.                                                 
+[34mINFO    [0m neoplastic cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m non-classical monocyte consists of a single batch or is too small.     
+         Skip.                                                                  
+[34mINFO    [0m pericyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m precursor B cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m pro-B cell consists of a single batch or is too small. Skip.           
+[34mINFO    [0m proerythroblast consists of a single batch or is too small. Skip.      
+[34mINFO    [0m regulatory T cell consists of a single batch or is too small. Skip.    
+[34mINFO    [0m smooth muscle cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m type I pneumocyte consists of a single batch or is too small. Skip.    
+[34mINFO    [0m vein endothelial cell consists of a single batch or is too small. Skip.
+  16:37:15 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.357
+    nmi_leiden: 0.6128 [OK]
+    ari_leiden: 0.4583 [OK]
+    silhouette_label: 0.4222 [OK]
+    silhouette_batch: 0.4518 [OK]
+    isolated_label_asw: 0.4465 [OK]
+    graph_connectivity: 0.2838 [OK]
+    pcr_comparison: 0.0000 [OK]
+    clisi: 0.9839 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:37:20 Computing scIB metrics: liver / untrained_encoder (d=512)
+  16:37:22 Computing kNN (k=15,50,90)...
+[34mINFO    [0m CD1c-positive myeloid dendritic cell consists of a single batch or is  
+         too small. Skip.                                                       
+[34mINFO    [0m CD4-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m CD8-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m Kupffer cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m basophil consists of a single batch or is too small. Skip.             
+[34mINFO    [0m bronchus fibroblast of lung consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m capillary endothelial cell consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m cholangiocyte consists of a single batch or is too small. Skip.        
+[34mINFO    [0m classical monocyte consists of a single batch or is too small. Skip.   
+[34mINFO    [0m common dendritic progenitor consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m common lymphoid progenitor consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m conventional dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m endothelial cell of lymphatic vessel consists of a single batch or is  
+         too small. Skip.                                                       
+[34mINFO    [0m epithelial cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m epithelial cell of lung consists of a single batch or is too small.    
+         Skip.                                                                  
+[34mINFO    [0m erythroblast consists of a single batch or is too small. Skip.         
+[34mINFO    [0m erythrocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m erythroid progenitor cell consists of a single batch or is too small.  
+         Skip.                                                                  
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m granulocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m hematopoietic multipotent progenitor cell consists of a single batch or
+         is too small. Skip.                                                    
+[34mINFO    [0m hepatic stellate cell consists of a single batch or is too small. Skip.
+[34mINFO    [0m intrahepatic cholangiocyte consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m liver dendritic cell consists of a single batch or is too small. Skip. 
+[34mINFO    [0m lymphocyte consists of a single batch or is too small. Skip.           
+[34mINFO    [0m lymphoid lineage restricted progenitor cell consists of a single batch 
+         or is too small. Skip.                                                 
+[34mINFO    [0m malignant cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m mast cell consists of a single batch or is too small. Skip.            
+[34mINFO    [0m megakaryocyte-erythroid progenitor cell consists of a single batch or  
+         is too small. Skip.                                                    
+[34mINFO    [0m myeloid cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m myeloid lineage restricted progenitor cell consists of a single batch  
+         or is too small. Skip.                                                 
+[34mINFO    [0m neoplastic cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m non-classical monocyte consists of a single batch or is too small.     
+         Skip.                                                                  
+[34mINFO    [0m pericyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m precursor B cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m pro-B cell consists of a single batch or is too small. Skip.           
+[34mINFO    [0m proerythroblast consists of a single batch or is too small. Skip.      
+[34mINFO    [0m regulatory T cell consists of a single batch or is too small. Skip.    
+[34mINFO    [0m smooth muscle cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m type I pneumocyte consists of a single batch or is too small. Skip.    
+[34mINFO    [0m vein endothelial cell consists of a single batch or is too small. Skip.
+  16:39:07 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.262
+    nmi_leiden: 0.5649 [OK]
+    ari_leiden: 0.4124 [OK]
+    silhouette_label: 0.4165 [OK]
+    silhouette_batch: 0.4531 [OK]
+    isolated_label_asw: 0.4415 [OK]
+    graph_connectivity: 0.3456 [OK]
+    pcr_comparison: 0.0000 [OK]
+    clisi: 0.9818 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:39:19 Computing scIB metrics: liver / bog_pca_512 (d=512)
+  16:39:20 Computing kNN (k=15,50,90)...
+[34mINFO    [0m CD1c-positive myeloid dendritic cell consists of a single batch or is  
+         too small. Skip.                                                       
+[34mINFO    [0m CD4-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m CD8-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m Kupffer cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m basophil consists of a single batch or is too small. Skip.             
+[34mINFO    [0m bronchus fibroblast of lung consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m capillary endothelial cell consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m cholangiocyte consists of a single batch or is too small. Skip.        
+[34mINFO    [0m classical monocyte consists of a single batch or is too small. Skip.   
+[34mINFO    [0m common dendritic progenitor consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m common lymphoid progenitor consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m conventional dendritic cell consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m endothelial cell of lymphatic vessel consists of a single batch or is  
+         too small. Skip.                                                       
+[34mINFO    [0m epithelial cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m epithelial cell of lung consists of a single batch or is too small.    
+         Skip.                                                                  
+[34mINFO    [0m erythroblast consists of a single batch or is too small. Skip.         
+[34mINFO    [0m erythrocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m erythroid progenitor cell consists of a single batch or is too small.  
+         Skip.                                                                  
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m granulocyte consists of a single batch or is too small. Skip.          
+[34mINFO    [0m hematopoietic multipotent progenitor cell consists of a single batch or
+         is too small. Skip.                                                    
+[34mINFO    [0m hepatic stellate cell consists of a single batch or is too small. Skip.
+[34mINFO    [0m intrahepatic cholangiocyte consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m liver dendritic cell consists of a single batch or is too small. Skip. 
+[34mINFO    [0m lymphocyte consists of a single batch or is too small. Skip.           
+[34mINFO    [0m lymphoid lineage restricted progenitor cell consists of a single batch 
+         or is too small. Skip.                                                 
+[34mINFO    [0m malignant cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m mast cell consists of a single batch or is too small. Skip.            
+[34mINFO    [0m megakaryocyte-erythroid progenitor cell consists of a single batch or  
+         is too small. Skip.                                                    
+[34mINFO    [0m myeloid cell consists of a single batch or is too small. Skip.         
+[34mINFO    [0m myeloid lineage restricted progenitor cell consists of a single batch  
+         or is too small. Skip.                                                 
+[34mINFO    [0m neoplastic cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m non-classical monocyte consists of a single batch or is too small.     
+         Skip.                                                                  
+[34mINFO    [0m pericyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m precursor B cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m pro-B cell consists of a single batch or is too small. Skip.           
+[34mINFO    [0m proerythroblast consists of a single batch or is too small. Skip.      
+[34mINFO    [0m regulatory T cell consists of a single batch or is too small. Skip.    
+[34mINFO    [0m smooth muscle cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m type I pneumocyte consists of a single batch or is too small. Skip.    
+[34mINFO    [0m vein endothelial cell consists of a single batch or is too small. Skip.
+  16:41:05 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.365
+    nmi_leiden: 0.7150 [OK]
+    ari_leiden: 0.4637 [OK]
+    silhouette_label: 0.4205 [OK]
+    silhouette_batch: 0.3918 [OK]
+    isolated_label_asw: 0.4402 [OK]
+    graph_connectivity: 0.5206 [OK]
+    pcr_comparison: 0.0000 [OK]
+    clisi: 0.9969 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+============================================================
+16:41:27 Processing tissue: kidney
+16:41:27 Pulling source cells...
+  Source: 2000 cells
+16:43:26 Pulling target cells...
+  Target: 370 cells
+  geneformer: d=512
+  scvi: d=50
+  scgpt: d=512
+
+16:45:27 Computing scIB metrics: kidney / geneformer (d=512)
+  16:45:28 Computing kNN (k=15,50,90)...
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m epithelial cell of nephron consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m epithelial cell of proximal tubule consists of a single batch or is too
+         small. Skip.                                                           
+[34mINFO    [0m kidney collecting duct intercalated cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m kidney collecting duct principal cell consists of a single batch or is 
+         too small. Skip.                                                       
+[34mINFO    [0m kidney connecting tubule epithelial cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m kidney distal convoluted tubule epithelial cell consists of a single   
+         batch or is too small. Skip.                                           
+[34mINFO    [0m kidney interstitial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m kidney loop of Henle thick ascending limb epithelial cell consists of a
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m kidney loop of Henle thin ascending limb epithelial cell consists of a 
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m kidney loop of Henle thin descending limb epithelial cell consists of a
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m leukocyte consists of a single batch or is too small. Skip.            
+[34mINFO    [0m mesenchymal stem cell consists of a single batch or is too small. Skip.
+[34mINFO    [0m native cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m parietal epithelial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m podocyte consists of a single batch or is too small. Skip.             
+  16:46:17 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.500
+    nmi_leiden: 0.7658 [OK]
+    ari_leiden: 0.6136 [OK]
+    silhouette_label: 0.5571 [OK]
+    silhouette_batch: 0.7195 [OK]
+    isolated_label_asw: 0.5671 [OK]
+    graph_connectivity: 0.8228 [OK]
+    pcr_comparison: 0.4887 [OK]
+    clisi: 0.9948 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:46:20 Computing scIB metrics: kidney / scvi (d=50)
+  16:46:21 Computing kNN (k=15,50,90)...
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m epithelial cell of nephron consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m epithelial cell of proximal tubule consists of a single batch or is too
+         small. Skip.                                                           
+[34mINFO    [0m kidney collecting duct intercalated cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m kidney collecting duct principal cell consists of a single batch or is 
+         too small. Skip.                                                       
+[34mINFO    [0m kidney connecting tubule epithelial cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m kidney distal convoluted tubule epithelial cell consists of a single   
+         batch or is too small. Skip.                                           
+[34mINFO    [0m kidney interstitial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m kidney loop of Henle thick ascending limb epithelial cell consists of a
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m kidney loop of Henle thin ascending limb epithelial cell consists of a 
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m kidney loop of Henle thin descending limb epithelial cell consists of a
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m leukocyte consists of a single batch or is too small. Skip.            
+[34mINFO    [0m mesenchymal stem cell consists of a single batch or is too small. Skip.
+[34mINFO    [0m native cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m parietal epithelial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m podocyte consists of a single batch or is too small. Skip.             
+  16:47:02 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.384
+    nmi_leiden: 0.6646 [OK]
+    ari_leiden: 0.5196 [OK]
+    silhouette_label: 0.5402 [OK]
+    silhouette_batch: 0.7854 [OK]
+    isolated_label_asw: 0.5375 [OK]
+    graph_connectivity: 0.8110 [OK]
+    pcr_comparison: 0.7045 [OK]
+    clisi: 0.9797 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:47:03 Computing scIB metrics: kidney / scgpt (d=512)
+  16:47:04 Computing kNN (k=15,50,90)...
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m epithelial cell of nephron consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m epithelial cell of proximal tubule consists of a single batch or is too
+         small. Skip.                                                           
+[34mINFO    [0m kidney collecting duct intercalated cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m kidney collecting duct principal cell consists of a single batch or is 
+         too small. Skip.                                                       
+[34mINFO    [0m kidney connecting tubule epithelial cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m kidney distal convoluted tubule epithelial cell consists of a single   
+         batch or is too small. Skip.                                           
+[34mINFO    [0m kidney interstitial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m kidney loop of Henle thick ascending limb epithelial cell consists of a
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m kidney loop of Henle thin ascending limb epithelial cell consists of a 
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m kidney loop of Henle thin descending limb epithelial cell consists of a
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m leukocyte consists of a single batch or is too small. Skip.            
+[34mINFO    [0m mesenchymal stem cell consists of a single batch or is too small. Skip.
+[34mINFO    [0m native cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m parietal epithelial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m podocyte consists of a single batch or is too small. Skip.             
+  16:47:48 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.337
+    nmi_leiden: 0.7232 [OK]
+    ari_leiden: 0.5207 [OK]
+    silhouette_label: 0.5339 [OK]
+    silhouette_batch: 0.4607 [OK]
+    isolated_label_asw: 0.5412 [OK]
+    graph_connectivity: 0.8002 [OK]
+    pcr_comparison: 0.0456 [OK]
+    clisi: 0.9898 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:47:48 Computing scIB metrics: kidney / random_projection (d=512)
+  16:47:49 Computing kNN (k=15,50,90)...
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m epithelial cell of nephron consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m epithelial cell of proximal tubule consists of a single batch or is too
+         small. Skip.                                                           
+[34mINFO    [0m kidney collecting duct intercalated cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m kidney collecting duct principal cell consists of a single batch or is 
+         too small. Skip.                                                       
+[34mINFO    [0m kidney connecting tubule epithelial cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m kidney distal convoluted tubule epithelial cell consists of a single   
+         batch or is too small. Skip.                                           
+[34mINFO    [0m kidney interstitial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m kidney loop of Henle thick ascending limb epithelial cell consists of a
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m kidney loop of Henle thin ascending limb epithelial cell consists of a 
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m kidney loop of Henle thin descending limb epithelial cell consists of a
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m leukocyte consists of a single batch or is too small. Skip.            
+[34mINFO    [0m mesenchymal stem cell consists of a single batch or is too small. Skip.
+[34mINFO    [0m native cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m parietal epithelial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m podocyte consists of a single batch or is too small. Skip.             
+  16:48:32 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.459
+    nmi_leiden: 0.5541 [OK]
+    ari_leiden: 0.4257 [OK]
+    silhouette_label: 0.4226 [OK]
+    silhouette_batch: 0.6983 [OK]
+    isolated_label_asw: 0.4483 [OK]
+    graph_connectivity: 0.1780 [OK]
+    pcr_comparison: 0.5697 [OK]
+    clisi: 0.9321 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:48:33 Computing scIB metrics: kidney / untrained_encoder (d=512)
+  16:48:34 Computing kNN (k=15,50,90)...
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m epithelial cell of nephron consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m epithelial cell of proximal tubule consists of a single batch or is too
+         small. Skip.                                                           
+[34mINFO    [0m kidney collecting duct intercalated cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m kidney collecting duct principal cell consists of a single batch or is 
+         too small. Skip.                                                       
+[34mINFO    [0m kidney connecting tubule epithelial cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m kidney distal convoluted tubule epithelial cell consists of a single   
+         batch or is too small. Skip.                                           
+[34mINFO    [0m kidney interstitial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m kidney loop of Henle thick ascending limb epithelial cell consists of a
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m kidney loop of Henle thin ascending limb epithelial cell consists of a 
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m kidney loop of Henle thin descending limb epithelial cell consists of a
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m leukocyte consists of a single batch or is too small. Skip.            
+[34mINFO    [0m mesenchymal stem cell consists of a single batch or is too small. Skip.
+[34mINFO    [0m native cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m parietal epithelial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m podocyte consists of a single batch or is too small. Skip.             
+  16:49:17 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.361
+    nmi_leiden: 0.3733 [OK]
+    ari_leiden: 0.2230 [OK]
+    silhouette_label: 0.4178 [OK]
+    silhouette_batch: 0.7517 [OK]
+    isolated_label_asw: 0.4436 [OK]
+    graph_connectivity: 0.2146 [OK]
+    pcr_comparison: 0.1091 [OK]
+    clisi: 0.8958 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:49:19 Computing scIB metrics: kidney / bog_pca_512 (d=512)
+  16:49:20 Computing kNN (k=15,50,90)...
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m epithelial cell of nephron consists of a single batch or is too small. 
+         Skip.                                                                  
+[34mINFO    [0m epithelial cell of proximal tubule consists of a single batch or is too
+         small. Skip.                                                           
+[34mINFO    [0m kidney collecting duct intercalated cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m kidney collecting duct principal cell consists of a single batch or is 
+         too small. Skip.                                                       
+[34mINFO    [0m kidney connecting tubule epithelial cell consists of a single batch or 
+         is too small. Skip.                                                    
+[34mINFO    [0m kidney distal convoluted tubule epithelial cell consists of a single   
+         batch or is too small. Skip.                                           
+[34mINFO    [0m kidney interstitial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m kidney loop of Henle thick ascending limb epithelial cell consists of a
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m kidney loop of Henle thin ascending limb epithelial cell consists of a 
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m kidney loop of Henle thin descending limb epithelial cell consists of a
+         single batch or is too small. Skip.                                    
+[34mINFO    [0m leukocyte consists of a single batch or is too small. Skip.            
+[34mINFO    [0m mesenchymal stem cell consists of a single batch or is too small. Skip.
+[34mINFO    [0m native cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m parietal epithelial cell consists of a single batch or is too small.   
+         Skip.                                                                  
+[34mINFO    [0m podocyte consists of a single batch or is too small. Skip.             
+  16:50:02 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.534
+    nmi_leiden: 0.6613 [OK]
+    ari_leiden: 0.5400 [OK]
+    silhouette_label: 0.4223 [OK]
+    silhouette_batch: 0.6643 [OK]
+    isolated_label_asw: 0.4571 [OK]
+    graph_connectivity: 0.5459 [OK]
+    pcr_comparison: 0.4754 [OK]
+    clisi: 0.9773 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+============================================================
+16:50:05 Processing tissue: brain
+16:50:05 Pulling source cells...
+  Source: 2000 cells
+16:52:19 Pulling target cells...
+  Target: 59 cells
+  geneformer: d=512
+  scvi: d=50
+  scgpt: d=512
+
+16:54:25 Computing scIB metrics: brain / geneformer (d=512)
+  16:54:26 Computing kNN (k=15,50,90)...
+[34mINFO    [0m B cell consists of a single batch or is too small. Skip.               
+[34mINFO    [0m CD8-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m bronchus fibroblast of lung consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m epithelial cell of lung consists of a single batch or is too small.    
+         Skip.                                                                  
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m mast cell consists of a single batch or is too small. Skip.            
+[34mINFO    [0m mature T cell consists of a single batch or is too small. Skip.        
+[34mINFO    [0m microglial cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m monocyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m mural cell consists of a single batch or is too small. Skip.           
+[34mINFO    [0m natural killer cell consists of a single batch or is too small. Skip.  
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m neutrophil consists of a single batch or is too small. Skip.           
+[34mINFO    [0m oligodendrocyte consists of a single batch or is too small. Skip.      
+[34mINFO    [0m oligodendrocyte precursor cell consists of a single batch or is too    
+         small. Skip.                                                           
+[34mINFO    [0m pericyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m plasma cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m smooth muscle cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m vein endothelial cell consists of a single batch or is too small. Skip.
+  16:55:08 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.421
+    nmi_leiden: 0.5408 [OK]
+    ari_leiden: 0.3087 [OK]
+    silhouette_label: 0.5282 [OK]
+    silhouette_batch: 0.7917 [OK]
+    isolated_label_asw: 0.5377 [OK]
+    graph_connectivity: 0.8231 [OK]
+    pcr_comparison: 0.8956 [OK]
+    clisi: 0.9807 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:55:13 Computing scIB metrics: brain / scvi (d=50)
+  16:55:14 Computing kNN (k=15,50,90)...
+[34mINFO    [0m B cell consists of a single batch or is too small. Skip.               
+[34mINFO    [0m CD8-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m bronchus fibroblast of lung consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m epithelial cell of lung consists of a single batch or is too small.    
+         Skip.                                                                  
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m mast cell consists of a single batch or is too small. Skip.            
+[34mINFO    [0m mature T cell consists of a single batch or is too small. Skip.        
+[34mINFO    [0m microglial cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m monocyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m mural cell consists of a single batch or is too small. Skip.           
+[34mINFO    [0m natural killer cell consists of a single batch or is too small. Skip.  
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m neutrophil consists of a single batch or is too small. Skip.           
+[34mINFO    [0m oligodendrocyte consists of a single batch or is too small. Skip.      
+[34mINFO    [0m oligodendrocyte precursor cell consists of a single batch or is too    
+         small. Skip.                                                           
+[34mINFO    [0m pericyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m plasma cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m smooth muscle cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m vein endothelial cell consists of a single batch or is too small. Skip.
+  16:55:49 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.467
+    nmi_leiden: 0.5963 [OK]
+    ari_leiden: 0.4125 [OK]
+    silhouette_label: 0.4784 [OK]
+    silhouette_batch: 0.4953 [OK]
+    isolated_label_asw: 0.5370 [OK]
+    graph_connectivity: 0.6921 [OK]
+    pcr_comparison: 0.7193 [OK]
+    clisi: 0.9771 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:55:49 Computing scIB metrics: brain / scgpt (d=512)
+  16:55:50 Computing kNN (k=15,50,90)...
+[34mINFO    [0m B cell consists of a single batch or is too small. Skip.               
+[34mINFO    [0m CD8-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m bronchus fibroblast of lung consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m epithelial cell of lung consists of a single batch or is too small.    
+         Skip.                                                                  
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m mast cell consists of a single batch or is too small. Skip.            
+[34mINFO    [0m mature T cell consists of a single batch or is too small. Skip.        
+[34mINFO    [0m microglial cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m monocyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m mural cell consists of a single batch or is too small. Skip.           
+[34mINFO    [0m natural killer cell consists of a single batch or is too small. Skip.  
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m neutrophil consists of a single batch or is too small. Skip.           
+[34mINFO    [0m oligodendrocyte consists of a single batch or is too small. Skip.      
+[34mINFO    [0m oligodendrocyte precursor cell consists of a single batch or is too    
+         small. Skip.                                                           
+[34mINFO    [0m pericyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m plasma cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m smooth muscle cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m vein endothelial cell consists of a single batch or is too small. Skip.
+  16:56:27 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.376
+    nmi_leiden: 0.5217 [OK]
+    ari_leiden: 0.3392 [OK]
+    silhouette_label: 0.4545 [OK]
+    silhouette_batch: 0.7591 [OK]
+    isolated_label_asw: 0.5314 [OK]
+    graph_connectivity: 0.7723 [OK]
+    pcr_comparison: 0.8919 [OK]
+    clisi: 0.9810 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:56:27 Computing scIB metrics: brain / random_projection (d=512)
+  16:56:28 Computing kNN (k=15,50,90)...
+[34mINFO    [0m B cell consists of a single batch or is too small. Skip.               
+[34mINFO    [0m CD8-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m bronchus fibroblast of lung consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m epithelial cell of lung consists of a single batch or is too small.    
+         Skip.                                                                  
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m mast cell consists of a single batch or is too small. Skip.            
+[34mINFO    [0m mature T cell consists of a single batch or is too small. Skip.        
+[34mINFO    [0m microglial cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m monocyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m mural cell consists of a single batch or is too small. Skip.           
+[34mINFO    [0m natural killer cell consists of a single batch or is too small. Skip.  
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m neutrophil consists of a single batch or is too small. Skip.           
+[34mINFO    [0m oligodendrocyte consists of a single batch or is too small. Skip.      
+[34mINFO    [0m oligodendrocyte precursor cell consists of a single batch or is too    
+         small. Skip.                                                           
+[34mINFO    [0m pericyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m plasma cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m smooth muscle cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m vein endothelial cell consists of a single batch or is too small. Skip.
+  16:57:05 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.379
+    nmi_leiden: 0.3849 [OK]
+    ari_leiden: 0.1641 [OK]
+    silhouette_label: 0.3708 [OK]
+    silhouette_batch: 0.2583 [OK]
+    isolated_label_asw: 0.4277 [OK]
+    graph_connectivity: 0.2699 [OK]
+    pcr_comparison: 0.1151 [OK]
+    clisi: 0.9715 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:57:10 Computing scIB metrics: brain / untrained_encoder (d=512)
+  16:57:11 Computing kNN (k=15,50,90)...
+[34mINFO    [0m B cell consists of a single batch or is too small. Skip.               
+[34mINFO    [0m CD8-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m bronchus fibroblast of lung consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m epithelial cell of lung consists of a single batch or is too small.    
+         Skip.                                                                  
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m mast cell consists of a single batch or is too small. Skip.            
+[34mINFO    [0m mature T cell consists of a single batch or is too small. Skip.        
+[34mINFO    [0m microglial cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m monocyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m mural cell consists of a single batch or is too small. Skip.           
+[34mINFO    [0m natural killer cell consists of a single batch or is too small. Skip.  
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m neutrophil consists of a single batch or is too small. Skip.           
+[34mINFO    [0m oligodendrocyte consists of a single batch or is too small. Skip.      
+[34mINFO    [0m oligodendrocyte precursor cell consists of a single batch or is too    
+         small. Skip.                                                           
+[34mINFO    [0m pericyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m plasma cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m smooth muscle cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m vein endothelial cell consists of a single batch or is too small. Skip.
+  16:57:48 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.347
+    nmi_leiden: 0.3700 [OK]
+    ari_leiden: 0.2222 [OK]
+    silhouette_label: 0.3581 [OK]
+    silhouette_batch: 0.2672 [OK]
+    isolated_label_asw: 0.4325 [OK]
+    graph_connectivity: 0.3409 [OK]
+    pcr_comparison: 0.0000 [OK]
+    clisi: 0.9596 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+16:57:50 Computing scIB metrics: brain / bog_pca_512 (d=512)
+  16:57:50 Computing kNN (k=15,50,90)...
+[34mINFO    [0m B cell consists of a single batch or is too small. Skip.               
+[34mINFO    [0m CD8-positive, alpha-beta T cell consists of a single batch or is too   
+         small. Skip.                                                           
+[34mINFO    [0m bronchus fibroblast of lung consists of a single batch or is too small.
+         Skip.                                                                  
+[34mINFO    [0m dendritic cell consists of a single batch or is too small. Skip.       
+[34mINFO    [0m endothelial cell consists of a single batch or is too small. Skip.     
+[34mINFO    [0m epithelial cell of lung consists of a single batch or is too small.    
+         Skip.                                                                  
+[34mINFO    [0m fibroblast of lung consists of a single batch or is too small. Skip.   
+[34mINFO    [0m mast cell consists of a single batch or is too small. Skip.            
+[34mINFO    [0m mature T cell consists of a single batch or is too small. Skip.        
+[34mINFO    [0m microglial cell consists of a single batch or is too small. Skip.      
+[34mINFO    [0m monocyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m mural cell consists of a single batch or is too small. Skip.           
+[34mINFO    [0m natural killer cell consists of a single batch or is too small. Skip.  
+[34mINFO    [0m neuron consists of a single batch or is too small. Skip.               
+[34mINFO    [0m neutrophil consists of a single batch or is too small. Skip.           
+[34mINFO    [0m oligodendrocyte consists of a single batch or is too small. Skip.      
+[34mINFO    [0m oligodendrocyte precursor cell consists of a single batch or is too    
+         small. Skip.                                                           
+[34mINFO    [0m pericyte consists of a single batch or is too small. Skip.             
+[34mINFO    [0m plasma cell consists of a single batch or is too small. Skip.          
+[34mINFO    [0m smooth muscle cell consists of a single batch or is too small. Skip.   
+[34mINFO    [0m vein endothelial cell consists of a single batch or is too small. Skip.
+  16:58:27 WARNING: kBET failed: 'numpy.float64' object has no attribute 'values'
+  Cell-type recovery F1: 0.470
+    nmi_leiden: 0.4712 [OK]
+    ari_leiden: 0.2636 [OK]
+    silhouette_label: 0.3204 [OK]
+    silhouette_batch: 0.2202 [OK]
+    isolated_label_asw: 0.4217 [OK]
+    graph_connectivity: 0.4061 [OK]
+    pcr_comparison: 0.0293 [OK]
+    clisi: 0.9781 [OK]
+    ilisi: 0.0000 [OK]
+    kbet: N/A [N/A]
+
+============================================================
+16:58:36 All scores collected. Running construct-validity tests...
+
+----------------------------------------
+16:58:36 Testing metric: nmi_leiden (class: bio)
+  T1: PASS | delta=0.2281 CI=[0.1385, 0.3121]
+  T2: deferred (requires multi-d re-embedding)
+  T3-bio: PASS (underpowered) | rho=0.191, p=0.3680, n=24
+
+----------------------------------------
+16:58:39 Testing metric: ari_leiden (class: bio)
+  T1: PASS | delta=0.2061 CI=[0.0885, 0.3208]
+  T2: deferred (requires multi-d re-embedding)
+  T3-bio: PASS (underpowered) | rho=0.290, p=0.1654, n=24
+
+----------------------------------------
+16:58:41 Testing metric: silhouette_label (class: bio)
+  T1: PASS | delta=0.1204 CI=[0.0852, 0.1559]
+  T2: deferred (requires multi-d re-embedding)
+  T3-bio: PASS (underpowered) | rho=0.283, p=0.1763, n=24
+
+----------------------------------------
+16:58:44 Testing metric: clisi (class: bio)
+  T1: PASS | delta=0.0304 CI=[0.0124, 0.0524]
+  T2: deferred (requires multi-d re-embedding)
+  T3-bio: FAIL (wrong sign, ns) | rho=-0.050, p=0.8159, n=24
+
+----------------------------------------
+16:58:46 Testing metric: isolated_label_asw (class: bio)
+  T1: PASS | delta=0.0886 CI=[0.0775, 0.1000]
+  T2: deferred (requires multi-d re-embedding)
+  T3-bio: PASS (underpowered) | rho=0.169, p=0.4328, n=24
+
+----------------------------------------
+16:58:49 Testing metric: silhouette_batch (class: batch)
+  T1: PASS | delta=0.1804 CI=[0.0479, 0.3154]
+  T2: deferred (requires multi-d re-embedding)
+  T3-batch: deferred (requires synthetic batch injection)
+
+----------------------------------------
+16:58:49 Testing metric: ilisi (class: batch)
+  T1: PASS | delta=0.0121 CI=[0.0000, 0.0336]
+  T2: deferred (requires multi-d re-embedding)
+  T3-batch: deferred (requires synthetic batch injection)
+
+----------------------------------------
+16:58:49 Testing metric: kbet (class: batch)
+  T1: N/A (insufficient data)
+  T2: deferred (requires multi-d re-embedding)
+  T3-batch: deferred (requires synthetic batch injection)
+
+----------------------------------------
+16:58:49 Testing metric: graph_connectivity (class: batch)
+  T1: PASS | delta=0.4905 CI=[0.4473, 0.5357]
+  T2: deferred (requires multi-d re-embedding)
+  T3-batch: deferred (requires synthetic batch injection)
+
+----------------------------------------
+16:58:50 Testing metric: pcr_comparison (class: batch)
+  T1: FAIL (CI includes zero) | delta=0.2129 CI=[-0.0331, 0.4616]
+  T2: deferred (requires multi-d re-embedding)
+  T3-batch: deferred (requires synthetic batch injection)
+
+16:58:50 Summary saved to results/exp10_scib_audit/summary_20260713_155934.json
+
+============================================================
+16:58:50 SCORECARD
+Metric                    Class    T1                        T2              T3                       
+----------------------------------------------------------------------------------------------------
+nmi_leiden                bio      PASS                      N/A             PASS (underpowered)      
+ari_leiden                bio      PASS                      N/A             PASS (underpowered)      
+silhouette_label          bio      PASS                      N/A             PASS (underpowered)      
+clisi                     bio      PASS                      N/A             FAIL (wrong sign, ns)    
+isolated_label_asw        bio      PASS                      N/A             PASS (underpowered)      
+silhouette_batch          batch    PASS                      N/A             deferred                 
+ilisi                     batch    PASS                      N/A             deferred                 
+kbet                      batch    N/A                       N/A             deferred                 
+graph_connectivity        batch    PASS                      N/A             deferred                 
+pcr_comparison            batch    FAIL (CI includes zero)   N/A             deferred                 
+
+HD (headline): 4/10 metrics pass T1+T3
+(T2 deferred to expanded panel with multi-d re-embedding)
+
+
+=== STDERR ===
+
+Tissues:   0%|          | 0/4 [00:00<?, ?it/s]/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (lung):   0%|          | 0/6 [00:00<?, ?it/s][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/site-packages/scib_metrics/metrics/_pcr_comparison.py:49: UserWarning: PCR comparison score is negative, meaning variance contribution increased after integration. Setting to 0.
+  warnings.warn(
+/usr/local/lib/python3.11/site-packages/pynndescent/pynndescent_.py:1241: UserWarning: Failed to correctly find n_neighbors for some samples. Results may be less than ideal. Try re-running with different parameters.
+  warn(
+
+
+  Embeddings (lung):  17%|█▋        | 1/6 [03:15<16:15, 195.01s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/site-packages/scib_metrics/metrics/_pcr_comparison.py:49: UserWarning: PCR comparison score is negative, meaning variance contribution increased after integration. Setting to 0.
+  warnings.warn(
+
+
+  Embeddings (lung):  33%|███▎      | 2/6 [04:59<09:26, 141.72s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/site-packages/scib_metrics/metrics/_pcr_comparison.py:49: UserWarning: PCR comparison score is negative, meaning variance contribution increased after integration. Setting to 0.
+  warnings.warn(
+
+
+  Embeddings (lung):  50%|█████     | 3/6 [06:48<06:20, 126.74s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/site-packages/scib_metrics/metrics/_pcr_comparison.py:49: UserWarning: PCR comparison score is negative, meaning variance contribution increased after integration. Setting to 0.
+  warnings.warn(
+/usr/local/lib/python3.11/site-packages/pynndescent/pynndescent_.py:1241: UserWarning: Failed to correctly find n_neighbors for some samples. Results may be less than ideal. Try re-running with different parameters.
+  warn(
+
+
+  Embeddings (lung):  67%|██████▋   | 4/6 [08:46<04:06, 123.22s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/site-packages/scib_metrics/metrics/_pcr_comparison.py:49: UserWarning: PCR comparison score is negative, meaning variance contribution increased after integration. Setting to 0.
+  warnings.warn(
+
+
+  Embeddings (lung):  83%|████████▎ | 5/6 [10:47<02:02, 122.48s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/site-packages/scib_metrics/metrics/_pcr_comparison.py:49: UserWarning: PCR comparison score is negative, meaning variance contribution increased after integration. Setting to 0.
+  warnings.warn(
+/usr/local/lib/python3.11/site-packages/pynndescent/pynndescent_.py:1241: UserWarning: Failed to correctly find n_neighbors for some samples. Results may be less than ideal. Try re-running with different parameters.
+  warn(
+/usr/local/lib/python3.11/site-packages/sklearn/linear_model/_logistic.py:599: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/usr/local/lib/python3.11/site-packages/sklearn/linear_model/_logistic.py:599: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/usr/local/lib/python3.11/site-packages/sklearn/linear_model/_logistic.py:599: ConvergenceWarning: lbfgs failed to converge after 1000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=1000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+
+
+  Embeddings (lung): 100%|██████████| 6/6 [13:38<00:00, 138.97s/it][A
+
+                                                                   [A
+Tissues:  25%|██▌       | 1/4 [24:22<1:13:07, 1462.46s/it]/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (liver):   0%|          | 0/6 [00:00<?, ?it/s][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/site-packages/scib_metrics/metrics/_pcr_comparison.py:49: UserWarning: PCR comparison score is negative, meaning variance contribution increased after integration. Setting to 0.
+  warnings.warn(
+
+
+  Embeddings (liver):  17%|█▋        | 1/6 [01:56<09:44, 116.91s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/site-packages/scib_metrics/metrics/_pcr_comparison.py:49: UserWarning: PCR comparison score is negative, meaning variance contribution increased after integration. Setting to 0.
+  warnings.warn(
+
+
+  Embeddings (liver):  33%|███▎      | 2/6 [03:39<07:14, 108.66s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/site-packages/scib_metrics/metrics/_pcr_comparison.py:49: UserWarning: PCR comparison score is negative, meaning variance contribution increased after integration. Setting to 0.
+  warnings.warn(
+
+
+  Embeddings (liver):  50%|█████     | 3/6 [05:29<05:27, 109.28s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/site-packages/scib_metrics/metrics/_pcr_comparison.py:49: UserWarning: PCR comparison score is negative, meaning variance contribution increased after integration. Setting to 0.
+  warnings.warn(
+
+
+  Embeddings (liver):  67%|██████▋   | 4/6 [07:23<03:42, 111.01s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/site-packages/scib_metrics/metrics/_pcr_comparison.py:49: UserWarning: PCR comparison score is negative, meaning variance contribution increased after integration. Setting to 0.
+  warnings.warn(
+
+
+  Embeddings (liver):  83%|████████▎ | 5/6 [09:22<01:53, 113.89s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/site-packages/scib_metrics/metrics/_pcr_comparison.py:49: UserWarning: PCR comparison score is negative, meaning variance contribution increased after integration. Setting to 0.
+  warnings.warn(
+
+
+  Embeddings (liver): 100%|██████████| 6/6 [11:30<00:00, 118.81s/it][A
+
+                                                                    [A
+Tissues:  50%|█████     | 2/4 [41:43<40:29, 1214.85s/it]  /usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (kidney):   0%|          | 0/6 [00:00<?, ?it/s][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (kidney):  17%|█▋        | 1/6 [00:52<04:24, 52.83s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (kidney):  33%|███▎      | 2/6 [01:35<03:07, 46.90s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (kidney):  50%|█████     | 3/6 [02:21<02:18, 46.27s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (kidney):  67%|██████▋   | 4/6 [03:06<01:31, 45.74s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (kidney):  83%|████████▎ | 5/6 [03:51<00:45, 45.65s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (kidney): 100%|██████████| 6/6 [04:38<00:00, 45.97s/it][A
+
+                                                                    [A
+Tissues:  75%|███████▌  | 3/4 [50:22<14:56, 896.81s/it] /usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (brain):   0%|          | 0/6 [00:00<?, ?it/s][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (brain):  17%|█▋        | 1/6 [00:47<03:56, 47.36s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (brain):  33%|███▎      | 2/6 [01:23<02:43, 40.88s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (brain):  50%|█████     | 3/6 [02:01<01:59, 39.69s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (brain):  67%|██████▋   | 4/6 [02:44<01:21, 40.86s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/site-packages/scib_metrics/metrics/_pcr_comparison.py:49: UserWarning: PCR comparison score is negative, meaning variance contribution increased after integration. Setting to 0.
+  warnings.warn(
+
+
+  Embeddings (brain):  83%|████████▎ | 5/6 [03:24<00:40, 40.37s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Embeddings (brain): 100%|██████████| 6/6 [04:10<00:00, 42.44s/it][A
+
+                                                                   [A
+Tissues: 100%|██████████| 4/4 [58:52<00:00, 744.36s/it]
+Tissues: 100%|██████████| 4/4 [58:52<00:00, 883.25s/it]
+
+
+=== RETURN CODE: 0 ===

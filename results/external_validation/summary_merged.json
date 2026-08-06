@@ -1,0 +1,429 @@
+{
+  "experiment": "external_validation",
+  "prereg": "PREREGISTRATION_EXTERNAL_VALIDATION.md",
+  "prereg_sha256": "46aff40fdd13bbe40f102505857866c2099f7167e977419bf9ffa2819d0d461a",
+  "timestamp": "2026-07-24T18:39:18.801973+00:00",
+  "seed": 20260724,
+  "note": "Merged: pancreas+TS from initial run, PBMC from rerun after gene name fix",
+  "n_conditions_total": 600,
+  "n_contenders_total": 400,
+  "datasets_run": [
+    "pancreas",
+    "tabula_sapiens",
+    "pbmc"
+  ],
+  "per_dataset": [
+    {
+      "dataset": "pancreas",
+      "n_conditions": 336,
+      "n_contenders": 224,
+      "n_pairs": 56,
+      "metrics": {
+        "cell_type_cka": {
+          "rho": 0.5922,
+          "perm_p": 0.0001,
+          "ci_95": [
+            0.464,
+            0.693
+          ],
+          "n": 224,
+          "sign": "positive",
+          "significant": true,
+          "metric_type": "ours"
+        },
+        "procrustes_sim": {
+          "rho": 0.5626,
+          "perm_p": 0.1151,
+          "ci_95": [
+            0.421,
+            0.672
+          ],
+          "n": 224,
+          "sign": "positive",
+          "significant": false,
+          "metric_type": "ours"
+        },
+        "silhouette_src": {
+          "rho": 0.1345,
+          "perm_p": 0.0001,
+          "ci_95": [
+            -0.003,
+            0.282
+          ],
+          "n": 224,
+          "sign": "positive",
+          "significant": true,
+          "metric_type": "field_baseline"
+        },
+        "silhouette_tgt": {
+          "rho": 0.1716,
+          "perm_p": 0.0,
+          "ci_95": [
+            0.014,
+            0.339
+          ],
+          "n": 224,
+          "sign": "positive",
+          "significant": true,
+          "metric_type": "field_baseline"
+        },
+        "mmd": {
+          "rho": -0.4507,
+          "perm_p": 0.9991,
+          "ci_95": [
+            -0.584,
+            -0.273
+          ],
+          "n": 224,
+          "sign": "negative",
+          "significant": false,
+          "metric_type": "field_baseline"
+        },
+        "domain_auc": {
+          "rho": -0.4953,
+          "perm_p": 0.095,
+          "ci_95": [
+            -0.607,
+            -0.343
+          ],
+          "n": 224,
+          "sign": "negative",
+          "significant": false,
+          "metric_type": "field_baseline"
+        }
+      }
+    },
+    {
+      "dataset": "tabula_sapiens",
+      "n_conditions": 96,
+      "n_contenders": 64,
+      "n_pairs": 16,
+      "metrics": {
+        "cell_type_cka": {
+          "rho": 0.6037,
+          "perm_p": 0.0351,
+          "ci_95": [
+            0.317,
+            0.748
+          ],
+          "n": 64,
+          "sign": "positive",
+          "significant": true,
+          "metric_type": "ours"
+        },
+        "procrustes_sim": {
+          "rho": 0.7263,
+          "perm_p": 0.2175,
+          "ci_95": [
+            0.453,
+            0.823
+          ],
+          "n": 64,
+          "sign": "positive",
+          "significant": false,
+          "metric_type": "ours"
+        },
+        "silhouette_src": {
+          "rho": 0.4765,
+          "perm_p": 0.0537,
+          "ci_95": [
+            0.194,
+            0.7
+          ],
+          "n": 64,
+          "sign": "positive",
+          "significant": false,
+          "metric_type": "field_baseline"
+        },
+        "silhouette_tgt": {
+          "rho": 0.6637,
+          "perm_p": 0.0316,
+          "ci_95": [
+            0.436,
+            0.805
+          ],
+          "n": 64,
+          "sign": "positive",
+          "significant": true,
+          "metric_type": "field_baseline"
+        },
+        "mmd": {
+          "rho": -0.275,
+          "perm_p": 0.7444,
+          "ci_95": [
+            -0.538,
+            0.088
+          ],
+          "n": 64,
+          "sign": "negative",
+          "significant": false,
+          "metric_type": "field_baseline"
+        },
+        "domain_auc": {
+          "rho": 0.015,
+          "perm_p": 0.8388,
+          "ci_95": [
+            -0.205,
+            0.24
+          ],
+          "n": 64,
+          "sign": "positive",
+          "significant": false,
+          "metric_type": "field_baseline"
+        }
+      }
+    },
+    {
+      "dataset": "pbmc",
+      "n_conditions": 168,
+      "n_contenders": 112,
+      "n_pairs": 28,
+      "metrics": {
+        "cell_type_cka": {
+          "rho": 0.0891,
+          "perm_p": 0.8738,
+          "ci_95": [
+            -0.207,
+            0.344
+          ],
+          "n": 112,
+          "sign": "positive",
+          "significant": false,
+          "metric_type": "ours"
+        },
+        "procrustes_sim": {
+          "rho": 0.1128,
+          "perm_p": 0.6593,
+          "ci_95": [
+            -0.208,
+            0.388
+          ],
+          "n": 112,
+          "sign": "positive",
+          "significant": false,
+          "metric_type": "ours"
+        },
+        "silhouette_src": {
+          "rho": -0.4143,
+          "perm_p": 1.0,
+          "ci_95": [
+            -0.587,
+            -0.134
+          ],
+          "n": 112,
+          "sign": "negative",
+          "significant": false,
+          "metric_type": "field_baseline"
+        },
+        "silhouette_tgt": {
+          "rho": 0.627,
+          "perm_p": 0.0,
+          "ci_95": [
+            0.396,
+            0.789
+          ],
+          "n": 112,
+          "sign": "positive",
+          "significant": true,
+          "metric_type": "field_baseline"
+        },
+        "mmd": {
+          "rho": -0.1354,
+          "perm_p": 1.0,
+          "ci_95": [
+            -0.373,
+            0.162
+          ],
+          "n": 112,
+          "sign": "negative",
+          "significant": false,
+          "metric_type": "field_baseline"
+        },
+        "domain_auc": {
+          "rho": -0.1484,
+          "perm_p": 0.8008,
+          "ci_95": [
+            -0.375,
+            0.116
+          ],
+          "n": 112,
+          "sign": "negative",
+          "significant": false,
+          "metric_type": "field_baseline"
+        }
+      }
+    }
+  ],
+  "concordance": {
+    "summary": {
+      "cell_type_cka": {
+        "n_datasets": 3,
+        "n_positive": 3,
+        "n_significant": 2,
+        "all_positive": true,
+        "all_significant": false,
+        "per_dataset": [
+          {
+            "dataset": "pancreas",
+            "rho": 0.5922,
+            "significant": true,
+            "sign": "positive"
+          },
+          {
+            "dataset": "tabula_sapiens",
+            "rho": 0.6037,
+            "significant": true,
+            "sign": "positive"
+          },
+          {
+            "dataset": "pbmc",
+            "rho": 0.0891,
+            "significant": false,
+            "sign": "positive"
+          }
+        ]
+      },
+      "procrustes_sim": {
+        "n_datasets": 3,
+        "n_positive": 3,
+        "n_significant": 0,
+        "all_positive": true,
+        "all_significant": false,
+        "per_dataset": [
+          {
+            "dataset": "pancreas",
+            "rho": 0.5626,
+            "significant": false,
+            "sign": "positive"
+          },
+          {
+            "dataset": "tabula_sapiens",
+            "rho": 0.7263,
+            "significant": false,
+            "sign": "positive"
+          },
+          {
+            "dataset": "pbmc",
+            "rho": 0.1128,
+            "significant": false,
+            "sign": "positive"
+          }
+        ]
+      },
+      "silhouette_src": {
+        "n_datasets": 3,
+        "n_positive": 2,
+        "n_significant": 1,
+        "all_positive": false,
+        "all_significant": false,
+        "per_dataset": [
+          {
+            "dataset": "pancreas",
+            "rho": 0.1345,
+            "significant": true,
+            "sign": "positive"
+          },
+          {
+            "dataset": "tabula_sapiens",
+            "rho": 0.4765,
+            "significant": false,
+            "sign": "positive"
+          },
+          {
+            "dataset": "pbmc",
+            "rho": -0.4143,
+            "significant": false,
+            "sign": "negative"
+          }
+        ]
+      },
+      "silhouette_tgt": {
+        "n_datasets": 3,
+        "n_positive": 3,
+        "n_significant": 3,
+        "all_positive": true,
+        "all_significant": true,
+        "per_dataset": [
+          {
+            "dataset": "pancreas",
+            "rho": 0.1716,
+            "significant": true,
+            "sign": "positive"
+          },
+          {
+            "dataset": "tabula_sapiens",
+            "rho": 0.6637,
+            "significant": true,
+            "sign": "positive"
+          },
+          {
+            "dataset": "pbmc",
+            "rho": 0.627,
+            "significant": true,
+            "sign": "positive"
+          }
+        ]
+      },
+      "mmd": {
+        "n_datasets": 3,
+        "n_positive": 0,
+        "n_significant": 0,
+        "all_positive": false,
+        "all_significant": false,
+        "per_dataset": [
+          {
+            "dataset": "pancreas",
+            "rho": -0.4507,
+            "significant": false,
+            "sign": "negative"
+          },
+          {
+            "dataset": "tabula_sapiens",
+            "rho": -0.275,
+            "significant": false,
+            "sign": "negative"
+          },
+          {
+            "dataset": "pbmc",
+            "rho": -0.1354,
+            "significant": false,
+            "sign": "negative"
+          }
+        ]
+      },
+      "domain_auc": {
+        "n_datasets": 3,
+        "n_positive": 1,
+        "n_significant": 0,
+        "all_positive": false,
+        "all_significant": false,
+        "per_dataset": [
+          {
+            "dataset": "pancreas",
+            "rho": -0.4953,
+            "significant": false,
+            "sign": "negative"
+          },
+          {
+            "dataset": "tabula_sapiens",
+            "rho": 0.015,
+            "significant": false,
+            "sign": "positive"
+          },
+          {
+            "dataset": "pbmc",
+            "rho": -0.1484,
+            "significant": false,
+            "sign": "negative"
+          }
+        ]
+      }
+    },
+    "hypotheses": {
+      "HE1_cka_generalizes": false,
+      "HE2_procrustes_generalizes": false,
+      "HE3_field_baselines_fail": false,
+      "HE4_concordance": false
+    }
+  }
+}

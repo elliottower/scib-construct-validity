@@ -1,0 +1,34 @@
+{
+  "title": "Preflight Bio: Geometric Transportability Diagnostics for Single-Cell Foundation Models",
+  "description": "Preflight Bio is a geometric diagnostics platform that evaluates embedding transportability for single-cell foundation models before any downstream task is attempted. Given arbitrary source and target embedding matrices, it computes five diagnostic modules (subspace alignment, domain separability, direction stability, participation ratio, network curvature) and produces a composite transportability tier. This archive contains the manuscript, source code, experiment scripts, raw results from seven preregistered experiments on CELLxGENE Census, and SHA-256 frozen preregistration documents.",
+  "upload_type": "publication",
+  "publication_type": "workingpaper",
+  "creators": [
+    {
+      "name": "Tower, Elliot",
+      "affiliation": "Independent Researcher",
+      "orcid": "0000-0001-7004-8884"
+    }
+  ],
+  "keywords": [
+    "single-cell foundation models",
+    "transportability",
+    "distribution shift",
+    "geometric diagnostics",
+    "Grassmannian",
+    "domain adaptation",
+    "scRNA-seq",
+    "preregistration",
+    "CELLxGENE"
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/elliottower/preflight-bio",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "version": "1.0.0"
+}

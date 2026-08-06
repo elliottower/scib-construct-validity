@@ -1,0 +1,497 @@
+=== STDOUT ===
+03:18:46 Experiment 11: Cross-Tissue Second Ground Truth
+03:18:46 Prereg: preregistration_v11_cross_tissue_ground_truth.md
+03:18:46 Census: 2023-12-15
+03:18:46 Seed: 20260801
+03:18:46 Contenders: ['geneformer', 'scvi', 'scgpt', 'bog_pca_512']
+03:18:46 Cross-tissue pairs: [('lung', 'brain'), ('lung', 'kidney'), ('blood', 'lung'), ('blood', 'brain'), ('liver', 'kidney'), ('blood', 'liver')]
+
+  03:18:53 Pulling lung...
+    2000 cells, 77 cell types
+
+  03:25:31 Pulling liver...
+    2000 cells, 35 cell types
+
+  03:27:13 Pulling kidney...
+    2000 cells, 22 cell types
+
+  03:28:29 Pulling brain...
+    2000 cells, 16 cell types
+
+  03:30:16 Pulling blood...
+    2000 cells, 69 cell types
+
+============================================================
+03:33:33 Pair: lung -> brain
+  geneformer: d=512
+  scvi: d=50
+  scgpt: d=512
+  bog_pca_512: d=512
+
+  03:34:44 lung_to_brain / geneformer
+    03:35:21 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.6592141881704847, shared=10
+    nmi_leiden: 0.6705458362840251
+    ari_leiden: 0.35697174865869485
+    silhouette_label: 0.49829126452095807
+    isolated_label_asw: 0.5322036743164062
+    clisi: 0.9936152900137553
+    v7 sanity check: v7=0.5323, now=0.6592, delta=0.1269 [MISMATCH]
+
+  03:36:10 lung_to_brain / scvi
+    03:36:10 Computing kNN (k=15,90)...
+    Probe F1: src=0.975059636757929, tgt=0.4046105467163522, shared=10
+    nmi_leiden: 0.5937206769013317
+    ari_leiden: 0.3500001326201102
+    silhouette_label: 0.46191148459911346
+    isolated_label_asw: 0.49563148617744446
+    clisi: 0.989110859428964
+
+  03:36:14 lung_to_brain / scgpt
+    03:36:14 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.33773474535466497, shared=10
+    nmi_leiden: 0.6136783675091795
+    ari_leiden: 0.25044745906278293
+    silhouette_label: 0.44728999212384224
+    isolated_label_asw: 0.5085964202880859
+    clisi: 0.9911848132203265
+
+  03:36:23 lung_to_brain / bog_pca_512
+    03:36:23 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.18464001998173526, shared=10
+    nmi_leiden: 0.5917506021077684
+    ari_leiden: 0.2622046078541368
+    silhouette_label: 0.34947557747364044
+    isolated_label_asw: 0.44233861565589905
+    clisi: 0.9907401102345165
+
+============================================================
+03:36:34 Pair: lung -> kidney
+  geneformer: d=512
+  scvi: d=50
+  scgpt: d=512
+  bog_pca_512: d=512
+
+  03:37:37 lung_to_kidney / geneformer
+    03:37:37 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.31282703692470143, shared=6
+    nmi_leiden: 0.7406041411319401
+    ari_leiden: 0.5052446589824374
+    silhouette_label: 0.5056572426110506
+    isolated_label_asw: 0.5377465486526489
+    clisi: 0.995863764182381
+    v7 sanity check: v7=0.4290, now=0.3128, delta=0.1162 [MISMATCH]
+
+  03:37:48 lung_to_kidney / scvi
+    03:37:48 Computing kNN (k=15,90)...
+    Probe F1: src=0.9770727078968383, tgt=0.32257016852467474, shared=6
+    nmi_leiden: 0.6506160849248654
+    ari_leiden: 0.4090082816170176
+    silhouette_label: 0.48138519562780857
+    isolated_label_asw: 0.5010353326797485
+    clisi: 0.9902196008226146
+
+  03:37:52 lung_to_kidney / scgpt
+    03:37:52 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.37084588575816646, shared=6
+    nmi_leiden: 0.6866406788346919
+    ari_leiden: 0.39310151562715273
+    silhouette_label: 0.48329553566873074
+    isolated_label_asw: 0.5130598545074463
+    clisi: 0.993194756300553
+
+  03:38:03 lung_to_kidney / bog_pca_512
+    03:38:03 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.2969952881814978, shared=6
+    nmi_leiden: 0.6609976391878252
+    ari_leiden: 0.418953217394734
+    silhouette_label: 0.4097910299897194
+    isolated_label_asw: 0.4451581537723541
+    clisi: 0.990897087947182
+
+============================================================
+03:38:17 Pair: blood -> lung
+  geneformer: d=512
+  scvi: d=50
+  scgpt: d=512
+  bog_pca_512: d=512
+
+  03:39:22 blood_to_lung / geneformer
+    03:39:22 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.2680527994832286, shared=26
+    nmi_leiden: 0.7352671256022869
+    ari_leiden: 0.4310174540225112
+    silhouette_label: 0.4883589092642069
+    isolated_label_asw: 0.5115563869476318
+    clisi: 0.9940953835719774
+    v7 sanity check: v7=0.1852, now=0.2681, delta=0.0829 [MISMATCH]
+
+  03:39:34 blood_to_lung / scvi
+    03:39:34 Computing kNN (k=15,90)...
+    Probe F1: src=0.8885218326307692, tgt=0.2569695197978885, shared=26
+    nmi_leiden: 0.6528499796216365
+    ari_leiden: 0.3451894971307488
+    silhouette_label: 0.45469191297888756
+    isolated_label_asw: 0.4859408140182495
+    clisi: 0.9885012883098185
+
+  03:39:39 blood_to_lung / scgpt
+    03:39:39 Computing kNN (k=15,90)...
+    Probe F1: src=0.9993778866061476, tgt=0.357247677186359, shared=26
+    nmi_leiden: 0.6986451521931386
+    ari_leiden: 0.3783173365805105
+    silhouette_label: 0.4543672911822796
+    isolated_label_asw: 0.49849432706832886
+    clisi: 0.9920792379299131
+
+  03:39:54 blood_to_lung / bog_pca_512
+    03:39:54 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.11598785925240016, shared=26
+    nmi_leiden: 0.6543202085798402
+    ari_leiden: 0.320970282075949
+    silhouette_label: 0.40344031155109406
+    isolated_label_asw: 0.4531155824661255
+    clisi: 0.9889014748965993
+
+============================================================
+03:40:09 Pair: blood -> brain
+  geneformer: d=512
+  scvi: d=50
+  scgpt: d=512
+  bog_pca_512: d=512
+
+  03:41:15 blood_to_brain / geneformer
+    03:41:15 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.7141414141414142, shared=6
+    nmi_leiden: 0.73335693459135
+    ari_leiden: 0.424867858778771
+    silhouette_label: 0.5164744891226292
+    isolated_label_asw: 0.5103932023048401
+    clisi: 0.9927589006913013
+    v7 sanity check: v7=0.6123, now=0.7141, delta=0.1018 [MISMATCH]
+
+  03:41:26 blood_to_brain / scvi
+    03:41:26 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.5475975975975976, shared=6
+    nmi_leiden: 0.6498620412786998
+    ari_leiden: 0.41027985877350137
+    silhouette_label: 0.46784626692533493
+    isolated_label_asw: 0.48399123549461365
+    clisi: 0.987235562923627
+
+  03:41:30 blood_to_brain / scgpt
+    03:41:30 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.6805917699447396, shared=6
+    nmi_leiden: 0.6771683783652812
+    ari_leiden: 0.3110988549991017
+    silhouette_label: 0.48758747335523367
+    isolated_label_asw: 0.49304649233818054
+    clisi: 0.990711313027602
+
+  03:41:41 blood_to_brain / bog_pca_512
+    03:41:41 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.16795267489711938, shared=6
+    nmi_leiden: 0.636806275309659
+    ari_leiden: 0.2845656809068915
+    silhouette_label: 0.41403623670339584
+    isolated_label_asw: 0.45855745673179626
+    clisi: 0.9882331536366389
+
+============================================================
+03:41:53 Pair: liver -> kidney
+  geneformer: d=512
+  scvi: d=50
+  scgpt: d=512
+  bog_pca_512: d=512
+
+  03:43:00 liver_to_kidney / geneformer
+    03:43:00 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.9290300777289624, shared=4
+    nmi_leiden: 0.8264994586169988
+    ari_leiden: 0.7798090554350394
+    silhouette_label: 0.5790689364075661
+    isolated_label_asw: 0.571235179901123
+    clisi: 0.9984241403066195
+    v7 sanity check: v7=0.9824, now=0.9290, delta=0.0534 [MISMATCH]
+
+  03:43:09 liver_to_kidney / scvi
+    03:43:09 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.6381754949170679, shared=4
+    nmi_leiden: 0.7217566090573553
+    ari_leiden: 0.5614182031477485
+    silhouette_label: 0.5291554797440767
+    isolated_label_asw: 0.5385907292366028
+    clisi: 0.9955073572122134
+
+  03:43:13 liver_to_kidney / scgpt
+    03:43:13 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.9290300777289624, shared=4
+    nmi_leiden: 0.7477368989168165
+    ari_leiden: 0.5746545260189333
+    silhouette_label: 0.549827691167593
+    isolated_label_asw: 0.5497984886169434
+    clisi: 0.9969531985429617
+
+  03:43:25 liver_to_kidney / bog_pca_512
+    03:43:25 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.7353277104199613, shared=4
+    nmi_leiden: 0.7075291985850273
+    ari_leiden: 0.4311798303627033
+    silhouette_label: 0.44039732962846756
+    isolated_label_asw: 0.45429283380508423
+    clisi: 0.9958067513429202
+
+============================================================
+03:43:36 Pair: blood -> liver
+  geneformer: d=512
+  scvi: d=50
+  scgpt: d=512
+  bog_pca_512: d=512
+
+  03:44:42 blood_to_liver / geneformer
+    03:44:42 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.48329765160481036, shared=17
+    nmi_leiden: 0.7968958428544738
+    ari_leiden: 0.7152692595299844
+    silhouette_label: 0.5570509470999241
+    isolated_label_asw: 0.5234040021896362
+    clisi: 0.9975288621214933
+    v7 sanity check: v7=0.4127, now=0.4833, delta=0.0706 [MISMATCH]
+
+  03:44:55 blood_to_liver / scvi
+    03:44:55 Computing kNN (k=15,90)...
+    Probe F1: src=0.9593057792435596, tgt=0.41125340322930404, shared=17
+    nmi_leiden: 0.6786348590487827
+    ari_leiden: 0.42661549335147886
+    silhouette_label: 0.4657118543982506
+    isolated_label_asw: 0.49284982681274414
+    clisi: 0.9895205636357152
+
+  03:45:00 blood_to_liver / scgpt
+    03:45:00 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.37568923960641154, shared=17
+    nmi_leiden: 0.7272885062927521
+    ari_leiden: 0.42337907854597145
+    silhouette_label: 0.5040552569553256
+    isolated_label_asw: 0.508351743221283
+    clisi: 0.9946041689362637
+
+  03:45:18 blood_to_liver / bog_pca_512
+    03:45:18 Computing kNN (k=15,90)...
+    Probe F1: src=1.0, tgt=0.148639498643352, shared=17
+    nmi_leiden: 0.6718840683225282
+    ari_leiden: 0.30238855242164225
+    silhouette_label: 0.45820630714297295
+    isolated_label_asw: 0.4626320004463196
+    clisi: 0.9910733838414036
+
+============================================================
+03:45:37 HYPOTHESIS TESTING
+
+----------------------------------------
+03:45:37 H11.1: Cross-tissue inversion rates
+  nmi_leiden: rate=0.229, block-bootstrap mean=0.228 CI=[0.111, 0.361]
+  ari_leiden: rate=0.257, block-bootstrap mean=0.256 CI=[0.089, 0.500]
+  silhouette_label: rate=0.171, block-bootstrap mean=0.172 CI=[0.061, 0.278]
+  clisi: rate=0.286, block-bootstrap mean=0.278 CI=[0.139, 0.389]
+  isolated_label_asw: rate=0.171, block-bootstrap mean=0.172 CI=[0.089, 0.250]
+
+  H11.1 Grand mean: 0.221 CI=[0.131, 0.349], p=0.9208
+  H11.1 pre-Holm: OVERTURNED
+
+----------------------------------------
+03:45:38 H11.2: scIB composite anti-prediction
+  rho=0.6323113869850931, perm_p=0.0014, CI=[0.425569176882662, 0.8268905564462598]
+  H11.2 pre-Holm: PENDING_HOLM
+
+----------------------------------------
+03:45:45 Holm-Bonferroni correction (alpha=0.05, 2 tests)
+  Rank 1: H11.2, p=0.0014, alpha=0.0250, rejected=True
+  Rank 2: H11.1, p=0.9208, alpha=0.0500, rejected=False
+
+  H11.1 final verdict: OVERTURNED
+  H11.2 final verdict: OVERTURNED
+
+----------------------------------------
+03:45:45 H11.3: Inversion rate by F1-gap stratum [EXPLORATORY]
+  Clear gap (|dF1|>0.10): 0.073 (n=110)
+  Near tie (|dF1|<=0.10): 0.477 (n=65)
+
+============================================================
+03:45:45 Saving results...
+03:45:45 Saved: results/exp11_cross_tissue_validity/exp11_cross_tissue_validity.json
+
+============================================================
+03:45:45 SUMMARY
+  H11.1 (inversion rate >= 0.40): OVERTURNED
+    Grand mean: 0.22111111111111112, CI: [0.13111111111111112, 0.3488888888888889], p=0.9208
+    Holm: rank=2, adj_alpha=0.05, rejected=False
+  H11.2 (composite anti-prediction): OVERTURNED
+    rho: 0.6323113869850931, p: 0.0014
+    Holm: rank=1, adj_alpha=0.025, rejected=True
+  H11.3 (F1-gap strata): clear=0.07272727272727272, near-tie=0.47692307692307695
+
+03:45:45 Done.
+
+
+=== STDERR ===
+
+Pulling tissues:   0%|          | 0/5 [00:00<?, ?it/s]/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+Pulling tissues:  20%|██        | 1/5 [06:37<26:31, 397.96s/it]/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+Pulling tissues:  40%|████      | 2/5 [08:20<11:12, 224.19s/it]/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+Pulling tissues:  60%|██████    | 3/5 [09:36<05:12, 156.44s/it]/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+Pulling tissues:  80%|████████  | 4/5 [11:22<02:16, 136.76s/it]/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+Pulling tissues: 100%|██████████| 5/5 [14:40<00:00, 158.66s/it]
+Pulling tissues: 100%|██████████| 5/5 [14:40<00:00, 176.08s/it]
+
+Cross-tissue pairs:   0%|          | 0/6 [00:00<?, ?it/s]
+
+  Models (lung_to_brain):   0%|          | 0/4 [00:00<?, ?it/s][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (lung_to_brain):  25%|██▌       | 1/4 [01:25<04:17, 85.88s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (lung_to_brain):  50%|█████     | 2/4 [01:29<01:15, 37.71s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (lung_to_brain):  75%|███████▌  | 3/4 [01:38<00:24, 24.65s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (lung_to_brain): 100%|██████████| 4/4 [01:49<00:00, 18.99s/it][A
+
+                                                                       [A
+Cross-tissue pairs:  17%|█▋        | 1/6 [03:00<15:02, 180.43s/it]
+
+  Models (lung_to_kidney):   0%|          | 0/4 [00:00<?, ?it/s][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (lung_to_kidney):  25%|██▌       | 1/4 [00:11<00:33, 11.14s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (lung_to_kidney):  50%|█████     | 2/4 [00:15<00:13,  6.97s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (lung_to_kidney):  75%|███████▌  | 3/4 [00:26<00:08,  8.85s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (lung_to_kidney): 100%|██████████| 4/4 [00:39<00:00, 10.60s/it][A
+
+                                                                        [A
+Cross-tissue pairs:  33%|███▎      | 2/6 [04:43<08:59, 134.86s/it]
+
+  Models (blood_to_lung):   0%|          | 0/4 [00:00<?, ?it/s][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (blood_to_lung):  25%|██▌       | 1/4 [00:12<00:37, 12.63s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (blood_to_lung):  50%|█████     | 2/4 [00:17<00:15,  7.99s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (blood_to_lung):  75%|███████▌  | 3/4 [00:32<00:11, 11.30s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (blood_to_lung): 100%|██████████| 4/4 [00:47<00:00, 12.58s/it][A
+
+                                                                       [A
+Cross-tissue pairs:  50%|█████     | 3/6 [06:35<06:13, 124.49s/it]
+
+  Models (blood_to_brain):   0%|          | 0/4 [00:00<?, ?it/s][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (blood_to_brain):  25%|██▌       | 1/4 [00:10<00:31, 10.42s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (blood_to_brain):  50%|█████     | 2/4 [00:14<00:13,  6.70s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (blood_to_brain):  75%|███████▌  | 3/4 [00:25<00:08,  8.45s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (blood_to_brain): 100%|██████████| 4/4 [00:37<00:00, 10.00s/it][A
+
+                                                                        [A
+Cross-tissue pairs:  67%|██████▋   | 4/6 [08:19<03:52, 116.44s/it]
+
+  Models (liver_to_kidney):   0%|          | 0/4 [00:00<?, ?it/s][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (liver_to_kidney):  25%|██▌       | 1/4 [00:09<00:28,  9.56s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (liver_to_kidney):  50%|█████     | 2/4 [00:13<00:12,  6.42s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (liver_to_kidney):  75%|███████▌  | 3/4 [00:25<00:08,  8.68s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (liver_to_kidney): 100%|██████████| 4/4 [00:36<00:00,  9.67s/it][A
+
+                                                                         [A
+Cross-tissue pairs:  83%|████████▎ | 5/6 [10:02<01:51, 111.58s/it]
+
+  Models (blood_to_liver):   0%|          | 0/4 [00:00<?, ?it/s][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (blood_to_liver):  25%|██▌       | 1/4 [00:13<00:39, 13.20s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (blood_to_liver):  50%|█████     | 2/4 [00:18<00:16,  8.26s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (blood_to_liver):  75%|███████▌  | 3/4 [00:36<00:12, 12.85s/it][A/usr/local/lib/python3.11/functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+
+
+  Models (blood_to_liver): 100%|██████████| 4/4 [00:54<00:00, 15.14s/it][A
+
+                                                                        [A
+Cross-tissue pairs: 100%|██████████| 6/6 [12:03<00:00, 114.88s/it]
+Cross-tissue pairs: 100%|██████████| 6/6 [12:03<00:00, 120.65s/it]
+
+
+=== RETURN CODE: 0 ===

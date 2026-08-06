@@ -1,0 +1,101 @@
+{
+  "experiment": "exp4_metric_comparison",
+  "timestamp": "20260712_003545",
+  "prereg_sha": "270ad29c2de83b64a9cdcc7d5a31828988bee08222c9e45779680470ec2e2f54",
+  "census_version": "2023-12-15",
+  "n_pairs": 9,
+  "results": [
+    {
+      "pair_id": "cross_assay_lung",
+      "pair_type": "cross_assay",
+      "relative_degradation": 0.17101879308560053,
+      "preflight_composite_score": 0.2684193200515621,
+      "preflight_tier": 3,
+      "rankme_diff": 3.40472412109375,
+      "mmd": 0.17517992088885867,
+      "c2st": 0.9789999999999999
+    },
+    {
+      "pair_id": "cross_assay_liver",
+      "pair_type": "cross_assay",
+      "relative_degradation": 0.32146068220502877,
+      "preflight_composite_score": 0.22924168353414948,
+      "preflight_tier": 2,
+      "rankme_diff": 3.6753997802734375,
+      "mmd": 0.33380428022784414,
+      "c2st": 0.999
+    },
+    {
+      "pair_id": "cross_assay_brain",
+      "pair_type": "cross_assay",
+      "relative_degradation": 0.16435386635348906,
+      "preflight_composite_score": 0.23388450393393587,
+      "preflight_tier": 2,
+      "rankme_diff": 36.21147155761719,
+      "mmd": 0.5258355251824924,
+      "c2st": 0.98225
+    },
+    {
+      "pair_id": "cross_tissue_brain_to_lung",
+      "pair_type": "cross_tissue",
+      "relative_degradation": 0.17471884637868906,
+      "preflight_composite_score": 0.2284003599532797,
+      "preflight_tier": 2,
+      "rankme_diff": 24.892990112304688,
+      "mmd": 0.2853349729296124,
+      "c2st": 0.98475
+    },
+    {
+      "pair_id": "cross_tissue_liver_to_lung",
+      "pair_type": "cross_tissue",
+      "relative_degradation": 0.19600379584836772,
+      "preflight_composite_score": 0.18394919649882358,
+      "preflight_tier": 2,
+      "rankme_diff": 42.63807678222656,
+      "mmd": 0.2766994017561225,
+      "c2st": 0.9727500000000001
+    },
+    {
+      "pair_id": "neg_ctrl_lung",
+      "pair_type": "negative_control",
+      "relative_degradation": -0.2103052830381661,
+      "preflight_composite_score": 0.7283947741870267,
+      "preflight_tier": 6,
+      "rankme_diff": 0.832427978515625,
+      "mmd": 0.01826808426796637,
+      "c2st": 0.49074999999999996
+    },
+    {
+      "pair_id": "neg_ctrl_liver",
+      "pair_type": "negative_control",
+      "relative_degradation": -0.1378282491859489,
+      "preflight_composite_score": 0.7071447056176668,
+      "preflight_tier": 6,
+      "rankme_diff": 1.5185394287109375,
+      "mmd": 0.02587020154737272,
+      "c2st": 0.4967499999999999
+    },
+    {
+      "pair_id": "neg_ctrl_kidney",
+      "pair_type": "negative_control",
+      "relative_degradation": -0.2026378341828954,
+      "preflight_composite_score": 0.7419264799865964,
+      "preflight_tier": 6,
+      "rankme_diff": 0.9710693359375,
+      "mmd": 0.012438521726494916,
+      "c2st": 0.49275
+    },
+    {
+      "pair_id": "neg_ctrl_brain",
+      "pair_type": "negative_control",
+      "relative_degradation": -0.1714968781398954,
+      "preflight_composite_score": 0.8014601014391449,
+      "preflight_tier": 6,
+      "rankme_diff": 0.2526702880859375,
+      "mmd": 0.01894436438332467,
+      "c2st": 0.5025
+    }
+  ],
+  "hypotheses": {
+    "H4.1_false_certification_rate": {
+      "supported": 

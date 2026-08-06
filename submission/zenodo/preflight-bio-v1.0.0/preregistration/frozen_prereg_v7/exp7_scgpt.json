@@ -1,0 +1,60 @@
+{
+  "sha256": "8e15c93810dd49fc989629cc4a7fd9092984b3eabf1e82b245e03360cb0c23e0",
+  "timestamp": "2026-07-12T00:20:45.475933+00:00",
+  "modules_used": [
+    "preflight.core.modules.module1_grassmannian.transportability",
+    "preflight.core.modules.module2_domain_shift.transportability",
+    "preflight.core.modules.module3_direction_stability.distances",
+    "preflight.core.modules.module3_direction_stability.subspace",
+    "preflight.core.modules.module6_curvature.weighted_orc",
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity",
+    "preflight.core.runner"
+  ],
+  "hyperparameters": {
+    "k": 5,
+    "orc_alpha": 0.5,
+    "weights": {
+      "m1_grassmannian": 2.0,
+      "m2_domain_shift": 2.0,
+      "m3_direction_stability": 1.0,
+      "m4_domain_validity": 1.0,
+      "m5_cross_design": 1.5,
+      "m6_curvature": 0.5
+    }
+  },
+  "dataset_spec": {
+    "name": "exp7_scgpt",
+    "source_description": "4 tissues x 4 embeddings (Geneformer, scVI, BoG-PCA-512, scGPT), cross-assay",
+    "target_description": "Same tissues, target assay (10x 5'v2)",
+    "n_source": 2000,
+    "n_target": 2000,
+    "d": null,
+    "extra": {
+      "census_version": "2023-12-15",
+      "embeddings": [
+        "geneformer",
+        "scvi",
+        "bag_of_genes_pca512",
+        "scgpt"
+      ],
+      "tissues": [
+        "lung",
+        "liver",
+        "kidney",
+        "brain"
+      ],
+      "source_assay": "EFO:0009922",
+      "target_assay": "EFO:0009900",
+      "contingency": "drop_tissue_if_scgpt_unavailable"
+    }
+  },
+  "module_code_lengths": {
+    "preflight.core.modules.module1_grassmannian.transportability": 14152,
+    "preflight.core.modules.module2_domain_shift.transportability": 8832,
+    "preflight.core.modules.module3_direction_stability.distances": 6253,
+    "preflight.core.modules.module3_direction_stability.subspace": 5966,
+    "preflight.core.modules.module6_curvature.weighted_orc": 18951,
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity": 2641,
+    "preflight.core.runner": 22979
+  }
+}

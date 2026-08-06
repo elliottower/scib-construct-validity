@@ -1,0 +1,58 @@
+{
+  "sha256": "270ad29c2de83b64a9cdcc7d5a31828988bee08222c9e45779680470ec2e2f54",
+  "timestamp": "2026-07-12T00:20:45.461680+00:00",
+  "modules_used": [
+    "preflight.core.modules.module1_grassmannian.transportability",
+    "preflight.core.modules.module2_domain_shift.transportability",
+    "preflight.core.modules.module3_direction_stability.distances",
+    "preflight.core.modules.module3_direction_stability.subspace",
+    "preflight.core.modules.module6_curvature.weighted_orc",
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity",
+    "preflight.core.runner"
+  ],
+  "hyperparameters": {
+    "k": 5,
+    "orc_alpha": 0.5,
+    "weights": {
+      "m1_grassmannian": 2.0,
+      "m2_domain_shift": 2.0,
+      "m3_direction_stability": 1.0,
+      "m4_domain_validity": 1.0,
+      "m5_cross_design": 1.5,
+      "m6_curvature": 0.5
+    }
+  },
+  "dataset_spec": {
+    "name": "exp4_metric_comparison",
+    "source_description": "Same 10 pairs from Exp 0 composite validation",
+    "target_description": "Same 10 pairs \u2014 target side",
+    "n_source": 2000,
+    "n_target": 2000,
+    "d": null,
+    "extra": {
+      "census_version": "2023-12-15",
+      "embedding": "geneformer",
+      "competing_metrics": [
+        "rankme",
+        "mmd",
+        "c2st"
+      ],
+      "n_pairs": 10,
+      "primary_hypothesis": "H4.1_false_certification_rate",
+      "false_cert_threshold": {
+        "tier_ge": 5,
+        "degradation_gt": 0.3
+      },
+      "reuses_exp0_embeddings": true
+    }
+  },
+  "module_code_lengths": {
+    "preflight.core.modules.module1_grassmannian.transportability": 14152,
+    "preflight.core.modules.module2_domain_shift.transportability": 8832,
+    "preflight.core.modules.module3_direction_stability.distances": 6253,
+    "preflight.core.modules.module3_direction_stability.subspace": 5966,
+    "preflight.core.modules.module6_curvature.weighted_orc": 18951,
+    "preflight.core.modules.module7_ecological_bias.s7_evalue_sensitivity": 2641,
+    "preflight.core.runner": 22979
+  }
+}

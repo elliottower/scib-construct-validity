@@ -1,0 +1,751 @@
+{
+  "experiment": "exp0_composite_validation",
+  "timestamp": "20260711_025248",
+  "preregistration_sha": "2561c5d5cc4e1a144e059bf295b414fe4e5fda343842f2c83d9ea02f49d4d470",
+  "census_version": "2023-12-15",
+  "embedding": "geneformer",
+  "max_cells_per_condition": 2000,
+  "min_shared_cell_types": 3,
+  "min_cells_per_type": 10,
+  "n_pairs_attempted": 25,
+  "n_pairs_valid": 10,
+  "n_pairs_dropped": 15,
+  "dropped_pairs": [
+    {
+      "pair_id": "cross_dataset_heart",
+      "reason": "fewer than 2 datasets"
+    },
+    {
+      "pair_id": "cross_dataset_brain",
+      "reason": "fewer than 2 datasets"
+    },
+    {
+      "pair_id": "cross_assay_heart",
+      "reason": "no source cells"
+    },
+    {
+      "pair_id": "cross_assay_kidney",
+      "reason": "only 2 shared cell types"
+    },
+    {
+      "pair_id": "cross_tissue_brain_to_heart",
+      "reason": "no target cells"
+    },
+    {
+      "pair_id": "cross_tissue_brain_to_kidney",
+      "reason": "only 0 shared cell types"
+    },
+    {
+      "pair_id": "cross_tissue_brain_to_liver",
+      "reason": "only 2 shared cell types"
+    },
+    {
+      "pair_id": "cross_tissue_heart_to_kidney",
+      "reason": "no source cells"
+    },
+    {
+      "pair_id": "cross_tissue_heart_to_liver",
+      "reason": "no source cells"
+    },
+    {
+      "pair_id": "cross_tissue_heart_to_lung",
+      "reason": "no source cells"
+    },
+    {
+      "pair_id": "cross_tissue_kidney_to_liver",
+      "reason": "only 1 shared cell types"
+    },
+    {
+      "pair_id": "cross_tissue_kidney_to_lung",
+      "reason": "only 1 shared cell types"
+    },
+    {
+      "pair_id": "cross_dataset_liver",
+      "reason": "only 2 shared cell types"
+    },
+    {
+      "pair_id": "cross_dataset_kidney",
+      "reason": "only 1 shared cell types"
+    },
+    {
+      "pair_id": "neg_ctrl_heart",
+      "reason": "no source cells"
+    }
+  ],
+  "pair_results": [
+    {
+      "pair_id": "cross_assay_lung",
+      "pair_type": "cross_assay",
+      "tissue_source": "lung",
+      "tissue_target": "lung",
+      "source_desc": "lung 10x 3'v3",
+      "target_desc": "lung 10x 5'v2",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 21,
+      "shared_cell_types": [
+        "B cell",
+        "CD1c-positive myeloid dendritic cell",
+        "CD4-positive, alpha-beta T cell",
+        "CD8-positive, alpha-beta T cell",
+        "T cell",
+        "alveolar macrophage",
+        "capillary endothelial cell",
+        "ciliated columnar cell of tracheobronchial tree",
+        "classical monocyte",
+        "club cell",
+        "dendritic cell",
+        "elicited macrophage",
+        "macrophage",
+        "native cell",
+        "natural killer cell",
+        "non-classical monocyte",
+        "plasma cell",
+        "regulatory T cell",
+        "respiratory basal cell",
+        "tracheobronchial smooth muscle cell",
+        "type II pneumocyte"
+      ],
+      "n_source_filtered": 1487,
+      "n_target_filtered": 1460,
+      "composite_score": 0.2684193200515621,
+      "composite_tier": 3,
+      "module_scores": {
+        "m1_grassmannian": {
+          "score": 0.30925015989156257,
+          "tier": 3
+        },
+        "m2_domain_shift": {
+          "score": 0.062349999999999905,
+          "tier": 1
+        },
+        "m3_direction_stability": {
+          "score": 0.3098002964507708,
+          "tier": 3
+        },
+        "m4_domain_validity": {
+          "score": 0.8518369408015302,
+          "tier": 7
+        },
+        "m6_curvature": {
+          "score": 0.2166146867025801,
+          "tier": 2
+        },
+        "m7_ecological_bias": {
+          "score": 0.0,
+          "tier": 1
+        }
+      },
+      "f1_source": 0.6240063542797423,
+      "f1_target": 0.5172895406930751,
+      "abs_degradation": 0.10671681358666718,
+      "relative_degradation": 0.17101879308560053
+    },
+    {
+      "pair_id": "cross_assay_liver",
+      "pair_type": "cross_assay",
+      "tissue_source": "liver",
+      "tissue_target": "liver",
+      "source_desc": "liver 10x 3'v3",
+      "target_desc": "liver 10x 5'v2",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 7,
+      "shared_cell_types": [
+        "Kupffer cell",
+        "endothelial cell",
+        "hematopoietic multipotent progenitor cell",
+        "hepatocyte",
+        "macrophage",
+        "megakaryocyte-erythroid progenitor cell",
+        "monocyte"
+      ],
+      "n_source_filtered": 454,
+      "n_target_filtered": 897,
+      "composite_score": 0.22924168353414948,
+      "composite_tier": 2,
+      "module_scores": {
+        "m1_grassmannian": {
+          "score": 0.29025040029393934,
+          "tier": 3
+        },
+        "m2_domain_shift": {
+          "score": 0.05704999999999982,
+          "tier": 1
+        },
+        "m3_direction_stability": {
+          "score": 0.29039051423106765,
+          "tier": 3
+        },
+        "m4_domain_validity": {
+          "score": 0.6779752672933222,
+          "tier": 5
+        },
+        "m6_curvature": {
+          "score": 0.11269208878770631,
+          "tier": 2
+        },
+        "m7_ecological_bias": {
+          "score": 0.0,
+          "tier": 1
+        }
+      },
+      "f1_source": 0.7840913028308092,
+      "f1_target": 0.5320367777117875,
+      "abs_degradation": 0.2520545251190217,
+      "relative_degradation": 0.32146068220502877
+    },
+    {
+      "pair_id": "cross_assay_brain",
+      "pair_type": "cross_assay",
+      "tissue_source": "brain",
+      "tissue_target": "brain",
+      "source_desc": "brain 10x 3'v3",
+      "target_desc": "brain 10x 5'v2",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 3,
+      "shared_cell_types": [
+        "macrophage",
+        "mature T cell",
+        "microglial cell"
+      ],
+      "n_source_filtered": 1285,
+      "n_target_filtered": 1984,
+      "composite_score": 0.23388450393393587,
+      "composite_tier": 2,
+      "module_scores": {
+        "m1_grassmannian": {
+          "score": 0.21654487178419057,
+          "tier": 2
+        },
+        "m2_domain_shift": {
+          "score": 0.04381999999999975,
+          "tier": 1
+        },
+        "m3_direction_stability": {
+          "score": 0.30963140166125613,
+          "tier": 3
+        },
+        "m4_domain_validity": {
+          "score": 0.5815111669901609,
+          "tier": 5
+        },
+        "m6_curvature": {
+          "score": 0.21675392670157068,
+          "tier": 2
+        }
+      },
+      "f1_source": 0.7813276465154241,
+      "f1_target": 0.6529134269217419,
+      "abs_degradation": 0.12841421959368216,
+      "relative_degradation": 0.16435386635348906
+    },
+    {
+      "pair_id": "cross_tissue_brain_to_lung",
+      "pair_type": "cross_tissue",
+      "tissue_source": "brain",
+      "tissue_target": "lung",
+      "source_desc": "brain 10x 3'v3",
+      "target_desc": "lung 10x 3'v3",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 4,
+      "shared_cell_types": [
+        "dendritic cell",
+        "macrophage",
+        "malignant cell",
+        "monocyte"
+      ],
+      "n_source_filtered": 1114,
+      "n_target_filtered": 227,
+      "composite_score": 0.2284003599532797,
+      "composite_tier": 2,
+      "module_scores": {
+        "m1_grassmannian": {
+          "score": 0.25695379655487294,
+          "tier": 3
+        },
+        "m2_domain_shift": {
+          "score": 0.025680000000000147,
+          "tier": 1
+        },
+        "m3_direction_stability": {
+          "score": 0.30944481488176,
+          "tier": 3
+        },
+        "m4_domain_validity": {
+          "score": 0.5125081915213388,
+          "tier": 4
+        },
+        "m6_curvature": {
+          "score": 0.18360375747224594,
+          "tier": 2
+        },
+        "m7_ecological_bias": {
+          "score": 0.2339802214006299,
+          "tier": 2
+        }
+      },
+      "f1_source": 0.8328487370741456,
+      "f1_target": 0.6873343665246028,
+      "abs_degradation": 0.14551437054954286,
+      "relative_degradation": 0.17471884637868906
+    },
+    {
+      "pair_id": "cross_tissue_liver_to_lung",
+      "pair_type": "cross_tissue",
+      "tissue_source": "liver",
+      "tissue_target": "lung",
+      "source_desc": "liver 10x 3'v3",
+      "target_desc": "lung 10x 3'v3",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 8,
+      "shared_cell_types": [
+        "B cell",
+        "T cell",
+        "endothelial cell",
+        "epithelial cell",
+        "fibroblast",
+        "macrophage",
+        "monocyte",
+        "natural killer cell"
+      ],
+      "n_source_filtered": 955,
+      "n_target_filtered": 423,
+      "composite_score": 0.18394919649882358,
+      "composite_tier": 2,
+      "module_scores": {
+        "m1_grassmannian": {
+          "score": 0.19470994634471628,
+          "tier": 2
+        },
+        "m2_domain_shift": {
+          "score": 0.10237750000000001,
+          "tier": 2
+        },
+        "m3_direction_stability": {
+          "score": 0.32313473897862083,
+          "tier": 3
+        },
+        "m4_domain_validity": {
+          "score": 0.3546405751438967,
+          "tier": 3
+        },
+        "m6_curvature": {
+          "score": 0.15022805017103763,
+          "tier": 2
+        },
+        "m7_ecological_bias": {
+          "score": 0.03255474184370777,
+          "tier": 1
+        }
+      },
+      "f1_source": 0.911216067629021,
+      "f1_target": 0.7326142595357099,
+      "abs_degradation": 0.17860180809331105,
+      "relative_degradation": 0.19600379584836772
+    },
+    {
+      "pair_id": "cross_dataset_lung",
+      "pair_type": "cross_dataset",
+      "tissue_source": "lung",
+      "tissue_target": "lung",
+      "source_desc": "lung 10x 3'v3 dataset A",
+      "target_desc": "lung 10x 3'v3 dataset B",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 12,
+      "shared_cell_types": [
+        "B cell",
+        "CD4-positive, alpha-beta T cell",
+        "CD8-positive, alpha-beta T cell",
+        "alveolar macrophage",
+        "capillary endothelial cell",
+        "mast cell",
+        "natural killer cell",
+        "plasma cell",
+        "respiratory basal cell",
+        "tracheobronchial smooth muscle cell",
+        "type II pneumocyte",
+        "vein endothelial cell"
+      ],
+      "n_source_filtered": 937,
+      "n_target_filtered": 1046,
+      "composite_score": 0.3747417296235708,
+      "composite_tier": 3,
+      "module_scores": {
+        "m1_grassmannian": {
+          "score": 0.44694370373330217,
+          "tier": 4
+        },
+        "m2_domain_shift": {
+          "score": 0.0005624999999997993,
+          "tier": 1
+        },
+        "m3_direction_stability": {
+          "score": 0.2929411419666867,
+          "tier": 3
+        },
+        "m4_domain_validity": {
+          "score": 0.7552244209624441,
+          "tier": 6
+        },
+        "m6_curvature": {
+          "score": 0.10724312184166199,
+          "tier": 2
+        },
+        "m7_ecological_bias": {
+          "score": 0.813763440860215,
+          "tier": 6
+        }
+      },
+      "f1_source": 0.9040139891897606,
+      "f1_target": 0.6400707262890776,
+      "abs_degradation": 0.26394326290068304,
+      "relative_degradation": 0.2919681178133616
+    },
+    {
+      "pair_id": "neg_ctrl_lung",
+      "pair_type": "negative_control",
+      "tissue_source": "lung",
+      "tissue_target": "lung",
+      "source_desc": "lung 10x 3'v3 split A",
+      "target_desc": "lung 10x 3'v3 split B",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 32,
+      "shared_cell_types": [
+        "B cell",
+        "CD1c-positive myeloid dendritic cell",
+        "CD4-positive, alpha-beta T cell",
+        "CD8-positive, alpha-beta T cell",
+        "T cell",
+        "alveolar macrophage",
+        "alveolar type 2 fibroblast cell",
+        "capillary endothelial cell",
+        "ciliated columnar cell of tracheobronchial tree",
+        "classical monocyte",
+        "club cell",
+        "dendritic cell",
+        "elicited macrophage",
+        "endothelial cell",
+        "epithelial cell",
+        "fibroblast",
+        "lung goblet cell",
+        "macrophage",
+        "malignant cell",
+        "mast cell",
+        "mature alpha-beta T cell",
+        "monocyte",
+        "native cell",
+        "natural killer cell",
+        "non-classical monocyte",
+        "plasma cell",
+        "regulatory T cell",
+        "respiratory basal cell",
+        "tracheobronchial smooth muscle cell",
+        "type I pneumocyte",
+        "type II pneumocyte",
+        "vein endothelial cell"
+      ],
+      "n_source_filtered": 1836,
+      "n_target_filtered": 1826,
+      "composite_score": 0.7283947741870267,
+      "composite_tier": 6,
+      "module_scores": {
+        "m1_grassmannian": {
+          "score": 0.8994036379281667,
+          "tier": 7
+        },
+        "m2_domain_shift": {
+          "score": 1.0,
+          "tier": 7
+        },
+        "m3_direction_stability": {
+          "score": 0.4580255302872442,
+          "tier": 4
+        },
+        "m4_domain_validity": {
+          "score": 0.9550210297055471,
+          "tier": 7
+        },
+        "m6_curvature": {
+          "score": 0.17830985915492958,
+          "tier": 2
+        },
+        "m7_ecological_bias": {
+          "score": 0.16195204097611104,
+          "tier": 2
+        }
+      },
+      "f1_source": 0.592752936766557,
+      "f1_target": 0.717412010904952,
+      "abs_degradation": -0.12465907413839494,
+      "relative_degradation": -0.2103052830381661
+    },
+    {
+      "pair_id": "neg_ctrl_liver",
+      "pair_type": "negative_control",
+      "tissue_source": "liver",
+      "tissue_target": "liver",
+      "source_desc": "liver 10x 3'v3 split A",
+      "target_desc": "liver 10x 3'v3 split B",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 18,
+      "shared_cell_types": [
+        "B cell",
+        "Kupffer cell",
+        "T cell",
+        "endothelial cell",
+        "epithelial cell",
+        "erythroid progenitor cell",
+        "fibroblast",
+        "hematopoietic multipotent progenitor cell",
+        "hepatocyte",
+        "lymphoid lineage restricted progenitor cell",
+        "macrophage",
+        "mature NK T cell",
+        "megakaryocyte-erythroid progenitor cell",
+        "monocyte",
+        "natural killer cell",
+        "neoplastic cell",
+        "neutrophil",
+        "proerythroblast"
+      ],
+      "n_source_filtered": 1904,
+      "n_target_filtered": 1903,
+      "composite_score": 0.7071447056176668,
+      "composite_tier": 6,
+      "module_scores": {
+        "m1_grassmannian": {
+          "score": 0.9063528269217543,
+          "tier": 7
+        },
+        "m2_domain_shift": {
+          "score": 1.0,
+          "tier": 7
+        },
+        "m3_direction_stability": {
+          "score": 0.44781591733551523,
+          "tier": 4
+        },
+        "m4_domain_validity": {
+          "score": 0.9784508529054948,
+          "tier": 7
+        },
+        "m6_curvature": {
+          "score": 0.1292257360959651,
+          "tier": 2
+        },
+        "m7_ecological_bias": {
+          "score": 0.0,
+          "tier": 1
+        }
+      },
+      "f1_source": 0.7566616685736645,
+      "f1_target": 0.8609510215792914,
+      "abs_degradation": -0.10428935300562692,
+      "relative_degradation": -0.1378282491859489
+    },
+    {
+      "pair_id": "neg_ctrl_kidney",
+      "pair_type": "negative_control",
+      "tissue_source": "kidney",
+      "tissue_target": "kidney",
+      "source_desc": "kidney 10x 3'v3 split A",
+      "target_desc": "kidney 10x 3'v3 split B",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 15,
+      "shared_cell_types": [
+        "endothelial cell",
+        "epithelial cell of nephron",
+        "epithelial cell of proximal tubule",
+        "kidney collecting duct intercalated cell",
+        "kidney collecting duct principal cell",
+        "kidney connecting tubule epithelial cell",
+        "kidney distal convoluted tubule epithelial cell",
+        "kidney epithelial cell",
+        "kidney interstitial cell",
+        "kidney loop of Henle thick ascending limb epithelial cell",
+        "kidney loop of Henle thin ascending limb epithelial cell",
+        "kidney loop of Henle thin descending limb epithelial cell",
+        "leukocyte",
+        "mesenchymal stem cell",
+        "parietal epithelial cell"
+      ],
+      "n_source_filtered": 1971,
+      "n_target_filtered": 1974,
+      "composite_score": 0.7419264799865964,
+      "composite_tier": 6,
+      "module_scores": {
+        "m1_grassmannian": {
+          "score": 0.8914158668506897,
+          "tier": 7
+        },
+        "m2_domain_shift": {
+          "score": 1.0,
+          "tier": 7
+        },
+        "m3_direction_stability": {
+          "score": 0.45230880109085997,
+          "tier": 4
+        },
+        "m4_domain_validity": {
+          "score": 0.956514880641236,
+          "tier": 7
+        },
+        "m6_curvature": {
+          "score": 0.18476190476190477,
+          "tier": 2
+        },
+        "m7_ecological_bias": {
+          "score": 0.28041223208504606,
+          "tier": 3
+        }
+      },
+      "f1_source": 0.6864665508838668,
+      "f1_target": 0.8255706459939759,
+      "abs_degradation": -0.13910409511010913,
+      "relative_degradation": -0.2026378341828954
+    },
+    {
+      "pair_id": "neg_ctrl_brain",
+      "pair_type": "negative_control",
+      "tissue_source": "brain",
+      "tissue_target": "brain",
+      "source_desc": "brain 10x 3'v3 split A",
+      "target_desc": "brain 10x 3'v3 split B",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 8,
+      "shared_cell_types": [
+        "dendritic cell",
+        "macrophage",
+        "malignant cell",
+        "mature T cell",
+        "microglial cell",
+        "monocyte",
+        "oligodendrocyte",
+        "oligodendrocyte precursor cell"
+      ],
+      "n_source_filtered": 1973,
+      "n_target_filtered": 1968,
+      "composite_score": 0.8014601014391449,
+      "composite_tier": 6,
+      "module_scores": {
+        "m1_grassmannian": {
+          "score": 0.8894608385545536,
+          "tier": 7
+        },
+        "m2_domain_shift": {
+          "score": 1.0,
+          "tier": 7
+        },
+        "m3_direction_stability": {
+          "score": 0.3679507542229633,
+          "tier": 3
+        },
+        "m4_domain_validity": {
+          "score": 0.9495039117830554,
+          "tier": 7
+        },
+        "m6_curvature": {
+          "score": 0.22622863247863248,
+          "tier": 2
+        }
+      },
+      "f1_source": 0.6808030864372232,
+      "f1_target": 0.7975586903892123,
+      "abs_degradation": -0.11675560395198914,
+      "relative_degradation": -0.1714968781398954
+    }
+  ],
+  "hypotheses": {
+    "H0.1": {
+      "description": "partial Spearman rho(composite, relative_degradation | F1_source) < -0.4 on shifted pairs",
+      "partial_rho": 0.1936491673103709,
+      "p_value": 0.7549880199277845,
+      "n_pairs": 6,
+      "threshold": -0.4,
+      "passed": false
+    },
+    "H0.1b": {
+      "description": "raw Spearman rho(composite, relative_degradation) < -0.5 across all pairs",
+      "rho": -0.7575757575757575,
+      "p_value": 0.011143446799694208,
+      "n_pairs": 10,
+      "threshold": -0.5,
+      "passed": true
+    },
+    "H0.1c": {
+      "description": "Spearman rho(composite, relative_degradation) < -0.3 within cross-tissue pairs",
+      "error": "too few cross-tissue pairs (2)",
+      "passed": null
+    },
+    "H0.2": {
+      "description": "Tier >= 5 pairs have mean relative_degradation < 0.15",
+      "mean_relative_degradation": -0.18056706113672644,
+      "n_pairs": 4,
+      "threshold": 0.15,
+      "passed": true
+    },
+    "H0.3": {
+      "description": "Tier <= 2 pairs have mean relative_degradation > 0.40",
+      "mean_relative_degradation": 0.21413429769639364,
+      "n_pairs": 4,
+      "threshold": 0.4,
+      "passed": false
+    },
+    "H0.4": {
+      "description": "M2 partial Spearman rho < -0.3 on shifted pairs",
+      "partial_rho": -0.0468292905790847,
+      "p_value": 0.9403968952854223,
+      "n_pairs": 6,
+      "threshold": -0.3,
+      "passed": false
+    },
+    "H0.5": {
+      "description": "composite |partial rho| > M2 |partial rho| on shifted pairs",
+      "composite_abs_partial_rho": 0.1936491673103709,
+      "m2_abs_partial_rho": 0.0468292905790847,
+      "passed": true
+    }
+  },
+  "per_module_partial_rho": {
+    "m1_grassmannian": {
+      "partial_rho": 0.5592486032696017,
+      "p_value": 0.3270316416659424,
+      "n": 6
+    },
+    "m2_domain_shift": {
+      "partial_rho": -0.0468292905790847,
+      "p_value": 0.9403968952854223,
+      "n": 6
+    },
+    "m3_direction_stability": {
+      "partial_rho": -0.7332022106646663,
+      "p_value": 0.15864046765491066,
+      "n": 6
+    },
+    "m4_domain_validity": {
+      "partial_rho": 0.5273207085158231,
+      "p_value": 0.36115793221385983,
+      "n": 6
+    },
+    "m6_curvature": {
+      "partial_rho": -0.9258975889661336,
+      "p_value": 0.02394391830987845,
+      "n": 6
+    },
+    "m7_ecological_bias": {
+      "partial_rho": -0.13711711822074213,
+      "p_value": 0.8628828817793264,
+      "n": 5
+    }
+  },
+  "elapsed_seconds": 1674.5780777931213
+}

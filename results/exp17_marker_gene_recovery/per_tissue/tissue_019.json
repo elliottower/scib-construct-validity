@@ -1,0 +1,146 @@
+{
+  "tissue": "liver",
+  "tissue_index": 19,
+  "k": 10,
+  "n_src": 2000,
+  "n_tgt": 213,
+  "ceiling": {
+    "ceiling_score": 0.08475147498737853,
+    "n_types": 9,
+    "per_type_jaccard": {
+      "T cell": 0.02040816326530612,
+      "endothelial cell of hepatic sinusoid": 0.19047619047619047,
+      "fibroblast": 0.02040816326530612,
+      "hepatocyte": 0.05263157894736842,
+      "macrophage": 0.16279069767441862,
+      "mature NK T cell": 0.06382978723404255,
+      "monocyte": 0.08695652173913043,
+      "neutrophil": 0.12359550561797752,
+      "plasma cell": 0.041666666666666664
+    }
+  },
+  "metrics_geneformer": {
+    "rcs_baseline": 0.7255599472990777,
+    "rcs_pca10": 0.7121212121212119,
+    "rcs_trimmed": 0.7303030303030302,
+    "rcs_normalized": 0.788412017167382,
+    "rcs_combined": 0.7708805426707975,
+    "pad": -2.0,
+    "scc_logreg": 0.8170499598764784,
+    "scc_knn": 0.7996779388083736,
+    "scc_rf": 0.4211594202898551,
+    "scc_svm": 0.5656625732478799,
+    "mmd": -0.1660489618402481,
+    "ccal": -0.3829710316736467,
+    "f1": 0.5654848484848485
+  },
+  "mgr_geneformer": {
+    "mgr_score": 0.07837532250975497,
+    "n_matched_types": 9,
+    "n_clusters": 7,
+    "per_type_jaccard": {
+      "T cell": 0.0,
+      "endothelial cell of hepatic sinusoid": 0.19047619047619047,
+      "fibroblast": 0.0,
+      "hepatocyte": 0.05263157894736842,
+      "macrophage": 0.20481927710843373,
+      "mature NK T cell": 0.05263157894736842,
+      "monocyte": 0.0,
+      "neutrophil": 0.20481927710843373,
+      "plasma cell": 0.0
+    }
+  },
+  "metrics_scvi": {
+    "rcs_baseline": 0.18787878787878784,
+    "rcs_pca10": 0.2590250329380764,
+    "rcs_trimmed": 0.19512516469038205,
+    "rcs_normalized": 0.19455907435045616,
+    "rcs_combined": 0.21889544670141156,
+    "pad": -1.855530474040632,
+    "scc_logreg": 0.829965504357113,
+    "scc_knn": 0.747181964573269,
+    "scc_rf": 0.42135265700483093,
+    "scc_svm": 0.7413901351182547,
+    "mmd": -0.1779442568841988,
+    "ccal": -1.2913431254771819,
+    "f1": 0.5108617532916949
+  },
+  "mgr_scvi": {
+    "mgr_score": 0.0746256322740341,
+    "n_matched_types": 9,
+    "n_clusters": 8,
+    "per_type_jaccard": {
+      "T cell": 0.0,
+      "endothelial cell of hepatic sinusoid": 0.0,
+      "fibroblast": 0.010101010101010102,
+      "hepatocyte": 0.0,
+      "macrophage": 0.3698630136986301,
+      "mature NK T cell": 0.041666666666666664,
+      "monocyte": 0.0,
+      "neutrophil": 0.25,
+      "plasma cell": 0.0
+    }
+  },
+  "metrics_scgpt": {
+    "rcs_baseline": 0.46916996047430826,
+    "rcs_pca10": 0.43241106719367584,
+    "rcs_trimmed": 0.46930171277997357,
+    "rcs_normalized": 0.5488295715385287,
+    "rcs_combined": 0.44079272832969263,
+    "pad": -1.9548532731376973,
+    "scc_logreg": 0.41165080705765755,
+    "scc_knn": 0.7288244766505636,
+    "scc_rf": 0.3539130434782609,
+    "scc_svm": 0.5916482948723485,
+    "mmd": -0.2620833603675564,
+    "ccal": -1.332146826484311,
+    "f1": 0.22734235739750447
+  },
+  "mgr_scgpt": {
+    "mgr_score": 0.06852216590137344,
+    "n_matched_types": 9,
+    "n_clusters": 8,
+    "per_type_jaccard": {
+      "T cell": 0.0,
+      "endothelial cell of hepatic sinusoid": 0.0989010989010989,
+      "fibroblast": 0.0,
+      "hepatocyte": 0.0,
+      "macrophage": 0.28205128205128205,
+      "mature NK T cell": 0.030927835051546393,
+      "monocyte": 0.0,
+      "neutrophil": 0.20481927710843373,
+      "plasma cell": 0.0
+    }
+  },
+  "metrics_uce": {
+    "rcs_baseline": 0.4488801054018445,
+    "rcs_pca10": 0.4463768115942029,
+    "rcs_trimmed": 0.4708827404479578,
+    "rcs_normalized": 0.607488248795977,
+    "rcs_combined": 0.4401782793187184,
+    "pad": -1.9819413092550788,
+    "scc_logreg": 0.5570039397069789,
+    "scc_knn": 0.7916264090177133,
+    "scc_rf": 0.43719806763285024,
+    "scc_svm": 0.6423970707576327,
+    "mmd": -0.21300306710991213,
+    "ccal": -0.7984851256275012,
+    "f1": 0.34762047511296845
+  },
+  "mgr_uce": {
+    "mgr_score": 0.0793455665100809,
+    "n_matched_types": 9,
+    "n_clusters": 9,
+    "per_type_jaccard": {
+      "T cell": 0.0,
+      "endothelial cell of hepatic sinusoid": 0.17647058823529413,
+      "fibroblast": 0.0,
+      "hepatocyte": 0.05263157894736842,
+      "macrophage": 0.2345679012345679,
+      "mature NK T cell": 0.030927835051546393,
+      "monocyte": 0.0,
+      "neutrophil": 0.21951219512195122,
+      "plasma cell": 0.0
+    }
+  }
+}

@@ -1,0 +1,351 @@
+=== STDOUT ===
+17:22:14 External validation experiment
+  Prereg SHA: 46aff40fdd13bbe40f102505857866c2099f7167e977419bf9ffa2819d0d461a
+  Datasets: ['pancreas', 'tabula_sapiens', 'pbmc']
+  Models: ['pca_full_50', 'pca_hvg_50', 'pca_full_200', 'pca_hvg_200', 'random_projection', 'untrained_encoder']
+  Metrics: ['cell_type_cka', 'procrustes_sim', 'silhouette_src', 'silhouette_tgt', 'mmd', 'domain_auc']
+17:22:14 Downloading pancreas.h5ad from https://ndownloader.figshare.com/files/46763269...
+17:23:01 Downloaded pancreas.h5ad: 315.9 MB
+17:23:09 Pancreas: 16382 cells, 19093 genes
+  obs columns: ['tech', 'celltype', 'size_factors']
+  Tech col: tech -> ['celseq', 'celseq2', 'fluidigmc1', 'inDrop1', 'inDrop2', 'inDrop3', 'inDrop4', 'smarter', 'smartseq2']
+  Cell type col: celltype -> ['acinar', 'activated_stellate', 'alpha', 'beta', 'delta', 'ductal', 'endothelial', 'epsilon', 'gamma', 'macrophage', 'mast', 'quiescent_stellate', 'schwann', 't_cell']
+
+17:23:09 === pancreas ===
+  Technologies: ['celseq', 'celseq2', 'fluidigmc1', 'inDrop1', 'inDrop2', 'inDrop3', 'inDrop4', 'smarter', 'smartseq2']
+  Cell types: ['acinar', 'activated_stellate', 'alpha', 'beta', 'delta', 'ductal', 'endothelial', 'epsilon', 'gamma', 'macrophage', 'mast', 'quiescent_stellate', 'schwann', 't_cell']
+  Qualifying tech pairs (both dirs): 56
+
+17:23:09 celseq->celseq2
+  SKIP (prep error): 'highly_variable'
+
+17:23:11 celseq2->celseq
+  SKIP (prep error): 'highly_variable'
+
+17:23:12 celseq->fluidigmc1
+  SKIP (prep error): 'highly_variable'
+
+17:23:13 fluidigmc1->celseq
+  SKIP (prep error): 'highly_variable'
+
+17:23:14 celseq->inDrop1
+  SKIP (prep error): 'highly_variable'
+
+17:23:16 inDrop1->celseq
+  SKIP (prep error): 'highly_variable'
+
+17:23:17 celseq->inDrop2
+  SKIP (prep error): 'highly_variable'
+
+17:23:18 inDrop2->celseq
+  SKIP (prep error): 'highly_variable'
+
+17:23:20 celseq->inDrop3
+  SKIP (prep error): 'highly_variable'
+
+17:23:22 inDrop3->celseq
+  SKIP (prep error): 'highly_variable'
+
+17:23:24 celseq->inDrop4
+  SKIP (prep error): 'highly_variable'
+
+17:23:25 inDrop4->celseq
+  SKIP (prep error): 'highly_variable'
+
+17:23:26 celseq->smartseq2
+  SKIP (prep error): 'highly_variable'
+
+17:23:28 smartseq2->celseq
+  SKIP (prep error): 'highly_variable'
+
+17:23:30 celseq2->fluidigmc1
+  SKIP (prep error): 'highly_variable'
+
+17:23:32 fluidigmc1->celseq2
+  SKIP (prep error): 'highly_variable'
+
+17:23:33 celseq2->inDrop1
+  SKIP (prep error): 'highly_variable'
+
+17:23:35 inDrop1->celseq2
+  SKIP (prep error): 'highly_variable'
+
+17:23:38 celseq2->inDrop2
+  SKIP (prep error): 'highly_variable'
+
+17:23:40 inDrop2->celseq2
+  SKIP (prep error): 'highly_variable'
+
+17:23:42 celseq2->inDrop3
+  SKIP (prep error): 'highly_variable'
+
+17:23:44 inDrop3->celseq2
+  SKIP (prep error): 'highly_variable'
+
+17:23:47 celseq2->inDrop4
+  SKIP (prep error): 'highly_variable'
+
+17:23:49 inDrop4->celseq2
+  SKIP (prep error): 'highly_variable'
+
+17:23:51 celseq2->smartseq2
+  SKIP (prep error): 'highly_variable'
+
+17:23:54 smartseq2->celseq2
+  SKIP (prep error): 'highly_variable'
+
+17:23:56 fluidigmc1->inDrop1
+  SKIP (prep error): 'highly_variable'
+
+17:23:58 inDrop1->fluidigmc1
+  SKIP (prep error): 'highly_variable'
+
+17:23:59 fluidigmc1->inDrop2
+  SKIP (prep error): 'highly_variable'
+
+17:24:00 inDrop2->fluidigmc1
+  SKIP (prep error): 'highly_variable'
+
+17:24:02 fluidigmc1->inDrop3
+  SKIP (prep error): 'highly_variable'
+
+17:24:03 inDrop3->fluidigmc1
+  SKIP (prep error): 'highly_variable'
+
+17:24:05 fluidigmc1->inDrop4
+  SKIP (prep error): 'highly_variable'
+
+17:24:06 inDrop4->fluidigmc1
+  SKIP (prep error): 'highly_variable'
+
+17:24:07 fluidigmc1->smartseq2
+  SKIP (prep error): 'highly_variable'
+
+17:24:09 smartseq2->fluidigmc1
+  SKIP (prep error): 'highly_variable'
+
+17:24:11 inDrop1->inDrop2
+  SKIP (prep error): 'highly_variable'
+
+17:24:13 inDrop2->inDrop1
+  SKIP (prep error): 'highly_variable'
+
+17:24:14 inDrop1->inDrop3
+  SKIP (prep error): 'highly_variable'
+
+17:24:17 inDrop3->inDrop1
+  SKIP (prep error): 'highly_variable'
+
+17:24:20 inDrop1->inDrop4
+  SKIP (prep error): 'highly_variable'
+
+17:24:21 inDrop4->inDrop1
+  SKIP (prep error): 'highly_variable'
+
+17:24:23 inDrop1->smartseq2
+  SKIP (prep error): 'highly_variable'
+
+17:24:27 smartseq2->inDrop1
+  SKIP (prep error): 'highly_variable'
+
+17:24:29 inDrop2->inDrop3
+  SKIP (prep error): 'highly_variable'
+
+17:24:31 inDrop3->inDrop2
+  SKIP (prep error): 'highly_variable'
+
+17:24:34 inDrop2->inDrop4
+  SKIP (prep error): 'highly_variable'
+
+17:24:35 inDrop4->inDrop2
+  SKIP (prep error): 'highly_variable'
+
+17:24:37 inDrop2->smartseq2
+  SKIP (prep error): 'highly_variable'
+
+17:24:40 smartseq2->inDrop2
+  SKIP (prep error): 'highly_variable'
+
+17:24:42 inDrop3->inDrop4
+  SKIP (prep error): 'highly_variable'
+
+17:24:44 inDrop4->inDrop3
+  SKIP (prep error): 'highly_variable'
+
+17:24:46 inDrop3->smartseq2
+  SKIP (prep error): 'highly_variable'
+
+17:24:49 smartseq2->inDrop3
+  SKIP (prep error): 'highly_variable'
+
+17:24:52 inDrop4->smartseq2
+  SKIP (prep error): 'highly_variable'
+
+17:24:54 smartseq2->inDrop4
+  SKIP (prep error): 'highly_variable'
+
+============================================================
+ANALYSIS: pancreas
+============================================================
+
+Total conditions: 0, contenders: 0
+  Too few contenders for analysis, skipping
+17:24:56 Downloading Tabula Sapiens via CELLxGENE Census...
+17:25:20 Total datasets in Census: 286
+17:32:20 Multi-organ, multi-tech dataset candidates: 3
+  1e6a6ef9-7ec9-4c90-bbfb-2ad3c3165fd1: 1,127,851 cells, 6 tissues, assays=["10x 3' v1", "10x 3' v2", "10x 3' v3", "10x 5' v1", 'BD Rhapsody Whole Transcriptome Analysis', 'Drop-seq', 'GEXSCOPE technology', 'Smart-seq2', 'inDrop']
+  56c4912d-2bae-4b64-98f2-af8a84389208: 1,092,789 cells, 15 tissues, assays=["10x 3' v2", "10x 3' v3", "10x 5' v1", 'BD Rhapsody Whole Transcriptome Analysis', 'CEL-seq2', 'Drop-seq', 'STRT-seq', 'Smart-seq2', 'microwell-seq']
+  53d208b0-2cfd-4366-9866-c3c6114081bc: 483,152 cells, 45 tissues, assays=["10x 3' v3", "10x 5' transcription profiling", 'Smart-seq2']
+
+17:32:21 Using dataset 1e6a6ef9-7ec9-4c90-bbfb-2ad3c3165fd1: 1,127,851 cells
+  brain: 20295 cells, assays=["10x 3' v2", 'Smart-seq2']
+  lung: 1028006 cells, assays=["10x 3' v2", "10x 3' v3", 'Smart-seq2', "10x 3' v1", 'Drop-seq', 'BD Rhapsody Whole Transcriptome Analysis', 'GEXSCOPE technology', 'inDrop', "10x 5' v1"]
+  lymph node: 55125 cells, assays=["10x 3' v2", 'Smart-seq2']
+  pleural effusion: 21421 cells, assays=["10x 3' v2", 'Smart-seq2']
+
+17:35:00 Tabula Sapiens: 4 organ files
+  brain: SKIP (20236 10x, 59 SS2)
+  lung: 10x->SS2: SKIP ('highly_variable')
+  lung: SS2->10x: SKIP ('highly_variable')
+  lymph node: 10x->SS2: SKIP ('highly_variable')
+  lymph node: SS2->10x: SKIP ('highly_variable')
+  pleural effusion: 10x->SS2: SKIP ('highly_variable')
+  pleural effusion: SS2->10x: SKIP ('highly_variable')
+
+============================================================
+ANALYSIS: tabula_sapiens
+============================================================
+
+Total conditions: 0, contenders: 0
+  Too few contenders for analysis, skipping
+17:36:29 Downloading PBMC Ding et al. from GEO GSE132044...
+17:36:29 Downloading from GEO GSE132044...
+17:36:29 Downloading PBMC counts from https://ftp.ncbi.nlm.nih.gov/geo/series/GSE132nnn/GSE132044/suppl/GSE132044_pbmc_hg38_count_matrix.mtx.gz...
+17:36:50 Downloaded PBMC counts: 127.5 MB
+17:36:50 Downloading PBMC cells from https://ftp.ncbi.nlm.nih.gov/geo/series/GSE132nnn/GSE132044/suppl/GSE132044_pbmc_hg38_cell.tsv.gz...
+17:36:52 Downloaded PBMC cells: 0.2 MB
+17:36:52 Downloading PBMC genes from https://ftp.ncbi.nlm.nih.gov/geo/series/GSE132nnn/GSE132044/suppl/GSE132044_pbmc_hg38_gene.tsv.gz...
+17:36:53 Downloaded PBMC genes: 0.2 MB
+17:36:53 Building AnnData from GEO files...
+  Count matrix: (44615, 33694)
+  Cell metadata: (44614, 0), columns=[]
+  Genes: 33694
+  obs columns: []
+17:36:58 Saved PBMC AnnData: 44614 cells x 33694 genes
+
+17:36:58 PBMC: 44614 cells, 33694 genes
+  Could not identify tech/celltype columns
+  Available: []
+
+============================================================
+CROSS-DATASET CONCORDANCE
+============================================================
+  cell_type_cka [OURS]: 0/0 positive, 0/0 significant → FAIL
+  procrustes_sim [OURS]: 0/0 positive, 0/0 significant → FAIL
+  silhouette_src [FIELD]: 0/0 positive, 0/0 significant → FAIL
+  silhouette_tgt [FIELD]: 0/0 positive, 0/0 significant → FAIL
+  mmd [FIELD]: 0/0 positive, 0/0 significant → FAIL
+  domain_auc [FIELD]: 0/0 positive, 0/0 significant → FAIL
+
+  HE1 (CKA generalizes): FAIL
+  HE2 (Procrustes generalizes): FAIL
+  HE3 (field baselines fail): FAIL — {'silhouette_src': 0, 'silhouette_tgt': 0, 'mmd': 0, 'domain_auc': 0}
+  HE4 (concordance): FAIL
+
+17:36:58 Saved results to results/external_validation/
+  summary.json, all_conditions.json, per-dataset condition files
+
+
+=== STDERR ===
+
+pancreas pairs:   0%|          | 0/56 [00:00<?, ?it/s]
+pancreas pairs:   2%|▏         | 1/56 [00:01<01:35,  1.73s/it]
+pancreas pairs:   4%|▎         | 2/56 [00:03<01:34,  1.75s/it]
+pancreas pairs:   5%|▌         | 3/56 [00:04<01:10,  1.33s/it]
+pancreas pairs:   7%|▋         | 4/56 [00:05<00:59,  1.14s/it]
+pancreas pairs:   9%|▉         | 5/56 [00:06<01:07,  1.33s/it]
+pancreas pairs:  11%|█         | 6/56 [00:08<01:08,  1.38s/it]
+pancreas pairs:  12%|█▎        | 7/56 [00:09<01:07,  1.38s/it]
+pancreas pairs:  14%|█▍        | 8/56 [00:11<01:06,  1.38s/it]
+pancreas pairs:  16%|█▌        | 9/56 [00:13<01:13,  1.56s/it]
+pancreas pairs:  18%|█▊        | 10/56 [00:14<01:17,  1.68s/it]
+pancreas pairs:  20%|█▉        | 11/56 [00:16<01:09,  1.54s/it]
+pancreas pairs:  21%|██▏       | 12/56 [00:17<01:03,  1.43s/it]
+pancreas pairs:  23%|██▎       | 13/56 [00:19<01:07,  1.57s/it]
+pancreas pairs:  25%|██▌       | 14/56 [00:21<01:09,  1.64s/it]
+pancreas pairs:  27%|██▋       | 15/56 [00:22<01:07,  1.65s/it]
+pancreas pairs:  29%|██▊       | 16/56 [00:24<01:05,  1.64s/it]
+pancreas pairs:  30%|███       | 17/56 [00:26<01:10,  1.80s/it]
+pancreas pairs:  32%|███▏      | 18/56 [00:28<01:13,  1.94s/it]
+pancreas pairs:  34%|███▍      | 19/56 [00:30<01:13,  1.99s/it]
+pancreas pairs:  36%|███▌      | 20/56 [00:32<01:12,  2.02s/it]
+pancreas pairs:  38%|███▊      | 21/56 [00:35<01:17,  2.22s/it]
+pancreas pairs:  39%|███▉      | 22/56 [00:38<01:19,  2.34s/it]
+pancreas pairs:  41%|████      | 23/56 [00:40<01:14,  2.24s/it]
+pancreas pairs:  43%|████▎     | 24/56 [00:42<01:10,  2.21s/it]
+pancreas pairs:  45%|████▍     | 25/56 [00:45<01:12,  2.33s/it]
+pancreas pairs:  46%|████▋     | 26/56 [00:47<01:12,  2.42s/it]
+pancreas pairs:  48%|████▊     | 27/56 [00:49<01:01,  2.12s/it]
+pancreas pairs:  50%|█████     | 28/56 [00:50<00:52,  1.87s/it]
+pancreas pairs:  52%|█████▏    | 29/56 [00:51<00:45,  1.67s/it]
+pancreas pairs:  54%|█████▎    | 30/56 [00:52<00:39,  1.53s/it]
+pancreas pairs:  55%|█████▌    | 31/56 [00:54<00:39,  1.60s/it]
+pancreas pairs:  57%|█████▋    | 32/56 [00:56<00:39,  1.64s/it]
+pancreas pairs:  59%|█████▉    | 33/56 [00:57<00:33,  1.46s/it]
+pancreas pairs:  61%|██████    | 34/56 [00:58<00:29,  1.34s/it]
+pancreas pairs:  62%|██████▎   | 35/56 [01:00<00:30,  1.43s/it]
+pancreas pairs:  64%|██████▍   | 36/56 [01:01<00:30,  1.52s/it]
+pancreas pairs:  66%|██████▌   | 37/56 [01:03<00:31,  1.66s/it]
+pancreas pairs:  68%|██████▊   | 38/56 [01:05<00:31,  1.74s/it]
+pancreas pairs:  70%|██████▉   | 39/56 [01:08<00:34,  2.04s/it]
+pancreas pairs:  71%|███████▏  | 40/56 [01:10<00:34,  2.15s/it]
+pancreas pairs:  73%|███████▎  | 41/56 [01:12<00:30,  2.03s/it]
+pancreas pairs:  75%|███████▌  | 42/56 [01:14<00:27,  1.94s/it]
+pancreas pairs:  77%|███████▋  | 43/56 [01:17<00:31,  2.42s/it]
+pancreas pairs:  79%|███████▊  | 44/56 [01:20<00:29,  2.42s/it]
+pancreas pairs:  80%|████████  | 45/56 [01:22<00:26,  2.38s/it]
+pancreas pairs:  82%|████████▏ | 46/56 [01:24<00:23,  2.37s/it]
+pancreas pairs:  84%|████████▍ | 47/56 [01:26<00:19,  2.12s/it]
+pancreas pairs:  86%|████████▌ | 48/56 [01:28<00:16,  2.03s/it]
+pancreas pairs:  88%|████████▊ | 49/56 [01:30<00:15,  2.21s/it]
+pancreas pairs:  89%|████████▉ | 50/56 [01:33<00:13,  2.23s/it]
+pancreas pairs:  91%|█████████ | 51/56 [01:35<00:11,  2.22s/it]
+pancreas pairs:  93%|█████████▎| 52/56 [01:37<00:08,  2.19s/it]
+pancreas pairs:  95%|█████████▍| 53/56 [01:40<00:07,  2.46s/it]
+pancreas pairs:  96%|█████████▋| 54/56 [01:43<00:05,  2.51s/it]
+pancreas pairs:  98%|█████████▊| 55/56 [01:45<00:02,  2.40s/it]
+pancreas pairs: 100%|██████████| 56/56 [01:47<00:00,  2.27s/it]
+pancreas pairs: 100%|██████████| 56/56 [01:47<00:00,  1.92s/it]
+
+TS tissues:   0%|          | 0/6 [00:00<?, ?it/s]/usr/local/lib/python3.11/site-packages/anndata/_core/aligned_df.py:68: ImplicitModificationWarning: Transforming to str index.
+  warnings.warn("Transforming to str index.", ImplicitModificationWarning)
+/usr/local/lib/python3.11/site-packages/anndata/_core/aligned_df.py:68: ImplicitModificationWarning: Transforming to str index.
+  warnings.warn("Transforming to str index.", ImplicitModificationWarning)
+
+TS tissues:  33%|███▎      | 2/6 [00:39<01:19, 19.89s/it]/usr/local/lib/python3.11/site-packages/anndata/_core/aligned_df.py:68: ImplicitModificationWarning: Transforming to str index.
+  warnings.warn("Transforming to str index.", ImplicitModificationWarning)
+/usr/local/lib/python3.11/site-packages/anndata/_core/aligned_df.py:68: ImplicitModificationWarning: Transforming to str index.
+  warnings.warn("Transforming to str index.", ImplicitModificationWarning)
+
+TS tissues:  67%|██████▋   | 4/6 [01:45<00:54, 27.43s/it]/usr/local/lib/python3.11/site-packages/anndata/_core/aligned_df.py:68: ImplicitModificationWarning: Transforming to str index.
+  warnings.warn("Transforming to str index.", ImplicitModificationWarning)
+/usr/local/lib/python3.11/site-packages/anndata/_core/aligned_df.py:68: ImplicitModificationWarning: Transforming to str index.
+  warnings.warn("Transforming to str index.", ImplicitModificationWarning)
+
+TS tissues:  83%|████████▎ | 5/6 [02:10<00:26, 26.85s/it]/usr/local/lib/python3.11/site-packages/anndata/_core/aligned_df.py:68: ImplicitModificationWarning: Transforming to str index.
+  warnings.warn("Transforming to str index.", ImplicitModificationWarning)
+/usr/local/lib/python3.11/site-packages/anndata/_core/aligned_df.py:68: ImplicitModificationWarning: Transforming to str index.
+  warnings.warn("Transforming to str index.", ImplicitModificationWarning)
+
+TS tissues: 100%|██████████| 6/6 [02:37<00:00, 26.98s/it]
+TS tissues: 100%|██████████| 6/6 [02:37<00:00, 26.32s/it]
+
+TS organs:   0%|          | 0/4 [00:00<?, ?it/s]
+TS organs:  25%|██▌       | 1/4 [00:00<00:00,  3.59it/s]
+TS organs:  50%|█████     | 2/4 [01:05<01:16, 38.37s/it]
+TS organs:  75%|███████▌  | 3/4 [01:17<00:26, 26.51s/it]
+TS organs: 100%|██████████| 4/4 [01:29<00:00, 20.57s/it]
+TS organs: 100%|██████████| 4/4 [01:29<00:00, 22.29s/it]
+
+
+=== RETURN CODE: 0 ===

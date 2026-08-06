@@ -1,0 +1,520 @@
+{
+  "experiment": "exp11_cross_tissue_validity",
+  "timestamp": "20260714_035835",
+  "prereg": "preregistration_v11_cross_tissue_ground_truth.md",
+  "census_version": "2023-12-15",
+  "seed": 20260802,
+  "transfer_probe": "logistic_regression",
+  "bog_pca_note": "combined source+target unsupervised PCA (transductive)",
+  "n_conditions": 24,
+  "conditions": [
+    {
+      "pair_id": "lung_to_brain",
+      "source_tissue": "lung",
+      "target_tissue": "brain",
+      "model": "geneformer",
+      "scib_scores": {
+        "nmi_leiden": 0.6518512117488238,
+        "ari_leiden": 0.3121349985148027,
+        "silhouette_label": 0.4924538400955498,
+        "isolated_label_asw": 0.5264708399772644,
+        "clisi": 0.9922750475930004
+      },
+      "probe_f1_target": 0.5311029592825376
+    },
+    {
+      "pair_id": "lung_to_brain",
+      "source_tissue": "lung",
+      "target_tissue": "brain",
+      "model": "scvi",
+      "scib_scores": {
+        "nmi_leiden": 0.5628882267773512,
+        "ari_leiden": 0.31211390129498573,
+        "silhouette_label": 0.4323156774044037,
+        "isolated_label_asw": 0.4835875928401947,
+        "clisi": 0.9882066991271042
+      },
+      "probe_f1_target": 0.40927522417763545
+    },
+    {
+      "pair_id": "lung_to_brain",
+      "source_tissue": "lung",
+      "target_tissue": "brain",
+      "model": "scgpt",
+      "scib_scores": {
+        "nmi_leiden": 0.5995915465731888,
+        "ari_leiden": 0.2412718085977066,
+        "silhouette_label": 0.4310172200202942,
+        "isolated_label_asw": 0.5019707083702087,
+        "clisi": 0.9908719760615651
+      },
+      "probe_f1_target": 0.319191993377382
+    },
+    {
+      "pair_id": "lung_to_brain",
+      "source_tissue": "lung",
+      "target_tissue": "brain",
+      "model": "bog_pca_512",
+      "scib_scores": {
+        "nmi_leiden": 0.5783788214162058,
+        "ari_leiden": 0.24114322606059185,
+        "silhouette_label": 0.3451341539621353,
+        "isolated_label_asw": 0.4371277391910553,
+        "clisi": 0.9895905154507335
+      },
+      "probe_f1_target": 0.13958826760508639
+    },
+    {
+      "pair_id": "lung_to_kidney",
+      "source_tissue": "lung",
+      "target_tissue": "kidney",
+      "model": "geneformer",
+      "scib_scores": {
+        "nmi_leiden": 0.7297468010111898,
+        "ari_leiden": 0.48390736936203904,
+        "silhouette_label": 0.5024825038854033,
+        "isolated_label_asw": 0.5293897390365601,
+        "clisi": 0.9949587151244447
+      },
+      "probe_f1_target": 0.4849219525478518
+    },
+    {
+      "pair_id": "lung_to_kidney",
+      "source_tissue": "lung",
+      "target_tissue": "kidney",
+      "model": "scvi",
+      "scib_scores": {
+        "nmi_leiden": 0.6572938360951699,
+        "ari_leiden": 0.4434677008682289,
+        "silhouette_label": 0.4647272042930126,
+        "isolated_label_asw": 0.49013224244117737,
+        "clisi": 0.9898732127724114
+      },
+      "probe_f1_target": 0.4032638457887627
+    },
+    {
+      "pair_id": "lung_to_kidney",
+      "source_tissue": "lung",
+      "target_tissue": "kidney",
+      "model": "scgpt",
+      "scib_scores": {
+        "nmi_leiden": 0.6863738858497934,
+        "ari_leiden": 0.4339653011760936,
+        "silhouette_label": 0.4687873739749193,
+        "isolated_label_asw": 0.5058150291442871,
+        "clisi": 0.99327438218253
+      },
+      "probe_f1_target": 0.4669016697588126
+    },
+    {
+      "pair_id": "lung_to_kidney",
+      "source_tissue": "lung",
+      "target_tissue": "kidney",
+      "model": "bog_pca_512",
+      "scib_scores": {
+        "nmi_leiden": 0.6590433840589427,
+        "ari_leiden": 0.38728876150392944,
+        "silhouette_label": 0.40118029713630676,
+        "isolated_label_asw": 0.4334217309951782,
+        "clisi": 0.9902263971475455
+      },
+      "probe_f1_target": 0.2202192916478631
+    },
+    {
+      "pair_id": "blood_to_lung",
+      "source_tissue": "blood",
+      "target_tissue": "lung",
+      "model": "geneformer",
+      "scib_scores": {
+        "nmi_leiden": 0.7259044370141747,
+        "ari_leiden": 0.4000412697250863,
+        "silhouette_label": 0.4795021787285805,
+        "isolated_label_asw": 0.5200987458229065,
+        "clisi": 0.9936901013056437
+      },
+      "probe_f1_target": 0.19917760037289015
+    },
+    {
+      "pair_id": "blood_to_lung",
+      "source_tissue": "blood",
+      "target_tissue": "lung",
+      "model": "scvi",
+      "scib_scores": {
+        "nmi_leiden": 0.6500772979677175,
+        "ari_leiden": 0.32898290459543034,
+        "silhouette_label": 0.4379905164241791,
+        "isolated_label_asw": 0.4897550940513611,
+        "clisi": 0.9880094647407531
+      },
+      "probe_f1_target": 0.12821045872031958
+    },
+    {
+      "pair_id": "blood_to_lung",
+      "source_tissue": "blood",
+      "target_tissue": "lung",
+      "model": "scgpt",
+      "scib_scores": {
+        "nmi_leiden": 0.6950628066464071,
+        "ari_leiden": 0.3613416733402759,
+        "silhouette_label": 0.4439418204128742,
+        "isolated_label_asw": 0.5021069049835205,
+        "clisi": 0.9916926900545756
+      },
+      "probe_f1_target": 0.20626951344418717
+    },
+    {
+      "pair_id": "blood_to_lung",
+      "source_tissue": "blood",
+      "target_tissue": "lung",
+      "model": "bog_pca_512",
+      "scib_scores": {
+        "nmi_leiden": 0.6331432410808674,
+        "ari_leiden": 0.2938156767663902,
+        "silhouette_label": 0.3972247913479805,
+        "isolated_label_asw": 0.45035335421562195,
+        "clisi": 0.9884316007296244
+      },
+      "probe_f1_target": 0.12680038964561594
+    },
+    {
+      "pair_id": "blood_to_brain",
+      "source_tissue": "blood",
+      "target_tissue": "brain",
+      "model": "geneformer",
+      "scib_scores": {
+        "nmi_leiden": 0.7232639807499799,
+        "ari_leiden": 0.40552297510798135,
+        "silhouette_label": 0.5095751201733947,
+        "isolated_label_asw": 0.518133282661438,
+        "clisi": 0.9931662714624979
+      },
+      "probe_f1_target": 0.5932698706280705
+    },
+    {
+      "pair_id": "blood_to_brain",
+      "source_tissue": "blood",
+      "target_tissue": "brain",
+      "model": "scvi",
+      "scib_scores": {
+        "nmi_leiden": 0.6329288105324687,
+        "ari_leiden": 0.3595340041578402,
+        "silhouette_label": 0.44186487048864365,
+        "isolated_label_asw": 0.4965841770172119,
+        "clisi": 0.9876623929265034
+      },
+      "probe_f1_target": 0.25753638953462565
+    },
+    {
+      "pair_id": "blood_to_brain",
+      "source_tissue": "blood",
+      "target_tissue": "brain",
+      "model": "scgpt",
+      "scib_scores": {
+        "nmi_leiden": 0.6751864760398851,
+        "ari_leiden": 0.35696833472548095,
+        "silhouette_label": 0.4730153828859329,
+        "isolated_label_asw": 0.5016120672225952,
+        "clisi": 0.9910034874835646
+      },
+      "probe_f1_target": 0.33440618795111704
+    },
+    {
+      "pair_id": "blood_to_brain",
+      "source_tissue": "blood",
+      "target_tissue": "brain",
+      "model": "bog_pca_512",
+      "scib_scores": {
+        "nmi_leiden": 0.6392650570997163,
+        "ari_leiden": 0.31843522499533333,
+        "silhouette_label": 0.39853399991989136,
+        "isolated_label_asw": 0.46663400530815125,
+        "clisi": 0.9888629223926958
+      },
+      "probe_f1_target": 0.1529024685748902
+    },
+    {
+      "pair_id": "liver_to_kidney",
+      "source_tissue": "liver",
+      "target_tissue": "kidney",
+      "model": "geneformer",
+      "scib_scores": {
+        "nmi_leiden": 0.8155261311871168,
+        "ari_leiden": 0.7369689201213586,
+        "silhouette_label": 0.5657627284526825,
+        "isolated_label_asw": 0.565530002117157,
+        "clisi": 0.9988451206459189
+      },
+      "probe_f1_target": 0.7747354497354497
+    },
+    {
+      "pair_id": "liver_to_kidney",
+      "source_tissue": "liver",
+      "target_tissue": "kidney",
+      "model": "scvi",
+      "scib_scores": {
+        "nmi_leiden": 0.7275090456960689,
+        "ari_leiden": 0.5792329848167183,
+        "silhouette_label": 0.5197713524103165,
+        "isolated_label_asw": 0.5446251034736633,
+        "clisi": 0.9961879883172378
+      },
+      "probe_f1_target": 0.9479338842975207
+    },
+    {
+      "pair_id": "liver_to_kidney",
+      "source_tissue": "liver",
+      "target_tissue": "kidney",
+      "model": "scgpt",
+      "scib_scores": {
+        "nmi_leiden": 0.7622756625892081,
+        "ari_leiden": 0.5768242469686417,
+        "silhouette_label": 0.5293279830366373,
+        "isolated_label_asw": 0.5513666272163391,
+        "clisi": 0.9977575225650139
+      },
+      "probe_f1_target": 1.0
+    },
+    {
+      "pair_id": "liver_to_kidney",
+      "source_tissue": "liver",
+      "target_tissue": "kidney",
+      "model": "bog_pca_512",
+      "scib_scores": {
+        "nmi_leiden": 0.7208736203365014,
+        "ari_leiden": 0.46873104620578215,
+        "silhouette_label": 0.4296497628092766,
+        "isolated_label_asw": 0.45936691761016846,
+        "clisi": 0.9962117109658584
+      },
+      "probe_f1_target": 0.9243697478991597
+    },
+    {
+      "pair_id": "blood_to_liver",
+      "source_tissue": "blood",
+      "target_tissue": "liver",
+      "model": "geneformer",
+      "scib_scores": {
+        "nmi_leiden": 0.7948392775372819,
+        "ari_leiden": 0.7134229320985249,
+        "silhouette_label": 0.535636879503727,
+        "isolated_label_asw": 0.5221076607704163,
+        "clisi": 0.9978538738502251
+      },
+      "probe_f1_target": 0.4344274033373844
+    },
+    {
+      "pair_id": "blood_to_liver",
+      "source_tissue": "blood",
+      "target_tissue": "liver",
+      "model": "scvi",
+      "scib_scores": {
+        "nmi_leiden": 0.674543124683216,
+        "ari_leiden": 0.45351919782257805,
+        "silhouette_label": 0.45339228957891464,
+        "isolated_label_asw": 0.5000629425048828,
+        "clisi": 0.990512340933412
+      },
+      "probe_f1_target": 0.3552048695294467
+    },
+    {
+      "pair_id": "blood_to_liver",
+      "source_tissue": "blood",
+      "target_tissue": "liver",
+      "model": "scgpt",
+      "scib_scores": {
+        "nmi_leiden": 0.726024896568061,
+        "ari_leiden": 0.47539894149812567,
+        "silhouette_label": 0.4881657240912318,
+        "isolated_label_asw": 0.5042238235473633,
+        "clisi": 0.9948098345117254
+      },
+      "probe_f1_target": 0.44010187905536446
+    },
+    {
+      "pair_id": "blood_to_liver",
+      "source_tissue": "blood",
+      "target_tissue": "liver",
+      "model": "bog_pca_512",
+      "scib_scores": {
+        "nmi_leiden": 0.6583291302933996,
+        "ari_leiden": 0.36933063085047396,
+        "silhouette_label": 0.4318176284432411,
+        "isolated_label_asw": 0.45886075496673584,
+        "clisi": 0.9919638686127715
+      },
+      "probe_f1_target": 0.18003495541072695
+    }
+  ],
+  "pair_metadata": {
+    "lung_to_brain": {
+      "source_tissue": "lung",
+      "target_tissue": "brain",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 10,
+      "v7_sanity": {
+        "v7_f1": 0.5323,
+        "exp11_f1": 0.5311029592825376,
+        "delta": 0.0011970407174624054,
+        "status": "OK"
+      }
+    },
+    "lung_to_kidney": {
+      "source_tissue": "lung",
+      "target_tissue": "kidney",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 7,
+      "v7_sanity": {
+        "v7_f1": 0.429,
+        "exp11_f1": 0.4849219525478518,
+        "delta": 0.055921952547851816,
+        "status": "MISMATCH"
+      },
+      "validity_warnings": [
+        "Geneformer F1 delta 0.0559 exceeds 0.05 threshold"
+      ]
+    },
+    "blood_to_lung": {
+      "source_tissue": "blood",
+      "target_tissue": "lung",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 30,
+      "v7_sanity": {
+        "v7_f1": 0.1852,
+        "exp11_f1": 0.19917760037289015,
+        "delta": 0.013977600372890142,
+        "status": "OK"
+      }
+    },
+    "blood_to_brain": {
+      "source_tissue": "blood",
+      "target_tissue": "brain",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 6,
+      "v7_sanity": {
+        "v7_f1": 0.6123,
+        "exp11_f1": 0.5932698706280705,
+        "delta": 0.019030129371929494,
+        "status": "OK"
+      }
+    },
+    "liver_to_kidney": {
+      "source_tissue": "liver",
+      "target_tissue": "kidney",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 4,
+      "v7_sanity": {
+        "v7_f1": 0.9824,
+        "exp11_f1": 0.7747354497354497,
+        "delta": 0.20766455026455033,
+        "status": "MISMATCH"
+      },
+      "validity_warnings": [
+        "Geneformer F1 delta 0.2077 exceeds 0.05 threshold"
+      ]
+    },
+    "blood_to_liver": {
+      "source_tissue": "blood",
+      "target_tissue": "liver",
+      "n_source": 2000,
+      "n_target": 2000,
+      "n_shared_cell_types": 18,
+      "v7_sanity": {
+        "v7_f1": 0.4127,
+        "exp11_f1": 0.4344274033373844,
+        "delta": 0.021727403337384377,
+        "status": "OK"
+      }
+    }
+  },
+  "hypotheses": {
+    "H11.1": {
+      "grand_mean_inversion_rate": 0.22222222222222224,
+      "grand_ci_lo": 0.12777777777777777,
+      "grand_ci_hi": 0.36666666666666664,
+      "p_value_one_sided": 0.8929,
+      "null_hypothesis": "true mean inversion rate <= 0.30",
+      "per_metric": {
+        "nmi_leiden": {
+          "overall_rate": 0.25,
+          "block_bootstrap_mean": 0.25,
+          "block_bootstrap_ci_lo": 0.16666666666666666,
+          "block_bootstrap_ci_hi": 0.3611111111111111,
+          "n_tissue_pairs": 6,
+          "total_comparisons": 36,
+          "total_inversions": 9
+        },
+        "ari_leiden": {
+          "overall_rate": 0.2222222222222222,
+          "block_bootstrap_mean": 0.2222222222222222,
+          "block_bootstrap_ci_lo": 0.08333333333333333,
+          "block_bootstrap_ci_hi": 0.4166666666666666,
+          "n_tissue_pairs": 6,
+          "total_comparisons": 36,
+          "total_inversions": 8
+        },
+        "silhouette_label": {
+          "overall_rate": 0.1388888888888889,
+          "block_bootstrap_mean": 0.13888888888888887,
+          "block_bootstrap_ci_lo": 0.027777777777777776,
+          "block_bootstrap_ci_hi": 0.3055555555555555,
+          "n_tissue_pairs": 6,
+          "total_comparisons": 36,
+          "total_inversions": 5
+        },
+        "clisi": {
+          "overall_rate": 0.3333333333333333,
+          "block_bootstrap_mean": 0.3333333333333333,
+          "block_bootstrap_ci_lo": 0.2222222222222222,
+          "block_bootstrap_ci_hi": 0.47222222222222227,
+          "n_tissue_pairs": 6,
+          "total_comparisons": 36,
+          "total_inversions": 12
+        },
+        "isolated_label_asw": {
+          "overall_rate": 0.16666666666666666,
+          "block_bootstrap_mean": 0.16666666666666666,
+          "block_bootstrap_ci_lo": 0.05555555555555555,
+          "block_bootstrap_ci_hi": 0.3055555555555556,
+          "n_tissue_pairs": 6,
+          "total_comparisons": 36,
+          "total_inversions": 6
+        }
+      },
+      "verdict_pre_holm": "OVERTURNED",
+      "verdict": "OVERTURNED",
+      "holm": {
+        "raw_p": 0.8929,
+        "holm_rank": 2,
+        "adjusted_alpha": 0.05,
+        "rejected": false
+      }
+    },
+    "H11.2": {
+      "spearman_rho": 0.7547826086956521,
+      "scipy_p": 2.0262501635634636e-05,
+      "permutation_p": 0.0,
+      "ci_lo": 0.5575221238938052,
+      "ci_hi": 0.8905429071803853,
+      "n_conditions": 24,
+      "verdict_pre_holm": "PENDING_HOLM",
+      "verdict": "OVERTURNED",
+      "holm": {
+        "raw_p": 0.0,
+        "holm_rank": 1,
+        "adjusted_alpha": 0.025,
+        "rejected": true
+      }
+    },
+    "H11.3": {
+      "clear_gap_rate": 0.23157894736842105,
+      "clear_gap_n": 95,
+      "near_tie_rate": 0.21176470588235294,
+      "near_tie_n": 85
+    }
+  }
+}

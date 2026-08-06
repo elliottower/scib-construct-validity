@@ -1,0 +1,716 @@
+{
+  "experiment": "exp8_uce_expanded",
+  "timestamp": "20260712_183521",
+  "census_version": "2023-12-15",
+  "embeddings_available": {
+    "lung": [
+      "geneformer",
+      "scvi",
+      "scgpt",
+      "uce"
+    ],
+    "liver": [
+      "geneformer",
+      "scvi",
+      "scgpt",
+      "uce"
+    ],
+    "kidney": [
+      "geneformer",
+      "scvi",
+      "scgpt",
+      "uce"
+    ],
+    "brain": [
+      "geneformer",
+      "scvi",
+      "scgpt",
+      "uce"
+    ]
+  },
+  "n_conditions": 20,
+  "correlations": {
+    "composite_vs_logreg": {
+      "rho": -0.03609022556390977,
+      "p": 0.8799311955207729
+    },
+    "composite_vs_knn": {
+      "rho": 0.045112781954887216,
+      "p": 0.8502061902084873
+    },
+    "composite_vs_silhouette": {
+      "rho": 0.5609022556390978,
+      "p": 0.010086372424803433
+    }
+  },
+  "results": {
+    "lung": {
+      "geneformer": {
+        "overall_tier": 3,
+        "overall_score": 0.30974214653636617,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.30925013708502447,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.06244499999999986,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.3097893941635112,
+            "tier": 3
+          },
+          "m4_domain_validity": {
+            "score": 0.8518369408015302,
+            "tier": 7
+          },
+          "m6_curvature": {
+            "score": 0.2166146867025801,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 1.0,
+        "logreg_f1_target": 0.40562882784407867,
+        "knn_f1_source": 0.6450962602221194,
+        "knn_f1_target": 0.3437205246740998,
+        "silhouette_source": -0.023971034213900566,
+        "silhouette_target": -0.032465577125549316,
+        "n_shared": 48
+      },
+      "scvi": {
+        "overall_tier": 4,
+        "overall_score": 0.5057694802283494,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.44573162432733304,
+            "tier": 4
+          },
+          "m2_domain_shift": {
+            "score": 0.3937725000000001,
+            "tier": 3
+          },
+          "m3_direction_stability": {
+            "score": 0.5664082838322695,
+            "tier": 5
+          },
+          "m4_domain_validity": {
+            "score": 0.8617848438992963,
+            "tier": 7
+          },
+          "m6_curvature": {
+            "score": 0.3606004901960784,
+            "tier": 3
+          }
+        },
+        "logreg_f1_source": 0.8525975791950519,
+        "logreg_f1_target": 0.29268479965319805,
+        "knn_f1_source": 0.58026197278617,
+        "knn_f1_target": 0.2649278439298837,
+        "silhouette_source": -0.0830865427851677,
+        "silhouette_target": -0.04540560767054558,
+        "n_shared": 48
+      },
+      "scgpt": {
+        "overall_tier": 3,
+        "overall_score": 0.2557875774766264,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.3504764269051637,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.012672500000000086,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.23953235222190544,
+            "tier": 2
+          },
+          "m4_domain_validity": {
+            "score": 0.5788288346210361,
+            "tier": 5
+          },
+          "m6_curvature": {
+            "score": 0.23592042588960493,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 0.9997261232952845,
+        "logreg_f1_target": 0.3011764671743656,
+        "knn_f1_source": 0.6452026704774504,
+        "knn_f1_target": 0.2709956459674979,
+        "silhouette_source": -0.06639397889375687,
+        "silhouette_target": -0.04660656675696373,
+        "n_shared": 48
+      },
+      "uce": {
+        "overall_tier": 3,
+        "overall_score": 0.28535900862657604,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.32843402249323705,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.00020000000000020002,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.17390931424828496,
+            "tier": 2
+          },
+          "m4_domain_validity": {
+            "score": 0.8976254106917506,
+            "tier": 7
+          },
+          "m6_curvature": {
+            "score": 0.2520615722924684,
+            "tier": 3
+          }
+        },
+        "logreg_f1_source": 0.9996575379080478,
+        "logreg_f1_target": 0.3249136392788751,
+        "knn_f1_source": 0.7095884927927035,
+        "knn_f1_target": 0.3131992061183921,
+        "silhouette_source": 0.010719710029661655,
+        "silhouette_target": -0.03252946957945824,
+        "n_shared": 48
+      },
+      "bag_of_genes_pca512": {
+        "overall_tier": 2,
+        "overall_score": 0.21409686876609754,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.4090722339409605,
+            "tier": 4
+          },
+          "m2_domain_shift": {
+            "score": 0.19119499999999978,
+            "tier": 2
+          },
+          "m3_direction_stability": {
+            "score": 0.09079045588796233,
+            "tier": 1
+          },
+          "m4_domain_validity": {
+            "score": 0.0,
+            "tier": 1
+          },
+          "m6_curvature": {
+            "score": 0.2006094464195023,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 1.0,
+        "logreg_f1_target": 0.28116607670661536,
+        "knn_f1_source": 0.6099295858478586,
+        "knn_f1_target": 0.16830230650792988,
+        "silhouette_source": -0.27377326538176283,
+        "silhouette_target": -0.01863180138022966,
+        "n_shared": 48
+      }
+    },
+    "liver": {
+      "geneformer": {
+        "overall_tier": 3,
+        "overall_score": 0.2645085937469711,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.2902502036738689,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.05704999999999982,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.2903841403203994,
+            "tier": 3
+          },
+          "m4_domain_validity": {
+            "score": 0.6779752672933222,
+            "tier": 5
+          },
+          "m6_curvature": {
+            "score": 0.11269208878770631,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 1.0,
+        "logreg_f1_target": 0.34597895565121317,
+        "knn_f1_source": 0.8519653308637329,
+        "knn_f1_target": 0.44184770688650726,
+        "silhouette_source": 0.3438270092010498,
+        "silhouette_target": 0.3054215610027313,
+        "n_shared": 16
+      },
+      "scvi": {
+        "overall_tier": 4,
+        "overall_score": 0.41147672305349015,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.29582761464884444,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.34024999999999994,
+            "tier": 3
+          },
+          "m3_direction_stability": {
+            "score": 0.5753761240686958,
+            "tier": 5
+          },
+          "m4_domain_validity": {
+            "score": 0.7128964622895778,
+            "tier": 6
+          },
+          "m6_curvature": {
+            "score": 0.22834176838344744,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 0.9976142228644489,
+        "logreg_f1_target": 0.4029467456669297,
+        "knn_f1_source": 0.8177019786607646,
+        "knn_f1_target": 0.31192348039865037,
+        "silhouette_source": 0.17897044122219086,
+        "silhouette_target": 0.1697174608707428,
+        "n_shared": 16
+      },
+      "scgpt": {
+        "overall_tier": 2,
+        "overall_score": 0.20931853332958592,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.2532706255850501,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.02200750000000018,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.2406487869520484,
+            "tier": 2
+          },
+          "m4_domain_validity": {
+            "score": 0.49629293139702957,
+            "tier": 4
+          },
+          "m6_curvature": {
+            "score": 0.14614499424626007,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 1.0,
+        "logreg_f1_target": 0.3677780505709661,
+        "knn_f1_source": 0.8276178592155217,
+        "knn_f1_target": 0.34419075909849906,
+        "silhouette_source": 0.3145351707935333,
+        "silhouette_target": 0.2566402554512024,
+        "n_shared": 16
+      },
+      "uce": {
+        "overall_tier": 2,
+        "overall_score": 0.11325567718224114,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.25912009545456594,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.007772500000000182,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.13876939157706167,
+            "tier": 2
+          },
+          "m4_domain_validity": {
+            "score": 0.0,
+            "tier": 1
+          },
+          "m6_curvature": {
+            "score": 0.12721463839674702,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 1.0,
+        "logreg_f1_target": 0.313831752295207,
+        "knn_f1_source": 0.8484973136065364,
+        "knn_f1_target": 0.3810743416089938,
+        "silhouette_source": 0.27912405133247375,
+        "silhouette_target": 0.32974809408187866,
+        "n_shared": 16
+      },
+      "bag_of_genes_pca512": {
+        "overall_tier": 2,
+        "overall_score": 0.1825790575818879,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.32386821266953536,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.11967749999999988,
+            "tier": 2
+          },
+          "m3_direction_stability": {
+            "score": 0.22715017722827868,
+            "tier": 2
+          },
+          "m4_domain_validity": {
+            "score": 0.0,
+            "tier": 1
+          },
+          "m6_curvature": {
+            "score": 0.1450445434298441,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 1.0,
+        "logreg_f1_target": 0.37108138797237106,
+        "knn_f1_source": 0.7793453148291711,
+        "knn_f1_target": 0.24949890655625334,
+        "silhouette_source": -0.1540283733369737,
+        "silhouette_target": 0.09339403438986812,
+        "n_shared": 16
+      }
+    },
+    "kidney": {
+      "geneformer": {
+        "overall_tier": 2,
+        "overall_score": 0.22892406505127944,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.20952711220075504,
+            "tier": 2
+          },
+          "m2_domain_shift": {
+            "score": 0.00046749999999984304,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.26989830024623745,
+            "tier": 3
+          },
+          "m4_domain_validity": {
+            "score": 0.7390001028704547,
+            "tier": 6
+          },
+          "m6_curvature": {
+            "score": 0.11823759063022866,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 1.0,
+        "logreg_f1_target": 0.7239843619737136,
+        "knn_f1_source": 0.925,
+        "knn_f1_target": 0.5015521880876368,
+        "silhouette_source": 0.3014887571334839,
+        "silhouette_target": 0.3422410190105438,
+        "n_shared": 4
+      },
+      "scvi": {
+        "overall_tier": 3,
+        "overall_score": 0.37923439505294443,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.3901127198326595,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.05508750000000018,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.5002749033294359,
+            "tier": 4
+          },
+          "m4_domain_validity": {
+            "score": 0.9582344807735543,
+            "tier": 7
+          },
+          "m6_curvature": {
+            "score": 0.23222748815165878,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 1.0,
+        "logreg_f1_target": 0.5137106487592672,
+        "knn_f1_source": 0.6603643616474411,
+        "knn_f1_target": 0.4661457391736916,
+        "silhouette_source": 0.33580371737480164,
+        "silhouette_target": 0.23566146194934845,
+        "n_shared": 4
+      },
+      "scgpt": {
+        "overall_tier": 3,
+        "overall_score": 0.2625949106641157,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.24985923240567942,
+            "tier": 2
+          },
+          "m2_domain_shift": {
+            "score": 0.0009850000000000136,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.19169496205531034,
+            "tier": 2
+          },
+          "m4_domain_validity": {
+            "score": 0.9200064976917836,
+            "tier": 7
+          },
+          "m6_curvature": {
+            "score": 0.18695398951659872,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 1.0,
+        "logreg_f1_target": 0.6828532646951584,
+        "knn_f1_source": 0.925,
+        "knn_f1_target": 0.5071169652744165,
+        "silhouette_source": 0.34462881088256836,
+        "silhouette_target": 0.28822118043899536,
+        "n_shared": 4
+      },
+      "uce": {
+        "overall_tier": 1,
+        "overall_score": 0.08781897180133498,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.1774975398069124,
+            "tier": 2
+          },
+          "m2_domain_shift": {
+            "score": 1.999999999990898e-05,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.15298834999352617,
+            "tier": 2
+          },
+          "m4_domain_validity": {
+            "score": 0.0,
+            "tier": 1
+          },
+          "m6_curvature": {
+            "score": 0.1255997742026531,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 1.0,
+        "logreg_f1_target": 0.7649992731012654,
+        "knn_f1_source": 0.8745644599303135,
+        "knn_f1_target": 0.6971043101487646,
+        "silhouette_source": 0.3381366729736328,
+        "silhouette_target": 0.401854932308197,
+        "n_shared": 4
+      },
+      "bag_of_genes_pca512": {
+        "overall_tier": 2,
+        "overall_score": 0.15266114508203932,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.3671876201952615,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.006869999999999932,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.15801932288781811,
+            "tier": 2
+          },
+          "m4_domain_validity": {
+            "score": 0.0,
+            "tier": 1
+          },
+          "m6_curvature": {
+            "score": 0.17232575950982895,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 1.0,
+        "logreg_f1_target": 0.07734368200057033,
+        "knn_f1_source": 0.8077870974422698,
+        "knn_f1_target": 0.5888878624861889,
+        "silhouette_source": 0.042357331476780495,
+        "silhouette_target": 0.060103935560293385,
+        "n_shared": 4
+      }
+    },
+    "brain": {
+      "geneformer": {
+        "overall_tier": 2,
+        "overall_score": 0.23388065083700854,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.2165447111910659,
+            "tier": 2
+          },
+          "m2_domain_shift": {
+            "score": 0.043825,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.30959667771747734,
+            "tier": 3
+          },
+          "m4_domain_validity": {
+            "score": 0.5815111669901609,
+            "tier": 5
+          },
+          "m6_curvature": {
+            "score": 0.21675392670157068,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 0.9906910929665876,
+        "logreg_f1_target": 0.4223080706182226,
+        "knn_f1_source": 0.8269867866199772,
+        "knn_f1_target": 0.525749789444839,
+        "silhouette_source": 0.05518488958477974,
+        "silhouette_target": 0.0601981021463871,
+        "n_shared": 7
+      },
+      "scvi": {
+        "overall_tier": 3,
+        "overall_score": 0.39873594628667275,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.4551949703309137,
+            "tier": 4
+          },
+          "m2_domain_shift": {
+            "score": 0.16334500000000007,
+            "tier": 2
+          },
+          "m3_direction_stability": {
+            "score": 0.49966209852114635,
+            "tier": 4
+          },
+          "m4_domain_validity": {
+            "score": 0.6930085969106333,
+            "tier": 5
+          },
+          "m6_curvature": {
+            "score": 0.32406602953953084,
+            "tier": 3
+          }
+        },
+        "logreg_f1_source": 0.8506841784980763,
+        "logreg_f1_target": 0.49999223024587736,
+        "knn_f1_source": 0.7843929332423352,
+        "knn_f1_target": 0.4210684037849027,
+        "silhouette_source": 0.01618230901658535,
+        "silhouette_target": -0.029400821775197983,
+        "n_shared": 7
+      },
+      "scgpt": {
+        "overall_tier": 3,
+        "overall_score": 0.3297933426848279,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.4031427660891408,
+            "tier": 4
+          },
+          "m2_domain_shift": {
+            "score": 0.0863075000000002,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.16821533494431326,
+            "tier": 2
+          },
+          "m4_domain_validity": {
+            "score": 0.891680495130075,
+            "tier": 7
+          },
+          "m6_curvature": {
+            "score": 0.20972073039742212,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 0.9841496988350006,
+        "logreg_f1_target": 0.44673749509688154,
+        "knn_f1_source": 0.7709986571224208,
+        "knn_f1_target": 0.3558008793175599,
+        "silhouette_source": 0.05269860848784447,
+        "silhouette_target": 0.06477764993906021,
+        "n_shared": 7
+      },
+      "uce": {
+        "overall_tier": 1,
+        "overall_score": 0.0923613218836201,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.1755132340024963,
+            "tier": 2
+          },
+          "m2_domain_shift": {
+            "score": 0.007865000000000233,
+            "tier": 1
+          },
+          "m3_direction_stability": {
+            "score": 0.13620406453704498,
+            "tier": 2
+          },
+          "m4_domain_validity": {
+            "score": 0.0,
+            "tier": 1
+          },
+          "m6_curvature": {
+            "score": 0.1947761194029851,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 0.9992449248709085,
+        "logreg_f1_target": 0.46421425236306685,
+        "knn_f1_source": 0.8412005118379025,
+        "knn_f1_target": 0.3984984287366519,
+        "silhouette_source": 0.05583156645298004,
+        "silhouette_target": 0.12499503046274185,
+        "n_shared": 7
+      },
+      "bag_of_genes_pca512": {
+        "overall_tier": 2,
+        "overall_score": 0.19588631479309818,
+        "module_scores": {
+          "m1_grassmannian": {
+            "score": 0.3039676682486564,
+            "tier": 3
+          },
+          "m2_domain_shift": {
+            "score": 0.22686249999999997,
+            "tier": 2
+          },
+          "m3_direction_stability": {
+            "score": 0.13235109250621735,
+            "tier": 2
+          },
+          "m4_domain_validity": {
+            "score": 0.0,
+            "tier": 1
+          },
+          "m6_curvature": {
+            "score": 0.1584992343032159,
+            "tier": 2
+          }
+        },
+        "logreg_f1_source": 0.9935217905173995,
+        "logreg_f1_target": 0.4601776498019978,
+        "knn_f1_source": 0.8023506254827307,
+        "knn_f1_target": 0.36442400774687267,
+        "silhouette_source": -0.09187560370230455,
+        "silhouette_target": -0.09791150295484698,
+        "n_shared": 7
+      }
+    }
+  }
+}

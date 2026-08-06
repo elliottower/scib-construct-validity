@@ -1,0 +1,177 @@
+{
+  "experiment": "exp1_bag_of_genes_baseline",
+  "timestamp": "20260711_122910",
+  "census_version": "2023-12-15",
+  "source_cells": 2000,
+  "target_cells": 2000,
+  "prereg_sha": "8cdd8f5199c187b7eee90609154b77dfbdf83629e1d6aad5c922e1d9634bf0af",
+  "prereg_verified": true,
+  "embedding_results": {
+    "geneformer": {
+      "overall_tier": 3,
+      "overall_score": 0.2684193200515621,
+      "module_scores": {
+        "m1_grassmannian": {
+          "score": 0.30925015989156257,
+          "tier": 3
+        },
+        "m2_domain_shift": {
+          "score": 0.062349999999999905,
+          "tier": 1
+        },
+        "m3_direction_stability": {
+          "score": 0.3098002964507708,
+          "tier": 3
+        },
+        "m4_domain_validity": {
+          "score": 0.8518369408015302,
+          "tier": 7
+        },
+        "m6_curvature": {
+          "score": 0.2166146867025801,
+          "tier": 2
+        },
+        "m7_ecological_bias": {
+          "score": 0.0,
+          "tier": 1
+        }
+      },
+      "probe_macro_f1": {
+        "mean": 0.6376317127360662,
+        "ci_lo": 0.6135342334235514,
+        "ci_hi": 0.6562117136898288,
+        "n_items": 3813
+      }
+    },
+    "scvi": {
+      "overall_tier": 4,
+      "overall_score": 0.43838605752118176,
+      "module_scores": {
+        "m1_grassmannian": {
+          "score": 0.44573169162129234,
+          "tier": 4
+        },
+        "m2_domain_shift": {
+          "score": 0.39396999999999993,
+          "tier": 3
+        },
+        "m3_direction_stability": {
+          "score": 0.566406959168943,
+          "tier": 5
+        },
+        "m4_domain_validity": {
+          "score": 0.8617848438992963,
+          "tier": 7
+        },
+        "m6_curvature": {
+          "score": 0.3606004901960784,
+          "tier": 3
+        },
+        "m7_ecological_bias": {
+          "score": 0.0,
+          "tier": 1
+        }
+      },
+      "probe_macro_f1": {
+        "mean": 0.5497496713205255,
+        "ci_lo": 0.5201120691016574,
+        "ci_hi": 0.5793872735393937,
+        "n_items": 3813
+      }
+    },
+    "bag_of_genes_512": {
+      "overall_tier": 2,
+      "overall_score": 0.1563904837757024,
+      "module_scores": {
+        "m1_grassmannian": {
+          "score": 0.3920413013825532,
+          "tier": 3
+        },
+        "m2_domain_shift": {
+          "score": 0.09417750000000003,
+          "tier": 1
+        },
+        "m3_direction_stability": {
+          "score": 0.09081028404905697,
+          "tier": 1
+        },
+        "m4_domain_validity": {
+          "score": 0.0,
+          "tier": 1
+        },
+        "m6_curvature": {
+          "score": 0.21936148300720906,
+          "tier": 2
+        },
+        "m7_ecological_bias": {
+          "score": 0.0,
+          "tier": 1
+        }
+      },
+      "probe_macro_f1": {
+        "mean": 0.5047045116452888,
+        "ci_lo": 0.48538883951285766,
+        "ci_hi": 0.5395550907120892,
+        "n_items": 3813
+      }
+    },
+    "bag_of_genes_50": {
+      "overall_tier": 3,
+      "overall_score": 0.2620549054433721,
+      "module_scores": {
+        "m1_grassmannian": {
+          "score": 0.3948274822024236,
+          "tier": 3
+        },
+        "m2_domain_shift": {
+          "score": 0.027917499999999817,
+          "tier": 1
+        },
+        "m3_direction_stability": {
+          "score": 0.3034643680682916,
+          "tier": 3
+        },
+        "m4_domain_validity": {
+          "score": 0.705484889773599,
+          "tier": 6
+        },
+        "m6_curvature": {
+          "score": 0.22194513715710723,
+          "tier": 2
+        },
+        "m7_ecological_bias": {
+          "score": 0.0,
+          "tier": 1
+        }
+      },
+      "probe_macro_f1": {
+        "mean": 0.6169367386635576,
+        "ci_lo": 0.5608030516778113,
+        "ci_hi": 0.6615484738852833,
+        "n_items": 3813
+      }
+    }
+  },
+  "hypotheses": {
+    "H1.1": {
+      "description": "Geneformer cell-type probe macro F1 > bag-of-genes F1",
+      "geneformer_f1": 0.6376317127360662,
+      "bag_of_genes_512_f1": 0.5047045116452888,
+      "delta": 0.13292720109077744,
+      "p_value": 0.125,
+      "supported": true
+    },
+    "H1.2": {
+      "description": "Bag-of-genes M2 domain shift AUC < Geneformer M2 AUC",
+      "geneformer_m2_auc": 0.968825,
+      "bag_of_genes_512_m2_auc": 0.95291125,
+      "supported": true
+    },
+    "H1.3": {
+      "description": "Bag-of-genes M1 Grassmannian distance <= Geneformer M1 distance",
+      "geneformer_m1_geodesic": 2.426194826128889,
+      "bag_of_genes_512_m1_geodesic": 2.135398610956095,
+      "supported": true
+    }
+  }
+}

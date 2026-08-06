@@ -1,0 +1,136 @@
+{
+  "tissue": "small intestine",
+  "tissue_index": 20,
+  "k": 8,
+  "n_src": 2000,
+  "n_tgt": 606,
+  "ceiling": {
+    "ceiling_score": 0.03819248384465775,
+    "n_types": 7,
+    "per_type_jaccard": {
+      "B cell": 0.0,
+      "enterocyte": 0.010101010101010102,
+      "fibroblast": 0.0,
+      "goblet cell": 0.08695652173913043,
+      "neutrophil": 0.041666666666666664,
+      "paneth cell of epithelium of small intestine": 0.08695652173913043,
+      "transit amplifying cell of small intestine": 0.041666666666666664
+    }
+  },
+  "metrics_geneformer": {
+    "rcs_baseline": 0.7504105090311987,
+    "rcs_pca10": 0.8620689655172413,
+    "rcs_trimmed": 0.7750410509031198,
+    "rcs_normalized": 0.822234452394056,
+    "rcs_combined": 0.8777076539339194,
+    "pad": -2.0,
+    "scc_logreg": 0.8534865020066735,
+    "scc_knn": 0.5696868008948547,
+    "scc_rf": 0.41437919463087247,
+    "scc_svm": 0.649353915732808,
+    "mmd": -0.295864338308538,
+    "ccal": -0.2840343102439104,
+    "f1": 0.35666663881474164
+  },
+  "mgr_geneformer": {
+    "mgr_score": 0.017889440095083066,
+    "n_matched_types": 7,
+    "n_clusters": 10,
+    "per_type_jaccard": {
+      "B cell": 0.0,
+      "enterocyte": 0.030927835051546393,
+      "fibroblast": 0.0,
+      "goblet cell": 0.05263157894736842,
+      "neutrophil": 0.0,
+      "paneth cell of epithelium of small intestine": 0.041666666666666664,
+      "transit amplifying cell of small intestine": 0.0
+    }
+  },
+  "metrics_scvi": {
+    "rcs_baseline": 0.7044334975369457,
+    "rcs_pca10": 0.6217843459222769,
+    "rcs_trimmed": 0.7099069512862616,
+    "rcs_normalized": 0.6905749854720626,
+    "rcs_combined": 0.6504540352615886,
+    "pad": -1.8850574712643677,
+    "scc_logreg": 0.7688392269424299,
+    "scc_knn": 0.5087248322147652,
+    "scc_rf": 0.5217785234899329,
+    "scc_svm": 0.7024706450106927,
+    "mmd": -0.3661307934043224,
+    "ccal": -0.642024441404664,
+    "f1": 0.2243006523446561
+  },
+  "mgr_scvi": {
+    "mgr_score": 0.004418262150220913,
+    "n_matched_types": 7,
+    "n_clusters": 9,
+    "per_type_jaccard": {
+      "B cell": 0.0,
+      "enterocyte": 0.030927835051546393,
+      "fibroblast": 0.0,
+      "goblet cell": 0.0,
+      "neutrophil": 0.0,
+      "paneth cell of epithelium of small intestine": 0.0,
+      "transit amplifying cell of small intestine": 0.0
+    }
+  },
+  "metrics_scgpt": {
+    "rcs_baseline": 0.8379857690202517,
+    "rcs_pca10": 0.7427476737821566,
+    "rcs_trimmed": 0.825944170771757,
+    "rcs_normalized": 0.8605182759062723,
+    "rcs_combined": 0.5700973565971396,
+    "pad": -1.9923371647509578,
+    "scc_logreg": 0.39975479838251987,
+    "scc_knn": 0.5576062639821029,
+    "scc_rf": 0.3841442953020134,
+    "scc_svm": 0.5560393994061342,
+    "mmd": -0.4274759489199489,
+    "ccal": -0.6246004075689752,
+    "f1": 0.28593444558422204
+  },
+  "mgr_scgpt": {
+    "mgr_score": 0.0029154518950437317,
+    "n_matched_types": 7,
+    "n_clusters": 11,
+    "per_type_jaccard": {
+      "B cell": 0.0,
+      "enterocyte": 0.02040816326530612,
+      "fibroblast": 0.0,
+      "goblet cell": 0.0,
+      "neutrophil": 0.0,
+      "paneth cell of epithelium of small intestine": 0.0,
+      "transit amplifying cell of small intestine": 0.0
+    }
+  },
+  "metrics_uce": {
+    "rcs_baseline": 0.8385331143951834,
+    "rcs_pca10": 0.7186644772851669,
+    "rcs_trimmed": 0.8243021346469621,
+    "rcs_normalized": 0.818381948266373,
+    "rcs_combined": 0.6820561535780579,
+    "pad": -1.9923371647509578,
+    "scc_logreg": 0.5352635887566679,
+    "scc_knn": 0.5751677852348993,
+    "scc_rf": 0.44347315436241613,
+    "scc_svm": 0.6690222394631632,
+    "mmd": -0.3528649889433292,
+    "ccal": -0.7506878280990442,
+    "f1": 0.25977246127755066
+  },
+  "mgr_uce": {
+    "mgr_score": 0.019620521019467697,
+    "n_matched_types": 7,
+    "n_clusters": 9,
+    "per_type_jaccard": {
+      "B cell": 0.0,
+      "enterocyte": 0.041666666666666664,
+      "fibroblast": 0.0,
+      "goblet cell": 0.07526881720430108,
+      "neutrophil": 0.0,
+      "paneth cell of epithelium of small intestine": 0.02040816326530612,
+      "transit amplifying cell of small intestine": 0.0
+    }
+  }
+}
