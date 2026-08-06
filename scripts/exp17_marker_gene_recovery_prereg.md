@@ -167,12 +167,40 @@ pre-registered but may be reported as supplementary robustness checks.
   no ceiling control, condition-level bootstrap (not block), no
   within-tissue test, arbitrary rho threshold, cherry-picked
   best-of-4 SCC variants.
-- **v2** (current): Fixed Jaccard scoring (max-over-clusters). Added
-  ceiling control. Block bootstrap (tissues). Precondition P-0 with
-  two-sided window. Significance-based P-5 threshold (not arbitrary
-  rho). Fixed P-6 to SCC-LR specifically. Added within-tissue
-  Kendall tau (P-7).
+- **v2** (SHA `2c0321f07323d73d2cb609f4e69374aa309dbe8b2b48cf5ce9be3f103835bb93`):
+  Fixed Jaccard scoring (max-over-clusters). Added ceiling control.
+  Block bootstrap (tissues). Precondition P-0 with two-sided window.
+  Significance-based P-5 threshold (not arbitrary rho). Fixed P-6 to
+  SCC-LR specifically. Added within-tissue Kendall tau (P-7).
+- **v3** (current): Post-audit amendments registered before
+  leave-one-out analysis. No predictions changed; three reporting
+  clarifications and one robustness check added:
+  1. **Ceiling caveat.** Max-over-clusters Jaccard can exceed the
+     ceiling when Leiden sub-clusters find purer marker sets than the
+     full cell-type population. Ceiling-normalized MGR is therefore
+     not a strict fraction; report as "relative to ceiling" with this
+     caveat, not as "fraction of maximum." Raw MGR remains primary
+     for all registered predictions.
+  2. **Bootstrap CI primacy.** The block-bootstrap 95% CI is the
+     primary significance measure for P-5. The naive `spearmanr`
+     p-values assume independent observations and are anti-conservative
+     for clustered data. BH correction is reported for comparability
+     with exp15/exp16 but the bootstrap CI excluding zero is the
+     definitive test.
+  3. **Shared confound acknowledgment.** SCC and MGR both improve
+     when the embedding separates cell types well. The convergent
+     validity claim is that they test this through structurally
+     distinct pathways (classifier confidence vs. gene-space marker
+     overlap via Leiden clusters), not that they are fully independent.
+     SCC-LR (linear decision boundaries) is the primary variant for
+     this claim. SCC-kNN shares neighborhood-graph machinery with
+     Leiden and is reported but not used for the convergent validity
+     argument.
+  4. **Leave-one-out robustness.** Recompute P-5 (SCC-LR rho with
+     MGR) dropping each tissue in turn. If the bootstrap CI lower
+     bound drops below zero for any single-tissue removal, report
+     which tissue(s) and flag the result as fragile.
 
 Implementation: `exp17_marker_gene_recovery.py` and
-`modal_exp17_marker_gene_recovery.py` (committed before results are
-computed).
+`modal_exp17_marker_gene_recovery.py` (committed before results at
+`1527ab6`; v3 amendments committed before leave-one-out analysis).
