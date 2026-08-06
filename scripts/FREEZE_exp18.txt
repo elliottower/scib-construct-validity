@@ -1,0 +1,20 @@
+# FREEZE — Experiment 18: Label Granularity Robustness
+
+Frozen before any granularity-varied metric value was computed. No scIB metric
+has been evaluated under any labelling other than the leaf annotation already
+published in Paper D's exp10 audit.
+
+## SHA-256
+
+730e61bd7099e5892f61ddca7a730bb32a9a75291106eb52d1cf7d10742cd8fa  scripts/exp18_label_granularity_prereg.md
+6f538328d3d1fad2270165854d6d04535b8ad8f95fe8dd44c7384ff887e574bc  scripts/exp18_label_granularity.py
+24f7a4124ec80f2036c0c4924a5d18439897ea4e1ebb767b4736e55d8d546636  scripts/modal_exp18_label_granularity.py
+
+git HEAD at freeze: 93a94b15550b635d6c6ee8a2bbc42d0964b15255
+frozen (UTC): 2026-08-06T19:25:26Z
+
+## Attestation
+
+The pure helpers (granularity ladder, inversion rate, bootstrap) were verified
+on synthetic data before this timestamp. No Census query was issued and no
+scib-metrics call was made with a coarsened label vector prior to freezing.
