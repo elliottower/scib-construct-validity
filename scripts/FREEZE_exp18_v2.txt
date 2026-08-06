@@ -1,0 +1,45 @@
+# FREEZE v2 — Experiment 18, after amendments A1–A8
+
+Supersedes FREEZE_exp18.txt, which is retained unaltered as the record of the
+original frozen state. The v1 run was stopped having written ZERO records; the
+volume directory was cleared and the empty file confirmed to contain no rows.
+Two independent code reviews then ran against the v1 script. Every amendment was
+therefore recorded before any metric value existed.
+
+## SHA-256 (v2)
+
+7ea0b0951d705a0bf5d9d178c1de90f1f60f4af8dab60dd1a341c3d5da7cdb9e  scripts/exp18_label_granularity_prereg.md
+    was: 730e61bd7099e5892f61ddca7a730bb32a9a75291106eb52d1cf7d10742cd8fa
+f1feccf2b492e9a6d7030675eef2a9e3a09d09973a37ca212ee56c739d710c8c  scripts/exp18_label_granularity.py
+    was: 6f538328d3d1fad2270165854d6d04535b8ad8f95fe8dd44c7384ff887e574bc
+dc0ad59cca9d73780b6f7bfdd4b9467a9c191bbdc512a104cfaf3cafb8e3939e  scripts/modal_exp18_label_granularity.py
+    was: 24f7a4124ec80f2036c0c4924a5d18439897ea4e1ebb767b4736e55d8d546636
+
+git HEAD at v2 freeze: c5d9fe6500d984e841331c8c6c705978e5ebae7f
+frozen (UTC): 2026-08-06T20:20:27Z
+
+## What changed and why
+
+A1 fcluster(Z,L,'maxclust') returns L-2 clusters on scipy<~1.14, so the
+   reference level was a two-merge coarsening, not the leaf labelling.
+   Reproduced on scipy 1.10.1 at L=6,8,10,12,20. frac==1.0 now maps to the
+   identity directly; every other level asserts its achieved cluster count;
+   scipy pinned to 1.15.3 (0 mismatches in 800 draws vs numpy 1.26.4).
+A2 Records carry the script SHA and the incremental filename carries it too, so
+   a code fix cannot be silently skipped by the resume path.
+A3 Null B added: random coarsening size-matched to G_0.25. The floor is renamed
+   the noise floor and its claim narrowed; 'conservative' is no longer asserted.
+A4 Per-tissue floor and abort; declared minimum target-cell rule. exp10 records
+   brain target = 59 cells, which cannot support this test.
+A5 Abort condition 1 implemented against exp10 cell counts; its leaf-type-count
+   half struck as unverifiable (exp10 never recorded it).
+A6 Bootstrap resamples (tissue, metric) blocks, not pairs.
+A7 Exclusions, support match, abort flags, intermediate levels and the 0.70
+   pass rate are all reported rather than discarded or printed.
+A8 Null named bog_pca_512, matching exp10 and the Paper D figure scripts.
+
+## Attestation
+
+No scIB metric has been evaluated under any labelling other than exp10's leaf
+annotation. The v1 run produced no records. Pure helpers were verified on
+synthetic data under both scipy 1.10.1 and 1.18.0 before this timestamp.

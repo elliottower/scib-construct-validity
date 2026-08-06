@@ -200,3 +200,136 @@ the ontology route needs a dependency this repo does not currently pin.
 - Script: `scripts/exp18_label_granularity.py`
 - Results: `results/exp18_label_granularity/`
 - Freeze: `scripts/FREEZE_exp18.txt`
+
+---
+
+# AMENDMENTS — all recorded before any metric value was computed
+
+The first launch was stopped after writing **zero** records; the volume directory
+was archived-and-cleared and the empty file confirmed to contain no rows. Two
+independent code reviews then ran against the frozen script. Everything below is
+therefore still pre-registration, not post-hoc revision. Original text is struck
+rather than deleted.
+
+## A1. `G_1` was not the leaf labelling — correctness fix
+
+`fcluster(Z, k, criterion="maxclust")` returns *at most* `k` clusters. On scipy
+below roughly 1.14 it returns `k−2` at `k = L` in every one of 200 randomized
+average-linkage/correlation trees tested. The Modal image pins `scipy>=1.10.0`
+with no upper bound, so the reference level was not guaranteed to be the leaf
+annotation at all.
+
+Consequences had it run: no `G_1` value could reproduce exp10's published
+leaf-level number; for `L` between 8 and 11, `G_1` and `G_{0.75}` are the
+identical partition, making that rank correlation exactly 1.0 by construction
+and a fabricated pass against the 0.70 threshold; at `L` of 6 or 7, `G_1` is
+*coarser* than `G_{0.75}`, inverting the ladder.
+
+**Amended:** `frac == 1.0` maps to the identity labelling directly, never through
+`fcluster`. Every other level asserts that the achieved cluster count equals the
+requested `k` and aborts the run on mismatch. scipy is pinned to 1.15.3, verified
+clean against numpy 1.26.4 with zero cluster-count mismatches in 800 draws. The
+resolved version is recorded in the manifest.
+
+Verified on scipy 1.10.1: raw `fcluster` under-delivers by exactly 2 at every
+`L` tested (6, 8, 10, 12, 20), and the corrected builder returns the true leaf
+labelling regardless, with the assertion firing at `L` of 6 and 7 where the
+0.75 level is also affected.
+
+## A2. Provenance stamping, so a fix cannot be silently skipped
+
+Resume matched on `(tissue, embedding, condition)` against a fixed-name file on a
+persistent volume. After any code fix, every key would already exist, nothing
+would recompute, and the analysis would rewrite stale numbers as if fresh.
+
+**Amended:** every record carries the SHA-256 of the analysis script. Records
+whose stamp differs from the running script are ignored for resume and reported.
+The incremental filename now carries the stamp.
+
+## A3. The stability floor gains a matched null
+
+~~The floor is conservative because it absorbs cell-sampling noise on top of
+algorithmic stochasticity.~~
+
+That was asserted, not shown, and the two arms perturb different things — the
+floor resamples cells at fixed labels, the effect changes labels at fixed cells.
+Review also established that the granularity arm shares one cached kNN graph
+across all levels and so carries *zero* graph-construction noise, while each floor
+subsample builds a fresh graph. The floor therefore bounds a different noise set
+rather than a larger one.
+
+**Amended:** the floor is retained, renamed the **noise floor**, and its role
+narrowed to "how many inversions occur when nothing changes." A second,
+size-matched null is added:
+
+> **Null B — random coarsening.** Partition the leaf types into groups drawn to
+> match the group-size distribution of $G_{0.25}$ exactly, with membership
+> assigned at random rather than by centroid structure. Three independent draws.
+
+**P1** (real coarsening exceeds the noise floor) is unchanged. **P5** is added:
+the real-coarsening inversion rate differs from Null B's. If they coincide, the
+metric is sensitive to class *count* alone, which is a worse construct-validity
+failure than sensitivity to biological structure, and is reported as such.
+
+## A4. Per-tissue exclusion, and a minimum target-cell rule
+
+Two changes, both because exp10's own log records target cell counts of
+lung 2000, liver 2000, kidney 370 and **brain 59**.
+
+Coarsening a labelling over 59 cells measures sampling noise, and the noise would
+inflate the inversion rate in the direction that confirms P1.
+
+**Amended:**
+1. A tissue is excluded when its target cell count is below
+   `10 × (leaf cell types present in the target)`. Declared as a rule rather than
+   a hand-picked drop, and tied to per-class density on the target side, which is
+   what the label-dependent metrics require.
+2. ~~Abort condition 4 is checked once, globally.~~ The floor is computed and
+   applied **per tissue**, so one noisy tissue cannot void the others. Exclusions
+   are recorded in the results file, not only in logs.
+
+## A5. Abort condition 1 — half of it was unverifiable
+
+The frozen text required reproducing exp10's per-tissue cell counts **and leaf
+type counts**. exp10 never recorded leaf type counts in any artifact, so that
+half could never be checked.
+
+**Amended:** the leaf-type clause is struck. The cell-count check is implemented
+against exp10's published values — lung 2000/2000, liver 2000/2000, kidney
+2000/370, brain 2000/59 — and raises rather than warns. Leaf type counts are
+recorded forward for future comparison.
+
+## A6. Clustered bootstrap
+
+Pairs were resampled as if independent. The 180 floor flags derive from 60
+independent metric evaluations, and within each (tissue, metric) block the three
+embedding-pair flags are determined by an ordering of three items. Simulation
+under the null put the naive interval's false-positive rate at 6.2–8.0% against a
+nominal 5%.
+
+**Amended:** the bootstrap resamples **(tissue, metric) blocks** rather than
+pairs. Both the block count and the flag count are reported so the independent
+information is visible.
+
+## A7. Reporting fixes required by the frozen text
+
+All of these were specified and not implemented.
+
+- Exclusion counts from `inversion_rate` are recorded per metric, split by cause,
+  rather than discarded (abort condition 3's reporting half).
+- `analyze` verifies the granularity and floor arms cover the same
+  (tissue, embedding, metric) support, and refuses to report a pooled difference
+  across mismatched supports — P1 is a difference between those two rates, so an
+  unequal support is a direct route to a wrong headline.
+- Abort flags are written into the results file rather than printed.
+- Intermediate levels get inversion rates, not only rank correlations.
+- The 0.70 threshold is applied and its pass rate reported.
+- The manifest is written per tissue, before that tissue's metrics run.
+- Rank correlations use the full six-embedding ranking only; three-embedding rows
+  are excluded and counted, since Spearman on n=3 takes four values and cannot be
+  compared against a fixed threshold.
+
+## A8. Naming
+
+The bag-of-genes null is registered as `bog_pca_512`, matching exp10 and the
+Paper D figure scripts, rather than `bog_pca`.

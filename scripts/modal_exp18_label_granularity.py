@@ -16,13 +16,21 @@ app = modal.App("preflight-exp18-label-granularity")
 
 vol = modal.Volume.from_name("preflight-results", create_if_missing=True)
 
-# Dependency set copied verbatim from modal_cross_tissue_validity.py, which is
-# a proven-working image for this exact metric stack. Do not "improve" it.
+# Dependency set from modal_cross_tissue_validity.py, a proven-working image for
+# this exact metric stack. Do not "improve" it.
+#
+# ONE deliberate change: scipy is pinned. The proven image allows scipy>=1.10.0,
+# and on scipy below ~1.14 `fcluster(Z, k, 'maxclust')` returns k-2 clusters at
+# k=L in every trial tested, which would silently make the reference granularity
+# level a two-merge coarsening rather than the leaf labelling (amendment A1).
+# 1.15.3 verified clean against numpy 1.26.4: 0 cluster-count mismatches in 800
+# draws. The code also asserts the achieved count, so a future drift aborts
+# loudly rather than corrupting the ladder.
 image = (
     modal.Image.debian_slim(python_version="3.11")
     .pip_install(
         "numpy<2.0",
-        "scipy>=1.10.0",
+        "scipy==1.15.3",
         "scikit-learn>=1.3.0",
         "anndata>=0.10.0",
         "cellxgene-census==1.16.2",
@@ -45,7 +53,10 @@ image = (
 RESULT_DIR = "/vol/exp18_label_granularity"
 
 
-@app.function(image=image, volumes={"/vol": vol}, timeout=86400, memory=32768)
+# retries: this repo contains modal_noise_retry_and_aggregate.py solely because a
+# Census S3 read timed out mid-run. Records already written are reusable and the
+# resume path is stamp-checked, so a retry resumes rather than restarting.
+@app.function(image=image, volumes={"/vol": vol}, timeout=86400, memory=32768, retries=3)
 def run_label_granularity():
     import sys
     import traceback
