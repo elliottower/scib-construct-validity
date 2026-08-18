@@ -1,12 +1,13 @@
 [project]
 name = "scib-validity"
-version = "0.1.0"
+version = "0.1.1"
 description = "CKA null saturation bounds and Source Classifier Confidence (SCC) for single-cell embedding evaluation"
 requires-python = ">=3.10"
 license = "MIT"
 authors = [
     {name = "Elliot Tower", email = "elliot@elliottower.ai"},
 ]
+readme = "README.md"
 keywords = ["single-cell", "embedding", "evaluation", "CKA", "construct-validity"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -27,7 +28,7 @@ dev = [
 
 [project.urls]
 Repository = "https://github.com/elliottower/scib-construct-validity"
-Paper = "https://doi.org/PENDING"
+Paper = "https://doi.org/10.5281/zenodo.21351298"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/scib_validity"]
