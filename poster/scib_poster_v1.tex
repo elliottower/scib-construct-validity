@@ -1,0 +1,378 @@
+% Construct Validity Failure in Single-Cell Embedding Evaluation — poster v1
+% tikzposter 3x3 block format, matching grokking_poster_v2.tex style.
+%
+%   lualatex scib_poster_v1.tex
+
+\documentclass[25pt, a0paper, portrait]{tikzposter}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+\graphicspath{{../docs/figures/}}
+
+% ── Color palette ───────────────────────────────────────
+\definecolor{yes}{HTML}{2980B9}
+\definecolor{maybe}{HTML}{E67E22}
+\definecolor{no}{HTML}{E74C3C}
+\definecolor{epiorange}{HTML}{FF9800}
+\definecolor{darktext}{HTML}{2C3E50}
+\definecolor{blockbg}{HTML}{FFFFFF}
+
+% ── Theme ───────────────────────────────────────────────
+\usetheme{Default}
+
+\definecolorstyle{SCIBColors}{
+  \definecolor{colorOne}{HTML}{2C3E50}
+  \definecolor{colorTwo}{HTML}{3498DB}
+  \definecolor{colorThree}{HTML}{ECF0F1}
+}{
+  \colorlet{backgroundcolor}{colorThree}
+  \colorlet{framecolor}{colorOne}
+  \colorlet{titlefgcolor}{white}
+  \colorlet{titlebgcolor}{colorOne}
+  \colorlet{blocktitlebgcolor}{colorTwo}
+  \colorlet{blocktitlefgcolor}{white}
+  \colorlet{blockbodybgcolor}{blockbg}
+  \colorlet{blockbodyfgcolor}{darktext}
+  \colorlet{notefgcolor}{darktext}
+  \colorlet{notebgcolor}{epiorange!15}
+  \colorlet{notefrcolor}{epiorange}
+}
+\usecolorstyle{SCIBColors}
+
+\defineblockstyle{SCIBBlock}{
+  titlewidthscale=1.0, bodywidthscale=1.0, titleleft,
+  titleoffsetx=0pt, titleoffsety=0pt,
+  bodyoffsetx=0pt, bodyoffsety=0pt, bodyverticalshift=0pt,
+  roundedcorners=12, linewidth=2pt, titleinnersep=10pt, bodyinnersep=15pt
+}{
+  \draw[rounded corners=\blockroundedcorners, color=blocktitlebgcolor,
+        fill=blockbodybgcolor, line width=\blocklinewidth]
+    (blockbody.south west) rectangle (blocktitle.north east);
+  \ifBlockHasTitle
+    \draw[rounded corners=\blockroundedcorners,
+          fill=blocktitlebgcolor, color=blocktitlebgcolor,
+          line width=\blocklinewidth]
+      (blocktitle.south west) rectangle (blocktitle.north east);
+  \fi
+}
+\useblockstyle{SCIBBlock}
+
+\definetitlestyle{SCIBTitle}{
+  width=\paperwidth, roundedcorners=0, linewidth=0pt, innersep=20pt,
+  titletotopverticalspace=15mm, titletoblockverticalspace=25mm
+}{
+  \draw[fill=titlebgcolor, color=titlebgcolor]
+    (\titleposleft, \titleposbottom)
+    rectangle (\titleposright, \titlepostop);
+}
+\usetitlestyle{SCIBTitle}
+
+\title{%
+  \parbox{0.92\linewidth}{\centering\bfseries
+    Construct Validity Failure in Single-Cell Embedding Evaluation:\\[6pt]
+    Null Saturation Bounds and Source Classifier Confidence}}
+\author{Elliot Tower\quad\texttt{elliot@elliottower.ai}}
+\institute{}
+
+\begin{document}
+
+\maketitle[width=\paperwidth]
+
+% ════════════════════════════════════════════════════════
+% ROW 1
+% ════════════════════════════════════════════════════════
+\begin{columns}
+\column{0.33}
+
+\block{The Problem}{
+  Single-cell foundation model benchmarks consistently find that
+  \textbf{PCA on raw counts matches or exceeds pretrained models} on
+  most evaluation axes.
+
+  \vspace{6mm}
+  Is this a genuine limitation of current models, or a construct
+  validity failure in the evaluation metrics?
+
+  \vspace{6mm}
+  \textbf{Metrics serve two logically independent roles:}
+  \begin{itemize}[leftmargin=*, itemsep=3mm]
+    \item \textbf{Ranking}: which model embeds better?
+    \item \textbf{Certification}: does a model capture biological
+      signal at all?
+  \end{itemize}
+
+  \vspace{4mm}
+  A metric can rank correctly while scoring every trained model
+  below unstructured noise.
+
+  \vspace{6mm}
+  We evaluate \textbf{12 metrics} across \textbf{8 embedding models},
+  \textbf{25 human tissues}, and \textbf{104 conditions} in CELLxGENE
+  Census. Ground truth: cross-technology cell-type transfer F1 (10x
+  Chromium $\to$ Smart-seq2).
+}
+
+\column{0.34}
+
+\block{CKA Null Saturation}{
+  CKA on cell-type centroids ranks embeddings well (partial
+  $\rho = 0.53$). But the analytic expectation under a Gaussian null
+  admits a closed form:
+
+  \vspace{6mm}
+  \begin{center}
+  {\Large $\displaystyle \mathbb{E}[\mathrm{CKA}] \approx 1 -
+  1.06\,\frac{k-1}{d+k}$}
+  \end{center}
+
+  \vspace{6mm}
+  This null depends only on the number of cell types $k$ and
+  embedding dimension $d$, independent of biology.
+
+  \vspace{6mm}
+  \begin{center}
+  \begin{tabular}{@{}rcccc@{}}
+    \toprule
+    & \multicolumn{4}{c}{\textbf{Analytic CKA null at dimension $d$}} \\
+    \cmidrule(lr){2-5}
+    $k$ & $d{=}50$ & $d{=}200$ & $d{=}512$ & $d{=}1280$ \\
+    \midrule
+    8  & 0.872 & 0.964 & 0.986 & 0.994 \\
+    14 & 0.785 & 0.936 & 0.974 & 0.989 \\
+    22 & 0.691 & 0.900 & 0.958 & 0.983 \\
+    44 & 0.515 & 0.813 & 0.921 & 0.965 \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+
+  \vspace{4mm}
+  At $d \geq 512$, the null exceeds every trained-model CKA score.
+  \textbf{No foundation model at native dimensionality clears the
+  null in any tissue.}
+}
+
+\column{0.33}
+
+\block{Dimensionality Is the Causal Variable}{
+  The null saturation gradient is monotone across four levels of $d$:
+
+  \vspace{6mm}
+  \begin{center}
+  \begin{tabular}{@{}rccc@{}}
+    \toprule
+    $d$ & Above null & Total & \% \\
+    \midrule
+    50   & 218 & 253 & \textcolor{yes}{\textbf{86\%}} \\
+    200  &  76 & 456 & \textcolor{maybe}{\textbf{17\%}} \\
+    512  &   0 & 125 & \textcolor{no}{\textbf{0\%}} \\
+    $\geq 768$ & 0 & 4 & \textcolor{no}{\textbf{0\%}} \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+
+  \vspace{6mm}
+  \textbf{Confound control:} scVI (foundation model, $d{=}50$) clears
+  the null in 64\% of tissues. Bag-of-genes PCA ($d{=}512$) fails in
+  all 25. Model family is not the driver.
+
+  \vspace{6mm}
+  \textbf{PCA-reduction:} Geneformer at native $d{=}512$ clears 0/22
+  tissues. After PCA to $d{=}50$: 18/22 (82\%). Same embeddings, same
+  model---dimensionality crosses the boundary.
+
+  \vspace{6mm}
+  Attempted repair ($z$-score normalization) degrades ranking by
+  removing real $k$-dependent signal. The fix is the usability
+  criterion, not a rescaled score.
+}
+
+\end{columns}
+
+% ════════════════════════════════════════════════════════
+% ROW 2
+% ════════════════════════════════════════════════════════
+\begin{columns}
+\column{0.33}
+
+\block{Relational Metrics Fail Structurally}{
+  Relational consistency scores (RCS) operate on $k \times k$ cell-type
+  relationship matrices.
+
+  \vspace{6mm}
+  \textbf{Advantage:} dimensionality-stable, no null saturation.
+
+  \vspace{4mm}
+  \textbf{Failure:} predict transfer only marginally ($\rho \leq 0.32$).
+  All five RCS variants produce $\rho \in [0.18, 0.32]$.
+
+  \vspace{6mm}
+  The failure is structural: relational metrics measure geometric
+  similarity between cell-type relationship matrices, which does not
+  reflect cluster separability. Ablating all four design differences
+  between RCS and official scGraph confirms no single choice explains
+  the gap.
+
+  \vspace{6mm}
+  Proxy A-distance, the metric most directly grounded in
+  domain-adaptation theory, fails entirely ($\rho = 0.003$, $p = 0.36$).
+  Marginal distributional alignment does not determine class-conditional
+  transfer.
+}
+
+\column{0.34}
+
+\block{Source Classifier Confidence}{
+  SCC trains a cell-type classifier on source embeddings, applies it
+  to target cells, and reports the \textbf{mean maximum predicted
+  probability}.
+
+  \vspace{6mm}
+  \begin{center}
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    \textbf{Metric} & $\rho$ & \textbf{95\% CI} & \textbf{Pairwise} \\
+    \midrule
+    SCC (LR)  & \textcolor{yes}{\textbf{+0.77}} & $[+.64,\;+.85]$ & 82.6\% \\
+    SCC (RF)  & +0.59 & $[+.38,\;+.74]$ & 79.7\% \\
+    SCC (SVM) & +0.52 & $[+.30,\;+.69]$ & 72.5\% \\
+    SCC (kNN) & +0.51 & $[+.31,\;+.66]$ & 78.3\% \\
+    \midrule
+    MMD       & +0.60 & $[+.42,\;+.73]$ & 87.0\% \\
+    CCAL      & +0.60 & $[+.43,\;+.72]$ & 89.9\% \\
+    \midrule
+    RCS (best)& +0.32 & $[+.07,\;+.52]$ & 65.2\% \\
+    PAD       & +0.11 & $[-.13,\;+.34]$ & 51.6\% \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+
+  \vspace{5mm}
+  Four classifier families all pass BH correction ($p < 0.001$),
+  ruling out shared-classifier confounding.
+}
+
+\column{0.33}
+
+\block{Convergent Validity}{
+  SCC is validated against a \textbf{non-classification ground truth}:
+  marker gene recovery scored in gene space via Leiden clustering.
+
+  \vspace{6mm}
+  \begin{center}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    \textbf{Ground truth} & $\rho$ & \textbf{95\% CI} \\
+    \midrule
+    Transfer F1     & +0.77 & $[+.64,\;+.85]$ \\
+    Marker gene rec.\ & +0.32 & $[+.15,\;+.44]$ \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+
+  \vspace{6mm}
+  SCC predicts both classification-based and gene-expression-based
+  ground truths, confirming that it measures an embedding-space
+  property rather than a classifier artifact.
+
+  \vspace{6mm}
+  \textbf{Noise calibration:} 10 seeds $\times$ 22 tissues reveals
+  that apparent non-monotonicity in Leiden-dependent metrics is
+  clustering jitter. ARI non-monotonicity drops from 70\% to 6.7\%
+  after permutation calibration (10.5$\times$ inflation in raw
+  scores).
+}
+
+\end{columns}
+
+% ════════════════════════════════════════════════════════
+% ROW 3
+% ════════════════════════════════════════════════════════
+\begin{columns}
+\column{0.33}
+
+\block{The Metric Landscape}{
+  \begin{center}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    \textbf{Metric} & \textbf{Ranks?} & \textbf{Certifies?} \\
+    \midrule
+    Procrustes    & \textcolor{yes}{$\rho = 0.65$} & untested \\
+    Silhouette    & \textcolor{yes}{$\rho = 0.60$} & untested \\
+    CKA           & \textcolor{yes}{$\rho = 0.53$} & \textcolor{no}{saturated} \\
+    NMI           & \textcolor{yes}{$\rho = 0.55$} & jitter \\
+    ARI           & \textcolor{maybe}{$\rho = 0.37$} & jitter \\
+    RCS           & \textcolor{no}{$\rho \leq 0.32$} & \textcolor{yes}{stable} \\
+    Dir.\ stab.   & \textcolor{no}{$\rho = 0.02$} & --- \\
+    \midrule
+    SCC (LR)      & \textcolor{yes}{$\rho = 0.77$} & \textcolor{yes}{valid} \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+
+  \vspace{5mm}
+  No existing metric both ranks and certifies. SCC is the strongest
+  candidate for both roles.
+}
+
+\column{0.34}
+
+\block{What This Does Not Show}{
+  \textbf{Single ground truth.} Cross-technology transfer F1 is one
+  downstream task. SCC's predictive power may not extend to other
+  applications (trajectory inference, perturbation prediction,
+  gene-program recovery).
+
+  \vspace{5mm}
+  \textbf{PBMC non-replication.} CKA's ranking ability replicates on
+  pancreas and Tabula Sapiens but not PBMC, where cell-type
+  classification is uniformly easy and ceiling effects compress the
+  ranking signal.
+
+  \vspace{5mm}
+  \textbf{$k$ dependence.} The analytic null requires $k$ shared cell
+  types across technologies. Tissues with few shared types ($k < 8$)
+  were excluded.
+
+  \vspace{5mm}
+  \textbf{Causal direction.} SCC predicts transfer F1; the analysis
+  does not establish whether high classifier confidence causes
+  good transfer or merely correlates with it.
+}
+
+\column{0.33}
+
+\block{Takeaway}{
+  \textbf{CKA on cell-type centroids cannot certify biological signal
+  at foundation-model dimensionalities.} The analytic null is a
+  closed-form function of $k$ and $d$ that every current model fails
+  to clear.
+
+  \vspace{6mm}
+  \begin{itemize}[leftmargin=*, itemsep=4mm]
+    \item Null saturation is dimensionality-driven, not model-driven
+    \item Relational metrics avoid saturation but predict transfer
+      only marginally ($\rho \leq 0.32$)
+    \item SCC achieves $\rho = 0.77$ across four classifier families
+    \item Convergent validity from marker gene recovery ($\rho = 0.32$)
+    \item Published rankings derived from relational metrics alone
+      warrant re-evaluation
+  \end{itemize}
+
+  \vspace{8mm}
+  \begin{center}
+  \texttt{elliot@elliottower.ai}
+
+  \vspace{3mm}
+  {\small Code, data and pre-registrations:}
+
+  \texttt{github.com/elliottower/scib-construct-validity}
+  \end{center}
+}
+
+\end{columns}
+
+\end{document}

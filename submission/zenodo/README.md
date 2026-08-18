@@ -16,7 +16,7 @@ conditions in CELLxGENE Census.
 
 ```
 docs/
-  paper_d_v32.tex              # LaTeX source (current version)
+  paper_d_v37.tex              # LaTeX source (current version)
   paper_d_v11.bib              # Bibliography
   preregistration_*.md         # All preregistration versions (v1-v11)
   frozen_prereg_*/             # SHA-256 frozen experiment specifications

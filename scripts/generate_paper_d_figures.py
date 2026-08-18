@@ -235,8 +235,8 @@ def fig_inversion_rates(out_path):
 
     raw_scores = summary["raw_scores"]
     raw_f1s = summary["raw_f1s"]
-    contenders = ["geneformer", "scvi", "scgpt", "bog_pca_512"]
-    tissues = ["lung", "liver", "kidney", "brain"]
+    contenders = list(EMB_DISPLAY.keys())
+    tissues = list(TISSUE_DISPLAY.keys())
 
     bio_metrics = ["nmi_leiden", "ari_leiden", "silhouette_label", "clisi", "isolated_label_asw"]
     batch_metrics = ["silhouette_batch", "ilisi", "graph_connectivity", "pcr_comparison"]
@@ -279,7 +279,7 @@ def fig_inversion_rates(out_path):
     ax.set_xticklabels(labels, fontsize=8, rotation=30, ha="right")
     ax.set_ylabel("Pairwise inversion rate vs F1", fontsize=9)
     ax.set_ylim(0, 1.05)
-    ax.set_title("scIB metric ranking accuracy on contenders", fontsize=10.5)
+    ax.set_title("scIB metric ranking accuracy (6 models, 4 tissues)", fontsize=10.5)
 
     for i, (rate, (disc, tot)) in enumerate(zip(inv_rates, counts)):
         ax.text(i, rate + 0.015, f"{disc}/{tot}", ha="center", fontsize=7.5, color="#333")

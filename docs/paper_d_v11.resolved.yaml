@@ -1,0 +1,160 @@
+bib: /Users/elliottower/Documents/GitHub/scib-construct-validity/docs/paper_d_v11.bib
+counts:
+  ok: 22
+  mismatch: 2
+  unresolved: 0
+  no_match: 2
+  unchecked: 0
+entries:
+- key: liu2026zeroshot
+  type: article
+  bib_title: Systematic benchmarking of zero-shot utility and robustness in single-cell transcriptomic
+    foundation models
+  verdict: mismatch
+  doi: 10.64898/2026.06.18.733285
+  registry_title: Context-dependent utility and robustness of pretrained single-cell foundation model
+    representations across analytical tasks
+  note: identifier resolves to a different paper
+- key: llorens2024scprint
+  type: article
+  bib_title: '{scPRINT}: pre-training on 50 million cells allows robust gene network and cell-type annotation'
+  verdict: mismatch
+  doi: 10.1101/2024.07.29.605556
+  registry_title: 'scPRINT: pre-training on 50 million cells allows robust gene network predictions'
+  note: identifier resolves to a different paper
+- key: cole2026morpheus
+  type: unpublished
+  bib_title: 'What scale buys for single-cell foundation models: a controlled probe of {Geneformer} {V1},
+    {V2-104M}, and {V2-316M}'
+  verdict: no_match
+  matched_by: title
+  note: 'absent from Crossref and OpenAlex (closest: ''v2 RNAscope v1'')'
+- key: scibmetrics2023
+  type: misc
+  bib_title: 'scib-metrics: accelerated single-cell integration benchmarking metrics'
+  verdict: no_match
+  matched_by: title
+  note: 'absent from Crossref and OpenAlex (closest: ''BENCHMARKING AND METRICS'')'
+- key: abdulla2025cellxgene
+  type: article
+  bib_title: '{CZ CELLxGENE Discover}: a single-cell data platform for scalable exploration, analysis
+    and modeling of aggregated data'
+  verdict: ok
+  doi: 10.1093/nar/gkae1142
+- key: campbell1959convergent
+  type: article
+  bib_title: Convergent and discriminant validation by the multitrait-multimethod matrix
+  verdict: ok
+  doi: 10.1037/h0046016
+- key: cellxgeneintegration2026
+  type: article
+  bib_title: Benchmarking single-cell foundation models for real-world {RNA}-seq data integration
+  verdict: ok
+  doi: 10.64898/2026.04.17.719314
+- key: chen2026harmonised
+  type: article
+  bib_title: Harmonised benchmarking of foundation models for single-cell and spatial transcriptomics
+    reveals context-dependent generalisation
+  verdict: ok
+  arxiv: '2607.17227'
+- key: chouldechova2017impossibility
+  type: article
+  bib_title: 'Fair prediction with disparate impact: a study of bias in recidivism prediction instruments'
+  verdict: ok
+  doi: 10.1089/big.2016.0047
+- key: cronbach1955construct
+  type: article
+  bib_title: Construct validity in psychological tests
+  verdict: ok
+  doi: 10.1037/h0040957
+- key: cui2024scgpt
+  type: article
+  bib_title: '{scGPT}: toward building a foundation model for single-cell multi-omics using generative
+    {AI}'
+  verdict: ok
+  doi: 10.1038/s41592-024-02201-0
+- key: ding2020systematic
+  type: article
+  bib_title: Systematic comparison of single-cell and single-nucleus {RNA}-sequencing methods
+  verdict: ok
+  matched_by: title
+  registry_doi: 10.1038/s41587-020-0465-8
+  note: no identifier in the entry; title matched at Crossref
+- key: johnsonlindenstrauss1984
+  type: inproceedings
+  bib_title: Extensions of {Lipschitz} mappings into a {Hilbert} space
+  verdict: ok
+  matched_by: title
+  registry_doi: 10.1090/conm/026/737400
+  note: no identifier in the entry; title matched at Crossref
+- key: kornblith2019similarity
+  type: inproceedings
+  bib_title: Similarity of Neural Network Representations Revisited
+  verdict: ok
+  matched_by: title
+  registry_doi: 10.48550/arxiv.1905.00414
+  note: no identifier in the entry; title matched at Crossref
+- key: lopez2018scvi
+  type: article
+  bib_title: Deep generative modeling for single-cell transcriptomics
+  verdict: ok
+  doi: 10.1038/s41592-018-0229-2
+- key: luecken2022scib
+  type: article
+  bib_title: Benchmarking atlas-level data integration in single-cell genomics
+  verdict: ok
+  doi: 10.1038/s41592-021-01336-8
+- key: murphy2024debiasedcka
+  type: inproceedings
+  bib_title: Correcting Biased Centered Kernel Alignment Measures in Biological and Artificial Neural
+    Networks
+  verdict: ok
+  arxiv: '2405.01012'
+- key: rautenstrauch2025silhouette
+  type: article
+  bib_title: Shortcomings of silhouette in single-cell integration benchmarking
+  verdict: ok
+  doi: 10.1038/s41587-025-02743-4
+- key: rosen2026uce
+  type: article
+  bib_title: Universal cell embedding provides a foundation model for cell biology
+  verdict: ok
+  doi: 10.1038/s41586-026-10689-z
+- key: schaar2024nicheformer
+  type: article
+  bib_title: '{Nicheformer}: a foundation model for single-cell and spatial transcriptomics'
+  verdict: ok
+  doi: 10.1101/2024.04.15.589472
+- key: tabulasapiens2022
+  type: article
+  bib_title: 'The {Tabula Sapiens}: a multiple-organ, single-cell transcriptomic atlas of humans'
+  verdict: ok
+  matched_by: title
+  registry_doi: 10.1126/science.abl4896
+  note: no identifier in the entry; title matched at Crossref
+- key: theodoris2023geneformer
+  type: article
+  bib_title: Transfer learning enables predictions in network biology
+  verdict: ok
+  doi: 10.1038/s41586-023-06139-9
+- key: unifiedscfm2026
+  type: article
+  bib_title: A unified framework enables accessible deployment and comprehensive benchmarking of single-cell
+    foundation models
+  verdict: ok
+  doi: 10.64898/2026.01.06.698060
+- key: vcbench2026
+  type: article
+  bib_title: '{VCBench}: a multi-dimensional benchmark for single-cell foundation models'
+  verdict: ok
+  doi: 10.64898/2026.06.18.733146
+- key: wang2026scgraph
+  type: article
+  bib_title: Limitations of cell embedding metrics assessed using drifting islands
+  verdict: ok
+  doi: 10.1038/s41587-025-02702-z
+- key: wu2025scfm
+  type: article
+  bib_title: Biology-driven insights into the power of single-cell foundation models
+  verdict: ok
+  doi: 10.1186/s13059-025-03781-6
