@@ -1,6 +1,6 @@
 [project]
 name = "scib-validity"
-version = "0.1.0"
+version = "0.3.0"
 description = "CKA null saturation bounds and Source Classifier Confidence (SCC) for single-cell embedding evaluation"
 requires-python = ">=3.10"
 license = "MIT"
