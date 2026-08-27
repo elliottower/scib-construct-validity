@@ -29,3 +29,16 @@ uv.lock
 submission/genome-biology/
 submission/zenodo/
 submission/plos-comp-bio/
+
+# Submission materials — never tracked (private journal correspondence)
+SUBMISSION_STATUS.md
+SUBMISSION.md
+SUBMISSION_TODO.md
+submission/
+submissions/
+cover_letter*
+cover-letter*
+COVER_LETTER*
+fee_waiver*
+fee-waiver*
+*_submission.zip
