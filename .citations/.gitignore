@@ -1,0 +1,9 @@
+# artifacts, not records. Copyright usually forbids redistributing them
+pdfs/
+
+# secrets
+.env
+
+__pycache__/
+*.pyc
+.DS_Store
