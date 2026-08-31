@@ -43,7 +43,7 @@ one while failing at the other.
 \textbf{Results:}
 We evaluated twelve metrics against cross-technology cell-type
 transfer F1 (classifier trained on 10x Chromium 3$'$ v3 embeddings,
-applied to Smart-seq2) across 23 human tissues and 92 embedding
+applied to Smart-seq2) across 25 human tissues and 104 embedding
 conditions in CELLxGENE Census. Centered kernel alignment (CKA) on
 cell-type centroids retains ranking power (partial $\rho = 0.53$,
 controlling for dimensionality) yet exhibits what we term \emph{null saturation}:
@@ -54,16 +54,17 @@ At $d = 50$, 86\% of conditions across four datasets clear the null;
 at $d \geq 512$, none do. CKA's ranking ability replicates on two
 independent datasets (pancreas, Tabula Sapiens) but not a third
 (PBMC) where cell-type classification is uniformly easy. Five
-relational consistency score variants and pairwise discrimination
-accuracy avoid null saturation yet predict transfer only marginally
-($\rho \leq 0.32$). These failures share a mechanism: relational
+relational consistency score variants avoid null saturation yet predict
+transfer only marginally ($\rho \leq 0.32$), and proxy A-distance fails
+entirely ($\rho = 0.003$). These failures share a mechanism: relational
 metrics measure geometric similarity between cell-type relationship
 matrices, which does not reflect cluster separability. Source
 classifier confidence (SCC)---the mean maximum predicted probability
 of a source-trained cell-type classifier applied to target
 cells---directly measures whether learned decision boundaries
 transfer, achieving Spearman $\rho = 0.67$ ($p < 10^{-11}$,
-BH-corrected across twelve metrics, four embedding models). A
+BH-corrected across twelve metrics; 92 conditions, 23 tissues, four
+embedding models). A
 pre-registered cross-classifier stress test confirms this result
 across four classifier families, ruling out shared-machinery
 confounding. SCC also predicts marker gene recovery---a
@@ -928,7 +929,7 @@ same metric on Geneformer ($d = 512$) gets none, and the metric gives no
 warning that it has failed. Biased CKA saturation in low-sample,
 high-feature regimes has been documented in neural network
 representation analysis \citep{murphy2024debiasedcka}; the closed-form
-null derived here sharpens that observation for the $(k, d)$ regime of
+null derived here extends that observation to the $(k, d)$ regime of
 single-cell centroid inputs, where the saturation boundary is computable
 from dataset parameters alone.
 
