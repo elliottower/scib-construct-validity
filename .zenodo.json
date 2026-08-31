@@ -1,22 +1,25 @@
 {
-  "title": "Preflight Bio",
+  "title": "Construct Validity Failure in Single-Cell Embedding Evaluation: Null Saturation Bounds and Source Classifier Confidence",
   "upload_type": "software",
-  "description": "Preflight checks for biomedical analysis pipelines.",
+  "description": "CKA null saturation bounds and source classifier confidence (SCC) for single-cell embedding evaluation. Demonstrates that CKA on cell-type centroids exhibits null saturation at foundation-model dimensionality, and proposes SCC as a transfer-aware alternative.",
   "creators": [
     {
       "name": "Tower, Elliot",
       "orcid": "0000-0001-7004-8884"
     }
   ],
-  "license": "CC-BY-4.0",
+  "license": "MIT",
   "keywords": [
-    "preflight",
-    "biomedical",
-    "quality control"
+    "single-cell",
+    "embedding evaluation",
+    "construct validity",
+    "CKA",
+    "source classifier confidence",
+    "transfer prediction"
   ],
   "related_identifiers": [
     {
-      "identifier": "https://github.com/elliottower/preflight-bio",
+      "identifier": "https://github.com/elliottower/scib-construct-validity",
       "relation": "isSupplementTo",
       "scheme": "url"
     }

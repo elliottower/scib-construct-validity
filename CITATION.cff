@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-title: "Preflight Bio"
+title: "Construct Validity Failure in Single-Cell Embedding Evaluation: Null Saturation Bounds and Source Classifier Confidence"
 authors:
   - family-names: Tower
     given-names: Elliot
@@ -8,4 +8,4 @@ authors:
     orcid: "https://orcid.org/0000-0001-7004-8884"
 type: software
 license: MIT
-repository-code: "https://github.com/elliottower/preflight-bio"
+repository-code: "https://github.com/elliottower/scib-construct-validity"

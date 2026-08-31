@@ -1,0 +1,140 @@
+{
+  "experiment": "exp16_expanded_models",
+  "n_conditions": 92,
+  "n_tissues": 23,
+  "source": "results/exp16_expanded_models/exp16_expanded_models/summary/exp16_summary.json",
+  "metrics": {
+    "scc_logreg": {
+      "display_name": "SCC (LR)",
+      "spearman_rho": 0.673,
+      "bootstrap_ci_lo": 0.54,
+      "bootstrap_ci_hi": 0.78,
+      "bh_spearman_p": 2.4740747754535156e-12,
+      "pairwise_accuracy_pct": 77.5,
+      "n_positive_tau": 18,
+      "n_tissues_tau": 23,
+      "bh_sign_p": 0.009104592459542411
+    },
+    "scc_knn": {
+      "display_name": "SCC (kNN)",
+      "spearman_rho": 0.558,
+      "bootstrap_ci_lo": 0.4,
+      "bootstrap_ci_hi": 0.69,
+      "bh_spearman_p": 3.016774240948118e-08,
+      "pairwise_accuracy_pct": 70.3,
+      "n_positive_tau": 16,
+      "n_tissues_tau": 23,
+      "bh_sign_p": 0.062093098958333336
+    },
+    "scc_rf": {
+      "display_name": "SCC (RF)",
+      "spearman_rho": 0.569,
+      "bootstrap_ci_lo": 0.4,
+      "bootstrap_ci_hi": 0.71,
+      "bh_spearman_p": 1.8968075586194368e-08,
+      "pairwise_accuracy_pct": 71.7,
+      "n_positive_tau": 18,
+      "n_tissues_tau": 23,
+      "bh_sign_p": 0.009104592459542411
+    },
+    "scc_svm": {
+      "display_name": "SCC (SVM)",
+      "spearman_rho": 0.548,
+      "bootstrap_ci_lo": 0.37,
+      "bootstrap_ci_hi": 0.7,
+      "bh_spearman_p": 4.559212213813386e-08,
+      "pairwise_accuracy_pct": 68.1,
+      "n_positive_tau": 18,
+      "n_tissues_tau": 23,
+      "bh_sign_p": 0.009104592459542411
+    },
+    "mmd": {
+      "display_name": "MMD",
+      "spearman_rho": 0.525,
+      "bootstrap_ci_lo": 0.36,
+      "bootstrap_ci_hi": 0.66,
+      "bh_spearman_p": 1.8172652045391763e-07,
+      "pairwise_accuracy_pct": 79.0,
+      "n_positive_tau": 20,
+      "n_tissues_tau": 23,
+      "bh_sign_p": 0.00146484375
+    },
+    "ccal": {
+      "display_name": "CCAL",
+      "spearman_rho": 0.472,
+      "bootstrap_ci_lo": 0.3,
+      "bootstrap_ci_hi": 0.62,
+      "bh_spearman_p": 3.966923401928636e-06,
+      "pairwise_accuracy_pct": 75.4,
+      "n_positive_tau": 20,
+      "n_tissues_tau": 23,
+      "bh_sign_p": 0.00146484375
+    },
+    "rcs_baseline": {
+      "display_name": "RCS (baseline)",
+      "spearman_rho": 0.218,
+      "bootstrap_ci_lo": 0.02,
+      "bootstrap_ci_hi": 0.4,
+      "bh_spearman_p": 0.049507989949268326,
+      "pairwise_accuracy_pct": 71.0,
+      "n_positive_tau": 16,
+      "n_tissues_tau": 23,
+      "bh_sign_p": 0.062093098958333336
+    },
+    "rcs_pca10": {
+      "display_name": "RCS (PCA-10)",
+      "spearman_rho": 0.284,
+      "bootstrap_ci_lo": 0.07,
+      "bootstrap_ci_hi": 0.48,
+      "bh_spearman_p": 0.00924655194334967,
+      "pairwise_accuracy_pct": 63.0,
+      "n_positive_tau": 14,
+      "n_tissues_tau": 23,
+      "bh_sign_p": 0.22083976052024148
+    },
+    "rcs_trimmed": {
+      "display_name": "RCS (trimmed)",
+      "spearman_rho": 0.212,
+      "bootstrap_ci_lo": 0.02,
+      "bootstrap_ci_hi": 0.4,
+      "bh_spearman_p": 0.05102074993540504,
+      "pairwise_accuracy_pct": 71.7,
+      "n_positive_tau": 19,
+      "n_tissues_tau": 23,
+      "bh_sign_p": 0.005198955535888672
+    },
+    "rcs_normalized": {
+      "display_name": "RCS (normalized)",
+      "spearman_rho": 0.179,
+      "bootstrap_ci_lo": -0.03,
+      "bootstrap_ci_hi": 0.38,
+      "bh_spearman_p": 0.09557513230341672,
+      "pairwise_accuracy_pct": 72.5,
+      "n_positive_tau": 18,
+      "n_tissues_tau": 23,
+      "bh_sign_p": 0.009104592459542411
+    },
+    "rcs_combined": {
+      "display_name": "RCS (combined)",
+      "spearman_rho": 0.315,
+      "bootstrap_ci_lo": 0.1,
+      "bootstrap_ci_hi": 0.51,
+      "bh_spearman_p": 0.0037779613766176262,
+      "pairwise_accuracy_pct": 63.0,
+      "n_positive_tau": 14,
+      "n_tissues_tau": 23,
+      "bh_sign_p": 0.22083976052024148
+    },
+    "pad": {
+      "display_name": "PAD",
+      "spearman_rho": 0.003,
+      "bootstrap_ci_lo": -0.2,
+      "bootstrap_ci_hi": 0.2,
+      "bh_spearman_p": 0.9747837310481757,
+      "pairwise_accuracy_pct": 46.5,
+      "n_positive_tau": 8,
+      "n_tissues_tau": 23,
+      "bh_sign_p": 0.95343017578125
+    }
+  }
+}

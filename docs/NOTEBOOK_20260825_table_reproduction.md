@@ -1,5 +1,12 @@
 # Notebook — 2026-08-25 — does Table 4 reproduce from the repository?
 
+> **2026-08-31 correction.** This notebook compared `compute_exp15_table.py`
+> (exp15: 3 models, 69 rows) against the paper's table, which reports exp16
+> (4 models including UCE, 92 conditions, 23 tissues). The experiments differ;
+> the discrepancy is expected. Running `scripts/compute_exp16_table.py` against
+> `results/exp16_expanded_models/.../exp16_summary.json` reproduces all 12 rows
+> to ±0.001. The table is reproducible from the committed data.
+
 A single day's entry, recording one check and what it found. Nothing here changes the
 manuscript; it records what was measured so a decision can be made from evidence rather than
 from memory.

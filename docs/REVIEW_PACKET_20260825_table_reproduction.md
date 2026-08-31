@@ -1,5 +1,12 @@
 # Review packet — Table 4 does not reproduce from the repository
 
+> **2026-08-31 correction.** The comparison below used the wrong experiment.
+> `compute_exp15_table.py` reads exp15 (3 models, 69 rows); the paper's table
+> reports exp16 (4 models, 92 conditions). `scripts/compute_exp16_table.py`
+> reproduces all 12 rows from the committed exp16 data. The table is
+> reproducible. The decisions below are resolved; this file is retained for
+> the audit trail.
+
 For whoever picks this up next. The measurement is in
 `docs/NOTEBOOK_20260825_table_reproduction.md`; this file is the decisions it needs.
 
